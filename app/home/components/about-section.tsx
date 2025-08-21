@@ -1,0 +1,220 @@
+"use client"
+
+import { useEffect, useRef } from "react"
+import { gsap } from "gsap"
+import Image from "next/image"
+
+export function AboutSection() {
+  const sectionRef = useRef(null)
+  const leftColRef = useRef(null)
+  const rightColRef = useRef(null)
+  const progressRefs = useRef<(HTMLDivElement | null)[]>([])
+  const experienceRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Left column animation (images + stats)
+      gsap.from(leftColRef.current, {
+        x: -60,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+      })
+
+      // Right column animation (text content)
+      gsap.from(rightColRef.current, {
+        x: 60,
+        opacity: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        delay: 0.3,
+      })
+
+      // Experience counter (22+ years)
+      if (experienceRef.current) {
+        const years = { val: 0 }
+        gsap.to(years, {
+          val: 22,
+          duration: 2,
+          ease: "power3.out",
+          onUpdate: () => {
+            if (experienceRef.current) {
+              experienceRef.current.textContent = `${Math.floor(years.val)}+`
+            }
+          },
+          scrollTrigger: {
+            trigger: experienceRef.current,
+            start: "top 85%",
+          },
+        })
+      }
+
+      // Animate progress bars
+      progressRefs.current.forEach((bar) => {
+        if (bar) {
+          const targetWidth = bar.getAttribute("data-progress") || "0%"
+          gsap.fromTo(
+            bar,
+            { width: "0%" },
+            {
+              width: targetWidth,
+              duration: 1.5,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: bar,
+                start: "top 90%",
+              },
+            }
+          )
+        }
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
+  return (
+    <section
+      ref={sectionRef}
+      className="py-16 px-4 md:px-8 lg:px-16 bg-background text-foreground"
+    >
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column (Images + Years of Experience) */}
+          <div ref={leftColRef} className="space-y-8">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                <Image
+                  src="/placeholder.svg?height=300&width=300"
+                  alt="Professionals working"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                <Image
+                  src="/placeholder.svg?height=300&width=300"
+                  alt="Business people in server room"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+            <div className="relative h-48 rounded-2xl overflow-hidden">
+              <Image
+                src="/placeholder.svg?height=200&width=600"
+                alt="Professionals with laptop"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="text-center">
+              <div
+                ref={experienceRef}
+                className="text-6xl font-bold text-primary mb-2"
+              >
+                0+
+              </div>
+              <div className="text-secondary text-xl font-medium">
+                Year Of Experience
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column (Content + Progress bars) */}
+          <div ref={rightColRef}>
+            <div className="flex items-center gap-2 mb-8">
+              <div className="w-1 h-6 bg-primary"></div>
+              <span className="text-primary text-sm font-medium">About Us</span>
+              <div className="w-1 h-6 bg-primary"></div>
+            </div>
+
+            <h2 className="text-5xl font-bold text-secondary mb-8 leading-tight">
+              Experts In Tech Evolution.
+            </h2>
+
+            <p className="text-muted-foreground text-lg mb-12 leading-relaxed">
+              As an IT Solution and Services Company, we have a value in
+              fulfilling our clients' satisfaction.
+            </p>
+
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-bold text-secondary mb-4">
+                  Innovation And Adaptability
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  Driving continuous innovation to deliver cutting-edge, tailored
+                  solutions that evolve with technology and your needs.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-bold text-secondary mb-4">
+                  Customer-Centric Excellence
+                </h3>
+                <p className="text-muted-foreground mb-8 leading-relaxed">
+                  Putting you at the heart of every solution to ensure
+                  unparalleled service, reliability, and value.
+                </p>
+              </div>
+
+              {/* Progress Bars */}
+              <div className="space-y-6">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-muted-foreground">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+                    elit tellus, luctus nec ullamcorper mattis.
+                  </span>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-secondary font-medium">IT Support</span>
+                    <span className="text-primary font-bold">86%</span>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-2">
+                    <div
+                      ref={(el) => { progressRefs.current[0] = el; }}
+                      data-progress="86%"
+                      className="bg-primary h-2 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-secondary font-medium">IT Security</span>
+                    <span className="text-primary font-bold">94%</span>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-2">
+                    <div
+                      ref={(el) => { progressRefs.current[1] = el; }}
+                      data-progress="94%"
+                      className="bg-primary h-2 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-secondary font-medium">Cloud Support</span>
+                    <span className="text-primary font-bold">90%</span>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-2">
+                    <div
+                      ref={(el) => { progressRefs.current[2] = el }}
+                      data-progress="90%"
+                      className="bg-primary h-2 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* End Right Column */}
+        </div>
+      </div>
+    </section>
+  )
+}
