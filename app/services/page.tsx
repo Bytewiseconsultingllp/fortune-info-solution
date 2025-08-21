@@ -20,6 +20,7 @@ export default function ServicesPage() {
         const response = await fetch("/api/services")
         if (response.ok) {
           const data = await response.json()
+          console.log("Fetched services:", data.services)
           setServices(data.services || [])
         } else {
           console.error("Failed to fetch services:", response.statusText)

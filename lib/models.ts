@@ -44,16 +44,32 @@ export interface Product {
   updatedBy?: string
 }
 
+// export interface Service {
+//   _id?: string
+//   title: string
+//   description: string
+//   features: string[]
+//   image: string
+//   createdAt: Date
+//   updatedAt: Date
+//   isActive: boolean
+// }
+
 export interface Service {
   _id?: string
-  title: string
+  name: string
   description: string
   features: string[]
   image: string
+  category: "consulting" | "implementation" | "support" | "training" | "maintenance"
+  price?: number
+  duration?: string
+  isPopular?: boolean
+  isActive: boolean
   createdAt: Date
   updatedAt: Date
-  isActive: boolean
 }
+
 
 export interface QuoteRequest {
   _id?: string

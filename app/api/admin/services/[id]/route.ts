@@ -5,24 +5,31 @@ import { verifyToken } from "@/lib/auth"
 
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
   try {
+    // ✅ Auth check
     const token = request.cookies.get("admin-token")?.value
     if (!token || !verifyToken(token)) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
+    // ✅ Parse request body
     const body = await request.json()
-    const { title, description, features, image, isActive } = body
+    const { name, description, category, features, image, price, duration, isPopular } = body
 
     const { db } = await connectDB()
+
+    // ✅ Update service
     const result = await db.collection("services").updateOne(
       { _id: new ObjectId(params.id) },
       {
         $set: {
-          title,
+          name,
           description,
-          features: Array.isArray(features) ? features : features.split(",").map((f: string) => f.trim()),
+          category,
+          features: Array.isArray(features) ? features : [],
           image,
-          isActive,
+          price,
+          duration,
+          isPopular,
           updatedAt: new Date(),
         },
       },

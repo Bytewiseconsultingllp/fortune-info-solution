@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dialog"
 import { Plus, Search, Edit, Trash2, Eye, Package } from "lucide-react"
 import type { Service } from "@/lib/models"
-import { Header } from "@/app/home/components/navigation/Header"
+
 
 export default function AdminServicesPage() {
   const { toast } = useToast()
@@ -30,14 +30,17 @@ export default function AdminServicesPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingService, setEditingService] = useState<Service | null>(null)
   const [loading, setLoading] = useState(true)
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    category: "",
-    features: [""],
-    price: "",
-    duration: "",
-  })
+ const [formData, setFormData] = useState({
+  name: "",
+  description: "",
+  category: "",
+  features: [""],
+  image: "",
+  price: "",
+  duration: "",
+  isPopular: false,
+})
+
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -45,6 +48,7 @@ export default function AdminServicesPage() {
         const response = await fetch("/api/admin/services")
         if (response.ok) {
           const data = await response.json()
+          console.log("Fetched services:", data)
           const servicesArray = Array.isArray(data) ? data : data.services || []
           setServices(servicesArray)
         } else {
@@ -77,7 +81,7 @@ export default function AdminServicesPage() {
     setFilteredServices(filtered)
   }, [searchTerm, services])
 
-  const handleInputChange = (field: string, value: string | string[]) => {
+  const handleInputChange = (field: string, value: string | string[] | boolean) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -148,13 +152,16 @@ export default function AdminServicesPage() {
 
       // Reset form
       setFormData({
-        name: "",
-        description: "",
-        category: "",
-        features: [""],
-        price: "",
-        duration: "",
-      })
+  name: "",
+  description: "",
+  category: "",
+  features: [""],
+  image: "",
+  price: "",
+  duration: "",
+  isPopular: false,
+})
+
       setEditingService(null)
       setIsDialogOpen(false)
     } catch (error) {
@@ -201,13 +208,16 @@ export default function AdminServicesPage() {
   const openAddDialog = () => {
     setEditingService(null)
     setFormData({
-      name: "",
-      description: "",
-      category: "",
-      features: [""],
-      price: "",
-      duration: "",
-    })
+  name: "",
+  description: "",
+  category: "",
+  features: [""],
+  image: "",
+  price: "",
+  duration: "",
+  isPopular: false,
+})
+
     setIsDialogOpen(true)
   }
 
@@ -233,8 +243,7 @@ export default function AdminServicesPage() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <Header />
+    
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold">Services Management</h2>
@@ -254,7 +263,7 @@ export default function AdminServicesPage() {
                 {editingService ? "Update service information" : "Add a new service to your offerings"}
               </DialogDescription>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            {/* <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <UI_Label htmlFor="name">Service Name *</UI_Label>
                 <Input
@@ -332,7 +341,131 @@ export default function AdminServicesPage() {
                   Cancel
                 </Button>
               </div>
-            </form>
+            </form> */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+  {/* Name */}
+  <div>
+    <UI_Label htmlFor="name">Service Name *</UI_Label>
+    <Input
+      id="name"
+      value={formData.name}
+      onChange={(e) => handleInputChange("name", e.target.value)}
+      required
+    />
+  </div>
+
+  {/* Description */}
+  <div>
+    <UI_Label htmlFor="description">Description *</UI_Label>
+    <Textarea
+      id="description"
+      value={formData.description}
+      onChange={(e) => handleInputChange("description", e.target.value)}
+      rows={3}
+      required
+    />
+  </div>
+
+  {/* Category */}
+  <div>
+    <UI_Label htmlFor="category">Category *</UI_Label>
+    <select
+      id="category"
+      value={formData.category}
+      onChange={(e) => handleInputChange("category", e.target.value)}
+      className="w-full border rounded p-2"
+      required
+    >
+      <option value="">Select category</option>
+      <option value="consulting">Consulting</option>
+      <option value="implementation">Implementation</option>
+      <option value="support">Support</option>
+      <option value="training">Training</option>
+      <option value="maintenance">Maintenance</option>
+    </select>
+  </div>
+
+  {/* Image */}
+  <div>
+    <UI_Label htmlFor="image">Image URL *</UI_Label>
+    <Input
+      id="image"
+      value={formData.image}
+      onChange={(e) => handleInputChange("image", e.target.value)}
+      placeholder="/placeholder.svg?height=200&width=200"
+      required
+    />
+  </div>
+
+  {/* Features */}
+  <div>
+    <UI_Label>Features</UI_Label>
+    <div className="space-y-2">
+      {formData.features.map((feature, index) => (
+        <div key={index} className="flex gap-2">
+          <Input
+            value={feature}
+            onChange={(e) => handleFeatureChange(index, e.target.value)}
+            placeholder="Enter feature"
+          />
+          {formData.features.length > 1 && (
+            <Button type="button" variant="outline" size="sm" onClick={() => removeFeature(index)}>
+              Remove
+            </Button>
+          )}
+        </div>
+      ))}
+      <Button type="button" variant="outline" size="sm" onClick={addFeature}>
+        Add Feature
+      </Button>
+    </div>
+  </div>
+
+  {/* Price */}
+  <div>
+    <UI_Label htmlFor="price">Price</UI_Label>
+    <Input
+      id="price"
+      type="number"
+      value={formData.price}
+      onChange={(e) => handleInputChange("price", e.target.value)}
+      placeholder="e.g., 2500"
+    />
+  </div>
+
+  {/* Duration */}
+  <div>
+    <UI_Label htmlFor="duration">Duration</UI_Label>
+    <Input
+      id="duration"
+      value={formData.duration}
+      onChange={(e) => handleInputChange("duration", e.target.value)}
+      placeholder="e.g., 2-4 weeks"
+    />
+  </div>
+
+  {/* Popular toggle */}
+  <div className="flex items-center gap-2">
+    <input
+      id="isPopular"
+      type="checkbox"
+      checked={formData.isPopular}
+      onChange={(e) => handleInputChange("isPopular", e.target.checked)}
+    />
+    <UI_Label htmlFor="isPopular">Mark as Popular</UI_Label>
+  </div>
+
+  {/* Submit / Cancel */}
+  <div className="flex gap-2 pt-4">
+    <Button type="submit" className="flex-1">
+      {editingService ? "Update Service" : "Add Service"}
+    </Button>
+    <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
+      Cancel
+    </Button>
+  </div>
+</form>
+
           </DialogContent>
         </Dialog>
       </div>

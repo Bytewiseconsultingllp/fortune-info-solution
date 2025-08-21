@@ -28,7 +28,7 @@ export default function Header() {
             <img src="/logo.svg" alt="Fortune Logo" className="h-8 w-8 shrink-0" />
             <div className="flex flex-col leading-tight whitespace-nowrap">
               <span className="text-lg md:text-xl font-bold text-foreground truncate">
-                Fortune Info Solutions
+                Fortune Info Solution
               </span>
               <span className="text-xs md:text-sm text-muted-foreground truncate">
                 Tech Solutions Provider
