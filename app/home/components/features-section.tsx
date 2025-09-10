@@ -9,7 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(ScrollTrigger)
 
-export function VideoSection() {
+export function FeaturesSection() {
   const [isVideoOpen, setIsVideoOpen] = useState(false)
 
   const col1Ref = useRef<HTMLDivElement>(null)
@@ -66,8 +66,7 @@ export function VideoSection() {
               </div>
               <h3 className="text-xl font-bold text-primary mb-4">IT Expertise</h3>
               <p className="text-muted-foreground leading-relaxed text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis.
+                End-to-end solutions in hardware and software, from laptops to enterprise servers.
               </p>
             </div>
 
@@ -83,8 +82,7 @@ export function VideoSection() {
                 24/7 IT Support
               </h3>
               <p className="text-muted-foreground leading-relaxed text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis.
+                Reliable after-sales service and nationwide support.
               </p>
             </div>
 
@@ -113,12 +111,11 @@ export function VideoSection() {
 
             {/* Custom Solution */}
             <div ref={col4Ref} className="pl-6">
-              <h3 className="text-xl font-bold text-foreground mb-4">
-                Custom Solution
+              <h3 className="text-xl font-bold text-primary mb-4">
+                One-Stop IT Store
               </h3>
               <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper.
+                Complete range of hardware, software, consumables, and accessories.
               </p>
               <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full font-medium">
                 Find Solution
