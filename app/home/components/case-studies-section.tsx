@@ -1,54 +1,55 @@
-"use client"
-import { useEffect, useRef } from "react"
-import Image from "next/image"
-import { Plus } from "lucide-react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+"use client";
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import { Plus } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 interface CaseStudy {
-  id: number
-  title: string
-  company: string
-  metric: string
-  problem: string
-  image: string
+  id: number;
+  title: string;
+  company: string;
+  metric: string;
+  problem: string;
+  image: string;
 }
 
 const caseStudies: CaseStudy[] = [
   {
     id: 1,
-    title: "Enhancing Supply Chain Efficiency",
-    company: "LogiChain Partners",
-    metric: "Improved delivery accuracy",
+    title: "Modernizing Healthcare IT Infrastructure",
+    company: "Multispeciality Hospital",
+    metric: "Improved Data Security",
     problem:
-      "Inefficient inventory tracking and delayed shipments were causing client dissatisfaction and revenue loss.",
+      "Legacy systems created compliance risks. We deployed Dell servers, Lenovo workstations, and Honeywell surveillance systems to ensure secure and efficient patient data management.",
     image: "/placeholder.svg?height=400&width=400&text=Supply+Chain+Worker",
   },
   {
     id: 2,
-    title: "Transforming Online Retail With AI",
-    company: "ShopSphere Inc",
-    metric: "Increased sales",
+    title: "Cloud & Security Upgrade for FinTech",
+    company: "Digital Payments Company",
+    metric: "Reduced Operational Costs",
     problem:
-      "Low customer engagement and declining sales due to outdated systems and lack of personalized recommendations.",
+      "Outdated infrastructure slowed transaction processing. We provided HP enterprise servers, Cisco firewalls, and VMware virtualization, cutting costs by 40% and tripling processing speed.",
     image: "/placeholder.svg?height=400&width=400&text=Retail+Worker",
   },
   {
     id: 3,
-    title: "Securing Healthcare Systems",
-    company: "HealthPro Systems",
-    metric: "Reduce Operational Cost",
+    title: "The Retail Store Digital Transformation",
+    company: "Natioonal Retail Chain",
+    metric: "RIncreased Sales Growth",
     problem:
-      "Outdated IT infrastructure and non-compliance with data security regulations hindered operational efficiency.",
-    image: "/placeholder.svg?height=400&width=400&text=Healthcare+Professionals",
+      "Inefficient POS and e-commerce systems limited sales. We implemented modern POS hardware, Samsung LFDs, and retail software, boosting sales by 70% in one year.",
+    image:
+      "/placeholder.svg?height=400&width=400&text=Healthcare+Professionals",
   },
-]
+];
 
 export function CaseStudiesSection() {
-  const sectionRef = useRef<HTMLDivElement | null>(null)
-  const cardsRef = useRef<HTMLDivElement[]>([])
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
     if (sectionRef.current && cardsRef.current.length) {
@@ -66,7 +67,7 @@ export function CaseStudiesSection() {
             start: "top 80%",
           },
         }
-      )
+      );
 
       // Animate Cards
       gsap.fromTo(
@@ -84,9 +85,9 @@ export function CaseStudiesSection() {
             start: "top 70%",
           },
         }
-      )
+      );
     }
-  }, [])
+  }, []);
 
   return (
     <section
@@ -107,8 +108,9 @@ export function CaseStudiesSection() {
           </h2>
 
           <p className="text-lg max-w-4xl mx-auto leading-relaxed text-secondary">
-            Mauris hendrerit urna sit amet sem sagittis, eu consequat nisl fermentum.
-            Fusce dui ligula, rutrum ac felis sit amet, sollicitudin accumsan justo. Suspendisse potenti.
+            Discover how Fortune Info Solutions
+            helps businesses modernize with the right mix of IT hardware,
+            licensed software, and integrated solutions.
           </p>
         </div>
 
@@ -118,7 +120,7 @@ export function CaseStudiesSection() {
             <div
               key={study.id}
               ref={(el) => {
-                if (el) cardsRef.current[index] = el
+                if (el) cardsRef.current[index] = el;
               }}
               className="rounded-2xl overflow-hidden border border-brand-red/30 shadow-lg bg-brand-red/5 transition-shadow duration-300 hover:shadow-brand-red/30"
             >
@@ -131,16 +133,24 @@ export function CaseStudiesSection() {
                 />
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-bold mb-4 text-secondary">{study.title}</h3>
+                <h3 className="text-2xl font-bold mb-4 text-secondary">
+                  {study.title}
+                </h3>
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 rounded-full bg-brand-red"></div>
-                  <span className="text-sm font-medium brand-red">{study.company}</span>
+                  <span className="text-sm font-medium brand-red">
+                    {study.company}
+                  </span>
                 </div>
                 <div className="flex items-center gap-2 mb-6">
                   <div className="w-2 h-2 rounded-full bg-brand-red"></div>
-                  <span className="text-sm font-medium brand-red">{study.metric}</span>
+                  <span className="text-sm font-medium brand-red">
+                    {study.metric}
+                  </span>
                 </div>
-                <p className="mb-6 leading-relaxed text-secondary">{study.problem}</p>
+                <p className="mb-6 leading-relaxed text-secondary">
+                  {study.problem}
+                </p>
                 <button className="flex items-center gap-2 font-medium text-brand-red hover:text-brand-red/80 transition-colors duration-300">
                   Read More <Plus className="w-4 h-4" />
                 </button>
@@ -150,5 +160,5 @@ export function CaseStudiesSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
