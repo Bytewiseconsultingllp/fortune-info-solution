@@ -1,12 +1,13 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { useEffect, useRef } from "react"
-import gsap from "gsap"
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import Link from "next/link";
 
 export function HeroSection() {
-  const heroRef = useRef<HTMLDivElement | null>(null)
-  const countRef = useRef<HTMLDivElement | null>(null)
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const countRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (heroRef.current) {
@@ -17,22 +18,23 @@ export function HeroSection() {
         duration: 1,
         stagger: 0.3,
         ease: "power3.out",
-      })
+      });
     }
 
     // Count-up animation
     if (countRef.current) {
-      const obj = { value: 0 }
+      const obj = { value: 0 };
       gsap.to(obj, {
         value: 172,
         duration: 2,
         ease: "power1.out",
         onUpdate: () => {
-          if (countRef.current) countRef.current.textContent = `${Math.floor(obj.value)}k+`
+          if (countRef.current)
+            countRef.current.textContent = `${Math.floor(obj.value)}k+`;
         },
-      })
+      });
     }
-  }, [])
+  }, []);
 
   return (
     <section
@@ -54,37 +56,42 @@ export function HeroSection() {
       {/* Content */}
       <div
         ref={heroRef}
-        className="relative z-10 w-full px-4 md:px-8 lg:px-16 pt-32"
+        className="relative z-10 w-full px-4 md:px-8 lg:px-16 pt-20"
       >
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-2xl">
+        <div className="max-w-8xl mx-auto">
+          <div className="max-w-5xl">
             <h1
-              className="text-6xl md:text-7xl font-bold mb-8 leading-tight"
+              className="text-6xl md:text-6xl font-bold mb-8 leading-tight"
               style={{ color: "#000000" }}
             >
-              Future-Proof
+              Future-Proof Your Business with
               <br />
-              Your Business.
+              Fortune Info Solutions
             </h1>
 
             <p
               className="text-xl mb-12 leading-relaxed"
               style={{ color: "#000000" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis,
-              pulvinar.
+              Fortune Info Solutions is your trusted partner for IT hardware,
+              software, and integrated solutions. With years of collective
+              industry experience, we empower businesses with reliable products,
+              professional services, and scalable solutions across networking,
+              security, surveillance, cloud, and enterprise IT.
             </p>
 
             <div className="flex items-center gap-8">
-              <button
-                className="px-8 py-4 rounded-full text-lg font-medium transition-colors"
-                style={{
-                  backgroundColor: "#B8001F",
-                  color: "#FDFAF6",
-                }}
-              >
-                Contact Us
-              </button>
+              <Link href={"/contact"}>
+                <button
+                  className="px-8 py-4 rounded-full text-lg font-medium transition-colors cursor-pointer"
+                  style={{
+                    backgroundColor: "#B8001F",
+                    color: "#FDFAF6",
+                  }}
+                >
+                  Contact Us
+                </button>
+              </Link>
 
               <div>
                 <div
@@ -106,5 +113,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
