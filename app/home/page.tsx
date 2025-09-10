@@ -8,7 +8,7 @@ import { ContactSection } from "./components/contact-section";
 import { FooterSection } from "./components/navigation/footer";
 import Header from "./components/navigation/Header"
 import { HeroSection } from "./components/hero-section";
-import { VideoSection } from "./components/video-section";
+import { FeaturesSection } from "./components/features-section";
 import { CompanyLogosSection } from "./components/company-logos-section";
 import { VideoParallaxSection } from "./components/video-parallex-section";
 
@@ -20,7 +20,7 @@ export default function Home() {
     
     <div>
       <HeroSection />
-      <VideoSection />
+      <FeaturesSection />
       <AboutSection />
       <ServicesSection />
       <CompanyLogosSection />

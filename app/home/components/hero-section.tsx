@@ -25,7 +25,7 @@ export function HeroSection() {
     if (countRef.current) {
       const obj = { value: 0 };
       gsap.to(obj, {
-        value: 172,
+        value: 5000,
         duration: 2,
         ease: "power1.out",
         onUpdate: () => {
@@ -102,10 +102,10 @@ export function HeroSection() {
                   0k+
                 </div>
                 <div
-                  className="text-sm font-medium"
+                  className="text-md font-medium"
                   style={{ color: "#B8001F" }}
                 >
-                  Projects Completed
+                  Clients Served
                 </div>
               </div>
             </div>
