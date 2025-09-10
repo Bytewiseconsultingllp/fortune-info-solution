@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { gsap } from "gsap"
-import Image from "next/image"
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import Image from "next/image";
 
 export function AboutSection() {
-  const sectionRef = useRef(null)
-  const leftColRef = useRef(null)
-  const rightColRef = useRef(null)
-  const progressRefs = useRef<(HTMLDivElement | null)[]>([])
-  const experienceRef = useRef<HTMLDivElement | null>(null)
+  const sectionRef = useRef(null);
+  const leftColRef = useRef(null);
+  const rightColRef = useRef(null);
+  const progressRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const experienceRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -19,7 +19,7 @@ export function AboutSection() {
         opacity: 0,
         duration: 1.2,
         ease: "power3.out",
-      })
+      });
 
       // Right column animation (text content)
       gsap.from(rightColRef.current, {
@@ -28,31 +28,31 @@ export function AboutSection() {
         duration: 1.2,
         ease: "power3.out",
         delay: 0.3,
-      })
+      });
 
       // Experience counter (22+ years)
       if (experienceRef.current) {
-        const years = { val: 0 }
+        const years = { val: 0 };
         gsap.to(years, {
           val: 22,
           duration: 2,
           ease: "power3.out",
           onUpdate: () => {
             if (experienceRef.current) {
-              experienceRef.current.textContent = `${Math.floor(years.val)}+`
+              experienceRef.current.textContent = `${Math.floor(years.val)}+`;
             }
           },
           scrollTrigger: {
             trigger: experienceRef.current,
             start: "top 85%",
           },
-        })
+        });
       }
 
       // Animate progress bars
       progressRefs.current.forEach((bar) => {
         if (bar) {
-          const targetWidth = bar.getAttribute("data-progress") || "0%"
+          const targetWidth = bar.getAttribute("data-progress") || "0%";
           gsap.fromTo(
             bar,
             { width: "0%" },
@@ -65,13 +65,13 @@ export function AboutSection() {
                 start: "top 90%",
               },
             }
-          )
+          );
         }
-      })
-    }, sectionRef)
+      });
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
@@ -129,53 +129,64 @@ export function AboutSection() {
               <div className="w-1 h-6 bg-primary"></div>
             </div>
 
-            <h2 className="text-5xl font-bold text-secondary mb-8 leading-tight">
+            <h2 className="text-5xl font-bold text-primary mb-4 leading-tight">
               Experts In Tech Evolution.
             </h2>
 
-            <p className="text-muted-foreground text-lg mb-12 leading-relaxed">
-              As an IT Solution and Services Company, we have a value in
-              fulfilling our clients' satisfaction.
+            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+              FORTUNE INFO SOLUTIONS is a leading IT hardware & software sales
+              and service provider. Headquartered in Bangalore, we have grown
+              into a trusted partner for businesses across India by offering
+              cutting-edge products and tailored IT solutions.
             </p>
 
-            <div className="space-y-8">
+            <h2 className="text-3xl font-bold text-primary mb-4 leading-tight">
+              Core Values:
+            </h2>
+
+            <div className="space-y-4">
               <div>
-                <h3 className="text-2xl font-bold text-secondary mb-4">
+                <h3 className="text-2xl font-bold text-secondary mb-2">
                   Innovation And Adaptability
                 </h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Driving continuous innovation to deliver cutting-edge, tailored
-                  solutions that evolve with technology and your needs.
+                  We drive continuous innovation by integrating world-class
+                  hardware and software solutions from leading brands such as
+                  HP, Dell, Lenovo, Cisco, Honeywell, and Panasonic
                 </p>
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-secondary mb-4">
+                <h3 className="text-2xl font-bold text-secondary mb-2">
                   Customer-Centric Excellence
                 </h3>
                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                  Putting you at the heart of every solution to ensure
-                  unparalleled service, reliability, and value.
+                  From sales to after-sales support, we ensure unparalleled
+                  service, competitive pricing, and reliable delivery across PAN
+                  India.
                 </p>
               </div>
 
               {/* Progress Bars */}
               <div className="space-y-6">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-muted-foreground">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                    elit tellus, luctus nec ullamcorper mattis.
+                  <span className="text-primary font-bold text-xl">
+                    Expertise Highlights
                   </span>
                 </div>
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-secondary font-medium">IT Support</span>
-                    <span className="text-primary font-bold">86%</span>
+                    <span className="text-secondary font-medium">
+                      IT Support
+                    </span>
+                    <span className="text-primary font-bold">86% Satisfaction Rate</span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
                     <div
-                      ref={(el) => { progressRefs.current[0] = el; }}
+                      ref={(el) => {
+                        progressRefs.current[0] = el;
+                      }}
                       data-progress="86%"
                       className="bg-primary h-2 rounded-full"
                     ></div>
@@ -184,12 +195,16 @@ export function AboutSection() {
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-secondary font-medium">IT Security</span>
-                    <span className="text-primary font-bold">94%</span>
+                    <span className="text-secondary font-medium">
+                      IT Security
+                    </span>
+                    <span className="text-primary font-bold">94% Threat Prevention Success</span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
                     <div
-                      ref={(el) => { progressRefs.current[1] = el; }}
+                      ref={(el) => {
+                        progressRefs.current[1] = el;
+                      }}
                       data-progress="94%"
                       className="bg-primary h-2 rounded-full"
                     ></div>
@@ -198,12 +213,16 @@ export function AboutSection() {
 
                 <div>
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-secondary font-medium">Cloud Support</span>
-                    <span className="text-primary font-bold">90%</span>
+                    <span className="text-secondary font-medium">
+                      Cloud Support
+                    </span>
+                    <span className="text-primary font-bold">90% Migration Efficiency</span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
                     <div
-                      ref={(el) => { progressRefs.current[2] = el }}
+                      ref={(el) => {
+                        progressRefs.current[2] = el;
+                      }}
                       data-progress="90%"
                       className="bg-primary h-2 rounded-full"
                     ></div>
@@ -216,5 +235,5 @@ export function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

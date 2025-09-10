@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import Image from "next/image"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef } from "react";
+import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export function ExpertiseSection() {
-  const sectionRef = useRef<HTMLDivElement | null>(null)
-  const textRef = useRef<HTMLDivElement | null>(null)
-  const imageRef = useRef<HTMLDivElement | null>(null)
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+  const imageRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return
+    if (!sectionRef.current) return;
 
     // Image animation
     gsap.fromTo(
@@ -30,26 +30,29 @@ export function ExpertiseSection() {
           toggleActions: "play none none reverse",
         },
       }
-    )
+    );
 
     // Text content animation
-    gsap.fromTo(
-      textRef.current?.querySelectorAll(".text-animate"),
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.2,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    )
-  }, [])
+    const textNodes = textRef.current?.querySelectorAll(".text-animate");
+    if (textNodes && textNodes.length > 0) {
+      gsap.fromTo(
+        textNodes,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+  }, []);
 
   return (
     <section
@@ -83,7 +86,9 @@ export function ExpertiseSection() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-red-500 mb-1">+19</div>
+                  <div className="text-4xl font-bold text-red-500 mb-1">
+                    +19
+                  </div>
                   <div className="text-gray-200 text-sm font-medium">
                     Specific of
                     <br />
@@ -109,31 +114,41 @@ export function ExpertiseSection() {
             </h2>
 
             <p className="text-gray-300 text-lg mb-12 leading-relaxed text-animate">
-              With over a decade of experience, we specialize in delivering customized IT solutions for healthcare,
-              finance, retail and many more sectors of industry.
+              With decades of combined experience, Fortune Info Solutions
+              delivers customized IT hardware and software solutions across
+              industries including healthcare, finance, retail, manufacturing,
+              education, and more.
             </p>
+
+            <h2 className="text-3xl font-bold text-white mb-8 leading-tight text-animate">
+              Specializations:
+            </h2>
 
             <div className="space-y-8">
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-white mb-4">Advance Tool</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Enterprise IT Solutions
+                </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  We use a powerful open source platform to automate the deployment, scaling, and management of
-                  containerized applications.
+                  We provide servers, storage, and workstations from global brands like HP, Dell, and Lenovo, ensuring high performance and scalability.
                 </p>
               </div>
 
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-white mb-4">Edge Computing</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Networking & Security
+                </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  We optimize cloud capabilities for faster response times and reduced latency.
+                  From Cisco firewalls to Honeywell surveillance, we secure IT ecosystems with advanced networking, CCTV, and access control solutions.
                 </p>
               </div>
 
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-white mb-4">Tech Methodology</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Power & AV Solutions
+                </h3>
                 <p className="text-gray-400 mb-8 leading-relaxed">
-                  We take a flexible and iterative approach to software development, enabling faster delivery,
-                  continuous improvement, and response to your changing needs.
+                  Our partnerships with EATON, Panasonic, and Samsung allow us to deliver reliable UPS, power backup, and large-format display solutions.
                 </p>
               </div>
 
@@ -145,5 +160,5 @@ export function ExpertiseSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
