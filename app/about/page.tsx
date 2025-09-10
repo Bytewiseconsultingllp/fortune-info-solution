@@ -74,20 +74,19 @@ export default function AboutPage() {
       }
 
       // Values (staggered cards)
-      if( valuesRef.current) {
-      gsap.from(valuesRef.current?.children, {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: valuesRef.current,
-          start: "top 85%",
-        },
-      
-      });
-    }
+      if (valuesRef.current) {
+        gsap.from(valuesRef.current?.children, {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: valuesRef.current,
+            start: "top 85%",
+          },
+        });
+      }
     });
 
     return () => ctx.revert();
@@ -96,23 +95,6 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-
-      {/* Hero Section */}
-      {/* <section
-        ref={heroRef}
-        className="bg-primary text-primary-foreground py-16"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            About Fortune Info Solutions
-          </h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Leading the distribution industry with innovation, integrity, and
-            excellence since our inception.
-          </p>
-        </div>
-      </section> */}
-
       <ABoutHeroSection />
 
       {/* Company Profile */}
@@ -122,33 +104,53 @@ export default function AboutPage() {
             <div ref={profileTextRef}>
               <h2 className="text-3xl font-bold mb-6">Our Company</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Fortune Info Solutions has established itself as a premier
-                distribution hub company, connecting brands with markets across
-                diverse industries. Our commitment to excellence and customer
-                satisfaction has made us a trusted partner for businesses
-                worldwide.
+                <b>Fortune Info Solutions</b> is a leading IT hardware &
+                software sales and service provider with a professional team
+                carrying over <b>100+ years of combined experience</b>.
+                Headquartered in Bangalore, we have been at the forefront of
+                business transformation, offering complete{" "}
+                <b>end-to-end IT solution</b> for organizations across India.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                Founded with the vision of revolutionizing distribution
-                networks, we have grown from a small startup to a global
-                enterprise, serving thousands of clients and managing millions
-                of products across various categories.
+                We are a trusted partner for global technology leaders such as
+                <b>
+                  HP, Dell, Lenovo, Cisco, Honeywell, Panasonic, Acer, Samsung,
+                  VMware, and Microsoft
+                </b>
+                . As a direct partner for several top brands, we ensure our
+                clients receive only{" "}
+                <b>genuine, reliable, and scalable IT products and services</b>.
               </p>
-              <p className="text-lg text-muted-foreground">
-                Our expertise spans multiple sectors including technology,
-                consumer goods, industrial equipment, and specialized products,
-                making us a one-stop solution for all distribution needs.
+              <div className="text-lg text-muted-foreground mb-6">
+                <p className="mb-2">Our expertise spans across:</p>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Personal Computing (Laptops, Desktops, Thin Clients)</li>
+                  <li>
+                    Enterprise IT (Services, Workstations, Storage Solutions)
+                  </li>
+                  <li>Networking & Telecom Infrastructure</li>
+                  <li>CCTV & Surveillance System</li>
+                  <li>Power Backup & AV Solutions</li>
+                  <li>Microsoft Licensing & Antivirus</li>
+                  <li>IT Products on Rental</li>
+                </ul>
+              </div>
+
+              <p className="text-lg text-muted-foreground mb-6">
+                With a dedicated PAN-India sales and support team, we aim to be
+                a <p>one-stop solution</p> for all IT requirements—providing not
+                just products, but also long-term reliability, affordability,
+                scalability, and serviceability.
               </p>
             </div>
             <div ref={profileCardRef} className="bg-muted/50 p-8 rounded-lg">
               <h3 className="text-2xl font-bold mb-4">Company Highlights</h3>
               <div className="space-y-4">
                 {[
-                  "Established in 2010",
-                  "500+ Brand Partners",
-                  "50+ Countries Served",
-                  "1M+ Products Distributed",
-                  "24/7 Customer Support",
+                  "Direct Partnerships with Global IT Brands",
+                  "PAN-India Sales & Service Network",
+                  "Trusted by 5000+ Businesss Nationwide",
+                  "1Dedicated After-Sales & 24/7 IT Support",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -181,7 +183,7 @@ export default function AboutPage() {
                   quality brands with global markets, delivering value through
                   innovation, reliability, and customer-centric solutions. We
                   strive to be the bridge that enables businesses to reach their
-                  full potential.
+                  full potential
                 </CardDescription>
               </CardContent>
             </Card>
@@ -195,11 +197,11 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  To become the world's most trusted distribution hub, recognized
-                  for our commitment to excellence, innovation, and sustainable
-                  growth. We envision a future where every business has access
-                  to global markets through our comprehensive distribution
-                  network.
+                  To become the world’s most trusted distribution hub,
+                  recognized for our commitment to excellence, innovation, and
+                  sustainable growth. We envision a future where every business
+                  has access to global markets through our comprehensive
+                  distribution network.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -215,8 +217,8 @@ export default function AboutPage() {
               Our Core Values
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              These fundamental principles guide every decision we make and every
-              relationship we build.
+              These fundamental principles guide every decision we make and
+              every relationship we build.
             </p>
           </div>
 
@@ -230,8 +232,9 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl font-bold mb-3">Excellence</h3>
               <p className="text-muted-foreground">
-                We pursue excellence in everything we do, from product quality to
-                customer service, ensuring the highest standards are maintained.
+                We pursue excellence in everything we do, from product quality
+                to customer service, ensuring the highest standards are
+                maintained.
               </p>
             </div>
 
