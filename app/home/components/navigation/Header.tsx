@@ -1,18 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { ChevronDown, MapPin, Mail, Phone, Facebook, Twitter, Youtube, Menu, X } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import {
+  ChevronDown,
+  MapPin,
+  Mail,
+  Phone,
+  Facebook,
+  Twitter,
+  Menu,
+  X,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 
 interface DropdownItem {
-  label: string
-  href: string
+  label: string;
+  href: string;
 }
 
 interface MenuItem {
-  label: string
-  href: string
-  dropdown?: DropdownItem[]
+  label: string;
+  href: string;
+  dropdown?: DropdownItem[];
 }
 
 const menuItems: MenuItem[] = [
@@ -23,11 +34,11 @@ const menuItems: MenuItem[] = [
   { label: "Partners", href: "/channel-partner" },
   { label: "Products", href: "/products" },
   { label: "Contact Us", href: "/contact" },
-]
+];
 
 export default function Header() {
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="w-full z-50">
@@ -36,27 +47,33 @@ export default function Header() {
         <div className="flex items-center gap-6 text-black flex-wrap">
           <div className="flex items-center gap-2">
             <MapPin className="w-4 h-4 text-[#B8001F]" />
-            <span>456 Creative District Ahmad Yani, Medan</span>
+            <span>
+              No.17/1, Old No.272, Sri Nandi, 12th Cross 8th Main Road,Wilson
+              Garden, Hombegowda Nagar, Bangalore - 560027
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-[#B8001F]" />
-            <span>hola@dominantsite.com</span>
+            <span>pradeepnp@fortuneinfo.in , sales@fortuneinfo.in</span>
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 text-[#B8001F]" />
-            <span>+800-3374-4676</span>
+            <span>080-48904501/02/03</span>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-red-700 transition-colors">
+          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
             <Facebook className="w-4 h-4 text-white" />
           </button>
-          <button className="w-8 h-8 bg-[#000000] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
+          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
             <Twitter className="w-4 h-4 text-white" />
           </button>
-          <button className="w-8 h-8 bg-[#000000] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
-            <Youtube className="w-4 h-4 text-white" />
+          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
+            <Instagram className="w-4 h-4 text-white" />
+          </button>
+          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
+            <Linkedin className="w-4 h-4 text-white" />
           </button>
         </div>
       </div>
@@ -79,7 +96,9 @@ export default function Header() {
             <div
               key={item.label}
               className="relative"
-              onMouseEnter={() => item.dropdown && setActiveDropdown(item.label)}
+              onMouseEnter={() =>
+                item.dropdown && setActiveDropdown(item.label)
+              }
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <Link
@@ -124,7 +143,11 @@ export default function Header() {
           className="lg:hidden ml-4 p-2 rounded-md focus:outline-none"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </nav>
 
@@ -167,5 +190,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  )
+  );
 }
