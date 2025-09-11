@@ -410,7 +410,7 @@
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import Header from "@/app/home/components/navigation/Header"
+import Header from "@/app/home/components/navigation/Header";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import {
@@ -760,11 +760,12 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold">Address</h4>
                       <p className="text-sm text-muted-foreground">
-                        123 Business District
+                        No.17/1, Old No.272, Sri Nandi, 12th Cross 8th Main
+                        Road,Wilson Garden,
                         <br />
-                        Corporate City, CC 12345
+                        Hombegowda Nagar, Bangalore - 560027
                         <br />
-                        United States
+                        India
                       </p>
                     </div>
                   </div>
@@ -774,10 +775,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold">Phone</h4>
                       <p className="text-sm text-muted-foreground">
-                        +1 (555) 123-4567
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        +1 (555) 123-4568 (Sales)
+                        080-48904501/02/03
                       </p>
                     </div>
                   </div>
@@ -787,10 +785,10 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold">Email</h4>
                       <p className="text-sm text-muted-foreground">
-                        info@fortuneinfosolutions.com
+                        pradeepnp@fortuneinfo.in
                       </p>
                       <p className="text-sm text-muted-foreground">
-                        sales@fortuneinfosolutions.com
+                        sales@fortuneinfo.in
                       </p>
                     </div>
                   </div>
@@ -800,11 +798,7 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold">Business Hours</h4>
                       <p className="text-sm text-muted-foreground">
-                        Monday - Friday: 9:00 AM - 6:00 PM EST
-                        <br />
-                        Saturday: 10:00 AM - 4:00 PM EST
-                        <br />
-                        Sunday: Closed
+                        9:00 am – 5:00 pm
                       </p>
                     </div>
                   </div>
