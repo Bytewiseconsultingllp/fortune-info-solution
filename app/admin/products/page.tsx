@@ -529,9 +529,9 @@ export default function AdminProductsPage() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm">
+                  {/* <Button variant="outline" size="sm">
                     <Eye className="h-4 w-4" />
-                  </Button>
+                  </Button> */}
                   <Button
                     variant="outline"
                     size="sm"
