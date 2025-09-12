@@ -112,7 +112,7 @@ export default function AboutPage() {
                 <b>end-to-end IT solution</b> for organizations across India.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                We are a trusted partner for global technology leaders such as
+                We are a trusted partner for global technology leaders such as -
                 <b>
                   HP, Dell, Lenovo, Cisco, Honeywell, Panasonic, Acer, Samsung,
                   VMware, and Microsoft

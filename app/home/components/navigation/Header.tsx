@@ -82,7 +82,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <div className="w-30 h-20 bg-[#B8001F] rounded-lg flex items-center justify-center">
            <Image
-              src="/comapny-logo.png"
+              src="/com.png"
               alt="Company Logo"
               width={300}
               height={300}

@@ -221,9 +221,7 @@ export default function ProductsPage() {
 
                     <Button asChild className="flex-1">
                       <Link
-                        href={`/datasheet?product=${product._id}&name=${encodeURIComponent(
-                          product.name
-                        )}`}
+                        href={`https://www.honeywellbuildings.in/uploads/security/product/doc/1710831358HSV-HC35W4xR3-01-IN(1223)DS-Y_V2.pdf`}
                       >
                         Datasheet
                       </Link>
