@@ -11,6 +11,7 @@ import { HeroSection } from "./components/hero-section";
 import { FeaturesSection } from "./components/features-section";
 import { CompanyLogosSection } from "./components/company-logos-section";
 import { VideoParallaxSection } from "./components/video-parallex-section";
+import { BrandMarquee } from "./components/brandmarquee"
 
 export default function Home() {
   return (<>
@@ -24,6 +25,7 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <CompanyLogosSection />
+      <BrandMarquee/>
       <ExpertiseSection />
       <TestimonialsSection />
       <VideoParallaxSection />
@@ -31,6 +33,7 @@ export default function Home() {
       <CertificationsSection />
       <ContactSection />
       <FooterSection />
+      
     </div>
   </>
   );
