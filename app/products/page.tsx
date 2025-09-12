@@ -187,11 +187,7 @@ export default function ProductsPage() {
                     <CardDescription className="line-clamp-3">
                       {product.description}
                     </CardDescription>
-                    {product.price && (
-                      <div className="text-lg font-semibold text-primary mt-2">
-                        ${product.price}
-                      </div>
-                    )}
+                    
                   </CardHeader>
                   <CardContent className="pt-0">
                     {Array.isArray((product as any).features) &&
@@ -212,15 +208,28 @@ export default function ProductsPage() {
                           </div>
                         </div>
                       )}
-                    <Button asChild className="w-full">
+                    <div className="flex w-full gap-3">
+                    <Button asChild className="flex-1">
                       <Link
                         href={`/quote?product=${product._id}&name=${encodeURIComponent(
-                          product.name,
+                          product.name
                         )}`}
                       >
                         Get Quote
                       </Link>
                     </Button>
+
+                    <Button asChild className="flex-1">
+                      <Link
+                        href={`/datasheet?product=${product._id}&name=${encodeURIComponent(
+                          product.name
+                        )}`}
+                      >
+                        Datasheet
+                      </Link>
+                    </Button>
+                  </div>
+
                   </CardContent>
                 </Card>
               ))}
