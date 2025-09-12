@@ -290,43 +290,12 @@ export default function AdminQuotesPage() {
                               <p className="mt-1 p-3 bg-muted rounded">{selectedQuote.message}</p>
                             </div>
                           )}
-                          <div>
-                            <Label className="font-semibold">Status</Label>
-                            <Select
-                              value={selectedQuote.status}
-                              onValueChange={(value) =>
-                                updateQuoteStatus(selectedQuote._id!, value as QuoteRequest["status"])
-                              }
-                            >
-                              <SelectTrigger className="w-full mt-1">
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="pending">Pending</SelectItem>
-                                <SelectItem value="quoted">Quoted</SelectItem>
-                                <SelectItem value="converted">Converted</SelectItem>
-                                <SelectItem value="declined">Declined</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
+                          
                         </div>
                       )}
                     </DialogContent>
                   </Dialog>
-                  <Select
-                    value={quote.status}
-                    onValueChange={(value) => updateQuoteStatus(quote._id!, value as QuoteRequest["status"])}
-                  >
-                    <SelectTrigger className="w-32">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="pending">Pending</SelectItem>
-                      <SelectItem value="quoted">Quoted</SelectItem>
-                      <SelectItem value="converted">Converted</SelectItem>
-                      <SelectItem value="declined">Declined</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  
                 </div>
               </div>
             ))}

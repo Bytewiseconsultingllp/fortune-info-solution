@@ -1,28 +1,16 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/hooks/use-toast";
+import { useState, useEffect } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Badge } from "@/components/ui/badge"
+import { useToast } from "@/hooks/use-toast"
 import {
   Dialog,
   DialogContent,
@@ -30,19 +18,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Plus, Search, Edit, Trash2, Eye } from "lucide-react";
-import type { Product } from "@/lib/models";
+} from "@/components/ui/dialog"
+import { Plus, Search, Edit, Trash2, Eye } from "lucide-react"
+import type { Product } from "@/lib/models"
 
 export default function AdminProductsPage() {
-  const { toast } = useToast();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("all");
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const { toast } = useToast()
+  const [products, setProducts] = useState<Product[]>([])
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
+  const [loading, setLoading] = useState(true)
+  const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [editingProduct, setEditingProduct] = useState<Product | null>(null)
   const [formData, setFormData] = useState<Product>({
     name: "",
     description: "",
@@ -59,85 +47,76 @@ export default function AdminProductsPage() {
     createdAt: new Date(),
     updatedAt: new Date(),
     isActive: true,
-  });
+  })
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    fetchProducts()
+  }, [])
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("/api/admin/products");
+      const response = await fetch("/api/admin/products")
       if (response.ok) {
-        const data = await response.json();
-        const productsArray = Array.isArray(data) ? data : data.products || [];
-        setProducts(productsArray);
-        setFilteredProducts(productsArray);
+        const data = await response.json()
+        const productsArray = Array.isArray(data) ? data : data.products || []
+        setProducts(productsArray)
+        setFilteredProducts(productsArray)
       } else {
-        console.error("Failed to fetch products:", response.statusText);
+        console.error("Failed to fetch products:", response.statusText)
         toast({
           title: "Error",
           description: "Failed to fetch products",
           variant: "destructive",
-        });
+        })
       }
     } catch (error) {
-      console.error("Error fetching products:", error);
+      console.error("Error fetching products:", error)
       toast({
         title: "Error",
         description: "Failed to fetch products",
         variant: "destructive",
-      });
+      })
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   // Get unique categories
-  const categories = Array.from(
-    new Set(products.map((product) => product.category))
-  );
+  const categories = Array.from(new Set(products.map((product) => product.category)))
 
   // Filter products
   useEffect(() => {
-    let filtered = products;
+    let filtered = products
 
     if (searchTerm) {
       filtered = filtered.filter(
         (product) =>
           product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
           product.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          product.category.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+          product.category.toLowerCase().includes(searchTerm.toLowerCase()),
+      )
     }
 
     if (selectedCategory !== "all") {
-      filtered = filtered.filter(
-        (product) => product.category === selectedCategory
-      );
+      filtered = filtered.filter((product) => product.category === selectedCategory)
     }
 
-    setFilteredProducts(filtered);
-  }, [searchTerm, selectedCategory, products]);
+    setFilteredProducts(filtered)
+  }, [searchTerm, selectedCategory, products])
 
-  const handleInputChange = (
-    field: string,
-    value: string | boolean | number | string[]
-  ) => {
+  const handleInputChange = (field: string, value: string | boolean | number | string[]) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
-      const method = editingProduct ? "PUT" : "POST";
-      const url = editingProduct
-        ? `/api/admin/products/${editingProduct._id}`
-        : "/api/admin/products";
+      const method = editingProduct ? "PUT" : "POST"
+      const url = editingProduct ? `/api/admin/products/${editingProduct._id}` : "/api/admin/products"
 
       const response = await fetch(url, {
         method,
@@ -145,31 +124,29 @@ export default function AdminProductsPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      });
+      })
 
       if (response.ok) {
         toast({
-          title: editingProduct
-            ? "Product updated successfully"
-            : "Product added successfully",
-        });
-        fetchProducts(); // Refresh the products list
-        resetForm();
+          title: editingProduct ? "Product updated successfully" : "Product added successfully",
+        })
+        fetchProducts() // Refresh the products list
+        resetForm()
       } else {
-        throw new Error("Failed to save product");
+        throw new Error("Failed to save product")
       }
     } catch (error) {
-      console.error("Error saving product:", error);
+      console.error("Error saving product:", error)
       toast({
         title: "Error",
         description: "Failed to save product",
         variant: "destructive",
-      });
+      })
     }
-  };
+  }
 
   const handleEdit = (product: Product) => {
-    setEditingProduct(product);
+    setEditingProduct(product)
     setFormData({
       name: product.name,
       description: product.description,
@@ -186,33 +163,33 @@ export default function AdminProductsPage() {
       createdAt: product.createdAt,
       updatedAt: product.updatedAt,
       isActive: product.isActive,
-    });
-    setIsDialogOpen(true);
-  };
+    })
+    setIsDialogOpen(true)
+  }
 
   const handleDelete = async (productId: string) => {
     if (confirm("Are you sure you want to delete this product?")) {
       try {
         const response = await fetch(`/api/admin/products/${productId}`, {
           method: "DELETE",
-        });
+        })
 
         if (response.ok) {
-          toast({ title: "Product deleted successfully" });
-          fetchProducts(); // Refresh the products list
+          toast({ title: "Product deleted successfully" })
+          fetchProducts() // Refresh the products list
         } else {
-          throw new Error("Failed to delete product");
+          throw new Error("Failed to delete product")
         }
       } catch (error) {
-        console.error("Error deleting product:", error);
+        console.error("Error deleting product:", error)
         toast({
           title: "Error",
           description: "Failed to delete product",
           variant: "destructive",
-        });
+        })
       }
     }
-  };
+  }
 
   const resetForm = () => {
     setFormData({
@@ -231,15 +208,15 @@ export default function AdminProductsPage() {
       createdAt: new Date(),
       updatedAt: new Date(),
       isActive: true,
-    }); 
-    setEditingProduct(null);
-    setIsDialogOpen(false);
-  };
+    })
+    setEditingProduct(null)
+    setIsDialogOpen(false)
+  }
 
   const openAddDialog = () => {
-    resetForm();
-    setIsDialogOpen(true);
-  };
+    resetForm()
+    setIsDialogOpen(true)
+  }
 
   if (loading) {
     return (
@@ -258,7 +235,7 @@ export default function AdminProductsPage() {
           </CardContent>
         </Card>
       </div>
-    );
+    )
   }
 
   return (
@@ -278,13 +255,9 @@ export default function AdminProductsPage() {
           </DialogTrigger>
           <DialogContent className="max-w-2xl">
             <DialogHeader>
-              <DialogTitle>
-                {editingProduct ? "Edit Product" : "Add New Product"}
-              </DialogTitle>
+              <DialogTitle>{editingProduct ? "Edit Product" : "Add New Product"}</DialogTitle>
               <DialogDescription>
-                {editingProduct
-                  ? "Update product information"
-                  : "Add a new product to your catalog"}
+                {editingProduct ? "Update product information" : "Add a new product to your catalog"}
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -317,9 +290,7 @@ export default function AdminProductsPage() {
                   <Input
                     id="category"
                     value={formData.category}
-                    onChange={(e) =>
-                      handleInputChange("category", e.target.value)
-                    }
+                    onChange={(e) => handleInputChange("category", e.target.value)}
                     required
                   />
                 </div>
@@ -330,12 +301,7 @@ export default function AdminProductsPage() {
                     type="number"
                     step="0.01"
                     value={formData.price ?? ""}
-                    onChange={(e) =>
-                      handleInputChange(
-                        "price",
-                        Number.parseFloat(e.target.value) || 0
-                      )
-                    }
+                    onChange={(e) => handleInputChange("price", Number.parseFloat(e.target.value) || 0)}
                   />
                 </div>
               </div>
@@ -356,12 +322,7 @@ export default function AdminProductsPage() {
                     id="stockQuantity"
                     type="number"
                     value={formData.stockQuantity ?? ""}
-                    onChange={(e) =>
-                      handleInputChange(
-                        "stockQuantity",
-                        Number.parseInt(e.target.value) || 0
-                      )
-                    }
+                    onChange={(e) => handleInputChange("stockQuantity", Number.parseInt(e.target.value) || 0)}
                   />
                 </div>
               </div>
@@ -375,7 +336,7 @@ export default function AdminProductsPage() {
                   onChange={(e) =>
                     handleInputChange(
                       "tags",
-                      e.target.value.split(",").map((tag) => tag.trim())
+                      e.target.value.split(",").map((tag) => tag.trim()),
                     )
                   }
                   placeholder="e.g. electronics, mobile, accessories"
@@ -388,9 +349,7 @@ export default function AdminProductsPage() {
                 <Textarea
                   id="specifications"
                   value={formData.specifications ?? ""}
-                  onChange={(e) =>
-                    handleInputChange("specifications", e.target.value)
-                  }
+                  onChange={(e) => handleInputChange("specifications", e.target.value)}
                   placeholder="Enter product specifications"
                 />
               </div>
@@ -401,9 +360,7 @@ export default function AdminProductsPage() {
                 <Textarea
                   id="description"
                   value={formData.description}
-                  onChange={(e) =>
-                    handleInputChange("description", e.target.value)
-                  }
+                  onChange={(e) => handleInputChange("description", e.target.value)}
                   required
                 />
               </div>
@@ -435,9 +392,7 @@ export default function AdminProductsPage() {
                   type="checkbox"
                   id="inStock"
                   checked={formData.inStock}
-                  onChange={(e) =>
-                    handleInputChange("inStock", e.target.checked)
-                  }
+                  onChange={(e) => handleInputChange("inStock", e.target.checked)}
                 />
                 <Label htmlFor="inStock">In Stock</Label>
               </div>
@@ -472,10 +427,7 @@ export default function AdminProductsPage() {
                 className="pl-10"
               />
             </div>
-            <Select
-              value={selectedCategory}
-              onValueChange={setSelectedCategory}
-            >
+            <Select value={selectedCategory} onValueChange={setSelectedCategory}>
               <SelectTrigger className="w-48">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
@@ -501,10 +453,7 @@ export default function AdminProductsPage() {
         <CardContent>
           <div className="space-y-4">
             {filteredProducts.map((product) => (
-              <div
-                key={product._id}
-                className="flex items-center gap-4 p-4 border rounded-lg"
-              >
+              <div key={product._id} className="flex items-center gap-4 p-4 border rounded-lg">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
@@ -516,13 +465,9 @@ export default function AdminProductsPage() {
                     <Badge variant={product.inStock ? "default" : "secondary"}>
                       {product.inStock ? "In Stock" : "Out of Stock"}
                     </Badge>
-                    {product.price && (
-                      <Badge variant="outline">${product.price}</Badge>
-                    )}
+                    {product.price && <Badge variant="outline">${product.price}</Badge>}
                   </div>
-                  <p className="text-sm text-muted-foreground mb-1">
-                    {product.description}
-                  </p>
+                  <p className="text-sm text-muted-foreground mb-1">{product.description}</p>
                   <div className="flex gap-4 text-xs text-muted-foreground">
                     <span>Brand: {product.brand}</span>
                     <span>Category: {product.category}</span>
@@ -532,18 +477,10 @@ export default function AdminProductsPage() {
                   <Button variant="outline" size="sm">
                     <Eye className="h-4 w-4" />
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleEdit(product)}
-                  >
+                  <Button variant="outline" size="sm" onClick={() => handleEdit(product)}>
                     <Edit className="h-4 w-4" />
                   </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleDelete(product._id!)}
-                  >
+                  <Button variant="outline" size="sm" onClick={() => handleDelete(product._id!)}>
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
@@ -553,5 +490,5 @@ export default function AdminProductsPage() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

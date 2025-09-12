@@ -307,41 +307,12 @@ export default function AdminContactsPage() {
                             <Label className="font-semibold">Message</Label>
                             <p className="mt-1 p-3 bg-muted rounded">{selectedContact.message}</p>
                           </div>
-                          <div>
-                            <Label className="font-semibold">Status</Label>
-                            <Select
-                              value={selectedContact.status}
-                              onValueChange={(value) =>
-                                updateContactStatus(selectedContact._id!, value as Contact["status"])
-                              }
-                            >
-                              <SelectTrigger className="w-full mt-1">
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="new">New</SelectItem>
-                                <SelectItem value="contacted">Contacted</SelectItem>
-                                <SelectItem value="resolved">Resolved</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
+                          
                         </div>
                       )}
                     </DialogContent>
                   </Dialog>
-                  <Select
-                    value={contact.status}
-                    onValueChange={(value) => updateContactStatus(contact._id!, value as Contact["status"])}
-                  >
-                    <SelectTrigger className="w-32">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="new">New</SelectItem>
-                      <SelectItem value="contacted">Contacted</SelectItem>
-                      <SelectItem value="resolved">Resolved</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  
                 </div>
               </div>
             ))}

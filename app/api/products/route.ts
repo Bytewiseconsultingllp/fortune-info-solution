@@ -60,16 +60,12 @@ export async function GET(request: NextRequest) {
       filter.$or = [
         { name: { $regex: search, $options: "i" } },
         { description: { $regex: search, $options: "i" } },
-        { brand: { $regex: search, $options: "i" } }
+        { brand: { $regex: search, $options: "i" } },
       ]
     }
 
     // Fetch filtered products
-    const products = await db
-      .collection("products")
-      .find(filter)
-      .sort({ createdAt: -1 })
-      .toArray()
+    const products = await db.collection("products").find(filter).sort({ createdAt: -1 }).toArray()
 
     // Fetch all categories and brands (not filtered)
     const categories = await db.collection("products").distinct("category")

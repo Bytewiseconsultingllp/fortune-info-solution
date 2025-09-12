@@ -308,43 +308,12 @@ export default function AdminPartnersPage() {
                             <Label className="font-semibold">Message</Label>
                             <p className="mt-1 p-3 bg-muted rounded">{selectedPartner.message}</p>
                           </div>
-                          <div>
-                            <Label className="font-semibold">Status</Label>
-                            <Select
-                              value={selectedPartner.status}
-                              onValueChange={(value) =>
-                                updatePartnerStatus(selectedPartner._id!, value as PartnerEnquiry["status"])
-                              }
-                            >
-                              <SelectTrigger className="w-full mt-1">
-                                <SelectValue />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="new">New</SelectItem>
-                                <SelectItem value="contacted">Contacted</SelectItem>
-                                <SelectItem value="approved">Approved</SelectItem>
-                                <SelectItem value="rejected">Rejected</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
+                         
                         </div>
                       )}
                     </DialogContent>
                   </Dialog>
-                  <Select
-                    value={partner.status}
-                    onValueChange={(value) => updatePartnerStatus(partner._id!, value as PartnerEnquiry["status"])}
-                  >
-                    <SelectTrigger className="w-32">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="new">New</SelectItem>
-                      <SelectItem value="contacted">Contacted</SelectItem>
-                      <SelectItem value="approved">Approved</SelectItem>
-                      <SelectItem value="rejected">Rejected</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  
                 </div>
               </div>
             ))}

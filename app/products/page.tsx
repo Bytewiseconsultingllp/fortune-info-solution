@@ -4,22 +4,10 @@ import { useState, useEffect } from "react"
 import Header from "@/app/home/components/navigation/Header"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Search, Filter } from "lucide-react"
 import Link from "next/link"
 import type { Product } from "@/lib/models"
@@ -128,9 +116,7 @@ export default function ProductsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <p className="text-muted-foreground">
-              {loading
-                ? "Loading products..."
-                : `Showing ${filteredProducts.length} of ${products.length} products`}
+              {loading ? "Loading products..." : `Showing ${filteredProducts.length} of ${products.length} products`}
             </p>
           </div>
 
@@ -152,9 +138,7 @@ export default function ProductsPage() {
             </div>
           ) : filteredProducts.length === 0 ? (
             <div className="text-center py-12">
-              <p className="text-lg text-muted-foreground">
-                No products found matching your criteria.
-              </p>
+              <p className="text-lg text-muted-foreground">No products found matching your criteria.</p>
               <Button
                 variant="outline"
                 onClick={() => {
@@ -184,50 +168,45 @@ export default function ProductsPage() {
                       <Badge variant="outline">{product.brand}</Badge>
                     </div>
                     <CardTitle className="text-xl">{product.name}</CardTitle>
-                    <CardDescription className="line-clamp-3">
-                      {product.description}
-                    </CardDescription>
-                    
+                    <CardDescription className="line-clamp-3">{product.description}</CardDescription>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    {Array.isArray((product as any).features) &&
-                      (product as any).features.length > 0 && (
-                        <div className="mb-4">
-                          <p className="text-sm font-medium mb-2">Key Features:</p>
-                          <div className="flex flex-wrap gap-1">
-                            {(product as any).features.slice(0, 3).map((feature: string, index: number) => (
-                              <Badge key={index} variant="outline" className="text-xs">
-                                {feature}
-                              </Badge>
-                            ))}
-                            {(product as any).features.length > 3 && (
-                              <Badge variant="outline" className="text-xs">
-                                +{(product as any).features.length - 3} more
-                              </Badge>
-                            )}
-                          </div>
+                    {Array.isArray((product as any).features) && (product as any).features.length > 0 && (
+                      <div className="mb-4">
+                        <p className="text-sm font-medium mb-2">Key Features:</p>
+                        <div className="flex flex-wrap gap-1">
+                          {(product as any).features.slice(0, 3).map((feature: string, index: number) => (
+                            <Badge key={index} variant="outline" className="text-xs">
+                              {feature}
+                            </Badge>
+                          ))}
+                          {(product as any).features.length > 3 && (
+                            <Badge variant="outline" className="text-xs">
+                              +{(product as any).features.length - 3} more
+                            </Badge>
+                          )}
                         </div>
-                      )}
+                      </div>
+                    )}
                     <div className="flex w-full gap-3">
-                    <Button asChild className="flex-1">
-                      <Link
-                        href={`/quote?product=${product._id}&name=${encodeURIComponent(
-                          product.name
-                        )}`}
-                      >
-                        Get Quote
-                      </Link>
-                    </Button>
+                      <Button asChild className="flex-1">
+                        <Link href={`/quote?product=${product._id}&name=${encodeURIComponent(product.name)}`}>
+                          Get Quote
+                        </Link>
+                      </Button>
 
-                    <Button asChild className="flex-1">
-                      <Link
-                        href={`https://www.honeywellbuildings.in/uploads/security/product/doc/1710831358HSV-HC35W4xR3-01-IN(1223)DS-Y_V2.pdf`}
-                      >
-                        Datasheet
-                      </Link>
-                    </Button>
-                  </div>
-
+                      {product.dataSheet ? (
+                        <Button asChild className="flex-1">
+                          <a href={product.dataSheet} download target="_blank" rel="noopener noreferrer">
+                            Download Datasheet
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button disabled className="flex-1">
+                          No Datasheet
+                        </Button>
+                      )}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
