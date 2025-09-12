@@ -14,6 +14,7 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import Image from "next/image";
 
 interface DropdownItem {
   label: string;
@@ -46,28 +47,25 @@ export default function Header() {
       <div className="bg-[#FDFAF6] py-3 px-4 md:px-6 lg:px-8 w-full flex justify-between items-center text-sm flex-wrap gap-2">
         <div className="flex items-center gap-6 text-black flex-wrap">
           <div className="flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-[#B8001F]" />
-            <span>
+            <MapPin className="w-4 h-4 text-[#B8001F] " />
+    <span className="font-bold text-[15px]">
               No.17/1, Old No.272, Sri Nandi, 12th Cross 8th Main Road,Wilson
               Garden, Hombegowda Nagar, Bangalore - 560027
             </span>
           </div>
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-[#B8001F]" />
-            <span>pradeepnp@fortuneinfo.in , sales@fortuneinfo.in</span>
+                <span className="font-bold">pradeepnp@fortuneinfo.in , sales@fortuneinfo.in</span>
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 text-[#B8001F]" />
-            <span>080-48904501/02/03</span>
+               <span className="font-bold">080-48904501/02/03</span>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
           <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
             <Facebook className="w-4 h-4 text-white" />
-          </button>
-          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
-            <Twitter className="w-4 h-4 text-white" />
           </button>
           <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
             <Instagram className="w-4 h-4 text-white" />
@@ -83,10 +81,16 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-[#B8001F] rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">IT</span>
-          </div>
+           <Image
+                src="C:\Users\nabap\OneDrive\Desktop\ALL_PROJECTS\fortune\fortune-info-solution\public\comapny-logo.png"      // ✅ remove /public
+                alt="Company Logo"
+                width={40}
+                height={40}
+                className="object-contain"
+              />
+            </div>
           <span className="text-2xl md:text-3xl font-bold text-black">
-            FortuneInfoSolutions
+            Fortune Info Solutions
           </span>
         </div>
 

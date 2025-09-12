@@ -57,7 +57,7 @@ export function ExpertiseSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-4 md:px-8 lg:px-16 relative bg-slate-950"
+      className="py-16 px-4 md:px-8 lg:px-16 relative "
     >
       {/* Background overlay */}
       <div className="absolute inset-0 bg-[url('/bg-pattern.png')] bg-cover bg-center opacity-10"></div>
@@ -79,7 +79,7 @@ export function ExpertiseSection() {
               <div className="flex items-center gap-8">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-red-500 mb-1">11</div>
-                  <div className="text-gray-200 text-sm font-medium">
+                  <div className="text-red-200 text-sm font-medium">
                     IT Standard
                     <br />
                     Certification
