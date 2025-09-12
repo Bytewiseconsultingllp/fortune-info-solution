@@ -114,7 +114,7 @@ export default function AdminPartnersPage() {
         partner.location,
         partner.message,
         partner.status,
-        partner.createdAt.toLocaleDateString(),
+        new Date(partner.createdAt).toLocaleDateString(),
       ]),
     ]
       .map((row) => row.map((field) => `"${field}"`).join(","))
@@ -196,7 +196,7 @@ export default function AdminPartnersPage() {
                 className="pl-10"
               />
             </div>
-            <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+            {/* <Select value={selectedStatus} onValueChange={setSelectedStatus}>
               <SelectTrigger className="w-48">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
@@ -207,7 +207,7 @@ export default function AdminPartnersPage() {
                 <SelectItem value="approved">Approved</SelectItem>
                 <SelectItem value="rejected">Rejected</SelectItem>
               </SelectContent>
-            </Select>
+            </Select> */}
             <Select value={selectedBusinessType} onValueChange={setSelectedBusinessType}>
               <SelectTrigger className="w-48">
                 <SelectValue placeholder="Business Type" />
@@ -308,7 +308,7 @@ export default function AdminPartnersPage() {
                             <Label className="font-semibold">Message</Label>
                             <p className="mt-1 p-3 bg-muted rounded">{selectedPartner.message}</p>
                           </div>
-                          <div>
+                          {/* <div>
                             <Label className="font-semibold">Status</Label>
                             <Select
                               value={selectedPartner.status}
@@ -326,12 +326,12 @@ export default function AdminPartnersPage() {
                                 <SelectItem value="rejected">Rejected</SelectItem>
                               </SelectContent>
                             </Select>
-                          </div>
+                          </div> */}
                         </div>
                       )}
                     </DialogContent>
                   </Dialog>
-                  <Select
+                  {/* <Select
                     value={partner.status}
                     onValueChange={(value) => updatePartnerStatus(partner._id!, value as PartnerEnquiry["status"])}
                   >
@@ -344,7 +344,7 @@ export default function AdminPartnersPage() {
                       <SelectItem value="approved">Approved</SelectItem>
                       <SelectItem value="rejected">Rejected</SelectItem>
                     </SelectContent>
-                  </Select>
+                  </Select> */}
                 </div>
               </div>
             ))}
