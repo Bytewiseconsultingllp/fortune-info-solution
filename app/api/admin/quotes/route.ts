@@ -10,7 +10,7 @@ export async function GET(request: NextRequest) {
     }
 
     const { db } = await connectDB()
-    const quotes = await db.collection("quote_Requests").find({}).sort({ createdAt: -1 }).toArray()
+    const quotes = await db.collection("quote_requests").find({}).sort({ createdAt: -1 }).toArray()
 
     return NextResponse.json({ quotes })
   } catch (error) {

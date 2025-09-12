@@ -45,7 +45,7 @@ export default function AdminQuotesPage() {
         setQuotes([])
       } finally {
         setLoading(false)
-      }
+      } 
     }
 
     fetchQuotes()
@@ -240,7 +240,7 @@ export default function AdminQuotesPage() {
                   </div>
                   {quote.message && <p className="text-sm line-clamp-2">{quote.message}</p>}
                   <p className="text-xs text-muted-foreground mt-1">
-                    Requested: {quote.createdAt.toLocaleDateString()}
+                    Requested: {new Date(quote.createdAt).toLocaleDateString()}
                   </p>
                 </div>
                 <div className="flex flex-col gap-2">
