@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
+import HeroImg from "@/app/assets/home-hero.png"
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -44,13 +45,14 @@ export function HeroSection() {
       {/* Background Image - overlay remains */}
       <div className="absolute inset-0 -top-32">
         <Image
-          src="/placeholder.svg?height=1200&width=1920&text=Professional+in+Server+Room"
+          // src="/placeholder.svg?height=1200&width=1920&text=Professional+in+Server+Room"
+          src={HeroImg}
           alt="Professional in server room"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/70"></div>
+        <div className="absolute inset-0 "></div>
       </div>
 
       {/* Content */}
