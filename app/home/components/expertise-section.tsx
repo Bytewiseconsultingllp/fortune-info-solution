@@ -71,7 +71,7 @@ export function ExpertiseSection() {
         <div ref={imageRef} className="flex justify-center">
           {imagePath ? (
             <Image
-              src={imagePath}
+              src="/diverse-products-still-life.png"
               alt="Our Expertise"
               width={600}
               height={500}

@@ -27,7 +27,7 @@ export default function Home() {
       {/* <CompanyLogosSection /> */}
       <BrandMarquee/>
       <ExpertiseSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <VideoParallaxSection />
       <CaseStudiesSection />
       <CertificationsSection />
