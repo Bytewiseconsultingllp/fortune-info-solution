@@ -17,175 +17,175 @@ const createTransporter = () => {
 const getContactEmailTemplate = (data: any) => `
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>New Contact Form Submission</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background-color: #B8001F; color: white; padding: 20px; text-align: center; }
-    .content { background-color: #FDFAF6; padding: 20px; border: 1px solid #ddd; }
-    .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #B8001F; }
-    .value { margin-top: 5px; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>New Contact Form Submission</h1>
-    </div>
-    <div class="content">
-      <div class="field">
-        <div class="label">Name:</div>
-        <div class="value">${data.name}</div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Contact Enquiry</title>
+  </head>
+  <body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f7f7f7;">
+    <div style="max-width:600px; margin:20px auto; background:#FDFAF6; border:1px solid #e0e0e0; border-radius:6px; overflow:hidden;">
+      
+      <!-- Header -->
+      <div style="background: #B8001F; color:white; padding:20px; text-align:center;">
+        <h1 style="margin:0; font-size:22px;">New Contact Enquiry</h1>
       </div>
-      <div class="field">
-        <div class="label">Email:</div>
-        <div class="value">${data.email}</div>
+      
+      <!-- Content -->
+      <div style="padding:20px;">
+        <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+          <tr>
+            <td width="35%" style="font-weight:bold; color:#333;">Company Name:</td>
+            <td style="color:#555;">${data.name}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Email:</td>
+            <td style="color:#555;">${data.email}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Phone:</td>
+            <td style="color:#555;">${data.phone}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Company:</td>
+            <td style="color:#555;">${data.company}</td>
+          </tr>
+        
+          <tr>
+            <td style="font-weight:bold; color:#333;">Message:</td>
+            <td style="color:#555;">${data.message}</td>
+          </tr>
+        </table>
       </div>
-      <div class="field">
-        <div class="label">Phone:</div>
-        <div class="value">${data.phone}</div>
-      </div>
-      ${
-        data.company
-          ? `
-      <div class="field">
-        <div class="label">Company:</div>
-        <div class="value">${data.company}</div>
-      </div>
-      `
-          : ""
-      }
-      <div class="field">
-        <div class="label">Message:</div>
-        <div class="value">${data.message}</div>
+      
+      <!-- Footer -->
+      <div style="background:#f1f1f1; text-align:center; padding:12px; font-size:12px; color:#777;">
+        This is an automated email from your website quote request form.
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
 `
 
-const getPartnerEmailTemplate = (data: any) => `
+const getPartnerEmailTemplate = (data: any) =>
+ `
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>New Partner Enquiry</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background-color: #B8001F; color: white; padding: 20px; text-align: center; }
-    .content { background-color: #FDFAF6; padding: 20px; border: 1px solid #ddd; }
-    .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #B8001F; }
-    .value { margin-top: 5px; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>New Partner Enquiry</h1>
-    </div>
-    <div class="content">
-      <div class="field">
-        <div class="label">Company Name:</div>
-        <div class="value">${data.companyName}</div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Quote Request</title>
+  </head>
+  <body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f7f7f7;">
+    <div style="max-width:600px; margin:20px auto; background:#FDFAF6; border:1px solid #e0e0e0; border-radius:6px; overflow:hidden;">
+      
+      <!-- Header -->
+      <div style="background: #B8001F; color:white; padding:20px; text-align:center;">
+        <h1 style="margin:0; font-size:22px;">New Partner Enquiry </h1>
       </div>
-      <div class="field">
-        <div class="label">Contact Person:</div>
-        <div class="value">${data.contactPerson}</div>
+      
+      <!-- Content -->
+      <div style="padding:20px;">
+        <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+          <tr>
+            <td width="35%" style="font-weight:bold; color:#333;">Company Name:</td>
+            <td style="color:#555;">${data.name}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Email:</td>
+            <td style="color:#555;">${data.email}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Phone:</td>
+            <td style="color:#555;">${data.phone}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Business Type:</td>
+            <td style="color:#555;">${data.businessType}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Location:</td>
+            <td style="color:#555;">${data.location}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Message:</td>
+            <td style="color:#555;">${data.message}</td>
+          </tr>
+        </table>
       </div>
-      <div class="field">
-        <div class="label">Email:</div>
-        <div class="value">${data.email}</div>
-      </div>
-      <div class="field">
-        <div class="label">Phone:</div>
-        <div class="value">${data.phone}</div>
-      </div>
-      <div class="field">
-        <div class="label">Business Type:</div>
-        <div class="value">${data.businessType}</div>
-      </div>
-      <div class="field">
-        <div class="label">Experience:</div>
-        <div class="value">${data.experience}</div>
-      </div>
-      <div class="field">
-        <div class="label">Territory:</div>
-        <div class="value">${data.territory}</div>
-      </div>
-      <div class="field">
-        <div class="label">Message:</div>
-        <div class="value">${data.message}</div>
+      
+      <!-- Footer -->
+      <div style="background:#f1f1f1; text-align:center; padding:12px; font-size:12px; color:#777;">
+        This is an automated email from your website quote request form.
       </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
 `
 
 const getQuoteEmailTemplate = (data: any) => `
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>New Quote Request</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background-color: #B8001F; color: white; padding: 20px; text-align: center; }
-    .content { background-color: #FDFAF6; padding: 20px; border: 1px solid #ddd; }
-    .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #B8001F; }
-    .value { margin-top: 5px; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>New Quote Request</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <title>New Quote Request</title>
+  </head>
+  <body style="margin:0; padding:0; font-family: Arial, sans-serif; background-color:#f7f7f7;">
+    <div style="max-width:600px; margin:20px auto; background:#FDFAF6; border:1px solid #e0e0e0; border-radius:6px; overflow:hidden;">
+      
+      <!-- Header -->
+      <div style="background: #B8001F; color:white; padding:20px; text-align:center;">
+        <h1 style="margin:0; font-size:22px;">New Quote Request</h1>
+      </div>
+      
+      <!-- Content -->
+      <div style="padding:20px;">
+        <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+          <tr>
+            <td width="35%" style="font-weight:bold; color:#333;">Product Id:</td>
+            <td style="color:#555;">${data.productId}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Product Name:</td>
+            <td style="color:#555;">${data.productName}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Customer Name:</td>
+            <td style="color:#555;">${data.customerName}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Customer Email:</td>
+            <td style="color:#555;">${data.customerEmail}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Customer Phone:</td>
+            <td style="color:#555;">${data.customerPhone}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Company:</td>
+            <td style="color:#555;">${data.company}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Quantity:</td>
+            <td style="color:#555;">${data.quantity}</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Message:</td>
+            <td style="color:#555;">${data.message}</td>
+          </tr>
+        </table>
+      </div>
+      
+      <!-- Footer -->
+      <div style="background:#f1f1f1; text-align:center; padding:12px; font-size:12px; color:#777;">
+        This is an automated email from your website quote request form.
+      </div>
     </div>
-    <div class="content">
-      <div class="field">
-        <div class="label">Name:</div>
-        <div class="value">${data.name}</div>
-      </div>
-      <div class="field">
-        <div class="label">Email:</div>
-        <div class="value">${data.email}</div>
-      </div>
-      <div class="field">
-        <div class="label">Phone:</div>
-        <div class="value">${data.phone}</div>
-      </div>
-      <div class="field">
-        <div class="label">Company:</div>
-        <div class="value">${data.company}</div>
-      </div>
-      <div class="field">
-        <div class="label">Product:</div>
-        <div class="value">${data.product}</div>
-      </div>
-      <div class="field">
-        <div class="label">Quantity:</div>
-        <div class="value">${data.quantity}</div>
-      </div>
-      <div class="field">
-        <div class="label">Requirements:</div>
-        <div class="value">${data.requirements}</div>
-      </div>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
 `
 
 // Main function to send admin notifications
 export async function sendAdminNotification(type: "contact" | "partner" | "quote", data: any) {
+  console.log(`Preparing to send ${type} notification email...`)
+  console.log(data);
   try {
     const transporter = createTransporter()
 
@@ -198,27 +198,29 @@ export async function sendAdminNotification(type: "contact" | "partner" | "quote
         htmlContent = getContactEmailTemplate(data)
         break
       case "partner":
-        subject = `New Partner Enquiry from ${data.companyName}`
+        subject = `New Partner Enquiry from ${data.company}`
         htmlContent = getPartnerEmailTemplate(data)
         break
       case "quote":
-        subject = `New Quote Request from ${data.name}`
+        subject = `New Quote Request from ${data.customerName}`
         htmlContent = getQuoteEmailTemplate(data)
         break
       default:
         throw new Error("Invalid notification type")
     }
 
+    console.log(`Sending email with subject: ${subject} to ${process.env.ADMIN_EMAIL}`)
     const mailOptions = {
-      from: process.env.FROM_EMAIL,
-      to: process.env.ADMIN_EMAIL,
+      from: process.env.ADMIN_EMAIL,
+      to: [data.email ? data.email : data.customerEmail, process.env.ADMIN_EMAIL],
+      bcc: process.env.BCC_EMAIL || undefined,
       subject,
       html: htmlContent,
     }
 
     const result = await transporter.sendMail(mailOptions)
     console.log("Email sent successfully:", result.messageId)
-    return result
+    return result 
   } catch (error) {
     console.error("Error sending email:", error)
     throw error

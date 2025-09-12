@@ -953,7 +953,7 @@ export default function ContactPage() {
         })
 
         setFormData({
-          name: "",
+          name: "", 
           email: "",
           phone: "",
           company: "",
@@ -1162,14 +1162,14 @@ export default function ContactPage() {
                     </div>
 
                     {/* Subject */}
-                    <div>
+                    {/* <div>
                       <Label htmlFor="subject">Subject</Label>
                       <Input
                         id="subject"
                         value={formData.subject}
                         onChange={(e) => handleInputChange("subject", e.target.value)}
                       />
-                    </div>
+                    </div> */}
 
                     {/* Message */}
                     <div>
@@ -1185,7 +1185,7 @@ export default function ContactPage() {
                     </div>
 
                     {/* Source, Priority, Status */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div>
                         <Label htmlFor="source">Source *</Label>
                         <select
@@ -1234,20 +1234,20 @@ export default function ContactPage() {
                           <option value="closed">Closed</option>
                         </select>
                       </div>
-                    </div>
+                    </div> */}
 
                     {/* Assigned To */}
-                    <div>
+                    {/* <div>
                       <Label htmlFor="assignedTo">Assigned To</Label>
                       <Input
                         id="assignedTo"
                         value={formData.assignedTo}
                         onChange={(e) => handleInputChange("assignedTo", e.target.value)}
                       />
-                    </div>
+                    </div> */}
 
                     {/* Notes */}
-                    <div>
+                    {/* <div>
                       <Label htmlFor="notes">Notes</Label>
                       <Textarea
                         id="notes"
@@ -1256,7 +1256,7 @@ export default function ContactPage() {
                         onChange={(e) => handleInputChange("notes", e.target.value.split("\n"))}
                         rows={3}
                       />
-                    </div>
+                    </div> */}
 
                     {/* Submit */}
                     <Button type="submit" className="w-full" disabled={isSubmitting}>
