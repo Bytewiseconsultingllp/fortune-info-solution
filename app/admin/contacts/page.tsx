@@ -117,7 +117,7 @@ export default function AdminContactsPage() {
   const updateContactStatus = async (contactId: string, newStatus: Contact["status"]) => {
     try {
       const response = await fetch(`/api/admin/contacts/${contactId}/status`, {
-        method: "PATCH",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ status: newStatus }),
       })
@@ -307,7 +307,7 @@ export default function AdminContactsPage() {
                             <Label className="font-semibold">Message</Label>
                             <p className="mt-1 p-3 bg-muted rounded">{selectedContact.message}</p>
                           </div>
-                          <div>
+                          {/* <div>
                             <Label className="font-semibold">Status</Label>
                             <Select
                               value={selectedContact.status}
@@ -324,7 +324,7 @@ export default function AdminContactsPage() {
                                 <SelectItem value="resolved">Resolved</SelectItem>
                               </SelectContent>
                             </Select>
-                          </div>
+                          </div> */}
                         </div>
                       )}
                     </DialogContent>
