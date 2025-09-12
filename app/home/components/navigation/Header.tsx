@@ -80,14 +80,15 @@ export default function Header() {
       <nav className="bg-[#FDFAF6] py-4 px-4 md:px-6 lg:px-8 w-full flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[#B8001F] rounded-lg flex items-center justify-center">
+          <div className="w-20 h-10 bg-[#B8001F] rounded-lg flex items-center justify-center">
            <Image
-                src="C:\Users\nabap\OneDrive\Desktop\ALL_PROJECTS\fortune\fortune-info-solution\public\comapny-logo.png"      // ✅ remove /public
-                alt="Company Logo"
-                width={40}
-                height={40}
-                className="object-contain"
-              />
+              src="/comapny-logo.png"
+              alt="Company Logo"
+              width={100}
+              height={40}
+              className="object-contain"
+            />
+
             </div>
           <span className="text-2xl md:text-3xl font-bold text-black">
             Fortune Info Solutions
