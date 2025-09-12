@@ -4,8 +4,13 @@ import Image from "next/image";
 import { Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import healthcareImg from "@/app/assets/healthcare.jpeg";
+import expertiseImg from "@/app/assets/expertise.jpg";
+import retailImg from "@/app/assets/retail.jpeg"
 
 gsap.registerPlugin(ScrollTrigger);
+
+import type { StaticImageData } from "next/image";
 
 interface CaseStudy {
   id: number;
@@ -13,7 +18,7 @@ interface CaseStudy {
   company: string;
   metric: string;
   problem: string;
-  image: string;
+  image: string | StaticImageData;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -24,7 +29,7 @@ const caseStudies: CaseStudy[] = [
     metric: "Improved Data Security",
     problem:
       "Legacy systems created compliance risks. We deployed Dell servers, Lenovo workstations, and Honeywell surveillance systems to ensure secure and efficient patient data management.",
-    image: "/placeholder.svg?height=400&width=400&text=Supply+Chain+Worker",
+    image: healthcareImg,
   },
   {
     id: 2,
@@ -33,7 +38,7 @@ const caseStudies: CaseStudy[] = [
     metric: "Reduced Operational Costs",
     problem:
       "Outdated infrastructure slowed transaction processing. We provided HP enterprise servers, Cisco firewalls, and VMware virtualization, cutting costs by 40% and tripling processing speed.",
-    image: "/placeholder.svg?height=400&width=400&text=Retail+Worker",
+    image: expertiseImg,
   },
   {
     id: 3,
@@ -42,8 +47,7 @@ const caseStudies: CaseStudy[] = [
     metric: "RIncreased Sales Growth",
     problem:
       "Inefficient POS and e-commerce systems limited sales. We implemented modern POS hardware, Samsung LFDs, and retail software, boosting sales by 70% in one year.",
-    image:
-      "/placeholder.svg?height=400&width=400&text=Healthcare+Professionals",
+    image: retailImg,
   },
 ];
 

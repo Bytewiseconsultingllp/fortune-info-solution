@@ -3,6 +3,10 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
+import expertImg1 from "@/app/assets/experts_one.jpg";
+import expertImg2 from "@/app/assets/experts_two.jpeg";
+import expertImg3 from "@/app/assets/experts_three.jpeg";
+
 
 export function AboutSection() {
   const sectionRef = useRef(null);
@@ -85,7 +89,8 @@ export function AboutSection() {
             <div className="grid grid-cols-2 gap-4">
               <div className="relative h-64 rounded-2xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=300&width=300"
+                  // src="/placeholder.svg?height=300&width=300"
+                  src={expertImg1}
                   alt="Professionals working"
                   fill
                   className="object-cover"
@@ -93,7 +98,8 @@ export function AboutSection() {
               </div>
               <div className="relative h-64 rounded-2xl overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=300&width=300"
+                  // src="/placeholder.svg?height=300&width=300"
+                  src={expertImg2}
                   alt="Business people in server room"
                   fill
                   className="object-cover"
@@ -102,7 +108,8 @@ export function AboutSection() {
             </div>
             <div className="relative h-48 rounded-2xl overflow-hidden">
               <Image
-                src="/placeholder.svg?height=200&width=600"
+                // src="/placeholder.svg?height=200&width=600"
+                src={expertImg3}
                 alt="Professionals with laptop"
                 fill
                 className="object-cover"
