@@ -104,7 +104,7 @@ export default function AdminQuotesPage() {
         quote.quantity.toString(),
         quote.message || "",
         quote.status,
-        quote.createdAt.toLocaleDateString(),
+        new Date(quote.createdAt).toLocaleDateString(),
       ]),
     ]
       .map((row) => row.map((field) => `"${field}"`).join(","))
@@ -186,7 +186,7 @@ export default function AdminQuotesPage() {
                 className="pl-10"
               />
             </div>
-            <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+            {/* <Select value={selectedStatus} onValueChange={setSelectedStatus}>
               <SelectTrigger className="w-48">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
@@ -197,7 +197,7 @@ export default function AdminQuotesPage() {
                 <SelectItem value="converted">Converted</SelectItem>
                 <SelectItem value="declined">Declined</SelectItem>
               </SelectContent>
-            </Select>
+            </Select> */}
           </div>
         </CardContent>
       </Card>
@@ -290,7 +290,7 @@ export default function AdminQuotesPage() {
                               <p className="mt-1 p-3 bg-muted rounded">{selectedQuote.message}</p>
                             </div>
                           )}
-                          <div>
+                          {/* <div>
                             <Label className="font-semibold">Status</Label>
                             <Select
                               value={selectedQuote.status}
@@ -308,12 +308,12 @@ export default function AdminQuotesPage() {
                                 <SelectItem value="declined">Declined</SelectItem>
                               </SelectContent>
                             </Select>
-                          </div>
+                          </div> */}
                         </div>
                       )}
                     </DialogContent>
                   </Dialog>
-                  <Select
+                  {/* <Select
                     value={quote.status}
                     onValueChange={(value) => updateQuoteStatus(quote._id!, value as QuoteRequest["status"])}
                   >
@@ -326,7 +326,7 @@ export default function AdminQuotesPage() {
                       <SelectItem value="converted">Converted</SelectItem>
                       <SelectItem value="declined">Declined</SelectItem>
                     </SelectContent>
-                  </Select>
+                  </Select> */}
                 </div>
               </div>
             ))}
