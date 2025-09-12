@@ -1310,7 +1310,7 @@ export default function ContactPage() {
                     <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Business Hours</h4>
-                      <p className="text-sm text-muted-foreground">9:00 am – 5:00 pm</p>
+                      <p className="text-sm text-muted-foreground">9:00 am – 7:00 pm</p>
                     </div>
                   </div>
                 </CardContent>
