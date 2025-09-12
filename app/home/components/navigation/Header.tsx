@@ -80,12 +80,12 @@ export default function Header() {
       <nav className="bg-[#FDFAF6] py-4 px-4 md:px-6 lg:px-8 w-full flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <div className="w-20 h-10 bg-[#B8001F] rounded-lg flex items-center justify-center">
+          <div className="w-30 h-20 bg-[#B8001F] rounded-lg flex items-center justify-center">
            <Image
               src="/comapny-logo.png"
               alt="Company Logo"
-              width={100}
-              height={40}
+              width={300}
+              height={300}
               className="object-contain"
             />
 

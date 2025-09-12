@@ -24,7 +24,7 @@ export default function Home() {
       <FeaturesSection />
       <AboutSection />
       <ServicesSection />
-      <CompanyLogosSection />
+      {/* <CompanyLogosSection /> */}
       <BrandMarquee/>
       <ExpertiseSection />
       <TestimonialsSection />

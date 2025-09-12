@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 const companyLogos = [
-  { name: "NOBILE", logo: "NOBILE" },
+  { name: "comapny", logo: "20+" },
   { name: "KNIFE", logo: "KNIFE" },
   { name: "ONE FOUND", logo: "ONE FOUND" },
   { name: "FOCUS", logo: "FOCUS" },

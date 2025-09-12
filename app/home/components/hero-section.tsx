@@ -25,7 +25,7 @@ export function HeroSection() {
     if (countRef.current) {
       const obj = { value: 0 };
       gsap.to(obj, {
-        value: 5000,
+        value: 1000,
         duration: 2,
         ease: "power1.out",
         onUpdate: () => {
