@@ -48,6 +48,7 @@ export default function AdminProductsPage() {
     description: "",
     category: "",
     brand: "",
+    dataSheet: "",
     image: "",
     specifications: "",
     price: 0,
@@ -174,6 +175,7 @@ export default function AdminProductsPage() {
       description: product.description,
       category: product.category,
       brand: product.brand,
+      dataSheet: product.dataSheet || "",
       image: product.image,
       price: product.price || 0,
       specifications: product.specifications || "",
@@ -218,6 +220,7 @@ export default function AdminProductsPage() {
       description: "",
       category: "",
       brand: "",
+      dataSheet: "",
       image: "",
       price: 0,
       specifications: "",
@@ -405,6 +408,16 @@ export default function AdminProductsPage() {
                 />
               </div>
 
+              {/* DataSheet URL */}
+              <div>
+                <Label htmlFor="dataSheet">DataSheet URL</Label>
+                <Input
+                  id="dataSheet"
+                  value={formData.dataSheet}
+                  onChange={(e) => handleInputChange("dataSheet", e.target.value)}
+                  placeholder="/placeholder.svg"
+                />
+              </div>
               {/* Image URL */}
               <div>
                 <Label htmlFor="image">Image URL</Label>
