@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/dialog";
 import { Plus, Search, Edit, Trash2, Eye } from "lucide-react";
 import type { Product } from "@/lib/models";
+import BulkUpload from "@/components/BulkUpload";
 
 export default function AdminProductsPage() {
   const { toast } = useToast();
@@ -49,7 +50,8 @@ export default function AdminProductsPage() {
     category: "",
     brand: "",
     dataSheet: "",
-    image: "",
+    // image: "",
+    images: [""],
     specifications: "",
     price: 0,
     inStock: false,
@@ -130,6 +132,27 @@ export default function AdminProductsPage() {
     }));
   };
 
+  const handleImageChange = (index: number, value: string) => {
+    setFormData((prev) => {
+      const newImages = [...prev.images];
+      newImages[index] = value;
+      return { ...prev, images: newImages };
+    });
+  };
+  const addImageField = () => {
+    setFormData((prev) => ({
+      ...prev,
+      images: [...prev.images, ""],
+    }));
+  };
+
+  const removeImageField = (index: number) => {
+    setFormData((prev) => {
+      const newImages = prev.images.filter((_, i) => i !== index);
+      return { ...prev, images: newImages.length ? newImages : [""] };
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -171,12 +194,13 @@ export default function AdminProductsPage() {
   const handleEdit = (product: Product) => {
     setEditingProduct(product);
     setFormData({
+      ...product,
       name: product.name,
       description: product.description,
       category: product.category,
       brand: product.brand,
       dataSheet: product.dataSheet || "",
-      image: product.image,
+      images: Array.isArray(product.images) ? product.images : [""],
       price: product.price || 0,
       specifications: product.specifications || "",
       inStock: product.inStock ?? true,
@@ -221,7 +245,7 @@ export default function AdminProductsPage() {
       category: "",
       brand: "",
       dataSheet: "",
-      image: "",
+      images: [""],
       price: 0,
       specifications: "",
       inStock: true,
@@ -231,7 +255,7 @@ export default function AdminProductsPage() {
       createdAt: new Date(),
       updatedAt: new Date(),
       isActive: true,
-    }); 
+    });
     setEditingProduct(null);
     setIsDialogOpen(false);
   };
@@ -414,12 +438,14 @@ export default function AdminProductsPage() {
                 <Input
                   id="dataSheet"
                   value={formData.dataSheet}
-                  onChange={(e) => handleInputChange("dataSheet", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("dataSheet", e.target.value)
+                  }
                   placeholder="/placeholder.svg"
                 />
               </div>
               {/* Image URL */}
-              <div>
+              {/* <div>
                 <Label htmlFor="image">Image URL</Label>
                 <Input
                   id="image"
@@ -427,6 +453,38 @@ export default function AdminProductsPage() {
                   onChange={(e) => handleInputChange("image", e.target.value)}
                   placeholder="/placeholder.svg"
                 />
+              </div> */}
+              <div>
+                <Label>Image URLs</Label>
+                {formData.images.map((img, idx) => (
+                  <div key={idx} className="flex items-center gap-2 mb-2">
+                    <Input
+                      value={img}
+                      onChange={(e) => handleImageChange(idx, e.target.value)}
+                      placeholder={`/placeholder${idx + 1}.svg`}
+                    />
+                    {formData.images.length > 1 && (
+                      <Button
+                        type="button"
+                        variant="destructive"
+                        size="icon"
+                        onClick={() => removeImageField(idx)}
+                        title="Remove"
+                      >
+                        ×
+                      </Button>
+                    )}
+                  </div>
+                ))}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={addImageField}
+                  className="mt-1"
+                >
+                  + Add Image URL
+                </Button>
               </div>
 
               {/* In Stock */}
@@ -491,6 +549,8 @@ export default function AdminProductsPage() {
           </div>
         </CardContent>
       </Card>
+
+      <BulkUpload />
 
       {/* Products Table */}
       <Card>

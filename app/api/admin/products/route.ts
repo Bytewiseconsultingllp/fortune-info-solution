@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
       description,
       category,
       brand,
-      image,
+      images=[""],
       price = 0,
       specifications,
       inStock = true,
@@ -94,7 +94,7 @@ export async function POST(request: NextRequest) {
       description,
       category,
       brand,
-      image: image || "/placeholder.svg?height=200&width=200",
+      images,
       price,
       specifications,
       inStock,
@@ -117,3 +117,48 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Failed to create product" }, { status: 500 })
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// | Name     | Description | Category    | Brand   | Price | Specifications | InStock | StockQuantity | SKU    | Tags          | Images            |
+// | -------- | ----------- | ----------- | ------- | ----- | -------------- | ------- | ------------- | ------ | ------------- | ----------------- |
+// | Laptop 1 | Good laptop | Electronics | Dell    | 599   | i5, 8GB RAM    | true    | 10            | LPT001 | laptop,work   | img1.jpg,img2.jpg |
+// | Phone 1  | Smart phone | Mobile      | Samsung | 299   | Android        | true    | 50            | PHN001 | phone,android | phone1.jpg        |
