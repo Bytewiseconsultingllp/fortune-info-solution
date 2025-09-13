@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb")
 
 async function createAllCollections() {
-  const client = new MongoClient(process.env.MONGODB_URI)
+  const client = new MongoClient("mongodb+srv://admin:admin@fortuneinfosolutions.sh3jhok.mongodb.net/?retryWrites=true&w=majority&appName=fortuneInfoSolutions")
 
   try {
     await client.connect()
@@ -23,18 +23,18 @@ async function createAllCollections() {
         validator: {
           $jsonSchema: {
             bsonType: "object",
-            required: ["name", "description", "category", "brand", "image", "inStock", "isActive"],
+            required: ["name", "description", "category", "brand", "images", "inStock", "isActive"],
             properties: {
               name: { bsonType: "string", minLength: 1, maxLength: 200 },
               description: { bsonType: "string", minLength: 10, maxLength: 2000 },
               category: {
                 bsonType: "string",
-                enum: ["networking", "security", "storage", "servers", "accessories"],
+                // enum: ["networking", "security", "storage", "servers", "accessories"],
               },
               brand: { bsonType: "string", minLength: 1, maxLength: 100 },
-              image: { bsonType: "string" },
+              images: { bsonType: "array", items: { bsonType: "string" }, minItems: 1 },
               specifications: { bsonType: "string" },
-              price: { bsonType: "number", minimum: 0 },
+              price: { bsonType: "number", minimum: 0 }, 
               inStock: { bsonType: "bool" },
               stockQuantity: { bsonType: "number", minimum: 0 },
               sku: { bsonType: "string" },

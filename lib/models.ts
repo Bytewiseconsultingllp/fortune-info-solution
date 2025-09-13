@@ -31,7 +31,7 @@ export interface Product {
   category: string 
   brand: string
   dataSheet?: string
-  image: string
+  images: string[]
   specifications?: string
   price?: number 
   inStock: boolean
