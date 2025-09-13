@@ -5,7 +5,7 @@ import { TestimonialsSection } from "./components/testimonials-section";
 import { CaseStudiesSection } from "./components/case-studies-section";
 import { CertificationsSection } from "./components/certificate-section";
 import { ContactSection } from "./components/contact-section";
-import { FooterSection } from "./components/navigation/footer";
+import FooterSection  from "@/components/footerSection";
 import Header from "./components/navigation/Header"
 import { HeroSection } from "./components/hero-section";
 import { FeaturesSection } from "./components/features-section";

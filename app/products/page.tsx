@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Header from "@/app/home/components/navigation/Header"
-import Footer from "@/components/footer"
+import Footer from "@/components/footerSection"
 import { Button } from "@/components/ui/button"
 import {
   Card,

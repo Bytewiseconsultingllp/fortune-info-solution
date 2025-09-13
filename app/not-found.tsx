@@ -1,10 +1,10 @@
 "use client"
 
 import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { Button } from "@/components/ui/button"
+import FooterSection from "@/components/footerSection"
 import { Home, ArrowLeft } from "lucide-react"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 export default function NotFound() {
   return (
@@ -57,7 +57,7 @@ export default function NotFound() {
         </div>
       </div>
 
-      <Footer />
+      <FooterSection />
     </div>
   )
 }

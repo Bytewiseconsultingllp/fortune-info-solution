@@ -56,12 +56,12 @@ export function ServicesSection() {
       className="py-16 px-4 md:px-8 lg:px-16 bg-background text-foreground"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-start mb-12">
+        <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
           <div className="flex-1 section-heading">
             <div className="flex items-center gap-2 mb-8">
               <div className="w-1 h-6 bg-primary"></div>
               <span className="text-primary text-sm font-medium">
-                Our Services
+          Our Services
               </span>
               <div className="w-1 h-6 bg-primary"></div>
             </div>
@@ -73,16 +73,16 @@ export function ServicesSection() {
             </h1>
           </div>
 
-          <div className="flex-1 max-w-md section-heading mt-12">
+          <div className="flex-1 max-w-md section-heading mt-0 md:mt-12">
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
               Fortune Info Solutions delivers end-to-end IT
               infrastructure—hardware, software, networking, and security—to
               future-proof your business.
             </p>
-            <Link href= "/services">
+            <Link href="/services">
               <button className="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-full">
-              More Services
-            </button>
+          More Services
+              </button>
             </Link>
           </div>
         </div>

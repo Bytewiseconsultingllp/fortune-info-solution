@@ -1,5 +1,5 @@
 import Header from "@/app/home/components/navigation/Header"
-import Footer from "@/components/footer"
+import Footer from "@/components/footerSection"
 
 export default function CookiePolicyPage() {
   return (

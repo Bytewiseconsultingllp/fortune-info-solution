@@ -3,7 +3,7 @@
 import type React from "react"
 import { useState } from "react"
 import Header from "@/app/home/components/navigation/Header"
-import Footer from "@/components/footer"
+import Footer from "@/components/footerSection"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -105,7 +105,7 @@ export default function PartnerEnquiryPage() {
               </Link>
             </Button>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Partner Enquiry</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Partnership Enquiry</h1>
           <p className="text-xl max-w-3xl">
             Join our global network of successful partners. Submit your application and let's explore how we can grow
             together.
@@ -332,7 +332,7 @@ export default function PartnerEnquiryPage() {
                       <strong>Phone:</strong> +1 (555) 123-4569
                     </p>
                     <p>
-                      <strong>Hours:</strong> Mon-Fri 9AM-6PM EST
+                      <strong>Hours:</strong> Mon-Fri 9:00 AM - 7:00 PM IST
                     </p>
                   </div>
                 </CardContent>

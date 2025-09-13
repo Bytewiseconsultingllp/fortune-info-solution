@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Header from "@/app/home/components/navigation/Header";
-import Footer from "@/components/footer";
+import Footer from "@/components/footerSection";
 import {
   Card,
   CardContent,
@@ -98,7 +98,7 @@ export default function AboutPage() {
       <ABoutHeroSection />
 
       {/* Company Profile */}
-      <section ref={companyRef} className="py-16">
+      <section ref={companyRef} className="py-16 text-justify">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div ref={profileTextRef}>
@@ -138,7 +138,7 @@ export default function AboutPage() {
 
               <p className="text-lg text-muted-foreground mb-6">
                 With a dedicated PAN-India sales and support team, we aim to be
-                a <p>one-stop solution</p> for all IT requirements—providing not
+                a <span>one-stop solution</span> for all IT requirements—providing not
                 just products, but also long-term reliability, affordability,
                 scalability, and serviceability.
               </p>
