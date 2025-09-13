@@ -1,5 +1,5 @@
 import Header from "@/app/home/components/navigation/Header"
-import Footer from "@/components/footer"
+import Footer from "@/components/footerSection"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Users, Globe, TrendingUp, Handshake, ArrowRight } from "lucide-react"

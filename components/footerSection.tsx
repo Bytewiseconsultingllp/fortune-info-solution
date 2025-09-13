@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function FooterSection() {
+export default function FooterSection() {
   const [email, setEmail] = useState("");
   const newsletterRef = useRef<HTMLDivElement | null>(null);
   const mainFooterRef = useRef<HTMLDivElement | null>(null);

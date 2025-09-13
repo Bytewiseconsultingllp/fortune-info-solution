@@ -58,13 +58,13 @@ export function HeroSection() {
       {/* Content */}
       <div
         ref={heroRef}
-        className="relative z-10 w-full px-4 md:px-8 lg:px-16 pt-20"
+        className="relative z-10 w-full px-4 md:px-8 lg:px-16 vertical-center"
       >
         <div className="max-w-8xl mx-auto">
           <div className="max-w-5xl">
             <h1
-              className="text-6xl md:text-6xl font-bold mb-8 leading-tight"
-              style={{ color: "#000000" }}
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 leading-tight"
+              style={{ color: "white" }}
             >
               Future-Proof Your Business with
               <br />
@@ -72,8 +72,8 @@ export function HeroSection() {
             </h1>
 
             <p
-              className="text-xl mb-12 leading-relaxed"
-              style={{ color: "#000000" }}
+              className="text-base sm:text-lg md:text-xl mb-12 leading-relaxed"
+              style={{ color: "white" }}
             >
               Fortune Info Solutions is your trusted partner for IT hardware,
               software, and integrated solutions. With years of collective
@@ -99,7 +99,7 @@ export function HeroSection() {
                 <div
                   ref={countRef}
                   className="text-4xl font-bold mb-1"
-                  style={{ color: "#000000" }}
+                  style={{ color: "white" }}
                 >
                   0k+
                 </div>

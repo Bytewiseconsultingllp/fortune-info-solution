@@ -34,7 +34,7 @@ const menuItems: MenuItem[] = [
   { label: "Awards & Certificates", href: "/awards" },
   { label: "Partners", href: "/channel-partner" },
   { label: "Products", href: "/products" },
-  { label: "Contact Us", href: "/contact" },
+  // { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Header() {
@@ -48,18 +48,18 @@ export default function Header() {
         <div className="flex items-center gap-6 text-black flex-wrap">
           <div className="flex items-center gap-2">
             <MapPin className="w-4 h-4 text-[#B8001F] " />
-    <span className="font-bold text-[15px]">
+            <span className="font-bold text-[15px]">
               No.17/1, Old No.272, Sri Nandi, 12th Cross 8th Main Road,Wilson
               Garden, Hombegowda Nagar, Bangalore - 560027
             </span>
           </div>
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 text-[#B8001F]" />
-                <span className="font-bold">pradeepnp@fortuneinfo.in , sales@fortuneinfo.in</span>
+            <span className="font-bold">info@fortuneinfo.in</span>
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 text-[#B8001F]" />
-               <span className="font-bold">080-48904501/02/03</span>
+            <span className="font-bold">9845447654, 9686194469</span>
           </div>
         </div>
 
@@ -81,15 +81,14 @@ export default function Header() {
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-30 h-20 bg-[#B8001F] rounded-lg flex items-center justify-center">
-           <Image
+            <Image
               src="/com.png"
               alt="Company Logo"
               width={300}
               height={300}
               className="object-contain"
             />
-
-            </div>
+          </div>
           <span className="text-2xl md:text-3xl font-bold text-black">
             Fortune Info Solutions
           </span>
@@ -132,14 +131,14 @@ export default function Header() {
           ))}
         </div>
 
-        {/* Get Started Button */}
+        {/* Contact Button */}
         <div className="hidden lg:block">
           <Link
-            href="/get-started"
+            href="/contact"
             className="px-6 py-2 rounded-full font-medium transition-colors"
             style={{ backgroundColor: "#B8001F", color: "#FDFAF6" }}
           >
-            Get Started
+            Contact Us
           </Link>
         </div>
 
@@ -186,10 +185,10 @@ export default function Header() {
             ))}
 
             <Link
-              href="/get-started"
+              href="/contact"
               className="mt-4 px-6 py-2 rounded-full font-medium text-white bg-[#B8001F] text-center"
             >
-              Get Started
+              Contact Us
             </Link>
           </div>
         </div>

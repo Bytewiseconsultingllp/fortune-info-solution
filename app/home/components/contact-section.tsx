@@ -168,14 +168,20 @@ export function ContactSection() {
               Your IT Solution Starts Here.
             </h2>
 
-            <p className="text-secondary text-lg mb-12 leading-relaxed">
-              We typically respond to all inquiries within 24 hours during
-              business days.
-              <br /> For urgent matters, please call us directly. <br />
-              <strong> General Inquiries:</strong> 24 hours <br />{" "}
-              <strong>Sales Inquiries :</strong> 4-6 hours <br />{" "}
-              <strong>Technical Support:</strong> 2 - 4 hours
-            </p>
+            <div className="mb-12">
+              <p className="text-secondary text-lg mb-4 leading-relaxed">
+                We typically respond to all inquiries within 24 hours during business days.
+                <br /> For urgent matters, please call us directly.
+              </p>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-secondary text-lg">
+                <div className="font-semibold">General Inquiries:</div>
+                <div>24 hours</div>
+                <div className="font-semibold">Sales Inquiries:</div>
+                <div>4-6 hours</div>
+                <div className="font-semibold">Technical Support:</div>
+                <div>2-4 hours</div>
+              </div>
+            </div>
 
             <div className="mb-12">
               <h3 className="text-2xl font-bold mb-6 text-secondary">

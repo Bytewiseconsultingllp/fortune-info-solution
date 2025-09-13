@@ -1,23 +1,24 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import { Play, X, Globe, Headphones } from "lucide-react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Play, X, Globe, Headphones } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 export function FeaturesSection() {
-  const [isVideoOpen, setIsVideoOpen] = useState(false)
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
-  const col1Ref = useRef<HTMLDivElement>(null)
-  const col2Ref = useRef<HTMLDivElement>(null)
-  const col4Ref = useRef<HTMLDivElement>(null)
+  const col1Ref = useRef<HTMLDivElement>(null);
+  const col2Ref = useRef<HTMLDivElement>(null);
+  const col4Ref = useRef<HTMLDivElement>(null);
 
-  const openVideo = () => setIsVideoOpen(true)
-  const closeVideo = () => setIsVideoOpen(false)
+  const openVideo = () => setIsVideoOpen(true);
+  const closeVideo = () => setIsVideoOpen(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -26,7 +27,7 @@ export function FeaturesSection() {
           trigger: col1Ref.current,
           start: "top 80%",
         },
-      })
+      });
 
       tl.from([col1Ref.current, col2Ref.current], {
         y: 100,
@@ -34,7 +35,7 @@ export function FeaturesSection() {
         duration: 1,
         ease: "power3.out",
         stagger: 0.2,
-      })
+      });
 
       tl.from(
         col4Ref.current,
@@ -45,11 +46,11 @@ export function FeaturesSection() {
           ease: "power3.out",
         },
         "-=1"
-      )
-    }, col1Ref)
+      );
+    }, col1Ref);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
     <>
@@ -64,9 +65,12 @@ export function FeaturesSection() {
               <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto lg:mx-0 mb-6">
                 <Globe className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-primary mb-4">IT Expertise</h3>
+              <h3 className="text-xl font-bold text-primary mb-4">
+                IT Expertise
+              </h3>
               <p className="text-muted-foreground leading-relaxed text-sm">
-                End-to-end solutions in hardware and software, from laptops to enterprise servers.
+                End-to-end solutions in hardware and software, from laptops to
+                enterprise servers.
               </p>
             </div>
 
@@ -115,11 +119,14 @@ export function FeaturesSection() {
                 One-Stop IT Store
               </h3>
               <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
-                Complete range of hardware, software, consumables, and accessories.
+                Complete range of hardware, software, consumables, and
+                accessories.
               </p>
-              <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full font-medium">
-                Find Solution
-              </button>
+              <Link href="/products" className="inline-block">
+                <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full font-medium">
+                  Explore Products
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -151,5 +158,5 @@ export function FeaturesSection() {
         </div>
       )}
     </>
-  )
+  );
 }

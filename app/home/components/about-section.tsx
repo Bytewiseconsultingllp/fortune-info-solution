@@ -136,12 +136,12 @@ export function AboutSection() {
               <div className="w-1 h-6 bg-primary"></div>
             </div>
 
-            <h2 className="text-5xl font-bold text-primary mb-4 leading-tight">
+            <h2 className="text-4xl font-bold text-primary mb-4 leading-tight">
               Experts In Tech Evolution.
             </h2>
 
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              FORTUNE INFO SOLUTIONS is a leading IT hardware & software sales
+            <p className="text-muted-foreground text-lg mb-8 leading-relaxed text-justify">
+              <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware & software sales
               and service provider. Headquartered in Bangalore, we have grown
               into a trusted partner for businesses across India by offering
               cutting-edge products and tailored IT solutions.
@@ -156,7 +156,7 @@ export function AboutSection() {
                 <h3 className="text-2xl font-bold text-secondary mb-2">
                   Innovation And Adaptability
                 </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-muted-foreground mb-6 leading-relaxed text-justify">
                   We drive continuous innovation by integrating world-class
                   hardware and software solutions from leading brands such as
                   HP, Dell, Lenovo, Cisco, Honeywell, and Panasonic
@@ -167,7 +167,7 @@ export function AboutSection() {
                 <h3 className="text-2xl font-bold text-secondary mb-2">
                   Customer-Centric Excellence
                 </h3>
-                <p className="text-muted-foreground mb-8 leading-relaxed">
+                <p className="text-muted-foreground mb-8 leading-relaxed text-justify">
                   From sales to after-sales support, we ensure unparalleled
                   service, competitive pricing, and reliable delivery across PAN
                   India.
