@@ -74,7 +74,7 @@ export function ServicesSection() {
           </div>
 
           <div className="flex-1 max-w-md section-heading mt-0 md:mt-12">
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+            <p className="text-muted-foreground text-lg mb-8 leading-relaxed text-justify">
               Fortune Info Solutions delivers end-to-end IT
               infrastructure—hardware, software, networking, and security—to
               future-proof your business.
@@ -95,7 +95,7 @@ export function ServicesSection() {
             ref={(el) => {
               cardsRef.current[0] = el;
             }}
-            className="bg-card p-8 rounded-2xl shadow-lg"
+            className="bg-card p-8 rounded-2xl shadow-lg text-justify"
           >
             <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
               <Monitor className="w-8 h-8 text-white" />
@@ -116,7 +116,7 @@ export function ServicesSection() {
             ref={(el) => {
               cardsRef.current[1] = el;
             }}
-            className="bg-card p-8 rounded-2xl relative overflow-hidden shadow-lg"
+            className="bg-card p-8 rounded-2xl relative overflow-hidden shadow-lg text-justify"
           >
             <div className="absolute inset-0">
               <Image
@@ -148,7 +148,7 @@ export function ServicesSection() {
             ref={(el) => {
               cardsRef.current[2] = el;
             }}
-            className="bg-card p-8 rounded-2xl shadow-lg"
+            className="bg-card p-8 rounded-2xl shadow-lg text-justify"
           >
             <div className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-primary">
               <Shield className="w-8 h-8 text-white " />

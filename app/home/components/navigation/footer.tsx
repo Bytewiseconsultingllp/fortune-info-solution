@@ -2,9 +2,10 @@
 
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
-import { Facebook, Twitter, Linkedin } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,6 +69,21 @@ export function FooterSection() {
     setEmail("");
   };
 
+  const socials = [
+    {
+      Icon: Facebook,
+      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
+    },
+    {
+      Icon: Instagram,
+      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    },
+    {
+      Icon: Linkedin,
+      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+    },
+  ];
+
   return (
     <footer style={{ backgroundColor: "#FDFAF6", color: "#000000" }}>
       {/* Newsletter Section */}
@@ -117,13 +133,16 @@ export function FooterSection() {
               tellus, luctus nec ullamcorper.
             </p>
             <div className="flex gap-4">
-              {[Facebook, Twitter, Linkedin].map((Icon, i) => (
-                <button
+              {socials.map(({ Icon, url }, i) => (
+                <Link
                   key={i}
-                  className="w-10 h-10 border border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
                 >
-                  <Icon className="w-4 h-4 text-secondary hover:text-primary" />
-                </button>
+                  <Icon className="w-5 h-5 text-secondary hover:text-primary" />
+                </Link>
               ))}
             </div>
           </div>

@@ -178,7 +178,7 @@ export default function AboutPage() {
                 <CardTitle className="text-2xl">Our Mission</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base">
+                <CardDescription className="text-base text-justify">
                   To provide exceptional distribution services that connect
                   quality brands with global markets, delivering value through
                   innovation, reliability, and customer-centric solutions. We
@@ -196,7 +196,7 @@ export default function AboutPage() {
                 <CardTitle className="text-2xl">Our Vision</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-base">
+                <CardDescription className="text-base text-justify">
                   To become the world’s most trusted distribution hub,
                   recognized for our commitment to excellence, innovation, and
                   sustainable growth. We envision a future where every business
@@ -210,8 +210,8 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our Core Values
@@ -231,7 +231,7 @@ export default function AboutPage() {
                 <Award className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-3">Excellence</h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground ">
                 We pursue excellence in everything we do, from product quality
                 to customer service, ensuring the highest standards are
                 maintained.

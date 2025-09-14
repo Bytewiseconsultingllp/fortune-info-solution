@@ -68,19 +68,20 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
 
     // Destructure with defaults
-    const {
-      name,
-      description,
-      category,
-      brand,
-      images=[""],
-      price = 0,
-      specifications,
-      inStock = true,
-      stockQuantity = 0,
-      sku = "",
-      tags = [],
-    } = body
+  const {
+  name,
+  description,
+  category,
+  brand,
+  images = ["default.jpg"],   // ✅ non-empty default
+  price = 0,
+  specifications = "",        // ✅ force string
+  inStock = true,
+  stockQuantity = 0,
+  sku = "",
+  tags = [],
+  datasheet = "N/A",          // ✅ non-empty default
+} = body;
 
     if (!name || !description || !category || !brand) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
@@ -90,21 +91,24 @@ export async function POST(request: NextRequest) {
 
     // Prepare product data for insertion
     const productData = {
-      name,
-      description,
-      category,
-      brand,
-      images,
-      price,
-      specifications,
-      inStock,
-      stockQuantity,
-      sku,
-      tags,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      isActive: true,
-    }
+  name,
+  description,
+  category,
+  brand,
+  images,
+  price,
+  specifications: typeof specifications === "object"
+    ? JSON.stringify(specifications) // ✅ stringify if object
+    : String(specifications || ""),
+  inStock,
+  stockQuantity,
+  sku,
+  tags,
+  datasheet,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  isActive: true,
+};
 
     const result = await db.collection("products").insertOne(productData)
 
@@ -112,9 +116,9 @@ export async function POST(request: NextRequest) {
       message: "Product created successfully",
       productId: result.insertedId,
     })
-  } catch (error) {
-    console.error("Error creating product:", error)
-    return NextResponse.json({ error: "Failed to create product" }, { status: 500 })
+  } catch (error: any) {
+  console.error("Error creating product:", error?.errInfo ?? error);
+  return NextResponse.json({ error: "Failed to create product" }, { status: 500 });
   }
 }
 
