@@ -6,6 +6,7 @@ import { Facebook, Linkedin, Instagram } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { toast } from "sonner";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +23,20 @@ export function ContactSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const leftRef = useRef<HTMLDivElement | null>(null);
   const rightRef = useRef<HTMLDivElement | null>(null);
+  const socials = [
+    {
+      Icon: Facebook,
+      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
+    },
+    {
+      Icon: Instagram,
+      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    },
+    {
+      Icon: Linkedin,
+      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+    },
+  ];
 
   useEffect(() => {
     if (sectionRef.current) {
@@ -170,7 +185,8 @@ export function ContactSection() {
 
             <div className="mb-12">
               <p className="text-secondary text-lg mb-4 leading-relaxed">
-                We typically respond to all inquiries within 24 hours during business days.
+                We typically respond to all inquiries within 24 hours during
+                business days.
                 <br /> For urgent matters, please call us directly.
               </p>
               <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-secondary text-lg">
@@ -250,13 +266,16 @@ export function ContactSection() {
             </div>
 
             <div className="flex gap-4">
-              {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-                <button
+              {socials.map(({ Icon, url }, i) => (
+                <Link
                   key={i}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
                 >
                   <Icon className="w-5 h-5 text-secondary hover:text-primary" />
-                </button>
+                </Link>
               ))}
             </div>
           </div>

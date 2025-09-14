@@ -40,6 +40,9 @@ const menuItems: MenuItem[] = [
 export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+   const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || "#";
+  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#";
+  const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL || "#";
 
   return (
     <header className="w-full z-50">
@@ -63,17 +66,34 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
-            <Facebook className="w-4 h-4 text-white" />
-          </button>
-          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
-            <Instagram className="w-4 h-4 text-white" />
-          </button>
-          <button className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors">
-            <Linkedin className="w-4 h-4 text-white" />
-          </button>
-        </div>
+         <div className="flex items-center gap-3">
+      <Link
+        href={facebookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors"
+      >
+        <Facebook className="w-4 h-4 text-white" />
+      </Link>
+
+      <Link
+        href={instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors"
+      >
+        <Instagram className="w-4 h-4 text-white" />
+      </Link>
+
+      <Link
+        href={linkedinUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors"
+      >
+        <Linkedin className="w-4 h-4 text-white" />
+      </Link>
+    </div>
       </div>
 
       {/* Main Navigation */}
