@@ -324,17 +324,20 @@ export default function PartnerEnquiryPage() {
                   <p className="text-sm text-muted-foreground mb-4">
                     Have questions about our partnership program? Our team is here to help.
                   </p>
-                  <div className="space-y-2 text-sm">
-                    <p>
-                      <strong>Partnership Team:</strong> partnerships@fortuneinfosolutions.com
-                    </p>
-                    <p>
-                      <strong>Phone:</strong> +1 (555) 123-4569
-                    </p>
-                    <p>
-                      <strong>Hours:</strong> Mon-Fri 9:00 AM - 7:00 PM IST
-                    </p>
-                  </div>
+                    <div className="space-y-2 text-sm">
+                    <div className="flex">
+                      <span className="font-semibold w-36 flex-shrink-0">Partnership Team:</span>
+                      <span className="truncate">info@fortuneinfo.in</span>
+                    </div>
+                    <div className="flex">
+                      <span className="font-semibold w-36 flex-shrink-0">Phone:</span>
+                      <span className="truncate">9845447654 <br />9686194469</span>
+                    </div>
+                    <div className="flex">
+                      <span className="font-semibold w-36 flex-shrink-0">Hours:</span>
+                      <span className="truncate">Mon-Fri 9:00 AM - 7:00 PM IST</span>
+                    </div>
+                    </div>
                 </CardContent>
               </Card>
             </div>

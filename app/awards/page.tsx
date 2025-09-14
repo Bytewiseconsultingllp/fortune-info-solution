@@ -170,10 +170,10 @@ export default function AwardsPage() {
                       <Badge variant="secondary">{award.year}</Badge>
                     </div>
                     <CardTitle className="text-xl">{award.title}</CardTitle>
-                    <CardDescription className="font-medium text-primary">{award.organization}</CardDescription>
+                    <CardDescription className="font-medium text-primary text-justify">{award.organization}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{award.description}</p>
+                    <p className="text-muted-foreground text-justify">{award.description}</p>
                   </CardContent>
                 </Card>
               )

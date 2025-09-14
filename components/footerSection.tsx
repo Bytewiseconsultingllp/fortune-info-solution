@@ -237,7 +237,7 @@ export default function FooterSection() {
                 key={link}
                 href="#"
                 className="text-secondary/70 hover:text-secondary transition-colors text-sm"
-              >
+              > 
                 {link}
               </a>
             ))}

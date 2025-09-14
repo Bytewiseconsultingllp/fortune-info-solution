@@ -152,7 +152,7 @@ export function CaseStudiesSection() {
                     {study.metric}
                   </span>
                 </div>
-                <p className="mb-6 leading-relaxed text-secondary">
+                <p className="mb-6 leading-relaxed text-secondary text-justify">
                   {study.problem}
                 </p>
                 <button className="flex items-center gap-2 font-medium text-brand-red hover:text-brand-red/80 transition-colors duration-300">
