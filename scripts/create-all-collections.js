@@ -1,7 +1,7 @@
 const { MongoClient } = require("mongodb")
 
 async function createAllCollections() {
-  const client = new MongoClient("mongodb+srv://admin:admin@fortuneinfosolutions.sh3jhok.mongodb.net/?retryWrites=true&w=majority&appName=fortuneInfoSolutions")
+  const client = new MongoClient(process.env.MONGODB_URI);
 
   try {
     await client.connect()
@@ -33,6 +33,7 @@ async function createAllCollections() {
               },
               brand: { bsonType: "string", minLength: 1, maxLength: 100 },
               images: { bsonType: "array", items: { bsonType: "string" }, minItems: 1 },
+              datasheet: { bsonType: "string", minLength: 1},
               specifications: { bsonType: "string" },
               price: { bsonType: "number", minimum: 0 }, 
               inStock: { bsonType: "bool" },

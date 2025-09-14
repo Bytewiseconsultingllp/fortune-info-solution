@@ -49,7 +49,7 @@ export default function AdminProductsPage() {
     description: "",
     category: "",
     brand: "",
-    dataSheet: "",
+      datasheet: "",
     // image: "",
     images: [""],
     specifications: "",
@@ -199,7 +199,7 @@ export default function AdminProductsPage() {
       description: product.description,
       category: product.category,
       brand: product.brand,
-      dataSheet: product.dataSheet || "",
+      datasheet: product.datasheet || "",
       images: Array.isArray(product.images) ? product.images : [""],
       price: product.price || 0,
       specifications: product.specifications || "",
@@ -244,7 +244,7 @@ export default function AdminProductsPage() {
       description: "",
       category: "",
       brand: "",
-      dataSheet: "",
+      datasheet: "",
       images: [""],
       price: 0,
       specifications: "",
@@ -432,14 +432,14 @@ export default function AdminProductsPage() {
                 />
               </div>
 
-              {/* DataSheet URL */}
+              {/*   datasheet URL */}
               <div>
-                <Label htmlFor="dataSheet">DataSheet URL</Label>
+                <Label htmlFor="datasheet">Datasheet URL</Label>
                 <Input
-                  id="dataSheet"
-                  value={formData.dataSheet}
+                  id="datasheet"
+                  value={formData.datasheet}
                   onChange={(e) =>
-                    handleInputChange("dataSheet", e.target.value)
+                    handleInputChange("datasheet", e.target.value)
                   }
                   placeholder="/placeholder.svg"
                 />
@@ -566,7 +566,7 @@ export default function AdminProductsPage() {
                 className="flex items-center gap-4 p-4 border rounded-lg"
               >
                 <img
-                  src={product.image || "/placeholder.svg"}
+                  src={product.images?.[0] || "/placeholder.svg"}
                   alt={product.name}
                   className="w-16 h-16 object-cover rounded"
                 />

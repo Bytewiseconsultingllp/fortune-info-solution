@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { LayoutDashboard, Package, Settings, MessageSquare, Users, FileText, Menu, X, LogOut } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
+import Image from "next/image"
 
 const navigation = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -117,10 +118,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         )}
       >
         <div className="flex h-full flex-col">
-          {/* Logo */}
-          <div className="flex h-16 items-center justify-between px-6 border-b">
+          {/* Logo */} 
+          <div className="flex h-16 items-center justify-between px-6 border-b mt-16">
             <Link href="/admin" className="flex items-center">
-              <span className="text-xl font-bold text-primary">Admin Panel</span>
+              <span className="text-xl font-bold text-primary">
+                <Image src="/com.png" alt="Logo" className="h-auto w-auto" 
+              width={300}
+              height={300}/>
+              </span>
             </Link>
             <Button variant="ghost" size="sm" className="lg:hidden" onClick={() => setSidebarOpen(false)}>
               <X className="h-5 w-5" />
@@ -128,7 +133,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 px-4 py-6 space-y-2">
+          <nav className="flex-1 px-4 py-6 mt-16 space-y-2">
             {navigation.map((item) => {
               const Icon = item.icon
               const isActive = pathname === item.href
@@ -173,12 +178,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Main content */}
       <div className="lg:pl-64">
         {/* Top bar */}
-        <div className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-6">
+        <div className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-6 bg-gradient-to-r from-primary from-80% to-secondary to-100%">
           <Button variant="ghost" size="sm" className="lg:hidden" onClick={() => setSidebarOpen(true)}>
             <Menu className="h-5 w-5" />
           </Button>
-          <div className="flex-1">
-            <h1 className="text-lg font-semibold">Fortune Info Solutions - Admin Dashboard</h1>
+          <div className="flex-1 " 
+          
+          >
+            <h1 className="text-2xl font-semibold text-white">ADMIN DASHBOARD</h1>
           </div>
           <Badge variant="secondary">Admin</Badge>
         </div>

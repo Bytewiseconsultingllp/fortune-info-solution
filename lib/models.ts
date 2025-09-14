@@ -30,7 +30,7 @@ export interface Product {
   description: string
   category: string 
   brand: string
-  dataSheet?: string
+  datasheet?: string
   images: string[]
   specifications?: string
   price?: number 
