@@ -164,7 +164,11 @@ const getQuoteEmailTemplate = (data: any) => `
           </tr>
           <tr>
             <td style="font-weight:bold; color:#333;">Quantity:</td>
-            <td style="color:#555;">${data.quantity}</td>
+            <td style="color:#555;">${data.quantity} Units</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; color:#333;">Urgency:</td>
+            <td style="color:#555;">${data.urgency}</td>
           </tr>
           <tr>
             <td style="font-weight:bold; color:#333;">Message:</td>

@@ -1,25 +1,37 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect, Suspense } from "react"
-import { useSearchParams } from "next/navigation"
-import Header from "@/app/home/components/navigation/Header"
-import Footer from "@/components/footerSection"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { useToast } from "@/hooks/use-toast"
-import { ArrowLeft } from "lucide-react"
-import Link from "next/link"
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import Header from "@/app/home/components/navigation/Header";
+import Footer from "@/components/footerSection";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 function QuoteForm() {
-  const searchParams = useSearchParams()
-  const { toast } = useToast()
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const searchParams = useSearchParams();
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     productId: "",
     productName: "",
@@ -28,32 +40,33 @@ function QuoteForm() {
     customerPhone: "",
     company: "",
     quantity: "",
+    urgency: "",
     message: "",
-  })
+  });
 
   useEffect(() => {
-    const productId = searchParams.get("product")
-    const productName = searchParams.get("name")
+    const productId = searchParams.get("product");
+    const productName = searchParams.get("name");
 
     if (productId && productName) {
       setFormData((prev) => ({
         ...prev,
         productId,
         productName: decodeURIComponent(productName),
-      }))
+      }));
     }
-  }, [searchParams])
+  }, [searchParams]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     try {
       const response = await fetch("/api/quote", {
@@ -62,13 +75,14 @@ function QuoteForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (response.ok) {
         toast({
           title: "Quote Request Submitted",
-          description: "We'll get back to you within 24 hours with a detailed quote.",
-        })
+          description:
+            "We'll get back to you within 24 hours with a detailed quote.",
+        });
 
         // Reset form
         setFormData({
@@ -79,21 +93,22 @@ function QuoteForm() {
           customerPhone: "",
           company: "",
           quantity: "",
+          urgency: "",
           message: "",
-        })
+        });
       } else {
-        throw new Error("Failed to submit quote request")
+        throw new Error("Failed to submit quote request");
       }
     } catch (error) {
       toast({
         title: "Error",
         description: "Failed to submit quote request. Please try again.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -110,10 +125,12 @@ function QuoteForm() {
               </Link>
             </Button>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Request a Quote</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Request a Quote
+          </h1>
           <p className="text-xl max-w-3xl">
-            Get a personalized quote for your product requirements. Our team will provide competitive pricing and
-            detailed specifications.
+            Get a personalized quote for your product requirements. Our team
+            will provide competitive pricing and detailed specifications.
           </p>
         </div>
       </section>
@@ -128,7 +145,8 @@ function QuoteForm() {
                 <CardHeader>
                   <CardTitle>Quote Request Form</CardTitle>
                   <CardDescription>
-                    Please fill out the form below and we'll get back to you with a detailed quote within 24 hours.
+                    Please fill out the form below and we'll get back to you
+                    with a detailed quote within 24 hours.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -136,7 +154,9 @@ function QuoteForm() {
                     {/* Product Information */}
                     {formData.productName && (
                       <div className="bg-muted/50 p-4 rounded-lg">
-                        <h3 className="font-semibold mb-2">Product Information</h3>
+                        <h3 className="font-semibold mb-2">
+                          Product Information
+                        </h3>
                         <p className="text-sm text-muted-foreground">
                           <strong>Product:</strong> {formData.productName}
                         </p>
@@ -150,7 +170,9 @@ function QuoteForm() {
                         <Input
                           id="customerName"
                           value={formData.customerName}
-                          onChange={(e) => handleInputChange("customerName", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("customerName", e.target.value)
+                          }
                           required
                         />
                       </div>
@@ -160,7 +182,9 @@ function QuoteForm() {
                           id="customerEmail"
                           type="email"
                           value={formData.customerEmail}
-                          onChange={(e) => handleInputChange("customerEmail", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("customerEmail", e.target.value)
+                          }
                           required
                         />
                       </div>
@@ -173,7 +197,9 @@ function QuoteForm() {
                           id="customerPhone"
                           type="tel"
                           value={formData.customerPhone}
-                          onChange={(e) => handleInputChange("customerPhone", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("customerPhone", e.target.value)
+                          }
                           required
                         />
                       </div>
@@ -182,15 +208,23 @@ function QuoteForm() {
                         <Input
                           id="company"
                           value={formData.company}
-                          onChange={(e) => handleInputChange("company", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("company", e.target.value)
+                          }
                         />
                       </div>
                     </div>
 
                     {/* Product Details */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="quantity">Quantity Required *</Label>
-                      <Select value={formData.quantity} onValueChange={(value) => handleInputChange("quantity", value)}>
+                      <Select
+                        value={formData.quantity}
+                        onValueChange={(value) =>
+                          handleInputChange("quantity", value)
+                        }
+                      >
                         <SelectTrigger>
                           <SelectValue placeholder="Select quantity range" />
                         </SelectTrigger>
@@ -200,9 +234,31 @@ function QuoteForm() {
                           <SelectItem value="51-100">51-100 units</SelectItem>
                           <SelectItem value="101-500">101-500 units</SelectItem>
                           <SelectItem value="500+">500+ units</SelectItem>
-                          <SelectItem value="custom">Custom quantity</SelectItem>
+                          <SelectItem value="custom">
+                            Custom quantity
+                          </SelectItem>
                         </SelectContent>
                       </Select>
+                    </div>
+                    <div>
+                      <Label htmlFor="urgency">Urgency Level *</Label>
+                      <Select
+                        value={formData.urgency}
+                        onValueChange={(value) =>
+                          handleInputChange("urgency", value)
+                        }
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select urgency level" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="low">Low</SelectItem>
+                          <SelectItem value="medium">Medium</SelectItem>
+                          <SelectItem value="high">High</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
                     </div>
 
                     <div>
@@ -211,12 +267,18 @@ function QuoteForm() {
                         id="message"
                         placeholder="Please provide any additional details about your requirements, timeline, or specific needs..."
                         value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("message", e.target.value)
+                        }
                         rows={4}
                       />
                     </div>
 
-                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
                       {isSubmitting ? "Submitting..." : "Submit Quote Request"}
                     </Button>
                   </form>
@@ -226,7 +288,7 @@ function QuoteForm() {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              <Card>
+              <Card className="w-full min-w-[280px]">
                 <CardHeader>
                   <CardTitle>Why Choose Us?</CardTitle>
                 </CardHeader>
@@ -234,42 +296,56 @@ function QuoteForm() {
                   <div>
                     <h4 className="font-semibold">Competitive Pricing</h4>
                     <p className="text-sm text-muted-foreground">
-                      We offer competitive rates with transparent pricing and no hidden fees.
+                      We offer competitive rates with transparent pricing and no
+                      hidden fees.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold">Fast Response</h4>
                     <p className="text-sm text-muted-foreground">
-                      Get your quote within 24 hours with detailed specifications.
+                      Get your quote within 24 hours with detailed
+                      specifications.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold">Quality Assurance</h4>
                     <p className="text-sm text-muted-foreground">
-                      All products come with quality guarantees and warranty support.
+                      All products come with quality guarantees and warranty
+                      support.
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="w-full min-w-[280px]">
                 <CardHeader>
                   <CardTitle>Need Help?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Our sales team is here to help you find the right solution for your needs.
+                  <p className="text-sm text-muted-foreground mb-4 text-justify">
+                    Our sales team is here to help you find the right solution
+                    for your needs.
                   </p>
-                  <div className="space-y-2 text-sm">
-                    <p>
-                      <strong>Phone:</strong> +1 (555) 123-4567
-                    </p>
-                    <p>
-                      <strong>Email:</strong> sales@fortuneinfosolutions.com
-                    </p>
-                    <p>
-                      <strong>Hours:</strong> Mon-Fri 9AM-6PM EST
-                    </p>
+                  <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-sm">
+                    <div className="font-semibold text-muted-foreground">
+                      Phone:
+                    </div>
+                    <div className="text-muted-foreground">
+                      9845447654, 9686194469
+                    </div>
+                    <div className="font-semibold text-muted-foreground">
+                      Email:
+                    </div>
+                    <div className="text-muted-foreground">
+                      info@fortuneinfo.in
+                    </div>
+                    <div className="font-semibold text-muted-foreground">
+                      Hours:
+                    </div>
+                    <div className="text-muted-foreground">
+                      Mon-Fri <br />
+                      9:00 AM-7:00 PM IST
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -280,7 +356,7 @@ function QuoteForm() {
 
       <Footer />
     </div>
-  )
+  );
 }
 
 export default function QuotePage() {
@@ -288,5 +364,5 @@ export default function QuotePage() {
     <Suspense fallback={<div>Loading...</div>}>
       <QuoteForm />
     </Suspense>
-  )
+  );
 }

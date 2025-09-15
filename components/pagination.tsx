@@ -91,3 +91,5 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: CustomPagi
     </ShadcnPagination>
   );
 };
+
+export default Pagination;
