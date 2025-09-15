@@ -318,15 +318,7 @@ export default function AdminContactsPage() {
                       )}
                     </DialogContent>
                   </Dialog>
-                  <Select
-                    value={contact.status}
-                    onValueChange={(value) => updateContactStatus(contact._id!, value as Contact["status"])}
-                  >
-                    <SelectTrigger className="w-32">
-                      <SelectValue />
-                    </SelectTrigger>
-                    
-                  </Select>
+                  
                 </div>
               </div>
             ))}
