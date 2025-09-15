@@ -117,9 +117,9 @@ export default function ServicesPage() {
                     </div>
                     <Button className="w-full" asChild>
                       <Link
-                        href={`/quote?sku=${encodeURIComponent(service.name)}&name=${encodeURIComponent(service.name)}`}
+                        href={`/contact`}
                       >
-                        Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
+                        Contact Us  <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </CardContent>
