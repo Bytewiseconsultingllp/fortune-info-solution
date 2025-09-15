@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
-import Image from "next/image";  // ✅ Single correct import
+import HeroImg from "@/app/assets/home-hero.png"
 
 export function HeroSection() {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -11,6 +12,7 @@ export function HeroSection() {
 
   useEffect(() => {
     if (heroRef.current) {
+      // Staggered fade-in animation for headings, paragraph, and button
       gsap.from(heroRef.current.children, {
         opacity: 0,
         y: 50,
@@ -20,6 +22,7 @@ export function HeroSection() {
       });
     }
 
+    // Count-up animation
     if (countRef.current) {
       const obj = { value: 0 };
       gsap.to(obj, {
@@ -39,16 +42,17 @@ export function HeroSection() {
       className="relative h-screen flex items-center"
       style={{ backgroundColor: "#FDFAF6" }}
     >
-      {/* Background Image - Ensure parent has relative positioning */}
-      <div className="absolute inset-0 -top-32 relative">
+      {/* Background Image - overlay remains */}
+      <div className="absolute inset-0 -top-32">
         <Image
+          // src="/placeholder.svg?height=1200&width=1920&text=Professional+in+Server+Room"
           src={HeroImg}
           alt="Professional in server room"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0"></div>
+        <div className="absolute inset-0 "></div>
       </div>
 
       {/* Content */}
@@ -79,7 +83,7 @@ export function HeroSection() {
             </p>
 
             <div className="flex items-center gap-8">
-              <Link href="/contact">
+              <Link href={"/contact"}>
                 <button
                   className="px-8 py-4 rounded-full text-lg font-medium transition-colors cursor-pointer"
                   style={{
