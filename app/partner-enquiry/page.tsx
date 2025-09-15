@@ -10,13 +10,16 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { useToast } from "@/hooks/use-toast"
-import { ArrowLeft, CheckCircle } from "lucide-react"
+import { ArrowLeft, CheckCircle, AlertCircle, Mail } from "lucide-react"
 import Link from "next/link"
 
 export default function PartnerEnquiryPage() {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errors, setErrors] = useState<string[]>([])
+  const [isSuccess, setIsSuccess] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,16 +30,70 @@ export default function PartnerEnquiryPage() {
     message: "",
   })
 
+  const validateForm = () => {
+    const newErrors: string[] = []
+
+    if (!formData.name.trim()) {
+      newErrors.push("Full name is required")
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.push("Email address is required")
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.push("Please enter a valid email address")
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.push("Phone number is required")
+    } else if (!/^[+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/[\s\-$$$$]/g, ""))) {
+      newErrors.push("Please enter a valid phone number")
+    }
+
+    if (!formData.company.trim()) {
+      newErrors.push("Company name is required")
+    }
+
+    if (!formData.businessType) {
+      newErrors.push("Business type is required")
+    }
+
+    if (!formData.location.trim()) {
+      newErrors.push("Primary location is required")
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.push("Business description is required")
+    } else if (formData.message.trim().length < 50) {
+      newErrors.push("Business description must be at least 50 characters long")
+    }
+
+    return newErrors
+  }
+
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
     }))
+    if (errors.length > 0) {
+      setErrors([])
+    }
+    if (isSuccess) {
+      setIsSuccess(false)
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    const validationErrors = validateForm()
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors)
+      return
+    }
+
     setIsSubmitting(true)
+    setErrors([])
 
     try {
       const response = await fetch("/api/partner-enquiry", {
@@ -48,13 +105,13 @@ export default function PartnerEnquiryPage() {
       })
 
       if (response.ok) {
+        setIsSuccess(true)
         toast({
           title: "Partner Application Submitted",
           description:
             "Thank you for your interest. Our partnership team will review your application and contact you within 48 hours.",
         })
 
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -68,6 +125,7 @@ export default function PartnerEnquiryPage() {
         throw new Error("Failed to submit application")
       }
     } catch (error) {
+      setErrors(["Failed to submit application. Please try again or contact us directly."])
       toast({
         title: "Error",
         description: "Failed to submit application. Please try again or contact us directly.",
@@ -128,6 +186,35 @@ export default function PartnerEnquiryPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
+                  {isSuccess && (
+                    <Alert className="mb-6 border-green-200 bg-green-50 text-green-800">
+                      <Mail className="h-4 w-4" />
+                      <AlertDescription className="font-medium">
+                        <div className="font-semibold mb-1">Application Submitted Successfully!</div>
+                        <div>
+                          Thank you for your partnership application. Please check your email for confirmation details.
+                          Our team will review your application and contact you within 48 hours.
+                        </div>
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
+                  {errors.length > 0 && (
+                    <Alert variant="destructive" className="mb-6">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        <div className="font-semibold mb-2">Please fix the following errors:</div>
+                        <ul className="list-disc list-inside space-y-1">
+                          {errors.map((error, index) => (
+                            <li key={index} className="text-sm">
+                              {error}
+                            </li>
+                          ))}
+                        </ul>
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Personal Information */}
                     <div>
@@ -139,6 +226,7 @@ export default function PartnerEnquiryPage() {
                             id="name"
                             value={formData.name}
                             onChange={(e) => handleInputChange("name", e.target.value)}
+                            className={errors.some((error) => error.includes("Full name")) ? "border-red-500" : ""}
                             required
                           />
                         </div>
@@ -149,6 +237,7 @@ export default function PartnerEnquiryPage() {
                             type="email"
                             value={formData.email}
                             onChange={(e) => handleInputChange("email", e.target.value)}
+                            className={errors.some((error) => error.includes("email")) ? "border-red-500" : ""}
                             required
                           />
                         </div>
@@ -160,6 +249,7 @@ export default function PartnerEnquiryPage() {
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
+                          className={errors.some((error) => error.includes("Phone")) ? "border-red-500" : ""}
                           required
                         />
                       </div>
@@ -175,6 +265,7 @@ export default function PartnerEnquiryPage() {
                             id="company"
                             value={formData.company}
                             onChange={(e) => handleInputChange("company", e.target.value)}
+                            className={errors.some((error) => error.includes("Company")) ? "border-red-500" : ""}
                             required
                           />
                         </div>
@@ -186,7 +277,11 @@ export default function PartnerEnquiryPage() {
                               value={formData.businessType}
                               onValueChange={(value) => handleInputChange("businessType", value)}
                             >
-                              <SelectTrigger>
+                              <SelectTrigger
+                                className={
+                                  errors.some((error) => error.includes("Business type")) ? "border-red-500" : ""
+                                }
+                              >
                                 <SelectValue placeholder="Select business type" />
                               </SelectTrigger>
                               <SelectContent>
@@ -205,6 +300,7 @@ export default function PartnerEnquiryPage() {
                               placeholder="City, State/Province, Country"
                               value={formData.location}
                               onChange={(e) => handleInputChange("location", e.target.value)}
+                              className={errors.some((error) => error.includes("location")) ? "border-red-500" : ""}
                               required
                             />
                           </div>
@@ -217,9 +313,10 @@ export default function PartnerEnquiryPage() {
                       <Label htmlFor="message">Tell us about your business *</Label>
                       <Textarea
                         id="message"
-                        placeholder="Please describe your business, target markets, current product lines, distribution capabilities, and why you're interested in partnering with Fortune Info Solutions..."
+                        placeholder="Please describe your business, target markets, current product lines, distribution capabilities, and why you're interested in partnering with Fortune Info Solutions... (minimum 50 characters)"
                         value={formData.message}
                         onChange={(e) => handleInputChange("message", e.target.value)}
+                        className={errors.some((error) => error.includes("description")) ? "border-red-500" : ""}
                         rows={6}
                         required
                       />
@@ -324,20 +421,23 @@ export default function PartnerEnquiryPage() {
                   <p className="text-sm text-muted-foreground mb-4">
                     Have questions about our partnership program? Our team is here to help.
                   </p>
-                    <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-sm">
                     <div className="flex">
                       <span className="font-semibold w-36 flex-shrink-0">Partnership Team:</span>
                       <span className="truncate">info@fortuneinfo.in</span>
                     </div>
                     <div className="flex">
                       <span className="font-semibold w-36 flex-shrink-0">Phone:</span>
-                      <span className="truncate">9845447654 <br />9686194469</span>
+                      <span className="truncate">
+                        9845447654 <br />
+                        9686194469
+                      </span>
                     </div>
                     <div className="flex">
                       <span className="font-semibold w-36 flex-shrink-0">Hours:</span>
                       <span className="truncate">Mon-Fri 9:00 AM - 7:00 PM IST</span>
                     </div>
-                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
