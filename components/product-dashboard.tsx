@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { FilterSidebar } from "@/components/filter-products-sidebar";
 import { ProductCard } from "@/components/product-card";
-import Pagination from "./Pagination";
+import Pagination from "@/components/pagination";
 import { Product } from "@/lib/models";
 
 interface ProductDashboardProps {
