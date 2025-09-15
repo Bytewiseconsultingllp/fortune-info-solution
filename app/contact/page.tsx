@@ -11,11 +11,14 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
-import { MapPin, Phone, Mail, Clock, User } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { MapPin, Phone, Mail, Clock, User, CheckCircle, AlertCircle } from "lucide-react"
 
 export default function ContactPage() {
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [isSuccess, setIsSuccess] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,7 +33,6 @@ export default function ContactPage() {
     notes: [],
   })
 
-  // GSAP refs
   const heroRef = useRef<HTMLDivElement | null>(null)
   const formRef = useRef<HTMLDivElement | null>(null)
   const infoRef = useRef<HTMLDivElement | null>(null)
@@ -73,16 +75,60 @@ export default function ContactPage() {
     return () => ctx.revert()
   }, [])
 
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {}
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Full name is required"
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email address is required"
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address"
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required"
+    } else if (!/^[\d\s\-+$$$$]+$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number"
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required"
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters long"
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
   const handleInputChange = (field: string, value: string | string[]) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
     }))
+    if (errors[field]) {
+      setErrors((prev) => ({
+        ...prev,
+        [field]: "",
+      }))
+    }
+    if (isSuccess) {
+      setIsSuccess(false)
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!validateForm()) {
+      return
+    }
+
     setIsSubmitting(true)
+    setErrors({})
 
     try {
       const response = await fetch("/api/contact", {
@@ -94,13 +140,14 @@ export default function ContactPage() {
       })
 
       if (response.ok) {
+        setIsSuccess(true)
         toast({
           title: "Message Sent Successfully",
           description: "Thank you for contacting us. We'll get back to you within 24 hours.",
         })
 
         setFormData({
-          name: "", 
+          name: "",
           email: "",
           phone: "",
           company: "",
@@ -116,6 +163,7 @@ export default function ContactPage() {
         throw new Error("Failed to send message")
       }
     } catch (error) {
+      setErrors({ submit: "Failed to send message. Please try again or contact us directly." })
       toast({
         title: "Error",
         description: "Failed to send message. Please try again or contact us directly.",
@@ -149,7 +197,8 @@ export default function ContactPage() {
       name: "Nabaratan Patra",
       position: "Director",
       initials: "NP",
-      image: "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
     },
   ]
 
@@ -157,7 +206,6 @@ export default function ContactPage() {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero Section */}
       <section ref={heroRef} className="bg-primary text-primary-foreground py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
@@ -168,11 +216,10 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Team Section */}
       <section ref={teamRef} className="py-20 bg-gradient-to-br from-background via-muted/20 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center gap-2 bg-muted text-foreground px-4 py-2 rounded-full text-sm font-medium mb-4">
               <User className="h-4 w-4" />
               Leadership Excellence
             </div>
@@ -212,8 +259,8 @@ export default function ContactPage() {
                     <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
                       {member.name}
                     </h3>
-                    <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-3 py-1 rounded-full text-sm font-medium">
-                      <div className="w-2 h-2 bg-accent rounded-full" />
+                    <div className="inline-flex items-center gap-2 bg-muted text-foreground px-3 py-1 rounded-full text-sm font-medium">
+                      <div className="w-2 h-2 bg-primary rounded-full" />
                       {member.position}
                     </div>
 
@@ -248,11 +295,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form & Info */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Contact Form */}
             <div ref={formRef} className="lg:col-span-2">
               <Card>
                 <CardHeader>
@@ -262,8 +307,33 @@ export default function ContactPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
+                  {isSuccess && (
+                    <Alert className="mb-6 border-green-200 bg-green-50">
+                      <CheckCircle className="h-4 w-4 text-green-600" />
+                      <AlertDescription className="text-green-800">
+                        <strong>Message sent successfully!</strong> Please check your email for confirmation. We'll get
+                        back to you within 24 hours.
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
+                  {Object.keys(errors).length > 0 && (
+                    <Alert variant="destructive" className="mb-6">
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertDescription>
+                        <strong>Please fix the following errors:</strong>
+                        <ul className="mt-2 list-disc list-inside space-y-1">
+                          {Object.entries(errors).map(([field, error]) => (
+                            <li key={field} className="text-sm">
+                              {error}
+                            </li>
+                          ))}
+                        </ul>
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Name & Email */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="name">Full Name *</Label>
@@ -271,7 +341,7 @@ export default function ContactPage() {
                           id="name"
                           value={formData.name}
                           onChange={(e) => handleInputChange("name", e.target.value)}
-                          required
+                          className={errors.name ? "border-red-500" : ""}
                         />
                       </div>
                       <div>
@@ -281,12 +351,11 @@ export default function ContactPage() {
                           type="email"
                           value={formData.email}
                           onChange={(e) => handleInputChange("email", e.target.value)}
-                          required
+                          className={errors.email ? "border-red-500" : ""}
                         />
                       </div>
                     </div>
 
-                    {/* Phone & Company */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="phone">Phone Number *</Label>
@@ -295,7 +364,7 @@ export default function ContactPage() {
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => handleInputChange("phone", e.target.value)}
-                          required
+                          className={errors.phone ? "border-red-500" : ""}
                         />
                       </div>
                       <div>
@@ -308,17 +377,6 @@ export default function ContactPage() {
                       </div>
                     </div>
 
-                    {/* Subject */}
-                    {/* <div>
-                      <Label htmlFor="subject">Subject</Label>
-                      <Input
-                        id="subject"
-                        value={formData.subject}
-                        onChange={(e) => handleInputChange("subject", e.target.value)}
-                      />
-                    </div> */}
-
-                    {/* Message */}
                     <div>
                       <Label htmlFor="message">Message *</Label>
                       <Textarea
@@ -327,85 +385,10 @@ export default function ContactPage() {
                         value={formData.message}
                         onChange={(e) => handleInputChange("message", e.target.value)}
                         rows={5}
-                        required
+                        className={errors.message ? "border-red-500" : ""}
                       />
                     </div>
 
-                    {/* Source, Priority, Status */}
-                    {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      <div>
-                        <Label htmlFor="source">Source *</Label>
-                        <select
-                          id="source"
-                          value={formData.source}
-                          onChange={(e) => handleInputChange("source", e.target.value)}
-                          required
-                          className="w-full border rounded-md p-2"
-                        >
-                          <option value="">Select Source</option>
-                          <option value="website">Website</option>
-                          <option value="phone">Phone</option>
-                          <option value="email">Email</option>
-                          <option value="referral">Referral</option>
-                        </select>
-                      </div>
-                      <div>
-                        <Label htmlFor="priority">Priority *</Label>
-                        <select
-                          id="priority"
-                          value={formData.priority}
-                          onChange={(e) => handleInputChange("priority", e.target.value)}
-                          required
-                          className="w-full border rounded-md p-2"
-                        >
-                          <option value="">Select Priority</option>
-                          <option value="low">Low</option>
-                          <option value="medium">Medium</option>
-                          <option value="high">High</option>
-                        </select>
-                      </div>
-                      <div>
-                        <Label htmlFor="status">Status *</Label>
-                        <select
-                          id="status"
-                          value={formData.status}
-                          onChange={(e) => handleInputChange("status", e.target.value)}
-                          required
-                          className="w-full border rounded-md p-2"
-                        >
-                          <option value="">Select Status</option>
-                          <option value="new">New</option>
-                          <option value="contacted">Contacted</option>
-                          <option value="in_progress">In Progress</option>
-                          <option value="resolved">Resolved</option>
-                          <option value="closed">Closed</option>
-                        </select>
-                      </div>
-                    </div> */}
-
-                    {/* Assigned To */}
-                    {/* <div>
-                      <Label htmlFor="assignedTo">Assigned To</Label>
-                      <Input
-                        id="assignedTo"
-                        value={formData.assignedTo}
-                        onChange={(e) => handleInputChange("assignedTo", e.target.value)}
-                      />
-                    </div> */}
-
-                    {/* Notes */}
-                    {/* <div>
-                      <Label htmlFor="notes">Notes</Label>
-                      <Textarea
-                        id="notes"
-                        placeholder="Add any internal notes (one per line)"
-                        value={formData.notes?.join("\n") || ""}
-                        onChange={(e) => handleInputChange("notes", e.target.value.split("\n"))}
-                        rows={3}
-                      />
-                    </div> */}
-
-                    {/* Submit */}
                     <Button type="submit" className="w-full" disabled={isSubmitting}>
                       {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
@@ -414,7 +397,6 @@ export default function ContactPage() {
               </Card>
             </div>
 
-            {/* Contact Information */}
             <div ref={infoRef} className="space-y-6">
               <Card>
                 <CardHeader>
@@ -440,7 +422,10 @@ export default function ContactPage() {
                     <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Phone</h4>
-                      <p className="text-sm text-muted-foreground">9845447654 <br />9686194469</p>
+                      <p className="text-sm text-muted-foreground">
+                        9845447654 <br />
+                        9686194469
+                      </p>
                     </div>
                   </div>
 
@@ -449,7 +434,6 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold">Email</h4>
                       <p className="text-sm text-muted-foreground">info@fortuneinfo.in</p>
-                      
                     </div>
                   </div>
 
