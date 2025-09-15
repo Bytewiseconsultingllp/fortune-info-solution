@@ -130,7 +130,7 @@ export const ProductCard = ({
             <h3 className="font-semibold text-foreground line-clamp-2 leading-snug text-base sm:text-lg">
               {product.name}
             </h3>
-            <p className="text-xs text-muted-foreground">SKU: {product.sku}</p>
+            <p className="text-xs text-muted-foreground">EAN: {product.sku}</p>
           </div>
 
           <p className="text-sm text-muted-foreground line-clamp-3">

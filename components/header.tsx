@@ -10,7 +10,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "Home", href: "/home" },
+    { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "About Us", href: "/about" },
     { name: "Awards & Certificates", href: "/awards" },
@@ -25,7 +25,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo + Text */}
           <Link href="/" className="flex items-center space-x-2 min-w-max">
-            <img src="/logo.svg" alt="Fortune Logo" className="h-8 w-8 shrink-0" />
+            <Image
+              src="/logo.svg"
+              alt="Fortune Logo"
+              width={32}
+              height={32}
+              className="shrink-0"
+            />
             <div className="flex flex-col leading-tight whitespace-nowrap">
               <span className="text-lg md:text-xl font-bold text-foreground truncate">
                 Fortune Info Solution
@@ -35,19 +41,6 @@ export default function Header() {
               </span>
             </div>
           </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex flex-1 justify-center space-x-6 xl:space-x-8 overflow-hidden">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium whitespace-nowrap"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
 
           {/* Right Side - Support + Quote */}
           <div className="hidden lg:flex items-center space-x-6 whitespace-nowrap">

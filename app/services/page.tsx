@@ -95,10 +95,10 @@ export default function ServicesPage() {
                     />
                   </div>
                   <CardHeader className="flex-1">
-                    <div className="flex items-center justify-between mb-2">
+                    {/* <div className="flex items-center justify-between mb-2">
                       <Badge variant="secondary">{service.category}</Badge>
                       {service.price && <Badge variant="outline">{service.price}</Badge>}
-                    </div>
+                    </div> */}
                     <CardTitle className="text-2xl">{service.name}</CardTitle>
                     <CardDescription className="text-base">{service.description}</CardDescription>
                     {service.duration && <p className="text-sm text-muted-foreground">Duration: {service.duration}</p>}
