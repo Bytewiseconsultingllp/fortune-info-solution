@@ -89,7 +89,7 @@ export default function ServicesPage() {
                 <Card key={service._id} className="h-full flex flex-col">
                   <div className="aspect-video relative overflow-hidden rounded-t-lg">
                     <img
-                      src="/placeholder.svg?height=300&width=400"
+                      src={service.image || "/placeholder-image.png"}
                       alt={service.name}
                       className="w-full h-full object-cover"
                     />
