@@ -440,7 +440,7 @@ export default function ContactPage() {
                     <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Phone</h4>
-                      <p className="text-sm text-muted-foreground">080-48904501/02/03</p>
+                      <p className="text-sm text-muted-foreground">9845447654 <br />9686194469</p>
                     </div>
                   </div>
 
@@ -448,8 +448,8 @@ export default function ContactPage() {
                     <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Email</h4>
-                      <p className="text-sm text-muted-foreground">pradeepnp@fortuneinfo.in</p>
-                      <p className="text-sm text-muted-foreground">sales@fortuneinfo.in</p>
+                      <p className="text-sm text-muted-foreground">info@fortuneinfo.in</p>
+                      
                     </div>
                   </div>
 
@@ -457,7 +457,7 @@ export default function ContactPage() {
                     <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Business Hours</h4>
-                      <p className="text-sm text-muted-foreground">9:00 am – 7:00 pm</p>
+                      <p className="text-sm text-muted-foreground">9:00 am – 7:00 pm IST</p>
                     </div>
                   </div>
                 </CardContent>
