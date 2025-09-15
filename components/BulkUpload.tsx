@@ -74,7 +74,7 @@ export default function BulkUpload() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("/api/admin/products/bulk-upload", {
+    const response = await fetch("/api/admin/products/bulk", {
       method: "POST",
       body: formData,
     });
@@ -84,7 +84,7 @@ export default function BulkUpload() {
       result = await response.json();
     } catch (parseError) {
       console.error("Failed to parse JSON response:", parseError);
-      result = { message: "Invalid server response" };
+      result = { message: "Invalid data type" };
     }
 
     if (response.ok) {
