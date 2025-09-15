@@ -30,6 +30,7 @@ export default function AdminProductsPage() {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
+  const [selectedBrand, setSelectedBrand] = useState("all")
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [editingProduct, setEditingProduct] = useState<Product | null>(null)
 
@@ -88,6 +89,7 @@ export default function AdminProductsPage() {
 
   // Get unique categories
   const categories = Array.from(new Set(products.map((product) => product.category)))
+  const brands = Array.from(new Set(products.map((product) => product.brand)))
 
   // Filter products
   useEffect(() => {
@@ -106,9 +108,13 @@ export default function AdminProductsPage() {
       filtered = filtered.filter((product) => product.category === selectedCategory)
     }
 
+    if (selectedBrand !== "all") {
+      filtered = filtered.filter((product) => product.brand === selectedBrand)
+    }
+
     setFilteredProducts(filtered)
     setCurrentPage(1)
-  }, [searchTerm, selectedCategory, products])
+  }, [searchTerm, selectedCategory, selectedBrand, products])
 
   const handleInputChange = (field: string, value: string | boolean | number | string[]) => {
     setFormData((prev) => ({
@@ -503,6 +509,19 @@ export default function AdminProductsPage() {
                 {categories.map((category) => (
                   <SelectItem key={category} value={category}>
                     {category}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            <Select value={selectedBrand} onValueChange={setSelectedBrand}>
+              <SelectTrigger className="w-48">
+                <SelectValue placeholder="Brand" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Brands</SelectItem>
+                {brands.map((brand) => (
+                  <SelectItem key={brand} value={brand}>
+                    {brand}
                   </SelectItem>
                 ))}
               </SelectContent>

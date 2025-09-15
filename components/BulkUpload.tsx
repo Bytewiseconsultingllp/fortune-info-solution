@@ -1,99 +1,188 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { toast } from "@/components/ui/use-toast";
+import type React from "react"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { useToast } from "@/hooks/use-toast"
+import { Upload, Download, FileText } from "lucide-react"
 
 export default function BulkUpload() {
-  const [loading, setLoading] = useState(false);
-  const [report, setReport] = useState<any>(null);
-  const [file, setFile] = useState<File | null>(null);
+  const { toast } = useToast()
+  const [file, setFile] = useState<File | null>(null)
+  const [uploading, setUploading] = useState(false)
 
-  // just select file
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0]
     if (selectedFile) {
-      setFile(selectedFile);
-      setReport(null); // reset old report when new file selected
-    }
-  };
+      // Validate file type
+      const allowedTypes = [
+        "text/csv",
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      ]
 
-  // triggered when pressing button
+      if (!allowedTypes.includes(selectedFile.type)) {
+        toast({
+          title: "Invalid file type",
+          description: "Please upload a CSV or Excel file",
+          variant: "destructive",
+        })
+        return
+      }
+
+      setFile(selectedFile)
+    }
+  }
+
   const handleUpload = async () => {
     if (!file) {
       toast({
         title: "No file selected",
-        description: "Please choose an Excel/CSV file before uploading.",
+        description: "Please select a file to upload",
         variant: "destructive",
-      });
-      return;
+      })
+      return
     }
 
-    const formData = new FormData();
-    formData.append("file", file);
+    setUploading(true)
 
     try {
-      setLoading(true);
-      const response = await fetch("/api/admin/products/bulk", {
+      const formData = new FormData()
+      formData.append("file", file)
+
+      const response = await fetch("/api/admin/products/bulk-upload", {
         method: "POST",
         body: formData,
-      });
-
-      const result = await response.json();
-      setReport(result);
+      })
 
       if (response.ok) {
+        const result = await response.json()
         toast({
           title: "Upload successful",
-          description: `${result.insertedCount} products added, ${result.skippedCount} skipped.`,
-        });
+          description: `${result.count || 0} products uploaded successfully`,
+        })
+        setFile(null)
+        // Reset file input
+        const fileInput = document.getElementById("bulk-upload-file") as HTMLInputElement
+        if (fileInput) fileInput.value = ""
       } else {
-        toast({
-          title: "Error",
-          description: result.error || "Upload failed",
-          variant: "destructive",
-        });
+        const error = await response.json()
+        throw new Error(error.message || "Upload failed")
       }
-    } catch (err) {
-      console.error("Upload error:", err);
+    } catch (error) {
+      console.error("Bulk upload error:", error)
       toast({
-        title: "Error",
-        description: "Something went wrong during upload",
+        title: "Upload failed",
+        description: error instanceof Error ? error.message : "Failed to upload products",
         variant: "destructive",
-      });
+      })
     } finally {
-      setLoading(false);
+      setUploading(false)
     }
-  };
+  }
+
+  const downloadTemplate = () => {
+    // Create CSV template
+    const headers = [
+      "name",
+      "description",
+      "category",
+      "brand",
+      "price",
+      "sku",
+      "stockQuantity",
+      "inStock",
+      "specifications",
+      "datasheet",
+      "images",
+      "tags",
+    ]
+
+    const csvContent =
+      headers.join(",") +
+      "\n" +
+      "Sample Product,Sample product description,Electronics,Sample Brand,99.99,SKU001,10,true,Sample specifications,/datasheet.pdf,/image1.jpg|/image2.jpg,tag1|tag2"
+
+    const blob = new Blob([csvContent], { type: "text/csv" })
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    a.href = url
+    a.download = "products-template.csv"
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    window.URL.revokeObjectURL(url)
+
+    toast({
+      title: "Template downloaded",
+      description: "CSV template has been downloaded to your device",
+    })
+  }
 
   return (
-    <div className="space-y-4">
-      <input
-        type="file"
-        accept=".xlsx, .xls, .csv"
-        onChange={handleFileSelect}
-        className="block"
-      />
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Upload className="h-5 w-5" />
+          Bulk Upload Products
+        </CardTitle>
+        <CardDescription>Upload multiple products at once using a CSV or Excel file</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          <div className="flex items-center gap-4">
+            <Button variant="outline" onClick={downloadTemplate} className="flex items-center gap-2 bg-transparent">
+              <Download className="h-4 w-4" />
+              Download Template
+            </Button>
+            <span className="text-sm text-muted-foreground">Download the CSV template to see the required format</span>
+          </div>
 
-      <Button onClick={handleUpload} disabled={loading || !file}>
-        {loading ? "Uploading..." : "Upload Products"}
-      </Button>
+          <div className="space-y-2">
+            <Label htmlFor="bulk-upload-file">Select File</Label>
+            <Input
+              id="bulk-upload-file"
+              type="file"
+              accept=".csv,.xlsx,.xls"
+              onChange={handleFileChange}
+              disabled={uploading}
+            />
+            {file && (
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <FileText className="h-4 w-4" />
+                <span>
+                  {file.name} ({(file.size / 1024).toFixed(1)} KB)
+                </span>
+              </div>
+            )}
+          </div>
 
-      {/* Report Section */}
-      {report && report.skippedCount > 0 && (
-        <div className="mt-4 p-3 border rounded bg-red-50 text-sm">
-          <p className="font-semibold text-red-600">
-            {report.skippedCount} rows skipped:
-          </p>
-          <ul className="list-disc ml-5">
-            {report.skipped.map((err: any, idx: number) => (
-              <li key={idx}>
-                Row {err.row}: {err.reason}
-              </li>
-            ))}
-          </ul>
+          <Button onClick={handleUpload} disabled={!file || uploading} className="w-full">
+            {uploading ? (
+              <>
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                Uploading...
+              </>
+            ) : (
+              <>
+                <Upload className="h-4 w-4 mr-2" />
+                Upload Products
+              </>
+            )}
+          </Button>
+
+          <div className="text-xs text-muted-foreground space-y-1">
+            <p>• Supported formats: CSV, Excel (.xlsx, .xls)</p>
+            <p>• Maximum file size: 10MB</p>
+            <p>• Use pipe (|) to separate multiple images or tags</p>
+            <p>• Boolean fields: use 'true' or 'false'</p>
+          </div>
         </div>
-      )}
-    </div>
-  );
+      </CardContent>
+    </Card>
+  )
 }
