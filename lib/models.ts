@@ -84,6 +84,7 @@ export interface QuoteRequest {
   message?: string
   createdAt: Date
   status: "pending" | "quoted" | "converted" | "declined"
+  urgency: "low" | "medium" | "high"
 }
 
 export interface Admin {
