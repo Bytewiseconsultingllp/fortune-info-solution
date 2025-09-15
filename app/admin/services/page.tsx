@@ -1,7 +1,5 @@
 "use client";
 
-import type React from "react";
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label, Label as UI_Label } from "@/components/ui/label";
+import { Label as UI_Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
@@ -24,8 +22,31 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus, Search, Edit, Trash2, Eye, Package } from "lucide-react";
+import { Plus, Search, Trash2, Package } from "lucide-react";
 import type { Service } from "@/lib/models";
+import * as z from "zod";
+import { useForm, useFieldArray } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+// ✅ Schema Validation
+const serviceSchema = z.object({
+  name: z.string().min(1, "Name is required").max(200),
+  description: z.string().min(10, "At least 10 characters").max(2000),
+  features: z
+    .array(z.string().min(1, "Feature cannot be empty"))
+    .min(1, "At least one feature required"),
+  image: z.string().min(1, "Image URL is required"),
+  category: z.enum(
+    ["consulting", "implementation", "support", "training", "maintenance"],
+    { required_error: "Category is required" }
+  ),
+  price: z.coerce.number().min(0, "Price must be 0 or greater"),
+  duration: z.string().optional(),
+  isPopular: z.boolean().default(false),
+  isActive: z.boolean().default(true),
+});
+
+type ServiceForm = z.infer<typeof serviceSchema>;
 
 export default function AdminServicesPage() {
   const { toast } = useToast();
@@ -35,17 +56,33 @@ export default function AdminServicesPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingService, setEditingService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
-  const [viewingService, setViewingService] = useState<Service | null>(null);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    category: "",
-    features: [""],
-    image: "",
-    price: "",
-    duration: "",
-    isPopular: false,
+  // ✅ React Hook Form setup
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm<ServiceForm>({
+    resolver: zodResolver(serviceSchema),
+    defaultValues: {
+      name: "",
+      description: "",
+      category: "" as any,
+      features: [""],
+      image: "",
+      price: 0,
+      duration: "",
+      isPopular: false,
+      isActive: true,
+    },
+  });
+
+  // ✅ Field Array for dynamic features
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "features",
   });
 
   useEffect(() => {
@@ -54,17 +91,14 @@ export default function AdminServicesPage() {
         const response = await fetch("/api/admin/services");
         if (response.ok) {
           const data = await response.json();
-          console.log("Fetched services:", data);
           const servicesArray = Array.isArray(data)
             ? data
             : data.services || [];
           setServices(servicesArray);
         } else {
-          console.error("Failed to fetch services:", response.statusText);
           setServices([]);
         }
-      } catch (error) {
-        console.error("Error fetching services:", error);
+      } catch {
         setServices([]);
       } finally {
         setLoading(false);
@@ -74,10 +108,8 @@ export default function AdminServicesPage() {
     fetchServices();
   }, []);
 
-  // Filter services
   useEffect(() => {
     let filtered = services;
-
     if (searchTerm) {
       filtered = filtered.filter(
         (service) =>
@@ -85,60 +117,19 @@ export default function AdminServicesPage() {
           service.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-
     setFilteredServices(filtered);
   }, [searchTerm, services]);
 
-  const handleInputChange = (
-    field: string,
-    value: string | string[] | boolean
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
-  const handleFeatureChange = (index: number, value: string) => {
-    const newFeatures = [...formData.features];
-    newFeatures[index] = value;
-    setFormData((prev) => ({
-      ...prev,
-      features: newFeatures,
-    }));
-  };
-
-  const addFeature = () => {
-    setFormData((prev) => ({
-      ...prev,
-      features: [...prev.features, ""],
-    }));
-  };
-
-  const removeFeature = (index: number) => {
-    setFormData((prev) => ({
-      ...prev,
-      features: prev.features.filter((_, i) => i !== index),
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const onSubmit = async (data: ServiceForm) => {
     try {
-      const filteredFeatures = formData.features.filter(
-        (feature) => feature.trim() !== ""
-      );
-      const serviceData = { ...formData, features: filteredFeatures };
-
       if (editingService) {
-        // Update existing service
+        // Update
         const response = await fetch(
           `/api/admin/services/${editingService._id}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(serviceData),
+            body: JSON.stringify(data),
           }
         );
 
@@ -154,11 +145,11 @@ export default function AdminServicesPage() {
           throw new Error("Failed to update service");
         }
       } else {
-        // Add new service
+        // Create
         const response = await fetch("/api/admin/services", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(serviceData),
+          body: JSON.stringify(data),
         });
 
         if (response.ok) {
@@ -170,40 +161,16 @@ export default function AdminServicesPage() {
         }
       }
 
-      // Reset form
-      setFormData({
-        name: "",
-        description: "",
-        category: "",
-        features: [""],
-        image: "",
-        price: "",
-        duration: "",
-        isPopular: false,
-      });
-
+      reset();
       setEditingService(null);
       setIsDialogOpen(false);
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to save service",
         variant: "destructive",
       });
     }
-  };
-
-  const handleEdit = (service: Service) => {
-    setEditingService(service);
-    setFormData({
-      name: service.name,
-      description: service.description,
-      category: service.category || "",
-      features: service.features.length > 0 ? service.features : [""],
-      price: service.price || "",
-      duration: service.duration || "",
-    });
-    setIsDialogOpen(true);
   };
 
   const handleDelete = async (serviceId: string) => {
@@ -219,7 +186,7 @@ export default function AdminServicesPage() {
         } else {
           throw new Error("Failed to delete service");
         }
-      } catch (error) {
+      } catch {
         toast({ title: "Error deleting service", variant: "destructive" });
       }
     }
@@ -227,38 +194,12 @@ export default function AdminServicesPage() {
 
   const openAddDialog = () => {
     setEditingService(null);
-    setFormData({
-      name: "",
-      description: "",
-      category: "",
-      features: [""],
-      image: "",
-      price: "",
-      duration: "",
-      isPopular: false,
-    });
-
+    reset();
     setIsDialogOpen(true);
   };
 
   if (loading) {
-    return (
-      <div className="space-y-6">
-        <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded w-1/3 mb-2"></div>
-          <div className="h-4 bg-muted rounded w-1/2"></div>
-        </div>
-        <Card>
-          <CardContent className="p-6">
-            <div className="animate-pulse space-y-4">
-              {[...Array(3)].map((_, i) => (
-                <div key={i} className="h-24 bg-muted rounded"></div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    );
+    return <p>Loading services...</p>;
   }
 
   return (
@@ -286,122 +227,33 @@ export default function AdminServicesPage() {
                   : "Add a new service to your offerings"}
               </DialogDescription>
             </DialogHeader>
-            {/* <form onSubmit={handleSubmit} className="space-y-4">
+
+            {/* ✅ Zod validated form */}
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <UI_Label htmlFor="name">Service Name *</UI_Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
-                  required
-                />
-              </div>
-              <div>
-                <UI_Label htmlFor="description">Description *</UI_Label>
-                <Textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={(e) => handleInputChange("description", e.target.value)}
-                  rows={3}
-                  required
-                />
-              </div>
-              <div>
-                <UI_Label htmlFor="category">Category *</UI_Label>
-                <Input
-                  id="category"
-                  value={formData.category}
-                  onChange={(e) => handleInputChange("category", e.target.value)}
-                  placeholder="e.g., Infrastructure, Security, Cloud Services"
-                  required
-                />
-              </div>
-              <div>
-                <UI_Label>Features</UI_Label>
-                <div className="space-y-2">
-                  {formData.features.map((feature, index) => (
-                    <div key={index} className="flex gap-2">
-                      <Input
-                        value={feature}
-                        onChange={(e) => handleFeatureChange(index, e.target.value)}
-                        placeholder="Enter feature"
-                      />
-                      {formData.features.length > 1 && (
-                        <Button type="button" variant="outline" size="sm" onClick={() => removeFeature(index)}>
-                          Remove
-                        </Button>
-                      )}
-                    </div>
-                  ))}
-                  <Button type="button" variant="outline" size="sm" onClick={addFeature}>
-                    Add Feature
-                  </Button>
-                </div>
-              </div>
-              <div>
-                <UI_Label htmlFor="price">Price</UI_Label>
-                <Input
-                  id="price"
-                  value={formData.price}
-                  onChange={(e) => handleInputChange("price", e.target.value)}
-                  placeholder="e.g., Starting from $2,500 or Custom Quote"
-                />
-              </div>
-              <div>
-                <UI_Label htmlFor="duration">Duration</UI_Label>
-                <Input
-                  id="duration"
-                  value={formData.duration}
-                  onChange={(e) => handleInputChange("duration", e.target.value)}
-                  placeholder="e.g., 2-4 weeks"
-                />
-              </div>
-              <div className="flex gap-2 pt-4">
-                <Button type="submit" className="flex-1">
-                  {editingService ? "Update Service" : "Add Service"}
-                </Button>
-                <Button type="button" variant="outline" onClick={() => setIsDialogOpen(false)}>
-                  Cancel
-                </Button>
-              </div>
-            </form> */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Name */}
-              <div>
-                <UI_Label htmlFor="name">Service Name *</UI_Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange("name", e.target.value)}
-                  required
-                />
+                <Input id="name" {...register("name")} />
+                {errors.name && (
+                  <p className="text-red-500 text-sm">{errors.name.message}</p>
+                )}
               </div>
 
-              {/* Description */}
               <div>
                 <UI_Label htmlFor="description">Description *</UI_Label>
-                <Textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={(e) =>
-                    handleInputChange("description", e.target.value)
-                  }
-                  rows={3}
-                  required
-                />
+                <Textarea id="description" {...register("description")} />
+                {errors.description && (
+                  <p className="text-red-500 text-sm">
+                    {errors.description.message}
+                  </p>
+                )}
               </div>
 
-              {/* Category */}
               <div>
                 <UI_Label htmlFor="category">Category *</UI_Label>
                 <select
                   id="category"
-                  value={formData.category}
-                  onChange={(e) =>
-                    handleInputChange("category", e.target.value)
-                  }
+                  {...register("category")}
                   className="w-full border rounded p-2"
-                  required
                 >
                   <option value="">Select category</option>
                   <option value="consulting">Consulting</option>
@@ -410,95 +262,69 @@ export default function AdminServicesPage() {
                   <option value="training">Training</option>
                   <option value="maintenance">Maintenance</option>
                 </select>
+                {errors.category && (
+                  <p className="text-red-500 text-sm">
+                    {errors.category.message}
+                  </p>
+                )}
               </div>
 
-              {/* Image */}
               <div>
                 <UI_Label htmlFor="image">Image URL *</UI_Label>
-                <Input
-                  id="image"
-                  value={formData.image}
-                  onChange={(e) => handleInputChange("image", e.target.value)}
-                  placeholder="/placeholder.svg?height=200&width=200"
-                  required
-                />
+                <Input id="image" {...register("image")} />
+                {errors.image && (
+                  <p className="text-red-500 text-sm">{errors.image.message}</p>
+                )}
               </div>
 
-              {/* Features */}
               <div>
-                <UI_Label>Features</UI_Label>
-                <div className="space-y-2">
-                  {formData.features.map((feature, index) => (
-                    <div key={index} className="flex gap-2">
-                      <Input
-                        value={feature}
-                        onChange={(e) =>
-                          handleFeatureChange(index, e.target.value)
-                        }
-                        placeholder="Enter feature"
-                      />
-                      {formData.features.length > 1 && (
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => removeFeature(index)}
-                        >
-                          Remove
-                        </Button>
-                      )}
-                    </div>
-                  ))}
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={addFeature}
-                  >
-                    Add Feature
-                  </Button>
-                </div>
+                <UI_Label>Features *</UI_Label>
+                {fields.map((field, index) => (
+                  <div key={field.id} className="flex gap-2 mb-2">
+                    <Input {...register(`features.${index}`)} />
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => remove(index)}
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                ))}
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  onClick={() => append("")}
+                >
+                  Add Feature
+                </Button>
+                {errors.features && (
+                  <p className="text-red-500 text-sm">
+                    {errors.features.message as string}
+                  </p>
+                )}
               </div>
 
-              {/* Price */}
               <div>
-                <UI_Label htmlFor="price">Price</UI_Label>
-                <Input
-                  id="price"
-                  type="number"
-                  value={formData.price}
-                  onChange={(e) => handleInputChange("price", e.target.value)}
-                  placeholder="e.g., 2500"
-                />
+                <UI_Label htmlFor="price">Price *</UI_Label>
+                <Input id="price" type="number" {...register("price")} />
+                {errors.price && (
+                  <p className="text-red-500 text-sm">{errors.price.message}</p>
+                )}
               </div>
 
-              {/* Duration */}
               <div>
                 <UI_Label htmlFor="duration">Duration</UI_Label>
-                <Input
-                  id="duration"
-                  value={formData.duration}
-                  onChange={(e) =>
-                    handleInputChange("duration", e.target.value)
-                  }
-                  placeholder="e.g., 2-4 weeks"
-                />
+                <Input id="duration" {...register("duration")} />
               </div>
 
-              {/* Popular toggle */}
               <div className="flex items-center gap-2">
-                <input
-                  id="isPopular"
-                  type="checkbox"
-                  checked={formData.isPopular}
-                  onChange={(e) =>
-                    handleInputChange("isPopular", e.target.checked)
-                  }
-                />
+                <input id="isPopular" type="checkbox" {...register("isPopular")} />
                 <UI_Label htmlFor="isPopular">Mark as Popular</UI_Label>
               </div>
 
-              {/* Submit / Cancel */}
               <div className="flex gap-2 pt-4">
                 <Button type="submit" className="flex-1">
                   {editingService ? "Update Service" : "Add Service"}
@@ -567,21 +393,6 @@ export default function AdminServicesPage() {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  {/* <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setViewingService(service)}
-                  >
-                    <Eye className="h-4 w-4" />
-                  </Button> */}
-
-                  {/* <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => handleEdit(service)}
-                  >
-                    <Edit className="h-4 w-4" />
-                  </Button> */}
                   <Button
                     variant="outline"
                     size="sm"
@@ -590,65 +401,6 @@ export default function AdminServicesPage() {
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
-                {/* <Dialog
-                  open={!!viewingService}
-                  onOpenChange={() => setViewingService(null)}
-                >
-                  <DialogContent className="max-w-2xl">
-                    <DialogHeader>
-                      <DialogTitle>Service Details</DialogTitle>
-                      <DialogDescription>
-                        Full service information
-                      </DialogDescription>
-                    </DialogHeader>
-
-                    {viewingService && (
-                      <div className="space-y-4">
-                        
-                        <div className="grid grid-cols-2 gap-4">
-                          <div>
-                            <Label className="font-semibold">Name</Label>
-                            <p>{viewingService.name}</p>
-                          </div>
-                          <div>
-                            <Label className="font-semibold">Category</Label>
-                            <p>{viewingService.category}</p>
-                          </div>
-                          <div>
-                            <Label className="font-semibold">Price</Label>
-                            <p>{viewingService.price}</p>
-                          </div>
-                          <div>
-                            <Label className="font-semibold">Duration</Label>
-                            <p>{viewingService.duration}</p>
-                          </div>
-                        </div>
-
-                       
-                        {viewingService.description && (
-                          <div>
-                            <Label className="font-semibold">Description</Label>
-                            <p className="mt-1 p-3 bg-muted rounded">
-                              {viewingService.description}
-                            </p>
-                          </div>
-                        )}
-
-                       
-                        {viewingService.features?.length > 0 && (
-                          <div>
-                            <Label className="font-semibold">Features</Label>
-                            <ul className="mt-1 list-disc pl-6">
-                              {viewingService.features.map((f, i) => (
-                                <li key={i}>{f}</li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </DialogContent>
-                </Dialog> */}
               </div>
             ))}
           </div>

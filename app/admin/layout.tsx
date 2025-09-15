@@ -11,6 +11,7 @@ import { LayoutDashboard, Package, Settings, MessageSquare, Users, FileText, Men
 import { cn } from "@/lib/utils"
 import { toast } from "@/hooks/use-toast"
 import Image from "next/image"
+import { env } from "process"
 
 const navigation = [
   { name: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -164,7 +165,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               </div>
               <div>
                 <p className="text-sm font-medium">Admin User</p>
-                <p className="text-xs text-muted-foreground">admin@fortuneinfosolutions.com</p>
+                <p className="text-xs text-muted-foreground">{process.env.NEXT_PUBLIC_ADMIN_USERNAME}</p>
               </div>
             </div>
             <Button variant="outline" size="sm" className="w-full bg-transparent" onClick={handleLogout}>
