@@ -116,8 +116,10 @@ export default function ServicesPage() {
                       </ul>
                     </div>
                     <Button className="w-full" asChild>
-                      <Link href="/contact">
-                        Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                      <Link
+                        href={`/quote?sku=${encodeURIComponent(service.name)}&name=${encodeURIComponent(service.name)}`}
+                      >
+                        Get a Quote <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </CardContent>
