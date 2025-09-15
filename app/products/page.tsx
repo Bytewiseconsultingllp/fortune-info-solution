@@ -243,51 +243,44 @@
   
 // }
 
-"use client"
+"use client";
 
 import FooterSection from "@/components/footerSection";
 import Header from "@/app/home/components/navigation/Header";
 import { ProductDashboard } from "@/components/product-dashboard";
-import { set } from "date-fns";
 import { useEffect, useState } from "react";
 
-
 export default function ProductsPage() {
+  const [categories, setCategories] = useState<string[]>([]);
+  const [brands, setBrands] = useState<string[]>([]);
 
-  
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [brands, setBrands] = useState([]);
+  useEffect(() => {
+    fetchFilters();
+  }, []);
 
-   useEffect(() => {
-      fetchProducts()
-    }, [])
-
-    const fetchProducts = async () => {
-      try {
-        
-        const response = await fetch(`/api/products`)
-        if (response.ok) {
-          const data = await response.json()
-          setProducts(data.products)
-          setCategories(data.categories)
-          setBrands(data.brands)
-          console.log("Fetched products:", data.products)
-        } else {
-          console.error("Failed to fetch products")
-        }
-      } catch (error) {
-        console.error("Error fetching products:", error)
-      } 
+  const fetchFilters = async () => {
+    try {
+      const response = await fetch(`/api/products?limit=1&page=1`); 
+      // fetch just 1 product, we only need categories & brands
+      if (response.ok) {
+        const data = await response.json();
+        setCategories(data.categories || []);
+        setBrands(data.brands || []);
+      } else {
+        console.error("Failed to fetch categories & brands");
+      }
+    } catch (error) {
+      console.error("Error fetching categories & brands:", error);
     }
+  };
 
   return (
     <>
-    <Header />
-    <div className="min-h-screen bg-background">
-      <ProductDashboard products={products} categories={categories} brands={brands} />
-    </div>
-    <FooterSection />
+      <Header />
+      <div className="min-h-screen bg-background">
+        <ProductDashboard categories={categories} brands={brands} />
+      </div>
+      <FooterSection />
     </>
   );
 }
