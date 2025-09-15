@@ -58,81 +58,86 @@ export default function BulkUpload() {
   }
 
   const handleUpload = async () => {
-    if (!file) {
-      toast({
-        title: "No file selected",
-        description: "Please select a file to upload",
-        variant: "destructive",
-      })
-      return
+  if (!file) {
+    toast({
+      title: "No file selected",
+      description: "Please select a file to upload",
+      variant: "destructive",
+    });
+    return;
+  }
+
+  setUploading(true);
+  setUploadResult(null);
+
+  try {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/api/admin/products/bulk-upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    let result = null;
+    try {
+      result = await response.json();
+    } catch (parseError) {
+      console.error("Failed to parse JSON response:", parseError);
+      result = { message: "Invalid server response" };
     }
 
-    setUploading(true)
-    setUploadResult(null)
+    if (response.ok) {
+      setUploadResult({
+        success: true,
+        message: `Successfully uploaded ${result.successCount || 0} products`,
+        successCount: result.successCount || 0,
+        errorCount: result.errorCount || 0,
+        errors: result.errors || [],
+        duplicates: result.duplicates || [],
+      });
 
-    try {
-      const formData = new FormData()
-      formData.append("file", file)
+      toast({
+        title: "Upload successful",
+        description: `${result.successCount || 0} products uploaded successfully`,
+      });
 
-      const response = await fetch("/api/admin/products/bulk-upload", {
-        method: "POST",
-        body: formData,
-      })
-
-      const result = await response.json()
-
-      if (response.ok) {
-        setUploadResult({
-          success: true,
-          message: `Successfully uploaded ${result.successCount || 0} products`,
-          successCount: result.successCount || 0,
-          errorCount: result.errorCount || 0,
-          errors: result.errors || [],
-          duplicates: result.duplicates || [],
-        })
-
-        toast({
-          title: "Upload successful",
-          description: `${result.successCount || 0} products uploaded successfully`,
-        })
-
-        setFile(null)
-        // Reset file input
-        const fileInput = document.getElementById("bulk-upload-file") as HTMLInputElement
-        if (fileInput) fileInput.value = ""
-      } else {
-        setUploadResult({
-          success: false,
-          message: result.message || "Upload failed",
-          errorCount: result.errorCount || 0,
-          errors: result.errors || [],
-          duplicates: result.duplicates || [],
-        })
-
-        toast({
-          title: "Upload failed",
-          description: result.message || "Failed to upload products",
-          variant: "destructive",
-        })
-      }
-    } catch (error) {
-      console.error("Bulk upload error:", error)
-
+      setFile(null);
+      const fileInput = document.getElementById("bulk-upload-file") as HTMLInputElement;
+      if (fileInput) fileInput.value = "";
+    } else {
       setUploadResult({
         success: false,
-        message: error instanceof Error ? error.message : "Network error occurred",
-        errors: [],
-      })
+        message: result.message || "Upload failed",
+        errorCount: result.errorCount || 0,
+        errors: result.errors || [],
+        duplicates: result.duplicates || [],
+      });
 
       toast({
         title: "Upload failed",
-        description: error instanceof Error ? error.message : "Failed to upload products",
+        description: result.message || "Failed to upload products",
         variant: "destructive",
-      })
-    } finally {
-      setUploading(false)
+      });
     }
+  } catch (error) {
+    console.error("Bulk upload error:", error);
+
+    setUploadResult({
+      success: false,
+      message: error instanceof Error ? error.message : "Network error occurred",
+      errors: [],
+    });
+
+    toast({
+      title: "Upload failed",
+      description: error instanceof Error ? error.message : "Failed to upload products",
+      variant: "destructive",
+    });
+  } finally {
+    setUploading(false);
   }
+};
 
   const downloadTemplate = () => {
     // Create CSV template
