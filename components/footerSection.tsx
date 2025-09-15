@@ -129,8 +129,11 @@ export default function FooterSection() {
               <span className="text-2xl font-bold text-secondary">iTech</span>
             </div>
             <p className="text-secondary/70 mb-6 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper.
+              Fortune Info Solutions is your trusted partner for IT hardware,
+              software, and integrated solutions. With years of collective
+              industry experience, we empower businesses with reliable products,
+              professional services, and scalable solutions across networking,
+              security, surveillance, cloud, and enterprise IT.
             </p>
              <div className="flex gap-4">
       {socials.map(({ Icon, url }, i) => (
