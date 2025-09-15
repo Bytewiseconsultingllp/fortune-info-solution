@@ -176,11 +176,9 @@ export function FooterSection() {
             <h4 className="text-xl font-bold text-secondary mb-6">Services</h4>
             <ul className="space-y-3">
               {[
-                "Custom Development",
-                "Cloud Solutions",
-                "Cybersecurity Protection",
-                "Infrastructure Management",
-                "Data Analytics",
+                "Laptop Services & Rentals",
+                "Annual Maintenance Contract (AMC)",
+                "CCTV Installation",
               ].map((service) => (
                 <li key={service} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -229,29 +227,20 @@ export function FooterSection() {
       </div>
 
       {/* Bottom Footer */}
-      <div
-        ref={bottomFooterRef}
-        className="py-6 px-4 md:px-8 lg:px-16 border-t border-secondary/50"
-      >
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex gap-8">
-            {["Terms & Conditions", "Privacy Policy", "Help"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-secondary/70 hover:text-secondary transition-colors text-sm"
-              >
-                {link}
-              </a>
-            ))}
-          </div>
-
-          <p className="text-secondary/70 text-sm">
-            © {new Date().getFullYear()} Fortune Info Solutions, All rights
-            reserved.
+      <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+          <p>&copy; 2024 Fortune Info. All rights reserved.</p>
+          <p className="mt-2">
+            Developed by{" "}
+            <Link
+              href="https://www.bytewiseconsulting.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 transition-colors font-medium"
+            >
+              Bytewise Consulting LLP
+            </Link>
           </p>
         </div>
-      </div>
     </footer>
   );
 }

@@ -9,26 +9,11 @@ import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function FooterSection() {
+export function FooterSection() {
   const [email, setEmail] = useState("");
   const newsletterRef = useRef<HTMLDivElement | null>(null);
   const mainFooterRef = useRef<HTMLDivElement | null>(null);
   const bottomFooterRef = useRef<HTMLDivElement | null>(null);
-
-   const socials = [
-    {
-      Icon: Facebook,
-      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
-    },
-    {
-      Icon: Instagram,
-      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
-    },
-    {
-      Icon: Linkedin,
-      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
-    },
-  ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -84,6 +69,21 @@ export default function FooterSection() {
     setEmail("");
   };
 
+  const socials = [
+    {
+      Icon: Facebook,
+      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
+    },
+    {
+      Icon: Instagram,
+      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    },
+    {
+      Icon: Linkedin,
+      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+    },
+  ];
+
   return (
     <footer style={{ backgroundColor: "#FDFAF6", color: "#000000" }}>
       {/* Newsletter Section */}
@@ -135,19 +135,19 @@ export default function FooterSection() {
               professional services, and scalable solutions across networking,
               security, surveillance, cloud, and enterprise IT.
             </p>
-             <div className="flex gap-4">
-      {socials.map(({ Icon, url }, i) => (
-        <Link
-          key={i}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
-        >
-          <Icon className="w-5 h-5 text-secondary hover:text-primary" />
-        </Link>
-      ))}
-    </div>
+            <div className="flex gap-4">
+              {socials.map(({ Icon, url }, i) => (
+                <Link
+                  key={i}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+                >
+                  <Icon className="w-5 h-5 text-secondary hover:text-primary" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Extra Links */}
@@ -176,11 +176,9 @@ export default function FooterSection() {
             <h4 className="text-xl font-bold text-secondary mb-6">Services</h4>
             <ul className="space-y-3">
               {[
-                "Custom Development",
-                "Cloud Solutions",
-                "Cybersecurity Protection",
-                "Infrastructure Management",
-                "Data Analytics",
+                "Laptop Services & Rentals",
+                "Annual Maintenance Contract (AMC)",
+                "CCTV Installation",
               ].map((service) => (
                 <li key={service} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -229,29 +227,20 @@ export default function FooterSection() {
       </div>
 
       {/* Bottom Footer */}
-      <div
-        ref={bottomFooterRef}
-        className="py-6 px-4 md:px-8 lg:px-16 border-t border-secondary/50"
-      >
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex gap-8">
-            {["Terms & Conditions", "Privacy Policy", "Help"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="text-secondary/70 hover:text-secondary transition-colors text-sm"
-              > 
-                {link}
-              </a>
-            ))}
-          </div>
-
-          <p className="text-secondary/70 text-sm">
-            © {new Date().getFullYear()} Fortune Info Solutions, All rights
-            reserved.
+      <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+          <p>&copy; 2024 Fortune Info. All rights reserved.</p>
+          <p className="mt-2">
+            Developed by{" "}
+            <Link
+              href="https://www.bytewiseconsulting.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 transition-colors font-medium"
+            >
+              Bytewise Consulting LLP
+            </Link>
           </p>
         </div>
-      </div>
     </footer>
   );
 }
