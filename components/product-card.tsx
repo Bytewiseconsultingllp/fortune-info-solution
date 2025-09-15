@@ -1,51 +1,39 @@
-import { useState } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  FileText,
-  Quote,
-  Package,
-  CheckCircle,
-  XCircle,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Product } from "@/lib/models";
-import Link from "next/link";
+"use client"
+
+import { useState } from "react"
+import { ChevronLeft, ChevronRight, FileText, Quote, Package, CheckCircle, XCircle } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import type { Product } from "@/lib/models"
+import Link from "next/link"
 
 interface ProductCardProps {
-  product: Product;
-  onQuote: () => void;
-  onDatasheet: () => void;
+  product: Product
+  onQuote: () => void
+  onDatasheet: () => void
 }
 
-export const ProductCard = ({
-  product,
-  onQuote,
-  onDatasheet,
-}: ProductCardProps) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [imageLoading, setImageLoading] = useState(true);
+export const ProductCard = ({ product, onQuote, onDatasheet }: ProductCardProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [imageLoading, setImageLoading] = useState(true)
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % product.images.length);
-  };
+    setCurrentImageIndex((prev) => (prev + 1) % product.images.length)
+  }
 
   const prevImage = () => {
-    setCurrentImageIndex(
-      (prev) => (prev - 1 + product.images.length) % product.images.length
-    );
-  };
+    setCurrentImageIndex((prev) => (prev - 1 + product.images.length) % product.images.length)
+  }
 
   return (
     <Card className="group hover:shadow-elevated transition-all duration-300 bg-surface-elevated border border-border overflow-hidden flex flex-col h-full">
       {/* Image Carousel */}
       <div className="relative w-full aspect-[4/3] bg-muted">
-        {product.images.length > 0 ? (
+        {product.images && product.images.length > 0 ? (
           <>
             <img
-              src={product.images[currentImageIndex]}
+              src={product.images[currentImageIndex] || "/placeholder.svg"}
               alt={product.name}
               className={`w-full h-full object-cover transition-opacity duration-300 ${
                 imageLoading ? "opacity-0" : "opacity-100"
@@ -89,9 +77,7 @@ export const ProductCard = ({
                     key={index}
                     onClick={() => setCurrentImageIndex(index)}
                     className={`w-2 h-2 rounded-full transition-colors ${
-                      index === currentImageIndex
-                        ? "bg-primary"
-                        : "bg-background/60"
+                      index === currentImageIndex ? "bg-primary" : "bg-background/60"
                     }`}
                   />
                 ))}
@@ -108,15 +94,8 @@ export const ProductCard = ({
       <CardContent className="p-4 sm:p-5 flex flex-col flex-1">
         {/* Status and Brand Badges */}
         <div className="flex items-center justify-between mb-2">
-          <Badge
-            variant={product.inStock ? "default" : "destructive"}
-            className="text-xs"
-          >
-            {product.inStock ? (
-              <CheckCircle className="h-3 w-3 mr-1" />
-            ) : (
-              <XCircle className="h-3 w-3 mr-1" />
-            )}
+          <Badge variant={product.inStock ? "default" : "destructive"} className="text-xs">
+            {product.inStock ? <CheckCircle className="h-3 w-3 mr-1" /> : <XCircle className="h-3 w-3 mr-1" />}
             {product.inStock ? "In Stock" : "Out of Stock"}
           </Badge>
           <Badge variant="secondary" className="text-xs font-medium">
@@ -133,9 +112,7 @@ export const ProductCard = ({
             <p className="text-xs text-muted-foreground">SKU: {product.sku}</p>
           </div>
 
-          <p className="text-sm text-muted-foreground line-clamp-3">
-            {product.description}
-          </p>
+          <p className="text-sm text-muted-foreground line-clamp-3">{product.description}</p>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-auto">
             {product.inStock && (
@@ -153,32 +130,30 @@ export const ProductCard = ({
       <CardFooter className="p-4 sm:p-5 pt-0">
         <div className="flex flex-col sm:flex-row lg:flex-row gap-3 w-full">
           <Link
-            href={`/quote?product=${product._id}&name=${encodeURIComponent(
-              product.sku ? product.sku : product.name
-            )}`}
+            href={`/quote?product=${product._id}&name=${encodeURIComponent(product.sku ? product.sku : product.name)}`}
           >
             <Button
               onClick={onQuote}
-              className="flex-1 min-w-0 bg-primary hover:bg-primary-dark text-primary-foreground"
+              className="flex-1 min-w-0 bg-primary hover:bg-primary-dark text-primary-foreground justify-center"
               size="sm"
               style={{ minWidth: 0 }}
             >
-              <Quote className="h-4 w-4 mr-2" />
-              Get Quote
+              <Quote className="h-4 w-4" />
+              <span className="hidden lg:inline ml-2">Get Quote</span>
             </Button>
           </Link>
           <Button
             onClick={onDatasheet}
             variant="outline"
-            className="flex-1 min-w-0"
+            className="flex-1 min-w-0 justify-center bg-transparent"
             size="sm"
             style={{ minWidth: 0 }}
           >
-            <FileText className="h-4 w-4 mr-2" />
-            Datasheet
+            <FileText className="h-4 w-4" />
+            <span className="hidden lg:inline ml-2">Datasheet</span>
           </Button>
         </div>
       </CardFooter>
     </Card>
-  );
-};
+  )
+}

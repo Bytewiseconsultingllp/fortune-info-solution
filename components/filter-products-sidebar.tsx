@@ -1,24 +1,21 @@
-import { useState } from 'react';
-import { Filter, ChevronDown, ChevronUp } from 'lucide-react';
-import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Label } from "@/components/ui/label";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+"use client"
+
+import { useState } from "react"
+import { Filter, ChevronDown, ChevronUp } from "lucide-react"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Label } from "@/components/ui/label"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
 interface FilterSidebarProps {
-  brands: string[];
-  categories: string[];
-  selectedBrands: string[];
-  selectedCategories: string[];
-  onBrandChange: (brand: string, checked: boolean) => void;
-  onCategoryChange: (category: string, checked: boolean) => void;
+  brands: string[]
+  categories: string[]
+  selectedBrands: string[]
+  selectedCategories: string[]
+  onBrandChange: (brand: string, checked: boolean) => void
+  onCategoryChange: (category: string, checked: boolean) => void
 }
 
 export const FilterSidebar = ({
@@ -27,17 +24,17 @@ export const FilterSidebar = ({
   selectedBrands,
   selectedCategories,
   onBrandChange,
-  onCategoryChange
+  onCategoryChange,
 }: FilterSidebarProps) => {
-  const [brandExpanded, setBrandExpanded] = useState(true);
-  const [categoryExpanded, setCategoryExpanded] = useState(true);
+  const [brandExpanded, setBrandExpanded] = useState(true)
+  const [categoryExpanded, setCategoryExpanded] = useState(true)
 
   const clearAllFilters = () => {
-    selectedBrands.forEach(brand => onBrandChange(brand, false));
-    selectedCategories.forEach(category => onCategoryChange(category, false));
-  };
+    selectedBrands.forEach((brand) => onBrandChange(brand, false))
+    selectedCategories.forEach((category) => onCategoryChange(category, false))
+  }
 
-  const hasActiveFilters = selectedBrands.length > 0 || selectedCategories.length > 0;
+  const hasActiveFilters = selectedBrands.length > 0 || selectedCategories.length > 0
 
   return (
     <aside className="w-80 bg-surface border-r border-border h-[calc(100vh-73px)] overflow-y-auto">
@@ -52,12 +49,7 @@ export const FilterSidebar = ({
           </CardHeader>
           {hasActiveFilters && (
             <CardContent className="pt-0">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={clearAllFilters}
-                className="w-full"
-              >
+              <Button variant="outline" size="sm" onClick={clearAllFilters} className="w-full bg-transparent">
                 Clear All Filters
               </Button>
             </CardContent>
@@ -72,20 +64,20 @@ export const FilterSidebar = ({
             </CardHeader>
             <CardContent className="pt-0">
               <div className="flex flex-wrap gap-2">
-                {selectedBrands.map(brand => (
-                  <Badge 
-                    key={brand} 
-                    variant="secondary" 
+                {selectedBrands.map((brand) => (
+                  <Badge
+                    key={brand}
+                    variant="secondary"
                     className="text-xs cursor-pointer hover:bg-destructive hover:text-destructive-foreground"
                     onClick={() => onBrandChange(brand, false)}
                   >
                     {brand} ×
                   </Badge>
                 ))}
-                {selectedCategories.map(category => (
-                  <Badge 
-                    key={category} 
-                    variant="secondary" 
+                {selectedCategories.map((category) => (
+                  <Badge
+                    key={category}
+                    variant="secondary"
                     className="text-xs cursor-pointer hover:bg-destructive hover:text-destructive-foreground"
                     onClick={() => onCategoryChange(category, false)}
                   >
@@ -108,7 +100,7 @@ export const FilterSidebar = ({
                 </CardTitle>
               </CardHeader>
             </CollapsibleTrigger>
-            
+
             <CollapsibleContent>
               <CardContent className="pt-0 space-y-3">
                 {brands.map((brand) => (
@@ -118,10 +110,7 @@ export const FilterSidebar = ({
                       checked={selectedBrands.includes(brand)}
                       onCheckedChange={(checked) => onBrandChange(brand, checked as boolean)}
                     />
-                    <Label
-                      htmlFor={`brand-${brand}`}
-                      className="text-sm font-normal cursor-pointer flex-1"
-                    >
+                    <Label htmlFor={`brand-${brand}`} className="text-sm font-normal cursor-pointer flex-1">
                       {brand}
                     </Label>
                   </div>
@@ -142,7 +131,7 @@ export const FilterSidebar = ({
                 </CardTitle>
               </CardHeader>
             </CollapsibleTrigger>
-            
+
             <CollapsibleContent>
               <CardContent className="pt-0 space-y-3">
                 {categories.map((category) => (
@@ -166,5 +155,5 @@ export const FilterSidebar = ({
         </Card>
       </div>
     </aside>
-  );
-};
+  )
+}

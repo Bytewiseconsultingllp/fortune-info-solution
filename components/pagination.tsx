@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
+"use client"
 import {
   Pagination as ShadcnPagination,
   PaginationContent,
@@ -7,67 +7,67 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "@/components/ui/pagination"
 
 interface CustomPaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
+  currentPage: number
+  totalPages: number
+  onPageChange: (page: number) => void
 }
 
 export const Pagination = ({ currentPage, totalPages, onPageChange }: CustomPaginationProps) => {
   const getVisiblePages = () => {
-    const delta = 2;
-    const range = [];
-    const rangeWithDots = [];
+    const delta = 2
+    const range = []
+    const rangeWithDots = []
 
     for (let i = Math.max(2, currentPage - delta); i <= Math.min(totalPages - 1, currentPage + delta); i++) {
-      range.push(i);
+      range.push(i)
     }
 
     if (currentPage - delta > 2) {
-      rangeWithDots.push(1, '...');
+      rangeWithDots.push(1, "...")
     } else {
-      rangeWithDots.push(1);
+      rangeWithDots.push(1)
     }
 
-    rangeWithDots.push(...range);
+    rangeWithDots.push(...range)
 
     if (currentPage + delta < totalPages - 1) {
-      rangeWithDots.push('...', totalPages);
+      rangeWithDots.push("...", totalPages)
     } else if (totalPages > 1) {
-      rangeWithDots.push(totalPages);
+      rangeWithDots.push(totalPages)
     }
 
-    return rangeWithDots.filter((item, index, arr) => arr.indexOf(item) === index);
-  };
+    return rangeWithDots.filter((item, index, arr) => arr.indexOf(item) === index)
+  }
 
-  const visiblePages = getVisiblePages();
+  const visiblePages = getVisiblePages()
 
   return (
     <ShadcnPagination className="w-full">
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious 
+          <PaginationPrevious
             href="#"
             onClick={(e) => {
-              e.preventDefault();
-              if (currentPage > 1) onPageChange(currentPage - 1);
+              e.preventDefault()
+              if (currentPage > 1) onPageChange(currentPage - 1)
             }}
             className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
           />
         </PaginationItem>
-        
+
         {visiblePages.map((page, index) => (
           <PaginationItem key={index}>
-            {page === '...' ? (
+            {page === "..." ? (
               <PaginationEllipsis />
             ) : (
               <PaginationLink
                 href="#"
                 onClick={(e) => {
-                  e.preventDefault();
-                  onPageChange(page as number);
+                  e.preventDefault()
+                  onPageChange(page as number)
                 }}
                 isActive={currentPage === page}
               >
@@ -76,20 +76,20 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: CustomPagi
             )}
           </PaginationItem>
         ))}
-        
+
         <PaginationItem>
-          <PaginationNext 
+          <PaginationNext
             href="#"
             onClick={(e) => {
-              e.preventDefault();
-              if (currentPage < totalPages) onPageChange(currentPage + 1);
+              e.preventDefault()
+              if (currentPage < totalPages) onPageChange(currentPage + 1)
             }}
             className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
           />
         </PaginationItem>
       </PaginationContent>
     </ShadcnPagination>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination
