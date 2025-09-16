@@ -167,16 +167,22 @@ export const ProductCard = ({
               Get Quote
             </Button>
           </Link>
-          <Button
-            onClick={onDatasheet}
-            variant="outline"
-            className="flex-1 min-w-0"
-            size="sm"
-            style={{ minWidth: 0 }}
+          <Link
+            href={product.datasheet ? product.datasheet : "#"}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <FileText className="h-4 w-4 mr-2" />
-            Datasheet
-          </Button>
+            <Button
+              onClick={onDatasheet}
+              variant="outline"
+              className="flex-1 min-w-0"
+              size="sm"
+              style={{ minWidth: 0 }}
+            >
+              <FileText className="h-4 w-4 mr-2" />
+              Datasheet
+            </Button>
+          </Link>
         </div>
       </CardFooter>
     </Card>
