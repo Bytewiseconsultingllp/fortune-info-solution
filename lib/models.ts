@@ -24,26 +24,47 @@ export interface PartnerEnquiry {
   status: "new" | "contacted" | "approved" | "rejected"
 }
 
+// export interface Product {
+//   _id?: string
+//   name: string
+//   description: string
+//   category: string 
+//   brand: string
+//   datasheet?: string
+//   images: string[]
+//   specifications?: string
+//   price?: number 
+//   inStock: boolean
+//   stockQuantity?: number
+//   sku?: string
+//   tags: string[]
+//   createdAt: Date
+//   updatedAt: Date
+//   isActive: boolean
+//   createdBy?: string
+//   updatedBy?: string
+// }
 export interface Product {
-  _id?: string
-  name: string
-  description: string
-  category: string 
-  brand: string
-  datasheet?: string
-  images: string[]
-  specifications?: string
-  price?: number 
-  inStock: boolean
-  stockQuantity?: number
-  sku?: string
-  tags: string[]
+  _id: string;
+  name: string;
+  description: string;
+  category: string;
+  brand: string;
+  price: number;
+  inStock: boolean;
+  stockQuantity: number;
+  sku: string;
+  tags: string[];
+  images: string[];
   createdAt: Date
   updatedAt: Date
   isActive: boolean
   createdBy?: string
   updatedBy?: string
+  specifications?: string;
+  datasheet?: string;
 }
+
 
 // export interface Service {
 //   _id?: string

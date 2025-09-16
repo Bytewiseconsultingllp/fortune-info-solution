@@ -153,7 +153,7 @@ export async function POST(req: NextRequest) {
         description,
         category,
         brand,
-        dataSheet: row["DataSheet"]?.toString().trim() || "", // ✅ new field
+        datasheet: row["DataSheet"]?.toString().trim() || "", // ✅ new field
         price: Number(row["Price"]) || 0,
         specifications: row["Specifications"]?.toString().trim() || "",
         inStock:
