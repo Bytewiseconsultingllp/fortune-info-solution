@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = parseInt(searchParams.get("limit") || "12", 10);
 
-    const filter: any = { inStock: true };
+    const filter: any = { };
 
     if (category && category !== "all") {
       filter.category = category;
@@ -44,6 +44,8 @@ export async function GET(request: NextRequest) {
       db.collection("products").distinct("category"),
       db.collection("products").distinct("brand"),
     ]);
+
+    console.log(totalCount)
 
     return NextResponse.json({
       products,
