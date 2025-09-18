@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
     const [products, totalCount, categories, brands] = await Promise.all([
       db.collection("products")
         .find(filter)
-        .sort({ createdAt: -1 })
+        .sort({ createdAt: 1 })
         .skip(skip)
         .limit(limit)
         .toArray(),
