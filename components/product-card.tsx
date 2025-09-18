@@ -13,6 +13,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Product } from "@/lib/models";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductCardProps {
   product: Product;
@@ -44,15 +45,16 @@ export const ProductCard = ({
       <div className="relative w-full aspect-[4/3] bg-muted">
         {product.images.length > 0 ? (
           <>
-            <img
-              src={product.images[currentImageIndex]}
-              alt={product.name}
-              className={`w-full h-full object-cover transition-opacity duration-300 ${
-                imageLoading ? "opacity-0" : "opacity-100"
-              }`}
-              onLoad={() => setImageLoading(false)}
-              onError={() => setImageLoading(false)}
-            />
+              <Image
+                src={product.images[currentImageIndex]}
+                alt={product.name}
+                fill
+                className={`object-cover rounded-xl transition-opacity duration-300 ${
+                  imageLoading ? "opacity-0" : "opacity-100"
+                }`}
+                onLoadingComplete={() => setImageLoading(false)}
+                onError={() => setImageLoading(false)}
+              />
             {imageLoading && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <Package className="h-12 w-12 text-muted-foreground animate-pulse" />
