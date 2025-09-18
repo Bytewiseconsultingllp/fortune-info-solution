@@ -190,7 +190,7 @@ export default function FooterSection() {
                 <li key={service} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <a
-                    href="#"
+                    href="/services"
                     className="text-secondary/70 hover:text-secondary transition-colors"
                   >
                     {service}
