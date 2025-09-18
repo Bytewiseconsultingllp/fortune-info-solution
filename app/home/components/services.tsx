@@ -60,7 +60,7 @@ export function ServicesSection() {
           <div className="flex-1 section-heading">
             <div className="flex items-center gap-2 mb-8">
               <div className="w-1 h-6 bg-primary"></div>
-              <span className="text-primary text-sm font-medium">
+              <span className="text-primary text-2xl font-medium">
           Our Services
               </span>
               <div className="w-1 h-6 bg-primary"></div>

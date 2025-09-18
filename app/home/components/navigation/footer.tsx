@@ -124,9 +124,9 @@ export default function FooterSection() {
           <div>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-brand-cream font-bold text-sm">iT</span>
+                <span className="text-brand-cream font-bold text-sm">FIS</span>
               </div>
-              <span className="text-2xl font-bold text-secondary">iTech</span>
+              <span className="text-2xl font-bold text-secondary">Fortune Info Solutions</span>
             </div>
             <p className="text-secondary/70 mb-6 leading-relaxed">
               Fortune Info Solutions is your trusted partner for IT hardware,

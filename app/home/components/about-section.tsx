@@ -130,9 +130,9 @@ export function AboutSection() {
 
           {/* Right Column (Content + Progress bars) */}
           <div ref={rightColRef}>
-            <div className="flex items-center gap-2 mb-8">
+            <div className="flex items-center gap-2 mb-8 text-xl">
               <div className="w-1 h-6 bg-primary"></div>
-              <span className="text-primary text-sm font-medium">About Us</span>
+              <span className="text-primary font-medium text-2xl">About Us</span>
               <div className="w-1 h-6 bg-primary"></div>
             </div>
 

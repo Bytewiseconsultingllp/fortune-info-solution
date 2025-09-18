@@ -16,25 +16,25 @@ const certifications: Certification[] = [
   {
     id: 1,
     name: "ISO 27001 (ISMS)",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "",
     logo: "ISO",
   },
   {
     id: 2,
     name: "ISO 9001 (QMS)",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "",
     logo: "ISO",
   },
   {
     id: 3,
     name: "Microsoft Certified Partner",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "",
     logo: "MS",
   },
   {
     id: 4,
     name: "AWS Certified Partner",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    description: "",
     logo: "AWS",
   },
 ]

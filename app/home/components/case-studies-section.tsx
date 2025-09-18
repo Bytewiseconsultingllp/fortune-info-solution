@@ -103,7 +103,7 @@ export function CaseStudiesSection() {
         <div className="text-center mb-16 heading">
           <div className="flex items-center justify-center gap-2 mb-8">
             <div className="w-1 h-6 bg-brand-red"></div>
-            <span className="text-sm font-medium brand-red">Case Studies</span>
+            <span className="text-2xl font-medium brand-red">Case Studies</span>
             <div className="w-1 h-6 bg-brand-red"></div>
           </div>
 

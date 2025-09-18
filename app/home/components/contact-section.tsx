@@ -173,7 +173,7 @@ export function ContactSection() {
           <div ref={rightRef}>
             <div className="flex items-center gap-2 mb-8">
               <div className="w-1 h-6 bg-primary"></div>
-              <span className="text-primary text-sm font-medium">
+              <span className="text-primary text-2xl font-medium">
                 Contact Us
               </span>
               <div className="w-1 h-6 bg-primary"></div>
@@ -219,7 +219,7 @@ export function ContactSection() {
                         <circle cx="12" cy="11" r="2" />
                       </svg>
                     </span>
-                    <p className="text-primary">
+                    <p className="text-primary font-medium">
                       No.17/1, Old No.272, Sri Nandi, 12th Cross 8th Main Road,
                       Wilson Garden, Hombegowda Nagar, Bangalore, India - 560027
                     </p>

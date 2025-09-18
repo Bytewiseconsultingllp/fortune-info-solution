@@ -88,7 +88,7 @@ export function ExpertiseSection() {
         <div ref={textRef} className="text-justify">
           <div className="flex items-center gap-2 mb-8">
             <div className="w-1 h-6 bg-red-500"></div>
-            <span className="text-red-600 text-sm font-medium text-animate">
+            <span className="text-red-600 text-2xl font-medium text-animate">
               Our Expertise
             </span>
             <div className="w-1 h-6 bg-red-500"></div>
