@@ -62,7 +62,7 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 text-[#B8001F]" />
-            <span className="font-bold">9845447654, 9686194469</span>
+            <span className="font-bold">9845447654, 9686194471</span>
           </div>
         </div>
 

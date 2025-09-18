@@ -346,7 +346,7 @@ function QuoteForm() {
                   </p>
                   <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-sm">
                     <div className="font-semibold text-muted-foreground">Phone:</div>
-                    <div className="text-muted-foreground">9845447654, 9686194469</div>
+                    <div className="text-muted-foreground">9845447654, 9686194471</div>
                     <div className="font-semibold text-muted-foreground">Email:</div>
                     <div className="text-muted-foreground">info@fortuneinfo.in</div>
                     <div className="font-semibold text-muted-foreground">Hours:</div>

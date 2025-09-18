@@ -259,7 +259,7 @@ export function ContactSection() {
                   </span>
                   <p className="font-medium text-primary">
                     9845447654 <br />
-                    9686194469
+                    9686194471
                   </p>
                 </div>
               </div>

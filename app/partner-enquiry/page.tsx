@@ -430,7 +430,7 @@ export default function PartnerEnquiryPage() {
                       <span className="font-semibold w-36 flex-shrink-0">Phone:</span>
                       <span className="truncate">
                         9845447654 <br />
-                        9686194469
+                        9686194471
                       </span>
                     </div>
                     <div className="flex">

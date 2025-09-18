@@ -215,7 +215,7 @@ export default function FooterSection() {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <p>9845447654, 9686194469</p>
+                <p>9845447654, 9686194471</p>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -462,7 +462,7 @@ export default function FooterSection() {
 //               </div>
 //               <div className="flex items-center gap-2">
 //                 <div className="w-2 h-2 bg-primary rounded-full"></div>
-//                 <p>9845447654, 9686194469</p>
+//                 <p>9845447654, 9686194471</p>
 //               </div>
 //               <div className="flex items-center gap-2">
 //                 <div className="w-2 h-2 bg-primary rounded-full"></div>

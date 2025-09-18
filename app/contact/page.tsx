@@ -424,7 +424,7 @@ export default function ContactPage() {
                       <h4 className="font-semibold">Phone</h4>
                       <p className="text-sm text-muted-foreground">
                         9845447654 <br />
-                        9686194469
+                        9686194471
                       </p>
                     </div>
                   </div>
