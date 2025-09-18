@@ -229,6 +229,9 @@ export default function FooterSection() {
         </div>
       </div>
 
+
+
+
       {/* Bottom Footer */}
       <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
           <p>&copy; 2024 Fortune Info. All rights reserved.</p>
