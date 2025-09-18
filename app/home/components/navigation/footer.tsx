@@ -179,6 +179,9 @@ export default function FooterSection() {
                 "Laptop Services & Rentals",
                 "Annual Maintenance Contract (AMC)",
                 "CCTV Installation",
+                "Fire Detection and Alarm System",
+                "Fire Suppression System",
+                "Public Address and Voice Alarm",
               ].map((service) => (
                 <li key={service} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
