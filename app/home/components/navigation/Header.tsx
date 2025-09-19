@@ -46,12 +46,6 @@ export default function Header() {
 
   return (
     <header className="w-full z-50">
-<<<<<<< Updated upstream
-      {/* Top Contact Bar */}
-=======
-      
->>>>>>> Stashed changes
-
       {/* Main Navigation */}
       <nav className="bg-[#FDFAF6] py-4 px-4 md:px-6 lg:px-8 w-full flex justify-between items-center">
         {/* Logo */}

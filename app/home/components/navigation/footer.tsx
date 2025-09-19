@@ -6,6 +6,7 @@ import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { Service } from "@/lib/models";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,8 +15,9 @@ export default function FooterSection() {
   const newsletterRef = useRef<HTMLDivElement | null>(null);
   const mainFooterRef = useRef<HTMLDivElement | null>(null);
   const bottomFooterRef = useRef<HTMLDivElement | null>(null);
+  const [services, setServices] = useState<Service[]>([]);
 
-   const socials = [
+  const socials = [
     {
       Icon: Facebook,
       url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
@@ -78,6 +80,28 @@ export default function FooterSection() {
     };
   }, []);
 
+useEffect(() => {
+  const fetchServices = async () => {
+    try {
+      const response = await fetch("/api/services");
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Fetched services:", data.services);
+        setServices(data.services || []);
+      } else {
+        console.error("Failed to fetch services:", response.statusText);
+        setServices([]);
+      }
+    } catch (error) {
+      console.error("Error fetching services:", error);
+      setServices([]);
+    }
+  };
+
+  fetchServices(); 
+}, []);
+
+
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Newsletter subscription:", email);
@@ -126,7 +150,9 @@ export default function FooterSection() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-brand-cream font-bold text-sm">FIS</span>
               </div>
-              <span className="text-2xl font-bold text-secondary">Fortune Info Solutions</span>
+              <span className="text-2xl font-bold text-secondary">
+                Fortune Info Solutions
+              </span>
             </div>
             <p className="text-secondary/70 mb-6 leading-relaxed">
               Fortune Info Solutions is your trusted partner for IT hardware,
@@ -135,19 +161,19 @@ export default function FooterSection() {
               professional services, and scalable solutions across networking,
               security, surveillance, cloud, and enterprise IT.
             </p>
-             <div className="flex gap-4">
-      {socials.map(({ Icon, url }, i) => (
-        <Link
-          key={i}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
-        >
-          <Icon className="w-5 h-5 text-secondary hover:text-primary" />
-        </Link>
-      ))}
-    </div>
+            <div className="flex gap-4">
+              {socials.map(({ Icon, url }, i) => (
+                <Link
+                  key={i}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+                >
+                  <Icon className="w-5 h-5 text-secondary hover:text-primary" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Extra Links */}
@@ -175,21 +201,14 @@ export default function FooterSection() {
           <div>
             <h4 className="text-xl font-bold text-secondary mb-6">Services</h4>
             <ul className="space-y-3">
-              {[
-                "Laptop Services & Rentals",
-                "Annual Maintenance Contract (AMC)",
-                "CCTV Installation",
-                "Fire Detection and Alarm System",
-                "Fire Suppression System",
-                "Public Address and Voice Alarm",
-              ].map((service) => (
-                <li key={service} className="flex items-center gap-2">
+              {services.slice(0,5).map((service) => (
+                <li key={service._id} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <a
                     href="/sevices"
                     className="text-secondary/70 hover:text-secondary transition-colors"
                   >
-                    {service}
+                    {service.name}
                   </a>
                 </li>
               ))}
@@ -231,19 +250,19 @@ export default function FooterSection() {
 
       {/* Bottom Footer */}
       <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; 2024 Fortune Info. All rights reserved.</p>
-          <p className="mt-2">
-            Developed by{" "}
-            <Link
-              href="https://www.bytewiseconsulting.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 transition-colors font-medium"
-            >
-              Bytewise Consulting LLP
-            </Link>
-          </p>
-        </div>
+        <p>&copy; 2024 Fortune Info. All rights reserved.</p>
+        <p className="mt-2">
+          Developed by{" "}
+          <Link
+            href="https://www.bytewiseconsulting.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 transition-colors font-medium"
+          >
+            Bytewise Consulting LLP
+          </Link>
+        </p>
+      </div>
     </footer>
   );
 }
