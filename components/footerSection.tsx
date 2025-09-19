@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -27,7 +27,7 @@ export default function FooterSection() {
       url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
     },
     {
-      Icon: Twitter,
+      Icon: X,
       url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
     },
 
