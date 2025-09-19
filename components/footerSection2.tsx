@@ -20,18 +20,20 @@ export default function FooterSection() {
 
    const socials = [
     {
-      Icon: Linkedin,
-      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
-    },
-    {
-      Icon: Instagram,
-      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
-    },
-    {
-      Icon: X,
-      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
-    },
-
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png",
+    url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+    alt: "LinkedIn",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png",
+    url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    alt: "Instagram",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png",
+    url: process.env.NEXT_PUBLIC_TWITTER_URL || "#",
+    alt: "X",
+  },
   ];
 
    useEffect(() => {
@@ -167,18 +169,22 @@ export default function FooterSection() {
               security, surveillance, cloud, and enterprise IT.
             </p>
              <div className="flex gap-4">
-      {socials.map(({ Icon, url }, i) => (
-        <Link
-          key={i}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
-        >
-          <Icon className="w-5 h-5  text-white hover:text-primary" />
-        </Link>
-      ))}
-    </div>
+              {socials.map(({ src, url, alt }, i) => (
+                <Link
+                  key={i}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+                >
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="w-6 h-6 object-contain"
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Extra Links */}
