@@ -187,7 +187,7 @@ export default function FooterSection() {
                   { label: "Partner", href: "/channel-partner" },
                   { label: "Products", href: "/products" },
                   { label: "Contact Us", href: "/contact" },
-                      { name: "Admin", href: "/admin" },
+                  { label: "Admin", href: "/admin" },
 
                 ].map((link) => (
                   <li key={link.label}>

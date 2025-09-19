@@ -182,7 +182,7 @@ useEffect(() => {
               Extra Links
             </h4>
             <ul className="space-y-3">
-              {["About Us", "Our Team", "Services", "Case Studies", "FAQ"].map(
+              {["About Us", "Our Team", "Services", "Case Studies", "FAQ", "Admin"].map(
                 (link) => (
                   <li key={link}>
                     <a
