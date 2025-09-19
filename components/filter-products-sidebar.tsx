@@ -1,24 +1,22 @@
-import { useState } from 'react';
-import { Filter, ChevronDown, ChevronUp } from 'lucide-react';
-import { Checkbox } from "@/components/ui/checkbox";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Label } from "@/components/ui/label";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+"use client"
+
+import { useState, useMemo } from "react"
+import { Filter, ChevronDown, ChevronUp } from "lucide-react"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Label } from "@/components/ui/label"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
 interface FilterSidebarProps {
-  brands: string[];
-  categories: string[];
-  selectedBrands: string[];
-  selectedCategories: string[];
-  onBrandChange: (brand: string, checked: boolean) => void;
-  onCategoryChange: (category: string, checked: boolean) => void;
+  brands: string[]
+  categories: string[]
+  selectedBrands: string[]
+  selectedCategories: string[]
+  onBrandChange: (brand: string, checked: boolean) => void
+  onCategoryChange: (category: string, checked: boolean) => void
+  brandCategoryMap?: Record<string, string[]>
 }
 
 export const FilterSidebar = ({
@@ -27,17 +25,32 @@ export const FilterSidebar = ({
   selectedBrands,
   selectedCategories,
   onBrandChange,
-  onCategoryChange
+  onCategoryChange,
+  brandCategoryMap = {},
 }: FilterSidebarProps) => {
-  const [brandExpanded, setBrandExpanded] = useState(true);
-  const [categoryExpanded, setCategoryExpanded] = useState(true);
+  const [brandExpanded, setBrandExpanded] = useState(true)
+  const [categoryExpanded, setCategoryExpanded] = useState(true)
+
+  const visibleCategories = useMemo(() => {
+    if (selectedBrands.length === 0) {
+      return categories
+    }
+
+    const categoriesForSelectedBrands = selectedBrands.reduce((acc, brand) => {
+      const brandCategories = brandCategoryMap[brand] || []
+      return [...acc, ...brandCategories]
+    }, [] as string[])
+
+    const uniqueCategories = [...new Set(categoriesForSelectedBrands)]
+    return categories.filter((category) => uniqueCategories.includes(category))
+  }, [selectedBrands, categories, brandCategoryMap])
 
   const clearAllFilters = () => {
-    selectedBrands.forEach(brand => onBrandChange(brand, false));
-    selectedCategories.forEach(category => onCategoryChange(category, false));
-  };
+    selectedBrands.forEach((brand) => onBrandChange(brand, false))
+    selectedCategories.forEach((category) => onCategoryChange(category, false))
+  }
 
-  const hasActiveFilters = selectedBrands.length > 0 || selectedCategories.length > 0;
+  const hasActiveFilters = selectedBrands.length > 0 || selectedCategories.length > 0
 
   return (
     <aside className="w-80 bg-surface border-r border-border h-[calc(100vh-73px)] overflow-y-auto">
@@ -52,12 +65,7 @@ export const FilterSidebar = ({
           </CardHeader>
           {hasActiveFilters && (
             <CardContent className="pt-0">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={clearAllFilters}
-                className="w-full"
-              >
+              <Button variant="outline" size="sm" onClick={clearAllFilters} className="w-full bg-transparent">
                 Clear All Filters
               </Button>
             </CardContent>
@@ -72,20 +80,20 @@ export const FilterSidebar = ({
             </CardHeader>
             <CardContent className="pt-0">
               <div className="flex flex-wrap gap-2">
-                {selectedBrands.map(brand => (
-                  <Badge 
-                    key={brand} 
-                    variant="secondary" 
+                {selectedBrands.map((brand) => (
+                  <Badge
+                    key={brand}
+                    variant="secondary"
                     className="text-xs cursor-pointer hover:bg-destructive hover:text-destructive-foreground"
                     onClick={() => onBrandChange(brand, false)}
                   >
                     {brand} ×
                   </Badge>
                 ))}
-                {selectedCategories.map(category => (
-                  <Badge 
-                    key={category} 
-                    variant="secondary" 
+                {selectedCategories.map((category) => (
+                  <Badge
+                    key={category}
+                    variant="secondary"
                     className="text-xs cursor-pointer hover:bg-destructive hover:text-destructive-foreground"
                     onClick={() => onCategoryChange(category, false)}
                   >
@@ -108,7 +116,7 @@ export const FilterSidebar = ({
                 </CardTitle>
               </CardHeader>
             </CollapsibleTrigger>
-            
+
             <CollapsibleContent>
               <CardContent className="pt-0 space-y-3">
                 {brands.map((brand) => (
@@ -118,10 +126,7 @@ export const FilterSidebar = ({
                       checked={selectedBrands.includes(brand)}
                       onCheckedChange={(checked) => onBrandChange(brand, checked as boolean)}
                     />
-                    <Label
-                      htmlFor={`brand-${brand}`}
-                      className="text-sm font-normal cursor-pointer flex-1"
-                    >
+                    <Label htmlFor={`brand-${brand}`} className="text-sm font-normal cursor-pointer flex-1">
                       {brand}
                     </Label>
                   </div>
@@ -137,15 +142,15 @@ export const FilterSidebar = ({
             <CollapsibleTrigger asChild>
               <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
                 <CardTitle className="flex items-center justify-between text-sm">
-                  <span>Categories ({categories.length})</span>
+                  <span>Categories ({visibleCategories.length})</span>
                   {categoryExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
                 </CardTitle>
               </CardHeader>
             </CollapsibleTrigger>
-            
+
             <CollapsibleContent>
               <CardContent className="pt-0 space-y-3">
-                {categories.map((category) => (
+                {visibleCategories.map((category) => (
                   <div key={category} className="flex items-center space-x-2">
                     <Checkbox
                       id={`category-${category}`}
@@ -160,11 +165,16 @@ export const FilterSidebar = ({
                     </Label>
                   </div>
                 ))}
+                {visibleCategories.length === 0 && selectedBrands.length > 0 && (
+                  <div className="text-sm text-muted-foreground text-center py-4">
+                    No categories available for selected brands
+                  </div>
+                )}
               </CardContent>
             </CollapsibleContent>
           </Collapsible>
         </Card>
       </div>
     </aside>
-  );
-};
+  )
+}
