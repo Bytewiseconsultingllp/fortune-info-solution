@@ -18,20 +18,22 @@ export default function FooterSection() {
   const [services, setServices] = useState<Service[]>([]);
 
    const socials = [
-    {
-      Icon: Linkedin,
-      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
-    },
-    {
-      Icon: Instagram,
-      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
-    },
-    {
-      Icon: X,
-      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
-    },
-
-  ];
+  {
+    Icon: Linkedin,
+    url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+    color: "#0077B5", // LinkedIn Blue
+  },
+  {
+    Icon: Instagram,
+    url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    color: "#E4405F", // Instagram Pink/Red
+  },
+  {
+    Icon: X,
+    url: process.env.NEXT_PUBLIC_TWITTER_URL || "#",
+    color: "#000000", // Twitter/X Black
+  },
+];
 
    useEffect(() => {
     const fetchServices = async () => {
@@ -160,18 +162,18 @@ export default function FooterSection() {
               security, surveillance, cloud, and enterprise IT.
             </p>
              <div className="flex gap-4">
-              {socials.map(({ Icon, url }, i) => (
-            <Link
-              key={i}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors group"
-            >
-              <Icon className="w-5 h-5 text-white group-hover:text-primary transition-colors" />
-            </Link>
-          ))}
-          </div>
+              {socials.map(({ Icon, url, color }, i) => (
+                <Link
+                  key={i}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+                >
+                  <Icon className="w-6 h-6" style={{ color }} />
+                </Link>
+              ))}
+            </div>``
           </div>
 
           {/* Extra Links */}
