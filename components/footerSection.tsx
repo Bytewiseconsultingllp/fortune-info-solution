@@ -160,18 +160,19 @@ export default function FooterSection() {
               security, surveillance, cloud, and enterprise IT.
             </p>
              <div className="flex gap-4">
-      {socials.map(({ Icon, url }, i) => (
-        <Link
-          key={i}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
-        >
-          <Icon className="w-5 h-5  text-white hover:text-primary" />
-        </Link>
-      ))}
-    </div>
+              {socials.map(({ Icon, url }, i) => (
+            <Link
+              key={i}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+            >
+              {/* Force same color for all icons */}
+              <Icon className="w-5 h-5 text-secondary group-hover:text-primary transition-colors" />
+            </Link>
+          ))}
+          </div>
           </div>
 
           {/* Extra Links */}
