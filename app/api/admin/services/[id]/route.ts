@@ -46,23 +46,54 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+// export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+//   try {
+//     const token = request.cookies.get("admin-token")?.value
+//     if (!token || !verifyToken(token)) {
+//       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+//     }
+
+//     const { db } = await connectDB()
+//     const result = await db.collection("services").deleteOne({ _id: new ObjectId(params.id) })
+
+//     if (result.deletedCount === 0) {
+//       return NextResponse.json({ error: "Service not found" }, { status: 404 })
+//     }
+
+//     return NextResponse.json({ message: "Service deleted successfully" })
+//   } catch (error) {
+//     console.error("Error deleting service:", error)
+//     return NextResponse.json({ error: "Failed to delete service" }, { status: 500 })
+//   }
+// }
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
   try {
-    const token = request.cookies.get("admin-token")?.value
+    const token = request.cookies.get("admin-token")?.value;
     if (!token || !verifyToken(token)) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { db } = await connectDB()
-    const result = await db.collection("services").deleteOne({ _id: new ObjectId(params.id) })
+    const { db } = await connectDB();
+
+    // validate ID
+    if (!ObjectId.isValid(params.id)) {
+      return NextResponse.json({ error: "Invalid ID format" }, { status: 400 });
+    }
+
+    const result = await db
+      .collection("services")
+      .deleteOne({ _id: new ObjectId(params.id) });
 
     if (result.deletedCount === 0) {
-      return NextResponse.json({ error: "Service not found" }, { status: 404 })
+      return NextResponse.json({ error: "Service not found" }, { status: 404 });
     }
 
-    return NextResponse.json({ message: "Service deleted successfully" })
+    return NextResponse.json({ message: "Service deleted successfully" });
   } catch (error) {
-    console.error("Error deleting service:", error)
-    return NextResponse.json({ error: "Failed to delete service" }, { status: 500 })
+    console.error("Error deleting service:", error);
+    return NextResponse.json({ error: "Failed to delete service" }, { status: 500 });
   }
 }

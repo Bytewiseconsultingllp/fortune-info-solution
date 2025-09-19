@@ -112,7 +112,8 @@ export default function AboutPage() {
                 <b>end-to-end IT solution</b> for organizations across India.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                We are a trusted partner for global technology leaders such as <br/>
+                We are a trusted partner for global technology leaders such as{" "}
+                <br />
                 <b>
                   HP, Dell, Lenovo, Cisco, Honeywell, Panasonic, Acer, Samsung,
                   VMware, and Microsoft
@@ -138,9 +139,9 @@ export default function AboutPage() {
 
               <p className="text-lg text-muted-foreground mb-6">
                 With a dedicated PAN-India sales and support team, we aim to be
-                a <span>one-stop solution</span> for all IT requirements—providing not
-                just products, but also long-term reliability, affordability,
-                scalability, and serviceability.
+                a <span>one-stop solution</span> for all IT
+                requirements—providing not just products, but also long-term
+                reliability, affordability, scalability, and serviceability.
               </p>
             </div>
             <div ref={profileCardRef} className="bg-muted/50 p-8 rounded-lg">
@@ -171,12 +172,13 @@ export default function AboutPage() {
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
           >
             <Card>
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+              <CardHeader className="flex gap-5 items-center">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Target className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-2xl">Our Mission</CardTitle>
               </CardHeader>
+
               <CardContent>
                 <CardDescription className="text-base text-justify">
                   To provide exceptional distribution services that connect
@@ -189,12 +191,13 @@ export default function AboutPage() {
             </Card>
 
             <Card>
-              <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                  <Eye className="h-6 w-6 text-primary" />
+              <CardHeader className="flex gap-5 items-center">
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <Target className="h-6 w-6 text-primary" />
                 </div>
                 <CardTitle className="text-2xl">Our Vision</CardTitle>
               </CardHeader>
+
               <CardContent>
                 <CardDescription className="text-base text-justify">
                   To become the world’s most trusted distribution hub,

@@ -152,7 +152,7 @@ export const ProductCard = ({
         </div>
       </CardContent>
 
-      <CardFooter className="p-4 sm:p-5 pt-0">
+      {/* <CardFooter className="p-4 sm:p-5 pt-0">
         <div className="flex flex-col sm:flex-row lg:flex-row gap-3 w-full">
           <Link
             href={`/quote?product=${product._id}&name=${encodeURIComponent(
@@ -186,7 +186,44 @@ export const ProductCard = ({
             </Button>
           </Link>
         </div>
-      </CardFooter>
+      </CardFooter> */}
+      <CardFooter className="p-4 sm:p-5 pt-0">
+  <div className="flex flex-row gap-3 w-full">
+    <Link
+      href={`/quote?product=${product._id}&name=${encodeURIComponent(
+        product.sku ? product.sku : product.name
+      )}`}
+      className="flex-1"
+    >
+      <Button
+        onClick={onQuote}
+        className="w-full bg-primary hover:bg-primary-dark text-primary-foreground truncate"
+        size="sm"
+      >
+        <Quote className="h-4 w-4 mr-2 shrink-0" />
+        <span className="truncate">Get Quote</span>
+      </Button>
+    </Link>
+
+    <Link
+      href={product.datasheet ? product.datasheet : "#"}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex-1"
+    >
+      <Button
+        onClick={onDatasheet}
+        variant="outline"
+        className="w-full truncate"
+        size="sm"
+      >
+        <FileText className="h-4 w-4 mr-2 shrink-0" />
+        <span className="truncate">Datasheet</span>
+      </Button>
+    </Link>
+  </div>
+</CardFooter>
+
     </Card>
   );
 };

@@ -6,6 +6,7 @@ import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import { Service } from "@/lib/models";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,7 @@ export default function FooterSection() {
   const newsletterRef = useRef<HTMLDivElement | null>(null);
   const mainFooterRef = useRef<HTMLDivElement | null>(null);
   const bottomFooterRef = useRef<HTMLDivElement | null>(null);
+  const [services, setServices] = useState<Service[]>([]);
 
    const socials = [
     {
@@ -29,6 +31,27 @@ export default function FooterSection() {
       url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
     },
   ];
+
+   useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch("/api/services")
+        if (response.ok) {
+          const data = await response.json()
+          console.log("Fetched services:", data.services)
+          setServices(data.services || [])
+        } else {
+          console.error("Failed to fetch services:", response.statusText)
+          setServices([])
+        }
+      } catch (error) {
+        console.error("Error fetching services:", error)
+        setServices([])
+      } 
+    }
+
+    fetchServices()
+  }, [])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -182,21 +205,14 @@ export default function FooterSection() {
           <div>
             <h4 className="text-xl font-bold text-secondary mb-6">Services</h4>
             <ul className="space-y-3">
-              {[
-                "Laptop Services & Rentals",
-                "Annual Maintenance Contract (AMC)",
-                "CCTV Installation",
-                "Fire Detection and Alarm System",
-                "Fire Suppression System",
-                "Public Address and Voice Alarm",
-              ].map((service) => (
-                <li key={service} className="flex items-center gap-2">
+              {services.slice(0, 6).map((service) => (
+                <li key={service._id} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <a
                     href="/services"
                     className="text-secondary/70 hover:text-secondary transition-colors"
                   >
-                    {service}
+                    {service.name}
                   </a>
                 </li>
               ))}
