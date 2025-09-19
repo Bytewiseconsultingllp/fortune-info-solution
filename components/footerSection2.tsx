@@ -19,22 +19,20 @@ export default function FooterSection() {
   const [services, setServices] = useState<Service[]>([]);
 
    const socials = [
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png",
-    url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
-    alt: "LinkedIn",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png",
-    url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
-    alt: "Instagram",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png",
-    url: process.env.NEXT_PUBLIC_TWITTER_URL || "#",
-    alt: "X",
-  },
-];
+    {
+      Icon: Linkedin,
+      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+    },
+    {
+      Icon: Instagram,
+      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    },
+    {
+      Icon: X,
+      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
+    },
+
+  ];
 
    useEffect(() => {
     const fetchServices = async () => {
@@ -144,21 +142,21 @@ export default function FooterSection() {
       {/* Main Footer */}
       <div
         ref={mainFooterRef}
-        className="py-16 px-4 md:px-8 lg:px-16 bg-red-800 border-t border-secondary/50"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-black border-t border-secondary/50"
       >
-        <div className="max-w-7xl mx-auto bg-red-800 text-white grid md:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto bg-black-800 text-white grid md:grid-cols-4 gap-12">
           {/* Company Info */}
           <div className="mr-10">
             <div className="flex items-center  gap-2 mb-6">
-              <div className="w-30 h-20 rounded-lg flex items-center justify-center">
-                                        <Image
-                                          src="/com.png"
-                                          alt="Company Logo"
-                                          width={300}
-                                          height={300}
-                                          className="object-contain"
-                                        />
-                                      </div>
+              <div className="w-30 h-20 bg-black rounded-lg flex items-center justify-center">
+                          <Image
+                            src="/com.png"
+                            alt="Company Logo"
+                            width={300}
+                            height={300}
+                            className="object-contain"
+                          />
+                        </div>
               <span className="text-2xl font-bold text-white text-secondary">Fortune Info Solutions</span>
             </div>
             <p className="text-secondary/70 mb-6 text-white leading-relaxed">
@@ -169,22 +167,18 @@ export default function FooterSection() {
               security, surveillance, cloud, and enterprise IT.
             </p>
              <div className="flex gap-4">
-              {socials.map(({ src, url, alt }, i) => (
-                <Link
-                  key={i}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
-                >
-                  <img
-                    src={src}
-                    alt={alt}
-                    className="w-6 h-6 object-contain"
-                  />
-                </Link>
-              ))}
-            </div>
+      {socials.map(({ Icon, url }, i) => (
+        <Link
+          key={i}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+        >
+          <Icon className="w-5 h-5  text-white hover:text-primary" />
+        </Link>
+      ))}
+    </div>
           </div>
 
           {/* Extra Links */}
@@ -220,10 +214,10 @@ export default function FooterSection() {
           {/* Services */}
           <div>
             <h4 className="text-xl font-bold text-white  mb-6">Services</h4>
-            <ul className="space-y-3 text-white">
+            <ul className="space-y-3">
               {services.slice(0, 6).map((service) => (
                 <li key={service._id} className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <a
                     href="/services"
                     className="text-secondary/70 text-white hover:text-secondary transition-colors"
@@ -242,7 +236,7 @@ export default function FooterSection() {
             </h4>
             <div className="space-y-4 text-white text-secondary/70">
               <div className="flex items-start gap-2">
-                <div className="w-4 h-2 bg-white rounded-full mt-2"></div>
+                <div className="w-4 h-2 bg-primary rounded-full mt-2"></div>
                 <div>
                   <p>
                     No.17/1, Old No.272, <br />
@@ -252,15 +246,15 @@ export default function FooterSection() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
                 <p>info@fortuneinfo.in</p>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
                 <p>9845447654, 9686194471</p>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+                <div className="w-2 h-2 bg-primary rounded-full"></div>
                 <p>Mon - Sat: 09:00 am - 07:00 pm</p>
               </div>
             </div>
