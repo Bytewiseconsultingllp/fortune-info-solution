@@ -19,17 +19,18 @@ export default function FooterSection() {
 
    const socials = [
     {
-      Icon: Facebook,
-      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
+      Icon: Linkedin,
+      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
     },
     {
       Icon: Instagram,
       url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
     },
     {
-      Icon: Linkedin,
-      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+      Icon: Twitter,
+      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
     },
+
   ];
 
    useEffect(() => {
