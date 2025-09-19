@@ -17,6 +17,8 @@ export default function Header() {
     { name: "Partners", href: "/channel-partner" },
     { name: "Products", href: "/products" },
     { name: "Contact Us", href: "/contact" },
+    { name: "Admin", href: "/admin" },
+
   ];
 
   return (
