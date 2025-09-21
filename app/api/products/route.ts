@@ -10,6 +10,7 @@ export async function GET(request: NextRequest) {
     const brands = searchParams.getAll("brand");
     const search = searchParams.get("search");
     const getAllFilters = searchParams.get("getAllFilters") === "true";
+    const getBrandCategories = searchParams.get("getBrandCategories") === "true";
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = parseInt(searchParams.get("limit") || "12", 10);
 
@@ -43,6 +44,23 @@ export async function GET(request: NextRequest) {
     // Get all categories and brands regardless of filters
     const allCategoriesPromise = db.collection("products").distinct("category");
     const allBrandsPromise = db.collection("products").distinct("brand");
+
+    // If getBrandCategories is true, fetch all categories for the specified brands
+    if (getBrandCategories && brands.length > 0) {
+      const validBrands = brands.filter(b => b !== "all");
+      if (validBrands.length > 0) {
+        const brandFilter = { brand: { $in: validBrands } };
+        const brandCategories = await db.collection("products").distinct("category", brandFilter);
+
+        console.log("getBrandCategories mode - Brands:", validBrands);
+        console.log("getBrandCategories mode - Categories for these brands:", brandCategories);
+
+        return NextResponse.json({
+          brandCategories,
+          brands: validBrands
+        });
+      }
+    }
 
     // If getAllFilters is true, just return categories and brands
     if (getAllFilters) {
