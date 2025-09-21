@@ -188,7 +188,7 @@
 //                     <CardDescription className="line-clamp-3">
 //                       {product.description}
 //                     </CardDescription>
-                    
+
 //                   </CardHeader>
 //                   <CardContent className="pt-0">
 //                     {Array.isArray((product as any).features) &&
@@ -240,7 +240,7 @@
 //       <Footer />
 //     </div>
 //   )
-  
+
 // }
 
 "use client";
@@ -260,12 +260,25 @@ export default function ProductsPage() {
 
   const fetchFilters = async () => {
     try {
-      const response = await fetch(`/api/products?limit=1&page=1`); 
-      // fetch just 1 product, we only need categories & brands
+      // Don't limit to just 1 product, we need all categories and brands
+      const response = await fetch(`/api/products?getAllFilters=true`);
       if (response.ok) {
         const data = await response.json();
-        setCategories(data.categories || []);
-        setBrands(data.brands || []);
+        console.log("API Response:", data);
+        console.log("Categories:", data.categories);
+        console.log("Brands:", data.brands);
+
+        if (Array.isArray(data.categories) && data.categories.length > 0) {
+          setCategories(data.categories);
+        } else {
+          console.error("No categories returned from API");
+        }
+
+        if (Array.isArray(data.brands) && data.brands.length > 0) {
+          setBrands(data.brands);
+        } else {
+          console.error("No brands returned from API");
+        }
       } else {
         console.error("Failed to fetch categories & brands");
       }

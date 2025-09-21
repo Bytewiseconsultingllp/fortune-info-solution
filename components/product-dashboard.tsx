@@ -27,6 +27,9 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  console.log("ProductDashboard Props - Categories:", categories);
+  console.log("ProductDashboard Props - Brands:", brands);
+
   const fetchProducts = async () => {
     setLoading(true);
     const params = new URLSearchParams({
@@ -35,8 +38,14 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
     });
 
     if (searchTerm) params.append("search", searchTerm);
-    if (selectedBrands.length === 1) params.append("brand", selectedBrands[0]);
-    if (selectedCategories.length === 1) params.append("category", selectedCategories[0]);
+    // Handle multiple brands and categories
+    selectedBrands.forEach(brand => {
+      params.append("brand", brand);
+    });
+
+    selectedCategories.forEach(category => {
+      params.append("category", category);
+    });
 
     const res = await fetch(`/api/products?${params.toString()}`);
     const data = await res.json();
@@ -52,19 +61,63 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
   }, [searchTerm, selectedBrands, selectedCategories, currentPage]);
 
   const handleBrandChange = (brand: string, checked: boolean) => {
-    setSelectedBrands(checked ? [brand] : []);
+    setSelectedBrands(prev => {
+      const newSelectedBrands = checked
+        ? [...prev, brand]
+        : prev.filter(b => b !== brand);
+
+      // If we're adding a brand, we need to check if any selected categories
+      // are no longer available with the new brand selection
+      if (checked && newSelectedBrands.length > 0) {
+        // Get products that match the new brand selection
+        const filteredProducts = products.filter(product =>
+          newSelectedBrands.includes(product.brand)
+        );
+
+        // Get categories available for these products
+        const availableCategoriesForBrands = Array.from(
+          new Set(filteredProducts.map(product => product.category))
+        );
+
+        // Remove any selected categories that are no longer available
+        setSelectedCategories(prevCategories =>
+          prevCategories.filter(category =>
+            availableCategoriesForBrands.includes(category)
+          )
+        );
+      }
+
+      return newSelectedBrands;
+    });
     setCurrentPage(1);
   };
 
   const handleCategoryChange = (category: string, checked: boolean) => {
-    setSelectedCategories(checked ? [category] : []);
+    setSelectedCategories(prev => {
+      if (checked) {
+        return [...prev, category];
+      } else {
+        return prev.filter(c => c !== category);
+      }
+    });
     setCurrentPage(1);
   };
 
+  // Filter categories based on selected brands
   const availableCategories = useMemo(() => {
-    if (selectedBrands.length === 0) return categories;
-    return Array.from(new Set(products.map((p) => p.category)));
-  }, [products, categories, selectedBrands]);
+    if (selectedBrands.length === 0) {
+      // If no brands are selected, show all categories
+      return categories;
+    } else {
+      // If brands are selected, only show categories that exist in products with those brands
+      const categoriesForSelectedBrands = products
+        .filter(product => selectedBrands.includes(product.brand))
+        .map(product => product.category);
+
+      // Return unique categories
+      return Array.from(new Set(categoriesForSelectedBrands));
+    }
+  }, [categories, selectedBrands, products]);
 
   return (
     <div className="min-h-screen bg-background">
