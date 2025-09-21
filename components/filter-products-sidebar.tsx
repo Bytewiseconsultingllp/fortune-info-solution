@@ -32,6 +32,9 @@ export const FilterSidebar = ({
   const [brandExpanded, setBrandExpanded] = useState(true);
   const [categoryExpanded, setCategoryExpanded] = useState(true);
 
+  console.log("FilterSidebar Props - Categories:", categories);
+  console.log("FilterSidebar Props - Brands:", brands);
+
   const clearAllFilters = () => {
     selectedBrands.forEach(brand => onBrandChange(brand, false));
     selectedCategories.forEach(category => onCategoryChange(category, false));
@@ -73,9 +76,9 @@ export const FilterSidebar = ({
             <CardContent className="pt-0">
               <div className="flex flex-wrap gap-2">
                 {selectedBrands.map(brand => (
-                  <Badge 
-                    key={brand} 
-                    variant="secondary" 
+                  <Badge
+                    key={brand}
+                    variant="secondary"
                     className="text-xs cursor-pointer hover:bg-destructive hover:text-destructive-foreground"
                     onClick={() => onBrandChange(brand, false)}
                   >
@@ -83,9 +86,9 @@ export const FilterSidebar = ({
                   </Badge>
                 ))}
                 {selectedCategories.map(category => (
-                  <Badge 
-                    key={category} 
-                    variant="secondary" 
+                  <Badge
+                    key={category}
+                    variant="secondary"
                     className="text-xs cursor-pointer hover:bg-destructive hover:text-destructive-foreground"
                     onClick={() => onCategoryChange(category, false)}
                   >
@@ -108,7 +111,7 @@ export const FilterSidebar = ({
                 </CardTitle>
               </CardHeader>
             </CollapsibleTrigger>
-            
+
             <CollapsibleContent>
               <CardContent className="pt-0 space-y-3">
                 {brands.map((brand) => (
@@ -142,7 +145,7 @@ export const FilterSidebar = ({
                 </CardTitle>
               </CardHeader>
             </CollapsibleTrigger>
-            
+
             <CollapsibleContent>
               <CardContent className="pt-0 space-y-3">
                 {categories.map((category) => (
