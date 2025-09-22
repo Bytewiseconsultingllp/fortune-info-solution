@@ -106,9 +106,9 @@ export function ServicesSection() {
             <p className="text-muted-foreground mb-6 leading-relaxed">
               We deliver tailored IT solutions, combining the right hardware and software to optimize performance and drive business growth.
             </p>
-            <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
+            {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
               Learn More <ArrowRight className="w-4 h-4" />
-            </button>
+            </button> */}
           </div>
 
           {/* Cloud Solutions */}
@@ -135,11 +135,11 @@ export function ServicesSection() {
                 Cloud Solutions
               </h3>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Accelerate digital transformation with cloud-ready infrastructure, servers, storage, and licensed software integrated with AWS, Azure, and VMware.
+                Accelerate digital transformation with cloud-ready infrastructure, servers, storage, and licensed software integrated with AWS, Azure.
               </p>
-              <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
+              {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
                 Learn More <ArrowRight className="w-4 h-4" />
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -159,9 +159,9 @@ export function ServicesSection() {
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Protect your business with advanced surveillance, firewalls, antivirus, and access control—ensuring security and compliance.
             </p>
-            <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
+            {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
               Learn More <ArrowRight className="w-4 h-4" />
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

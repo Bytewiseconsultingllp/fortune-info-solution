@@ -46,7 +46,7 @@ const caseStudies: CaseStudy[] = [
     company: "Natioonal Retail Chain",
     metric: "RIncreased Sales Growth",
     problem:
-      "Inefficient POS and e-commerce systems limited sales. We implemented modern POS hardware, Samsung LFDs, and retail software, boosting sales by 70% in one year.",
+      "Inefficient POS and e-commerce systems limited sales. We implemented modern POS hardware, Samsung LFDs, and retail software, boosting the sales by 70% in one year.",
     image: retailImg,
   },
 ];
@@ -155,9 +155,9 @@ export function CaseStudiesSection() {
                 <p className="mb-6 leading-relaxed text-secondary text-justify">
                   {study.problem}
                 </p>
-                <button className="flex items-center gap-2 font-medium text-brand-red hover:text-brand-red/80 transition-colors duration-300">
+                {/* <button className="flex items-center gap-2 font-medium text-brand-red hover:text-brand-red/80 transition-colors duration-300">
                   Read More <Plus className="w-4 h-4" />
-                </button>
+                </button> */}
               </div>
             </div>
           ))}

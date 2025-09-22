@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { gsap } from "gsap"
 import Header from "@/app/home/components/navigation/Header"
-import Footer from "@/components/footerSection"
+import Footer from "@/components/contact-footer";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"

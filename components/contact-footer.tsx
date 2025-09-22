@@ -11,51 +11,51 @@ import { Service } from "@/lib/models";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function FooterSection() {
+export default function ContactFooterSection() {
   const [email, setEmail] = useState("");
   const newsletterRef = useRef<HTMLDivElement | null>(null);
   const mainFooterRef = useRef<HTMLDivElement | null>(null);
   const bottomFooterRef = useRef<HTMLDivElement | null>(null);
   const [services, setServices] = useState<Service[]>([]);
 
-   const socials = [
+  const socials = [
     {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png",
-    url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
-    alt: "LinkedIn",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png",
-    url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
-    alt: "Instagram",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png",
-    url: process.env.NEXT_PUBLIC_TWITTER_URL || "#",
-    alt: "X",
-  },
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png",
+      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+      alt: "LinkedIn",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png",
+      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+      alt: "Instagram",
+    },
+    {
+      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png",
+      url: process.env.NEXT_PUBLIC_TWITTER_URL || "#",
+      alt: "X",
+    },
   ];
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("/api/services")
+        const response = await fetch("/api/services");
         if (response.ok) {
-          const data = await response.json()
-          console.log("Fetched services:", data.services)
-          setServices(data.services || [])
+          const data = await response.json();
+          console.log("Fetched services:", data.services);
+          setServices(data.services || []);
         } else {
-          console.error("Failed to fetch services:", response.statusText)
-          setServices([])
+          console.error("Failed to fetch services:", response.statusText);
+          setServices([]);
         }
       } catch (error) {
-        console.error("Error fetching services:", error)
-        setServices([])
-      } 
-    }
+        console.error("Error fetching services:", error);
+        setServices([]);
+      }
+    };
 
-    fetchServices()
-  }, [])
+    fetchServices();
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -112,7 +112,7 @@ export default function FooterSection() {
   };
 
   return (
-    <footer style={{ backgroundColor: "#FDFAF6", color: "#000000" }}>
+    <footer className="bg-secondary text-white">
       {/* Newsletter Section */}
       {/* <div ref={newsletterRef} className="py-12 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
@@ -141,47 +141,43 @@ export default function FooterSection() {
         </div>
       </div> */}
 
-      {/* Main Footer */}
       <div
         ref={mainFooterRef}
-        className="py-16 px-4 md:px-8 lg:px-16 bg-black border-t border-secondary/50"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-secondary border-t border-secondary/50"
       >
-        <div className="max-w-7xl mx-auto bg-black-800 text-white grid md:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-white">
           {/* Company Info */}
-          <div className="mr-10">
-            <div className="flex items-center  gap-2 mb-6">
-              <div className="w-30 h-20 bg-black rounded-lg flex items-center justify-center">
-                          <Image
-                            src="/com.png"
-                            alt="Company Logo"
-                            width={300}
-                            height={300}
-                            className="object-contain"
-                          />
-                        </div>
-              <span className="text-2xl font-bold text-white text-secondary">Fortune Info Solutions</span>
+          <div>
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-30 h-20 flex items-center justify-center">
+                <Image
+                  src="/com.png"
+                  alt="Company Logo"
+                  width={300}
+                  height={300}
+                  className="object-contain"
+                />
+              </div>
+              <span className="text-2xl font-bold">Fortune Info Solutions</span>
             </div>
-            <p className="text-secondary/70 mb-6 text-white leading-relaxed">
+            <p className="mb-6 leading-relaxed">
               Fortune Info Solutions is your trusted partner for IT hardware,
               software, and integrated solutions. With years of collective
               industry experience, we empower businesses with reliable products,
               professional services, and scalable solutions across networking,
               security, surveillance, cloud, and enterprise IT.
             </p>
-             <div className="flex gap-4">
+
+            <div className="flex gap-4">
               {socials.map(({ src, url, alt }, i) => (
                 <Link
                   key={i}
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+                  className="w-12 h-12 border-2 border-white/50 rounded-lg flex items-center justify-center hover:border-white transition-colors"
                 >
-                  <img
-                    src={src}
-                    alt={alt}
-                    className="w-6 h-6 object-contain"
-                  />
+                  <img src={src} alt={alt} className="w-6 h-6 object-contain" />
                 </Link>
               ))}
             </div>
@@ -189,44 +185,40 @@ export default function FooterSection() {
 
           {/* Extra Links */}
           <div>
-              <h4 className="text-xl font-bold text-white  mb-6">
-                Extra Links
-              </h4>
-              <ul className="space-y-3">
-                {[
-                  { label: "Home", href: "/" },
-                  { label: "Services", href: "/services" },
-                  { label: "About Us", href: "/about" },
-                  { label: "Awards", href: "/awards" },
-                  { label: "Partner", href: "/channel-partner" },
-                  { label: "Products", href: "/products" },
-                  { label: "Contact Us", href: "/contact" },
-                  { label: "Admin", href: "/admin" },
-
-                ].map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-secondary/70 hover:text-secondary text-white transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
+            <h4 className="text-xl font-bold mb-6">Extra Links</h4>
+            <ul className="space-y-3">
+              {[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: "About Us", href: "/about" },
+                { label: "Awards", href: "/awards" },
+                { label: "Partner", href: "/channel-partner" },
+                { label: "Products", href: "/products" },
+                { label: "Contact Us", href: "/contact" },
+                { label: "Admin", href: "/admin" },
+              ].map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Services */}
           <div>
-            <h4 className="text-xl font-bold text-white  mb-6">Services</h4>
+            <h4 className="text-xl font-bold mb-6">Services</h4>
             <ul className="space-y-3">
               {services.slice(0, 6).map((service) => (
                 <li key={service._id} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <a
                     href="/services"
-                    className="text-secondary/70 text-white hover:text-secondary transition-colors"
+                    className="hover:text-primary transition-colors"
                   >
                     {service.name}
                   </a>
@@ -237,19 +229,15 @@ export default function FooterSection() {
 
           {/* Get In Touch */}
           <div>
-            <h4 className="text-xl text-white font-bold y mb-6">
-              Get In Touch
-            </h4>
-            <div className="space-y-4 text-white text-secondary/70">
+            <h4 className="text-xl font-bold mb-6">Get In Touch</h4>
+            <div className="space-y-4">
               <div className="flex items-start gap-2">
-                <div className="w-4 h-2 bg-primary rounded-full mt-2"></div>
-                <div>
-                  <p>
-                    No.17/1, Old No.272, <br />
-                    Sri Nandi 12th Cross 8th Main Road <br />
-                    Wilson Garden, Hombegowda Nagar, Bangalore, India - 560027
-                  </p>
-                </div>
+                <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
+                <p>
+                  No.17/1, Old No.272, <br />
+                  Sri Nandi 12th Cross 8th Main Road <br />
+                  Wilson Garden, Hombegowda Nagar, Bangalore, India - 560027
+                </p>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -269,20 +257,20 @@ export default function FooterSection() {
       </div>
 
       {/* Bottom Footer */}
-      <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; 2024 Fortune Info. All rights reserved.</p>
-          <p className="mt-2">
-            Developed by{" "}
-            <Link
-              href="https://www.bytewiseconsulting.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:text-primary/80 transition-colors font-medium"
-            >
-              Bytewise Consulting LLP
-            </Link>
-          </p>
-        </div>
+      <div className=" p-4 border-t flex flex-col items-center justify-center text-center text-sm text-gray-400">
+        <p>&copy; 2025 Fortune Info. All rights reserved.</p>
+        <p className="mt-2">
+          Developed by{" "}
+          <Link
+            href="https://www.bytewiseconsulting.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 transition-colors font-medium"
+          >
+            Bytewise Consulting LLP
+          </Link>
+        </p>
+      </div>
     </footer>
   );
 }

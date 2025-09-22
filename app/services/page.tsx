@@ -1,41 +1,47 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Header from "@/app/home/components/navigation/Header"
-import Footer from "@/components/footerSection"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { CheckCircle, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import type { Service } from "@/lib/models"
+import { useState, useEffect } from "react";
+import Header from "@/app/home/components/navigation/Header";
+import Footer from "@/components/footerSection";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import type { Service } from "@/lib/models";
 
 export default function ServicesPage() {
-  const [services, setServices] = useState<Service[]>([])
-  const [loading, setLoading] = useState(true)
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch("/api/services")
+        const response = await fetch("/api/services");
         if (response.ok) {
-          const data = await response.json()
-          console.log("Fetched services:", data.services)
-          setServices(data.services || [])
+          const data = await response.json();
+          console.log("Fetched services:", data.services);
+          setServices(data.services || []);
         } else {
-          console.error("Failed to fetch services:", response.statusText)
-          setServices([])
+          console.error("Failed to fetch services:", response.statusText);
+          setServices([]);
         }
       } catch (error) {
-        console.error("Error fetching services:", error)
-        setServices([])
+        console.error("Error fetching services:", error);
+        setServices([]);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchServices()
-  }, [])
+    fetchServices();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -43,11 +49,11 @@ export default function ServicesPage() {
 
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center h-56">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Comprehensive distribution and logistics solutions designed to help your business reach new heights and
-            expand into global markets.
+            Comprehensive distribution and logistics solutions designed to help
+            your business reach new heights and expand into global markets.
           </p>
         </div>
       </section>
@@ -56,10 +62,12 @@ export default function ServicesPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Complete Distribution Solutions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Complete Distribution Solutions
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              From sourcing to delivery, we provide end-to-end services that streamline your operations and accelerate
-              your growth.
+              From sourcing to delivery, we provide end-to-end services that
+              streamline your operations and accelerate your growth.
             </p>
           </div>
 
@@ -76,7 +84,10 @@ export default function ServicesPage() {
                   <CardContent>
                     <div className="space-y-2">
                       {[...Array(3)].map((_, j) => (
-                        <div key={j} className="h-3 bg-muted rounded animate-pulse"></div>
+                        <div
+                          key={j}
+                          className="h-3 bg-muted rounded animate-pulse"
+                        ></div>
                       ))}
                     </div>
                   </CardContent>
@@ -100,15 +111,24 @@ export default function ServicesPage() {
                       {service.price && <Badge variant="outline">{service.price}</Badge>}
                     </div> */}
                     <CardTitle className="text-2xl">{service.name}</CardTitle>
-                    <CardDescription className="text-base">{service.description}</CardDescription>
-                    {service.duration && <p className="text-sm text-muted-foreground">Duration: {service.duration}</p>}
+                    <CardDescription className="text-base">
+                      {service.description}
+                    </CardDescription>
+                    {service.duration && (
+                      <p className="text-sm text-muted-foreground">
+                        Duration: {service.duration}
+                      </p>
+                    )}
                   </CardHeader>
                   <CardContent className="pt-0">
                     <div className="mb-6">
                       <h4 className="font-semibold mb-3">Key Features:</h4>
                       <ul className="space-y-2">
                         {service.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-start gap-2">
+                          <li
+                            key={featureIndex}
+                            className="flex items-start gap-2"
+                          >
                             <CheckCircle className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
                             <span className="text-sm">{feature}</span>
                           </li>
@@ -116,10 +136,8 @@ export default function ServicesPage() {
                       </ul>
                     </div>
                     <Button className="w-full" asChild>
-                      <Link
-                        href={`/contact`}
-                      >
-                        Contact Us  <ArrowRight className="ml-2 h-4 w-4" />
+                      <Link href={`/contact`}>
+                        Contact Us <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </CardContent>
@@ -130,13 +148,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-muted/50">
+      <section className="bg-muted/50 mb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Get Started?
+          </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Contact our team to discuss your specific requirements and learn how our services can help your business
-            grow.
+            Contact our team to discuss your specific requirements and learn how
+            our services can help your business grow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
@@ -151,5 +170,5 @@ export default function ServicesPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

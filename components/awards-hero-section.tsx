@@ -55,28 +55,28 @@ export default function AwardsHero() {
       className="relative bg-gradient-to-r from-red-50 via-white to-red-50 py-20 px-6 md:px-12 lg:px-20 overflow-hidden"
     >
       {/* Background image with overlay */}
-      <div className="absolute inset-0">
-        <img
+      <div className="absolute inset-0 bg-primary ">
+        {/* <img
           src="https://img.freepik.com/premium-vector/abstract-modern-dark-banner-background-with-rainbow-colorful-line_105555-115.jpg" // <-- replace with your actual image path
           alt="Awards background"
           className="w-full h-full object-cover"
-        />
+        /> */}
         {/* <div className="absolute inset-0 bg-gradient-to-r from-red-50 via-white to-red-50 "></div> */}
       </div>
 
-      <div className="relative max-w-7xl mx-auto text-center space-y-6">
+      <div className="relative max-w-7xl mx-auto text-center space-y-6 h-52">
         {/* Heading */}
         <h1
           ref={headingRef}
-          className="text-4xl md:text-5xl font-extrabold text-gray-400 tracking-wide"
+          className="text-4xl md:text-5xl font-extrabold tracking-wide text-white"
         >
-          Our <span className="text-red-600">Awards</span> & Certificates
+          Our Awards & Certificates
         </h1>
 
         {/* Subtext */}
         <p
           ref={subTextRef}
-          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto"
+          className="text-lg md:text-xl text-white max-w-2xl mx-auto"
         >
           A journey of excellence recognized by industry leaders and institutions.
         </p>
