@@ -2,10 +2,11 @@
 
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import { Service } from "@/lib/models";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,7 +18,9 @@ export default function FooterSection() {
   const bottomFooterRef = useRef<HTMLDivElement | null>(null);
   const [services, setServices] = useState<Service[]>([]);
 
-   const socials = [ 
+
+   const socials = [
+
   {
     src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png",
     url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
@@ -143,25 +146,33 @@ export default function FooterSection() {
       {/* Main Footer */}
       <div
         ref={mainFooterRef}
-        className="py-16 px-4 md:px-8 lg:px-16 border-t border-secondary/50"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-red-800 border-t border-secondary/50"
       >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto bg-red-800 text-white grid md:grid-cols-4 gap-12">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-brand-cream font-bold text-sm">FIS</span>
-              </div>
-              <span className="text-2xl font-bold text-secondary">Fortune Info Solutions</span>
+          <div className="mr-10">
+            <div className="flex items-center  gap-2 mb-6">
+              <div className="w-30 h-20 rounded-lg flex items-center justify-center">
+                                        <Image
+                                          src="/com.png"
+                                          alt="Company Logo"
+                                          width={300}
+                                          height={300}
+                                          className="object-contain"
+                                        />
+                                      </div>
+              <span className="text-2xl font-bold text-white text-secondary">Fortune Info Solutions</span>
             </div>
-            <p className="text-secondary/70 mb-6 leading-relaxed">
+            <p className="text-secondary/70 mb-6 text-white leading-relaxed">
               Fortune Info Solutions is your trusted partner for IT hardware,
               software, and integrated solutions. With years of collective
               industry experience, we empower businesses with reliable products,
               professional services, and scalable solutions across networking,
               security, surveillance, cloud, and enterprise IT.
             </p>
+
               <div className="flex gap-4">
+
               {socials.map(({ src, url, alt }, i) => (
                 <Link
                   key={i}
@@ -182,7 +193,7 @@ export default function FooterSection() {
 
           {/* Extra Links */}
           <div>
-              <h4 className="text-xl font-bold text-secondary mb-6">
+              <h4 className="text-xl font-bold text-white  mb-6">
                 Extra Links
               </h4>
               <ul className="space-y-3">
@@ -194,11 +205,13 @@ export default function FooterSection() {
                   { label: "Partner", href: "/channel-partner" },
                   { label: "Products", href: "/products" },
                   { label: "Contact Us", href: "/contact" },
+                  { label: "Admin", href: "/admin" },
+
                 ].map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-secondary/70 hover:text-secondary transition-colors"
+                      className="text-secondary/70 hover:text-secondary text-white transition-colors"
                     >
                       {link.label}
                     </a>
@@ -210,14 +223,14 @@ export default function FooterSection() {
 
           {/* Services */}
           <div>
-            <h4 className="text-xl font-bold text-secondary mb-6">Services</h4>
-            <ul className="space-y-3">
+            <h4 className="text-xl font-bold text-white  mb-6">Services</h4>
+            <ul className="space-y-3 text-white">
               {services.slice(0, 6).map((service) => (
                 <li key={service._id} className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="w-2 h-2 bg-white rounded-full"></div>
                   <a
                     href="/services"
-                    className="text-secondary/70 hover:text-secondary transition-colors"
+                    className="text-secondary/70 text-white hover:text-secondary transition-colors"
                   >
                     {service.name}
                   </a>
@@ -228,12 +241,12 @@ export default function FooterSection() {
 
           {/* Get In Touch */}
           <div>
-            <h4 className="text-xl font-bold text-secondary mb-6">
+            <h4 className="text-xl text-white font-bold y mb-6">
               Get In Touch
             </h4>
-            <div className="space-y-4 text-secondary/70">
+            <div className="space-y-4 text-white text-secondary/70">
               <div className="flex items-start gap-2">
-                <div className="w-4 h-2 bg-primary rounded-full mt-2"></div>
+                <div className="w-4 h-2 bg-white rounded-full mt-2"></div>
                 <div>
                   <p>
                     No.17/1, Old No.272, <br />
@@ -243,15 +256,15 @@ export default function FooterSection() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <div className="w-2 h-2 bg-white rounded-full"></div>
                 <p>info@fortuneinfo.in</p>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <div className="w-2 h-2 bg-white rounded-full"></div>
                 <p>9845447654, 9686194471</p>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <div className="w-2 h-2 bg-white rounded-full"></div>
                 <p>Mon - Sat: 09:00 am - 07:00 pm</p>
               </div>
             </div>

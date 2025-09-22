@@ -17,6 +17,8 @@ export default function Header() {
     { name: "Awards & Certificates", href: "/awards" },
     { name: "Partners", href: "/channel-partner" },
     { name: "Contact Us", href: "/contact" },
+    { name: "Admin", href: "/admin" },
+
   ];
 
   return (

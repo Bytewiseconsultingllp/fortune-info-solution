@@ -26,6 +26,10 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
   const [products, setProducts] = useState<Product[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [brandCategories, setBrandCategories] = useState<string[]>([]);
+
+  console.log("ProductDashboard Props - Categories:", categories);
+  console.log("ProductDashboard Props - Brands:", brands);
 
   const fetchProducts = async () => {
     setLoading(true);
@@ -35,8 +39,14 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
     });
 
     if (searchTerm) params.append("search", searchTerm);
-    if (selectedBrands.length === 1) params.append("brand", selectedBrands[0]);
-    if (selectedCategories.length === 1) params.append("category", selectedCategories[0]);
+    // Handle multiple brands and categories
+    selectedBrands.forEach(brand => {
+      params.append("brand", brand);
+    });
+
+    selectedCategories.forEach(category => {
+      params.append("category", category);
+    });
 
     const res = await fetch(`/api/products?${params.toString()}`);
     const data = await res.json();
@@ -51,20 +61,86 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm, selectedBrands, selectedCategories, currentPage]);
 
+  // Fetch brand categories whenever selected brands change
+  useEffect(() => {
+    if (selectedBrands.length > 0) {
+      fetchBrandCategories(selectedBrands);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedBrands]);
+
+  // Fetch all categories for selected brands
+  const fetchBrandCategories = async (brands: string[]) => {
+    if (brands.length === 0) {
+      setBrandCategories([]);
+      return;
+    }
+
+    const params = new URLSearchParams({
+      getBrandCategories: "true"
+    });
+
+    brands.forEach(brand => {
+      params.append("brand", brand);
+    });
+
+    try {
+      const res = await fetch(`/api/products?${params.toString()}`);
+      const data = await res.json();
+
+      console.log("Fetched brand categories:", data.brandCategories);
+
+      if (Array.isArray(data.brandCategories)) {
+        setBrandCategories(data.brandCategories);
+
+        // Update selected categories to only include those available for the selected brands
+        setSelectedCategories(prevCategories =>
+          prevCategories.filter(category =>
+            data.brandCategories.includes(category)
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching brand categories:", error);
+    }
+  };
+
   const handleBrandChange = (brand: string, checked: boolean) => {
-    setSelectedBrands(checked ? [brand] : []);
+    setSelectedBrands(prev => {
+      const newSelectedBrands = checked
+        ? [...prev, brand]
+        : prev.filter(b => b !== brand);
+
+      // Fetch all categories for the new brand selection
+      fetchBrandCategories(newSelectedBrands);
+
+      return newSelectedBrands;
+    });
     setCurrentPage(1);
   };
 
   const handleCategoryChange = (category: string, checked: boolean) => {
-    setSelectedCategories(checked ? [category] : []);
+    setSelectedCategories(prev => {
+      if (checked) {
+        return [...prev, category];
+      } else {
+        return prev.filter(c => c !== category);
+      }
+    });
     setCurrentPage(1);
   };
 
+  // Use brand-specific categories when brands are selected
   const availableCategories = useMemo(() => {
-    if (selectedBrands.length === 0) return categories;
-    return Array.from(new Set(products.map((p) => p.category)));
-  }, [products, categories, selectedBrands]);
+    if (selectedBrands.length === 0) {
+      // If no brands are selected, show all categories
+      return categories;
+    } else {
+      // If brands are selected, use the fetched brand categories
+      // This ensures we show all categories for the selected brands across all pages
+      return brandCategories.length > 0 ? brandCategories : categories;
+    }
+  }, [categories, selectedBrands, brandCategories]);
 
   return (
     <div className="min-h-screen bg-background">

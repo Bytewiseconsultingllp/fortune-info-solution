@@ -43,15 +43,15 @@ export function HeroSection() {
       style={{ backgroundColor: "#FDFAF6" }}
     >
       {/* Background Image - overlay remains */}
-      <div className="absolute inset-0 -top-32 bg-red-700">
-        {/* <Image
-          src="/hero-1.webp"
+      <div className="absolute inset-0 -top-32">
+        <Image
+          src="/hero-2.webp"
           
           alt="Professional in server room"
           fill
           className="object-cover opacity-90"
           priority
-        /> */}
+        />
         <div className="absolute inset-0 "></div>
       </div>
 

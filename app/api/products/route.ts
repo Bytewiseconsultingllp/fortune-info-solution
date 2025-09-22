@@ -6,20 +6,30 @@ export async function GET(request: NextRequest) {
     const { db } = await connectDB();
 
     const searchParams = request.nextUrl.searchParams;
-    const category = searchParams.get("category");
-    const brand = searchParams.get("brand");
+    const categories = searchParams.getAll("category");
+    const brands = searchParams.getAll("brand");
     const search = searchParams.get("search");
+    const getAllFilters = searchParams.get("getAllFilters") === "true";
+    const getBrandCategories = searchParams.get("getBrandCategories") === "true";
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = parseInt(searchParams.get("limit") || "12", 10);
 
     const filter: any = { };
 
-    if (category && category !== "all") {
-      filter.category = category;
+    // Handle multiple categories
+    if (categories.length > 0) {
+      const validCategories = categories.filter(cat => cat !== "all");
+      if (validCategories.length > 0) {
+        filter.category = { $in: validCategories };
+      }
     }
 
-    if (brand && brand !== "all") {
-      filter.brand = brand;
+    // Handle multiple brands
+    if (brands.length > 0) {
+      const validBrands = brands.filter(b => b !== "all");
+      if (validBrands.length > 0) {
+        filter.brand = { $in: validBrands };
+      }
     }
 
     if (search) {
@@ -31,9 +41,51 @@ export async function GET(request: NextRequest) {
       ];
     }
 
+    // Get all categories and brands regardless of filters
+    const allCategoriesPromise = db.collection("products").distinct("category");
+    const allBrandsPromise = db.collection("products").distinct("brand");
+
+    // If getBrandCategories is true, fetch all categories for the specified brands
+    if (getBrandCategories && brands.length > 0) {
+      const validBrands = brands.filter(b => b !== "all");
+      if (validBrands.length > 0) {
+        const brandFilter = { brand: { $in: validBrands } };
+        const brandCategories = await db.collection("products").distinct("category", brandFilter);
+
+        console.log("getBrandCategories mode - Brands:", validBrands);
+        console.log("getBrandCategories mode - Categories for these brands:", brandCategories);
+
+        return NextResponse.json({
+          brandCategories,
+          brands: validBrands
+        });
+      }
+    }
+
+    // If getAllFilters is true, just return categories and brands
+    if (getAllFilters) {
+      const [allCategories, allBrands] = await Promise.all([
+        allCategoriesPromise,
+        allBrandsPromise,
+      ]);
+
+      console.log("getAllFilters mode - Categories:", allCategories);
+      console.log("getAllFilters mode - Brands:", allBrands);
+
+      return NextResponse.json({
+        products: [],
+        totalCount: 0,
+        totalPages: 0,
+        categories: allCategories,
+        brands: allBrands,
+      });
+    }
+
+    // Normal mode with pagination
     const skip = (page - 1) * limit;
 
-    const [products, totalCount, categories, brands] = await Promise.all([
+    // Get filtered products and count
+    const [products, totalCount, allCategories, allBrands] = await Promise.all([
       db.collection("products")
         .find(filter)
         .sort({ createdAt: 1 })
@@ -41,18 +93,20 @@ export async function GET(request: NextRequest) {
         .limit(limit)
         .toArray(),
       db.collection("products").countDocuments(filter),
-      db.collection("products").distinct("category"),
-      db.collection("products").distinct("brand"),
+      allCategoriesPromise,
+      allBrandsPromise,
     ]);
 
-    console.log(totalCount)
+    console.log("Normal mode - Total products:", totalCount);
+    console.log("Normal mode - Categories:", allCategories);
+    console.log("Normal mode - Brands:", allBrands);
 
     return NextResponse.json({
       products,
       totalCount,
       totalPages: Math.ceil(totalCount / limit),
-      categories,
-      brands,
+      categories: allCategories,
+      brands: allBrands,
     });
   } catch (error) {
     console.error("Error fetching products:", error);

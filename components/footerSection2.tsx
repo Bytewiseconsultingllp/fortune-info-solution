@@ -2,10 +2,12 @@
 
 import type React from "react";
 import { useState, useRef, useEffect } from "react";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, X } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
+import { Service } from "@/lib/models";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,21 +16,46 @@ export default function FooterSection() {
   const newsletterRef = useRef<HTMLDivElement | null>(null);
   const mainFooterRef = useRef<HTMLDivElement | null>(null);
   const bottomFooterRef = useRef<HTMLDivElement | null>(null);
+  const [services, setServices] = useState<Service[]>([]);
 
    const socials = [
     {
-      Icon: Facebook,
-      url: process.env.NEXT_PUBLIC_FACEBOOK_URL || "#",
-    },
-    {
-      Icon: Instagram,
-      url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
-    },
-    {
-      Icon: Linkedin,
-      url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
-    },
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png",
+    url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
+    alt: "LinkedIn",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png",
+    url: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "#",
+    alt: "Instagram",
+  },
+  {
+    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/X_logo_2023.svg/1200px-X_logo_2023.svg.png",
+    url: process.env.NEXT_PUBLIC_TWITTER_URL || "#",
+    alt: "X",
+  },
   ];
+
+   useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await fetch("/api/services")
+        if (response.ok) {
+          const data = await response.json()
+          console.log("Fetched services:", data.services)
+          setServices(data.services || [])
+        } else {
+          console.error("Failed to fetch services:", response.statusText)
+          setServices([])
+        }
+      } catch (error) {
+        console.error("Error fetching services:", error)
+        setServices([])
+      } 
+    }
+
+    fetchServices()
+  }, [])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -117,18 +144,24 @@ export default function FooterSection() {
       {/* Main Footer */}
       <div
         ref={mainFooterRef}
-        className="py-16 px-4 md:px-8 lg:px-16 border-t border-secondary/50"
+        className="py-16 px-4 md:px-8 lg:px-16 bg-black border-t border-secondary/50"
       >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto bg-black-800 text-white grid md:grid-cols-4 gap-12">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-brand-cream font-bold text-sm">iT</span>
-              </div>
-              <span className="text-2xl font-bold text-secondary">iTech</span>
+          <div className="mr-10">
+            <div className="flex items-center  gap-2 mb-6">
+              <div className="w-30 h-20 bg-black rounded-lg flex items-center justify-center">
+                          <Image
+                            src="/com.png"
+                            alt="Company Logo"
+                            width={300}
+                            height={300}
+                            className="object-contain"
+                          />
+                        </div>
+              <span className="text-2xl font-bold text-white text-secondary">Fortune Info Solutions</span>
             </div>
-            <p className="text-secondary/70 mb-6 leading-relaxed">
+            <p className="text-secondary/70 mb-6 text-white leading-relaxed">
               Fortune Info Solutions is your trusted partner for IT hardware,
               software, and integrated solutions. With years of collective
               industry experience, we empower businesses with reliable products,
@@ -136,23 +169,27 @@ export default function FooterSection() {
               security, surveillance, cloud, and enterprise IT.
             </p>
              <div className="flex gap-4">
-      {socials.map(({ Icon, url }, i) => (
-        <Link
-          key={i}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
-        >
-          <Icon className="w-5 h-5 text-secondary hover:text-primary" />
-        </Link>
-      ))}
-    </div>
+              {socials.map(({ src, url, alt }, i) => (
+                <Link
+                  key={i}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 border-2 border-secondary rounded-lg flex items-center justify-center hover:border-primary transition-colors"
+                >
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="w-6 h-6 object-contain"
+                  />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Extra Links */}
           <div>
-              <h4 className="text-xl font-bold text-secondary mb-6">
+              <h4 className="text-xl font-bold text-white  mb-6">
                 Extra Links
               </h4>
               <ul className="space-y-3">
@@ -164,11 +201,13 @@ export default function FooterSection() {
                   { label: "Partner", href: "/channel-partner" },
                   { label: "Products", href: "/products" },
                   { label: "Contact Us", href: "/contact" },
+                  { label: "Admin", href: "/admin" },
+
                 ].map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-secondary/70 hover:text-secondary transition-colors"
+                      className="text-secondary/70 hover:text-secondary text-white transition-colors"
                     >
                       {link.label}
                     </a>
@@ -180,23 +219,16 @@ export default function FooterSection() {
 
           {/* Services */}
           <div>
-            <h4 className="text-xl font-bold text-secondary mb-6">Services</h4>
+            <h4 className="text-xl font-bold text-white  mb-6">Services</h4>
             <ul className="space-y-3">
-              {[
-                "Laptop Services & Rentals",
-                "Annual Maintenance Contract (AMC)",
-                "CCTV Installation",
-                "Fire Detection and Alarm System",
-                "Fire Suppression System",
-                "Public Address and Voice Alarm",
-              ].map((service) => (
-                <li key={service} className="flex items-center gap-2">
+              {services.slice(0, 6).map((service) => (
+                <li key={service._id} className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <a
                     href="/services"
-                    className="text-secondary/70 hover:text-secondary transition-colors"
+                    className="text-secondary/70 text-white hover:text-secondary transition-colors"
                   >
-                    {service}
+                    {service.name}
                   </a>
                 </li>
               ))}
@@ -205,10 +237,10 @@ export default function FooterSection() {
 
           {/* Get In Touch */}
           <div>
-            <h4 className="text-xl font-bold text-secondary mb-6">
+            <h4 className="text-xl text-white font-bold y mb-6">
               Get In Touch
             </h4>
-            <div className="space-y-4 text-secondary/70">
+            <div className="space-y-4 text-white text-secondary/70">
               <div className="flex items-start gap-2">
                 <div className="w-4 h-2 bg-primary rounded-full mt-2"></div>
                 <div>
