@@ -198,6 +198,7 @@ export default function AdminServicesPage() {
             )
           );
           toast({ title: "Service updated successfully" });
+          window.location.reload(); // Reload the page to fetch the latest data
         } else {
           throw new Error("Failed to update service");
         }
@@ -212,6 +213,7 @@ export default function AdminServicesPage() {
           const newService = await response.json();
           setServices((prev) => [...prev, newService.service]);
           toast({ title: "Service added successfully" });
+          window.location.reload(); // Reload the page to fetch the latest data
         } else {
           throw new Error("Failed to add service");
         }
