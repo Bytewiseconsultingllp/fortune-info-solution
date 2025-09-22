@@ -86,7 +86,8 @@ export function FeaturesSection() {
                 24/7 IT Support
               </h3>
               <p className="text-muted-foreground leading-relaxed text-sm">
-                Reliable after-sales service and nationwide support.
+                Dependable after-sales support you can trust.
+Serving customers across the nation, anytime you need us.
               </p>
             </div>
 
