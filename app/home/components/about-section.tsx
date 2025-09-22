@@ -140,7 +140,7 @@ export function AboutSection() {
               Experts In Tech Evolution.
             </h2>
 
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed text-justify">
+            <p className="text-foreground text-lg mb-8 leading-relaxed text-justify">
               <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware & software sales
               and service provider. Headquartered in Bangalore, we have grown
               into a trusted partner for businesses across India by offering

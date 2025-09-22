@@ -18,7 +18,9 @@ export default function FooterSection() {
   const bottomFooterRef = useRef<HTMLDivElement | null>(null);
   const [services, setServices] = useState<Service[]>([]);
 
+
    const socials = [
+
   {
     src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png",
     url: process.env.NEXT_PUBLIC_LINKEDIN_URL || "#",
@@ -168,7 +170,9 @@ export default function FooterSection() {
               professional services, and scalable solutions across networking,
               security, surveillance, cloud, and enterprise IT.
             </p>
-             <div className="flex gap-4">
+
+              <div className="flex gap-4">
+
               {socials.map(({ src, url, alt }, i) => (
                 <Link
                   key={i}

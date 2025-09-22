@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,42 +79,42 @@ export function ExpertiseSection() {
           {/* Right Content */}
           <div ref={textRef} className="text-justify">
             <div className="flex items-center gap-2 mb-8">
-              <div className="w-1 h-6 bg-red-500"></div>
-              <span className="text-red-600 text-2xl font-medium text-animate">
+              <div className="w-1 h-6 bg-primary"></div>
+              <span className="text-primary text-2xl font-medium text-animate">
                 Our Expertise
               </span>
-              <div className="w-1 h-6 bg-red-500"></div>
+              <div className="w-1 h-6 bg-primary"></div>
             </div>
 
-            <h2 className="text-5xl font-bold text-red-700 mb-8 leading-tight text-animate">
+            <h2 className="text-5xl font-bold text-primary mb-8 leading-tight text-animate">
               Innovating Across Every Sector.
             </h2>
 
             <p className="text-black text-lg mb-12 leading-relaxed text-animate">
-              With decades of combined experience, Fortune Info Solutions delivers
-              customized IT hardware and software solutions across industries
-              including healthcare, finance, retail, manufacturing, education, and
-              more.
+              With decades of combined experience, Fortune Info Solutions
+              delivers customized IT hardware and software solutions across
+              industries including healthcare, finance, retail, manufacturing,
+              education, and more.
             </p>
 
-            <h2 className="text-3xl font-bold text-red-700 mb-8 leading-tight text-animate">
+            <h2 className="text-3xl font-bold text-primary mb-8 leading-tight text-animate">
               Specializations:
             </h2>
 
             <div className="space-y-8">
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-red-600 mb-4">
+                <h3 className="text-2xl font-bold text-primary mb-4">
                   Enterprise IT Solutions
                 </h3>
                 <p className="text-black leading-relaxed">
-                  We provide servers, storage, and workstations from global brands
-                  like HP, Dell, and Lenovo, ensuring high performance and
-                  scalability.
+                  We provide servers, storage, and workstations from global
+                  brands like HP, Dell, and Lenovo, ensuring high performance
+                  and scalability.
                 </p>
               </div>
 
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-red-600 mb-4">
+                <h3 className="text-2xl font-bold text-primary mb-4">
                   Networking & Security
                 </h3>
                 <p className="text-black leading-relaxed">
@@ -124,19 +125,24 @@ export function ExpertiseSection() {
               </div>
 
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-red-600 mb-4">
+                <h3 className="text-2xl font-bold text-primary mb-4">
                   Power & AV Solutions
                 </h3>
                 <p className="text-black mb-8 leading-relaxed">
-                  Our partnerships with EATON, Panasonic, and Samsung allow us to
-                  deliver reliable UPS, power backup, and large-format display
-                  solutions.
+                  Our partnerships with EATON, Panasonic, and Samsung allow us
+                  to deliver reliable UPS, power backup, and large-format
+                  display solutions.
                 </p>
               </div>
 
-              <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300">
+              {/* <button className="bg-primary hover:bg-red-700 text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300">
                 Read More
-              </button>
+              </button> */}
+              <Link href="/services" passHref>
+                <button className="bg-primary hover:bg-red-700 hover:cursor-pointer   text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300 inline-block text-center">
+                  Read More
+                </button>
+              </Link>
             </div>
           </div>
         </div>
