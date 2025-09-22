@@ -178,55 +178,64 @@ export default function AdminServicesPage() {
   // };
 
   const onSubmit = async (data: ServiceForm) => {
-  setSubmitting(true);
-  try {
-    if (editingService) {
-      const response = await fetch(`/api/admin/services/${editingService._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        const updatedService = await response.json();
-        setServices((prev) =>
-          prev.map((s) =>
-            s._id === editingService._id ? updatedService.service : s
-          )
+    setSubmitting(true);
+    try {
+      if (editingService) {
+        const response = await fetch(
+          `/api/admin/services/${editingService._id}`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }
         );
-        toast({ title: "Service updated successfully" });
+
+        if (response.ok) {
+          const updatedService = await response.json();
+          setServices((prev) =>
+            prev.map((s) =>
+              s._id === editingService._id ? updatedService.service : s
+            )
+          );
+          toast({ title: "Service updated successfully" });
+        } else {
+          throw new Error("Failed to update service");
+        }
       } else {
-        throw new Error("Failed to update service");
+        const response = await fetch("/api/admin/services", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          const newService = await response.json();
+          setServices((prev) => [...prev, newService.service]);
+          toast({ title: "Service added successfully" });
+        } else {
+          throw new Error("Failed to add service");
+        }
       }
-    } else {
-      const response = await fetch("/api/admin/services", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+
+      reset();
+      setEditingService(null);
+      setIsDialogOpen(false);
+    } catch {
+      toast({
+        title: "Error",
+        description: "Failed to save service",
+        variant: "destructive",
       });
-
-      if (response.ok) {
-        const newService = await response.json();
-        setServices((prev) => [...prev, newService.service]);
-        toast({ title: "Service added successfully" });
-      } else {
-        throw new Error("Failed to add service");
-      }
+    } finally {
+      setSubmitting(false);
     }
+  };
 
-    reset();
-    setEditingService(null);
-    setIsDialogOpen(false);
-  } catch {
-    toast({
-      title: "Error",
-      description: "Failed to save service",
-      variant: "destructive",
-    });
-  } finally {
-    setSubmitting(false);
-  }
-};
+  const openEditDialog = (service: Service) => {
+    setEditingService(service);
+    reset(service);
+    setIsDialogOpen(true);
+  };
 
   const handleDelete = async (serviceId: string) => {
     if (confirm("Are you sure you want to delete this service?")) {
@@ -384,19 +393,6 @@ export default function AdminServicesPage() {
                 <UI_Label htmlFor="isPopular">Mark as Popular</UI_Label>
               </div>
 
-              {/* <div className="flex gap-2 pt-4">
-                <Button type="submit" className="flex-1">
-                  {editingService ? "Update Service" : "Add Service"}
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setIsDialogOpen(false)}
-                >
-                  Cancel
-                </Button>
-              </div> */}
-
               <div className="flex gap-2 pt-4">
                 <Button type="submit" className="flex-1" disabled={submitting}>
                   {submitting ? (
@@ -482,6 +478,17 @@ export default function AdminServicesPage() {
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
+                  <div className="flex gap-2">
+                    {/* ✅ Edit Button */}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => openEditDialog(service)}
+                    >
+                      Edit
+                    </Button>
+
+                  </div>
                 </div>
               </div>
             ))}
