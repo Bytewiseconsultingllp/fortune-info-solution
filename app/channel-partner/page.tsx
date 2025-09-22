@@ -62,7 +62,7 @@ export default function ChannelPartnerPage() {
 
       {/* Hero Section */}
       <section className="bg-primary text-primary-foreground py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center h-52">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Channel Partner Program</h1>
           <p className="text-xl max-w-3xl mx-auto mb-8">
             Join our global network of successful partners and unlock new opportunities for growth and success.

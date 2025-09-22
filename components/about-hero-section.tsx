@@ -47,16 +47,16 @@ export default function ABoutHeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative bg-gray-900 text-white py-28 px-6 md:px-12 lg:px-20 overflow-hidden"
+      className="relative bg-primary text-white py-28 px-6 md:px-12 lg:px-20 overflow-hidden"
     >
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <img
+        {/* <img
           src="/images/about-bg.jpg" // <-- replace with your image path
           alt="About Background"
           className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-50" />
+        /> */}
+        <div className="absolute inset-0  bg-opacity-50 h-52" />
       </div>
 
       {/* Content */}
@@ -65,7 +65,7 @@ export default function ABoutHeroSection() {
           ref={headingRef}
           className="text-4xl md:text-6xl font-extrabold tracking-wide"
         >
-          About <span ref={highlightRef} className="text-primary">Us</span>
+          About <span ref={highlightRef}>Us</span>
         </h1>
 
         <p

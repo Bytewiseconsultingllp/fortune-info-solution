@@ -42,10 +42,10 @@ export default function ServicesPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="bg-primary  text-primary-foreground py-16 ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center h-56">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-          <p className="text-xl max-w-3xl mx-auto">
+          <p className="text-xl max-w-3xl mx-auto ">
             Comprehensive distribution and logistics solutions designed to help your business reach new heights and
             expand into global markets.
           </p>
