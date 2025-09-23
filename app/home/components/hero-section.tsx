@@ -43,17 +43,16 @@ export function HeroSection() {
       style={{ backgroundColor: "#FDFAF6" }}
     >
       {/* Background Image - overlay remains */}
-      <div className="absolute inset-0 -top-32">
-        <Image
-          src="/hero-2.webp"
-          
-          alt="Professional in server room"
-          fill
-          className="object-cover opacity-90"
-          priority
-        />
-        <div className="absolute inset-0 "></div>
-      </div>
+<div className="absolute inset-0 -top-32">
+  <Image
+    src="https://i.ibb.co/QFTKRMbc/Untitled-design-1.jpg" // use the direct image link
+    alt="Professional in server room"
+    fill
+    className="object-cover opacity-90"
+    priority
+  />
+  <div className="absolute inset-0"></div>
+</div>
 
       {/* Content */}
       <div
@@ -105,7 +104,7 @@ export function HeroSection() {
                 </div>
                 <div
                   className="text-md font-medium"
-                  style={{ color: "#B8001F" }}
+                  style={{ color: "#ffffff" }}
                 >
                   Clients Served
                 </div>
