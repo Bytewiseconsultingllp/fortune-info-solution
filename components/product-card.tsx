@@ -40,9 +40,9 @@ export const ProductCard = ({
   };
 
   return (
-    <Card className="group hover:shadow-elevated transition-all duration-300 bg-surface-elevated border border-border overflow-hidden flex flex-col h-full">
+  <Card className="group hover:shadow-elevated transition-all duration-300 bg-surface-elevated border border-border overflow-hidden flex flex-col h-full m-0 p-0">
       {/* Image Carousel */}
-      <div className="relative w-full aspect-[4/3] bg-muted">
+      <div className="relative w-full aspect-[4/4] bg-muted">
         {product.images.length > 0 ? (
           <>
               <Image
