@@ -43,7 +43,7 @@ const caseStudies: CaseStudy[] = [
   {
     id: 3,
     title: "The Retail Store Digital Transformation",
-    company: "Natioonal Retail Chain",
+    company: "National Retail Chain",
     metric: "RIncreased Sales Growth",
     problem:
       "Inefficient POS and e-commerce systems limited sales. We implemented modern POS hardware, Samsung LFDs, and retail software, boosting the sales by 70% in one year.",
