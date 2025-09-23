@@ -224,7 +224,7 @@ export function ContactSection() {
                       </svg>
                     </span>
                     <p className="text-primary font-medium">
-                      No.17/1, Old No.272, Sri Nandi, 12th Cross 8th Main Road,
+                      No.17/1, Old No.272, Sri Nandi, 12th Cross, 8th Main Road,
                       Wilson Garden, Hombegowda Nagar, Bangalore, India - 560027
                     </p>
                   </div>

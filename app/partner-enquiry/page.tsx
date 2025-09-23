@@ -435,7 +435,7 @@ export default function PartnerEnquiryPage() {
                     </div>
                     <div className="flex">
                       <span className="font-semibold w-36 flex-shrink-0">Hours:</span>
-                      <span className="truncate">Mon-Fri 9:00 AM - 7:00 PM IST</span>
+                      <span className="truncate">Mon-Fri 10:00 AM - 7:00 PM</span>
                     </div>
                   </div>
                 </CardContent>

@@ -352,7 +352,7 @@ function QuoteForm() {
                     <div className="font-semibold text-foreground">Hours:</div>
                     <div className="text-foreground">
                       Mon-Fri <br />
-                      9:00 AM-7:00 PM IST
+                      10:00 AM-7:00 PM
                     </div>
                   </div>
                 </CardContent>

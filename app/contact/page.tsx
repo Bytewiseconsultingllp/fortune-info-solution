@@ -176,26 +176,54 @@ export default function ContactPage() {
 
   const teamMembers = [
     {
-      name: "Rajakumar",
+      name: "Rajakumar A",
       position: "Director",
       initials: "RK",
       image: "/placeholder-zbbr6.png",
     },
     {
-      name: "Murli",
+      name: "Murli K",
       position: "Director",
       initials: "ML",
       image: "/placeholder-zbbr6.png",
     },
     {
-      name: "Pradeep",
-      position: "Director",
+      name: "Pradeep NP",
+      position: "SVP Business Management",
       initials: "PD",
       image: "/placeholder-zbbr6.png",
     },
     {
-      name: "Nabaratan Patra",
+      name: "HariKarthick",
       position: "Director",
+      initials: "NP",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+    },
+      {
+      name: "Dhananjay",
+      position: "Product Manager - HoneyWell",
+      initials: "NP",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+    },
+      {
+      name: "Chandra Shekar Udupa",
+      position: "Product Manager - Dell",
+      initials: "NP",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+    },
+     {
+      name: "Sunil Kumar",
+      position: "Product Manager - Lenovo",
+      initials: "NP",
+      image:
+        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+    },
+     {
+      name: "Raj Kiran",
+      position: "Product Manager - Networking Products",
       initials: "NP",
       image:
         "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
@@ -409,11 +437,12 @@ export default function ContactPage() {
                     <div className="text-justify">
                       <h4 className="font-semibold">Address</h4>
                       <p className="text-sm text-foreground">
-                        No.17/1, Old No.272, Sri Nandi, 12th Cross 8th Main Road,Wilson Garden,
+                        No.17/1, Old No.272, Sri Nandi, 
+                         <br />
+                        12th Cross, 8th Main Road, Wilson Garden,
                         <br />
                         Hombegowda Nagar, Bangalore - 560027
                         <br />
-                        India
                       </p>
                     </div>
                   </div>
@@ -441,7 +470,7 @@ export default function ContactPage() {
                     <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Business Hours</h4>
-                      <p className="text-sm text-foreground">9:00 am – 7:00 pm IST</p>
+                      <p className="text-sm text-foreground">10:00 AM – 7:00 pm</p>
                     </div>
                   </div>
                 </CardContent>

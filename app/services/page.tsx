@@ -72,7 +72,7 @@ export default function ServicesPage() {
           </div>
 
           {loading ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {[...Array(6)].map((_, i) => (
                 <Card key={i} className="h-full">
                   <div className="aspect-video bg-muted animate-pulse rounded-t-lg"></div>

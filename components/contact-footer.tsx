@@ -235,7 +235,7 @@ export default function ContactFooterSection() {
                 <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                 <p>
                   No.17/1, Old No.272, <br />
-                  Sri Nandi 12th Cross 8th Main Road <br />
+                  Sri Nandi, 12th Cross, 8th Main Road, <br />
                   Wilson Garden, Hombegowda Nagar, Bangalore, India - 560027
                 </p>
               </div>
@@ -249,7 +249,7 @@ export default function ContactFooterSection() {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <p>Mon - Sat: 09:00 am - 07:00 pm</p>
+                <p>Mon - Sat: 10:00 am - 07:00 pm</p>
               </div>
             </div>
           </div>
