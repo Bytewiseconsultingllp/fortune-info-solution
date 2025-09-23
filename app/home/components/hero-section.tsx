@@ -39,7 +39,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative h-screen flex items-center"
+      className="relative min-h-[40vh] py-2 flex items-center"
       style={{ backgroundColor: "#FDFAF6" }}
     >
       {/* Background Image - overlay remains */}
@@ -57,7 +57,7 @@ export function HeroSection() {
       {/* Content */}
       <div
         ref={heroRef}
-        className="relative z-10 w-full px-4 md:px-8 lg:px-16 vertical-center"
+        className="relative z-10 w-full px-4 md:px-6 lg:px-16 vertical-center"
       >
         <div className="max-w-8xl mx-auto">
           <div className="max-w-5xl">

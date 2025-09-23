@@ -248,6 +248,24 @@ export default function ContactPage() {
             email: "rajkiran@fortuneinfo.in ", 
 
     },
+        {
+      name: "Adithya K",
+      position: "Product Manager ",
+      initials: "Lenovo",
+      image:
+        "sunil.jpg",
+      email: "systems@fortuneinfo.in", 
+
+    },
+        {
+      name: "Arjun K",
+      position: "Product Manager ",
+      initials: "Lenovo",
+      image:
+        "sunil.jpg",
+      email: "arjun@fortuneinfo.in", 
+
+    },
   ]
 
   return (
@@ -278,7 +296,7 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
             {teamMembers.map((member, index) => (
               <Card
                 key={index}
