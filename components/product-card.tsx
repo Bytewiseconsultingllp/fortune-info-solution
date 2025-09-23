@@ -110,17 +110,9 @@ export const ProductCard = ({
       <CardContent className="p-4 sm:p-5 flex flex-col flex-1">
         {/* Status and Brand Badges */}
         <div className="flex items-center justify-between mb-2">
-          <Badge
-            variant={product.inStock ? "default" : "destructive"}
-            className="text-xs"
-          >
-            {product.inStock ? (
-              <CheckCircle className="h-3 w-3 mr-1" />
-            ) : (
-              <XCircle className="h-3 w-3 mr-1" />
-            )}
-            {product.inStock ? "In Stock" : "Out of Stock"}
-          </Badge>
+          <Badge variant="outline" className="text-xs capitalize w-fit">
+              {product.category}
+            </Badge>
           <Badge variant="secondary" className="text-xs font-medium">
             {product.brand}
           </Badge>
@@ -132,7 +124,7 @@ export const ProductCard = ({
             <h3 className="font-semibold text-foreground line-clamp-2 leading-snug text-base sm:text-lg">
               {product.name}
             </h3>
-            <p className="text-xs text-foreground">EAN: {product.sku}</p>
+            {/* <p className="text-xs text-foreground">EAN: {product.sku}</p> */}
           </div>
 
           <p className="text-sm text-foreground line-clamp-3">
@@ -140,14 +132,12 @@ export const ProductCard = ({
           </p>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-auto">
-            {product.inStock && (
+            {/* {product.inStock && (
               <p className="text-xs text-foreground">
                 <strong>{product.stockQuantity} units available</strong>
               </p>
-            )}
-            <Badge variant="outline" className="text-xs capitalize w-fit">
-              {product.category}
-            </Badge>
+            )} */}
+
           </div>
         </div>
       </CardContent>
@@ -188,42 +178,45 @@ export const ProductCard = ({
         </div>
       </CardFooter> */}
       <CardFooter className="p-4 sm:p-5 pt-0">
-  <div className="flex flex-row gap-3 w-full">
-    <Link
-      href={`/quote?product=${product._id}&name=${encodeURIComponent(
-        product.sku ? product.sku : product.name
-      )}`}
-      className="flex-1"
-    >
-      <Button
-        onClick={onQuote}
-        className="w-full bg-primary hover:bg-primary-dark text-primary-foreground truncate"
-        size="sm"
-      >
-        <Quote className="h-4 w-4 mr-2 shrink-0" />
-        <span className="truncate">Get Quote</span>
-      </Button>
-    </Link>
+        <div className="flex flex-row gap-3 w-full">
+          {/* Always show Get Quote button */}
+          <Link
+            href={`/quote?product=${product._id}&name=${encodeURIComponent(
+              product.sku ? product.sku : product.name
+            )}`}
+            className="flex-1"
+          >
+            <Button
+              onClick={onQuote}
+              className="w-full bg-primary hover:bg-primary-dark text-primary-foreground truncate"
+              size="sm"
+            >
+              <Quote className="h-4 w-4 mr-2 shrink-0" />
+              <span className="truncate">Get Quote</span>
+            </Button>
+          </Link>
 
-    <Link
-      href={product.datasheet ? product.datasheet : "#"}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex-1"
-    >
-      <Button
-        onClick={onDatasheet}
-        variant="outline"
-        className="w-full truncate"
-        size="sm"
-      >
-        <FileText className="h-4 w-4 mr-2 shrink-0" />
-        <span className="truncate">Datasheet</span>
-      </Button>
-    </Link>
-  </div>
-</CardFooter>
-
+          {/* Only render if datasheet exists */}
+          {product.datasheet?.trim() && (
+            <Link
+              href={product.datasheet}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1"
+            >
+              <Button
+                onClick={onDatasheet}
+                variant="outline"
+                className="w-full truncate"
+                size="sm"
+              >
+                <FileText className="h-4 w-4 mr-2 shrink-0" />
+                <span className="truncate">Datasheet</span>
+              </Button>
+            </Link>
+          )}
+        </div>
+      </CardFooter>
     </Card>
   );
 };

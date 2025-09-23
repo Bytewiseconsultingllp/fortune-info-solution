@@ -1,21 +1,21 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 // Add the actual logo files in the public/logos directory and update the names accordingly.
 const logos: string[] = [
   "https://in-media.apjonlinecdn.com/logo/stores/1/HP_New_logo_1.svg",
   "https://raw.githubusercontent.com/hpe-design/logos/master/Requirements/color-logo.png",
   // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQanq-iT58SaFVsaA72vhVcqkiTw2FLBSa-hQ&s",,
-  // "https://p3-ofp.static.pub/fes/cms/2023/03/22/8hjmcte754uauw07ypikjkjtx0m5ib450914.svg",
   "https://static-ecapac.acer.com/media/logo/default/acer.png",
   "https://logos-world.net/wp-content/uploads/2020/07/Asus-Logo-1995-present.png",
   "https://images.seeklogo.com/logo-png/15/1/apple-logo-png_seeklogo-158013.png",
   "https://bsmedia.business-standard.com/_media/bs/img/about-page/1562575696.png",
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQanq-iT58SaFVsaA72vhVcqkiTw2FLBSa-hQ&s",
   "https://www.akamai.com/site/en/images/logo/2024/panasonic-logo.svg",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSln9EzYFPXEF7aBAxsVhUjkgRvqeTd0rk78Q&s",
+  "https://storage-asset.msi.com/frontend/imgs/logo.png",
   "https://1000logos.net/wp-content/uploads/2021/05/AOC-logo.png",
   "https://download.logo.wine/logo/IBall_(company)/IBall_(company)-Logo.wine.png",
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSptsMV4vynPSgfE-5rkF4T3x1lvfBYj2iLEQ&s",
@@ -41,35 +41,48 @@ const logos: string[] = [
   "https://www.trendmicro.com/content/dam/trendmicro/global/en/global/logo/trendmicro-ogsocial.jpg",
   "https://media.kasperskydaily.com/wp-content/uploads/sites/92/2019/07/18041948/kaspersky-rebranding-in-details-1.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/0/09/Tally_-_Logo.png",
+    // "https://p3-ofp.static.pub/fes/cms/2023/03/22/8hjmcte754uauw07ypikjkjtx0m5ib450914.svg",
+  "https://webresources.commscope.com/images/assets/Ruckus_logo_black-orange/Zz05M2ZjZTZjYTNiZDYxMWYwOTU4MjFhZGNhYTkyZTI0ZQ==",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP1ZczSHotZYtB_g_qPQKhwGgyzIviI-CM3A&s",
+  "https://www.sentinelone.com/wp-content/themes/sentinelone/assets/svg/header-logo-dark.svg",
+  "https://www.fortinet.com/content/dam/fortinet/images/general/fortinet-logo.svg",
   "https://ifdalivestorage.blob.core.windows.net/user-uploads/73707/204336/00000000-0000-0000-0000-000000000000/01_Logitech_Brand_Logo.jpg",
   "https://cdn.xingosoftware.com/audioxpress/images/fetch/dpr_1/https%3A%2F%2Faudioxpress.com%2Fassets%2Fupload%2Fimages%2F1%2F20170408190612_Sennheiser-CompactLogoWeb.jpg",
 ];
 
 export default function BrandMarquee() {
-  // Duplicate the array to create a seamless infinite scroll effect
-  const scrollingLogos = [...logos, ...logos];
+  const scrollingLogos = [...logos, ...logos]; // double list for seamless loop
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    if (trackRef.current) {
+      setWidth(trackRef.current.scrollWidth / 2); // width of one full set
+    }
+  }, []);
 
   return (
-  <div className="relative w-full overflow-hidden bg-[#b8001f] py-6">
-    <motion.div
-      className="flex gap-8"
-      animate={{ x: ["0%", "-100%"] }}
-      transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-    >
-      {[...logos, ...logos].map((logo, index) => (
-        <div
-          key={index}
-          className="flex-shrink-0 w-40 h-24 bg-white rounded-xl shadow-md shadow-[#b8001f]/40 flex items-center justify-center hover:scale-105 transition-transform"
-        >
-          <img
-            src={logo}
-            alt={`brand-${index}`}
-            className="max-h-20 max-w-[90%] object-contain"
-          />
-        </div>
-      ))}
-    </motion.div>
-  </div>
-);
-
+    <div className="relative w-full overflow-hidden bg-[#b8001f] py-6">
+      <motion.div
+        ref={trackRef}
+        className="flex gap-8"
+        animate={{ x: [-0, -width] }}
+        transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+      >
+        {scrollingLogos.map((logo, index) => (
+          <div
+            key={index}
+            className="flex-shrink-0 w-40 h-24 bg-white rounded-xl shadow-md shadow-[#b8001f]/40 flex items-center justify-center hover:scale-105 transition-transform"
+          >
+            <img
+              src={logo}
+              alt={`brand-${index}`}
+              className="max-h-20 max-w-[90%] object-contain"
+            />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
 }
+

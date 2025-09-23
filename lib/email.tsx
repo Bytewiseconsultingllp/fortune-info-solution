@@ -3,9 +3,9 @@ import nodemailer from "nodemailer"
 // Create reusable transporter object using SMTP transport
 const createTransporter = () => {
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number.parseInt(process.env.SMTP_PORT || "587"),
-    secure: process.env.SMTP_PORT === "465", // true for 465, false for other ports
+    host: "smtp.gmail.com",
+  port: 465,          // or 587 if you prefer STARTTLS
+  secure: true,       // true for 465, false for 587
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
@@ -144,7 +144,7 @@ const getQuoteEmailTemplate = (data: any) => `
           </tr>
           <tr>
             <td style="font-weight:bold; color:#333;">Product Name:</td>
-            <td style="color:#555;">${data.productName}</td>
+            <td style="color:#555;">${data.name}</td>
           </tr>
           <tr>
             <td style="font-weight:bold; color:#333;">Customer Name:</td>
