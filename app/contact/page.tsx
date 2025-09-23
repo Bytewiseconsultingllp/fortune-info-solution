@@ -207,14 +207,14 @@ export default function ContactPage() {
       <Header />
 
       <section ref={heroRef} className="bg-primary text-primary-foreground py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center text-center h-56">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
           <p className="text-xl max-w-3xl mx-auto">
             Get in touch with our team to discuss your distribution needs and discover how we can help your business
             grow.
           </p>
         </div>
-      </section>
+      </section>      
 
       <section ref={teamRef} className="py-20 bg-gradient-to-br from-background via-muted/20 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
