@@ -38,7 +38,7 @@ export default function Header() {
               <span className="text-lg md:text-xl font-bold text-foreground truncate">
                 Fortune Info Solution
               </span>
-              <span className="text-xs md:text-sm text-muted-foreground truncate">
+              <span className="text-xs md:text-sm text-foreground truncate">
                 Tech Solutions Provider
               </span>
             </div>

@@ -57,7 +57,7 @@ const ProductPagination: React.FC<ProductPaginationProps> = ({
 
   return (
     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 bg-gradient-card rounded-lg border border-border">
-      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+      <div className="flex items-center gap-4 text-sm text-foreground">
         <span>
           Showing {startItem} to {endItem} of {totalCount} products
         </span>
@@ -100,7 +100,7 @@ const ProductPagination: React.FC<ProductPaginationProps> = ({
           {getVisiblePages().map((page, index) => (
             <React.Fragment key={index}>
               {page === '...' ? (
-                <span className="px-2 py-1 text-muted-foreground">...</span>
+                <span className="px-2 py-1 text-foreground">...</span>
               ) : (
                 <Button
                   variant={currentPage === page ? "default" : "outline"}

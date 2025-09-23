@@ -146,7 +146,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
                     isActive
                       ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted",
+                      : "text-foreground hover:text-foreground hover:bg-muted",
                   )}
                   onClick={() => setSidebarOpen(false)}
                 >
@@ -165,7 +165,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               </div>
               <div>
                 <p className="text-sm font-medium">Admin User</p>
-                <p className="text-xs text-muted-foreground">{process.env.NEXT_PUBLIC_ADMIN_USERNAME}</p>
+                <p className="text-xs text-foreground">{process.env.NEXT_PUBLIC_ADMIN_USERNAME}</p>
               </div>
             </div>
             <Button variant="outline" size="sm" className="w-full bg-transparent" onClick={handleLogout}>

@@ -74,7 +74,7 @@ export function ServicesSection() {
           </div>
 
           <div className="flex-1 max-w-md section-heading mt-0 md:mt-12">
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed text-justify">
+            <p className="text-foreground text-lg mb-8 leading-relaxed text-justify">
               Fortune Info Solutions delivers end-to-end IT
               infrastructure—hardware, software, networking, and security—to
               future-proof your business.
@@ -103,7 +103,7 @@ export function ServicesSection() {
             <h3 className="text-2xl font-bold text-secondary mb-4">
               Custom Development
             </h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-foreground mb-6 leading-relaxed">
               We deliver tailored IT solutions, combining the right hardware and software to optimize performance and drive business growth.
             </p>
             {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
@@ -134,7 +134,7 @@ export function ServicesSection() {
               <h3 className="text-2xl font-bold text-secondary mb-4">
                 Cloud Solutions
               </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
+              <p className="text-foreground mb-6 leading-relaxed">
                 Accelerate digital transformation with cloud-ready infrastructure, servers, storage, and licensed software integrated with AWS, Azure.
               </p>
               {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
@@ -156,7 +156,7 @@ export function ServicesSection() {
             <h3 className="text-2xl font-bold text-secondary mb-4">
               Cybersecurity Protection
             </h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
+            <p className="text-foreground mb-6 leading-relaxed">
               Protect your business with advanced surveillance, firewalls, antivirus, and access control—ensuring security and compliance.
             </p>
             {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">

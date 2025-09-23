@@ -224,7 +224,7 @@ export default function ContactPage() {
               Leadership Excellence
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">Meet Our Leadership Team</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-foreground max-w-3xl mx-auto leading-relaxed">
               Our experienced directors bring decades of expertise and visionary leadership to drive innovation and
               excellence across all business operations.
             </p>
@@ -265,7 +265,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="pt-4 border-t border-border/50">
-                      <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <div className="flex items-center justify-center gap-2 text-sm text-foreground">
                         <div className="w-1.5 h-1.5 bg-accent rounded-full" />
                         <span className="font-medium">Executive Leadership</span>
                       </div>
@@ -281,15 +281,15 @@ export default function ContactPage() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
               <div className="text-3xl font-bold text-primary mb-2">25+</div>
-              <div className="text-muted-foreground">Years Combined Experience</div>
+              <div className="text-foreground">Years Combined Experience</div>
             </div>
             <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
               <div className="text-3xl font-bold text-accent mb-2">100+</div>
-              <div className="text-muted-foreground">Successful Projects</div>
+              <div className="text-foreground">Successful Projects</div>
             </div>
             <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
               <div className="text-3xl font-bold text-primary mb-2">4</div>
-              <div className="text-muted-foreground">Industry Leaders</div>
+              <div className="text-foreground">Industry Leaders</div>
             </div>
           </div>
         </div>
@@ -408,7 +408,7 @@ export default function ContactPage() {
                     <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div className="text-justify">
                       <h4 className="font-semibold">Address</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-foreground">
                         No.17/1, Old No.272, Sri Nandi, 12th Cross 8th Main Road,Wilson Garden,
                         <br />
                         Hombegowda Nagar, Bangalore - 560027
@@ -422,7 +422,7 @@ export default function ContactPage() {
                     <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Phone</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-foreground">
                         9845447654 <br />
                         9686194471
                       </p>
@@ -433,7 +433,7 @@ export default function ContactPage() {
                     <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Email</h4>
-                      <p className="text-sm text-muted-foreground">info@fortuneinfo.in</p>
+                      <p className="text-sm text-foreground">info@fortuneinfo.in</p>
                     </div>
                   </div>
 
@@ -441,7 +441,7 @@ export default function ContactPage() {
                     <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Business Hours</h4>
-                      <p className="text-sm text-muted-foreground">9:00 am – 7:00 pm IST</p>
+                      <p className="text-sm text-foreground">9:00 am – 7:00 pm IST</p>
                     </div>
                   </div>
                 </CardContent>
@@ -452,17 +452,17 @@ export default function ContactPage() {
                   <CardTitle>Quick Response</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4 text-justify">
+                  <p className="text-sm text-foreground mb-4 text-justify">
                     We typically respond to all inquiries within 24 hours during business days. For urgent matters,
                     please call us directly.
                   </p>
                   <div className="space-y-2 text-sm">
                     <div className="grid grid-cols-2 gap-x-4">
-                      <div className="font-semibold text-muted-foreground">General Inquiries:</div>
+                      <div className="font-semibold text-foreground">General Inquiries:</div>
                       <div>24 hours</div>
-                      <div className="font-semibold text-muted-foreground">Sales Inquiries:</div>
+                      <div className="font-semibold text-foreground">Sales Inquiries:</div>
                       <div>4-6 hours</div>
-                      <div className="font-semibold text-muted-foreground">Technical Support:</div>
+                      <div className="font-semibold text-foreground">Technical Support:</div>
                       <div>2-4 hours</div>
                     </div>
                   </div>

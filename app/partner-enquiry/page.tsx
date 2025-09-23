@@ -343,7 +343,7 @@ export default function PartnerEnquiryPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold">Submit Application</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-foreground">
                         Complete and submit the partnership application form.
                       </p>
                     </div>
@@ -355,7 +355,7 @@ export default function PartnerEnquiryPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold">Initial Review</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-foreground">
                         Our team reviews your application within 48 hours.
                       </p>
                     </div>
@@ -367,7 +367,7 @@ export default function PartnerEnquiryPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold">Discussion</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-foreground">
                         We schedule a call to discuss partnership opportunities.
                       </p>
                     </div>
@@ -379,7 +379,7 @@ export default function PartnerEnquiryPage() {
                     </div>
                     <div>
                       <h4 className="font-semibold">Partnership Agreement</h4>
-                      <p className="text-sm text-muted-foreground">Finalize terms and begin our partnership journey.</p>
+                      <p className="text-sm text-foreground">Finalize terms and begin our partnership journey.</p>
                     </div>
                   </div>
                 </CardContent>
@@ -418,7 +418,7 @@ export default function PartnerEnquiryPage() {
                   <CardTitle>Need Help?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-sm text-foreground mb-4">
                     Have questions about our partnership program? Our team is here to help.
                   </p>
                   <div className="space-y-2 text-sm">

@@ -57,7 +57,7 @@ export const ProductCard = ({
               />
             {imageLoading && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <Package className="h-12 w-12 text-muted-foreground animate-pulse" />
+                <Package className="h-12 w-12 text-foreground animate-pulse" />
               </div>
             )}
 
@@ -102,7 +102,7 @@ export const ProductCard = ({
           </>
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <Package className="h-16 w-16 text-muted-foreground" />
+            <Package className="h-16 w-16 text-foreground" />
           </div>
         )}
       </div>
@@ -132,16 +132,16 @@ export const ProductCard = ({
             <h3 className="font-semibold text-foreground line-clamp-2 leading-snug text-base sm:text-lg">
               {product.name}
             </h3>
-            <p className="text-xs text-muted-foreground">EAN: {product.sku}</p>
+            <p className="text-xs text-foreground">EAN: {product.sku}</p>
           </div>
 
-          <p className="text-sm text-muted-foreground line-clamp-3">
+          <p className="text-sm text-foreground line-clamp-3">
             {product.description}
           </p>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-auto">
             {product.inStock && (
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-foreground">
                 <strong>{product.stockQuantity} units available</strong>
               </p>
             )}

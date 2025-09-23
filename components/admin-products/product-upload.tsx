@@ -244,11 +244,11 @@ const ProductUpload: React.FC<ProductUploadProps> = ({ onUploadComplete }) => {
             `}
           >
             <input {...getInputProps()} />
-            <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+            <Upload className="h-12 w-12 mx-auto mb-4 text-foreground" />
             <p className="text-lg font-medium mb-2">
               {isDragActive ? 'Drop the Excel file here' : 'Upload Excel File'}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground">
               Drag and drop your .xlsx or .xls file here, or click to browse
             </p>
           </div>
@@ -259,7 +259,7 @@ const ProductUpload: React.FC<ProductUploadProps> = ({ onUploadComplete }) => {
                 <FileSpreadsheet className="h-6 w-6 text-primary" />
                 <div>
                   <p className="font-medium">{file.name}</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-foreground">
                     {(file.size / 1024 / 1024).toFixed(2)} MB
                   </p>
                 </div>

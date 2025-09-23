@@ -273,7 +273,7 @@ export default function AdminServicesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold">Services Management</h2>
-          <p className="text-muted-foreground">Manage your service offerings</p>
+          <p className="text-foreground">Manage your service offerings</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
@@ -429,7 +429,7 @@ export default function AdminServicesPage() {
         </CardHeader>
         <CardContent>
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground h-4 w-4" />
             <Input
               placeholder="Search services..."
               value={searchTerm}
@@ -454,17 +454,17 @@ export default function AdminServicesPage() {
                 className="flex items-start gap-4 p-4 border rounded-lg"
               >
                 <div className="w-16 h-16 bg-muted rounded flex items-center justify-center">
-                  <Package className="h-8 w-8 text-muted-foreground" />
+                  <Package className="h-8 w-8 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-semibold">{service?.name}</h3>
                     <Badge variant="outline">{service?.category}</Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-sm text-foreground mb-2">
                     {service?.description}
                   </p>
-                  <div className="flex gap-4 text-xs text-muted-foreground">
+                  <div className="flex gap-4 text-xs text-foreground">
                     <span>{service?.features.length} features</span>
                     {service?.price && <span>Price: {service?.price}</span>}
                     {service?.duration && (

@@ -194,7 +194,7 @@ export default function BulkUpload() {
                 <Download className="h-4 w-4" />
                 Download Template
               </Button>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-sm text-foreground">
                 Download the CSV template to see the required format
               </span>
             </div>
@@ -209,7 +209,7 @@ export default function BulkUpload() {
                 disabled={uploading}
               />
               {file && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2 text-sm text-foreground">
                   <FileText className="h-4 w-4" />
                   <span>
                     {file.name} ({(file.size / 1024).toFixed(1)} KB)
@@ -232,7 +232,7 @@ export default function BulkUpload() {
               )}
             </Button>
 
-            <div className="text-xs text-muted-foreground space-y-1">
+            <div className="text-xs text-foreground space-y-1">
               <p>• Supported formats: CSV, Excel (.xlsx, .xls)</p>
               <p>• Maximum file size: 10MB</p>
               <p>• Use pipe (|) to separate multiple images or tags</p>
@@ -301,10 +301,10 @@ export default function BulkUpload() {
                     {uploadResult.errors.map((error, index) => (
                       <div key={index} className="border-l-2 border-destructive pl-2">
                         <div className="font-medium">Row {error.row}:</div>
-                        <div className="text-muted-foreground">
+                        <div className="text-foreground">
                           Field: <span className="font-mono">{error.field}</span>
                         </div>
-                        <div className="text-muted-foreground">
+                        <div className="text-foreground">
                           Value: <span className="font-mono">{String(error.value)}</span>
                         </div>
                         <div className="text-destructive-foreground">{error.message}</div>

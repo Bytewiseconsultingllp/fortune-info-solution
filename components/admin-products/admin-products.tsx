@@ -136,7 +136,7 @@ const AdminDashboard: React.FC = () => {
             <h1 className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Products Dashboard
             </h1>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-foreground mt-1">
               Manage your product catalog with bulk upload and advanced filtering
             </p>
           </div>
@@ -216,9 +216,9 @@ const AdminDashboard: React.FC = () => {
             ) : (
               <Card className="bg-gradient-card shadow-card border-border">
                 <CardContent className="flex flex-col items-center justify-center py-12">
-                  <Package className="h-16 w-16 text-muted-foreground mb-4" />
+                  <Package className="h-16 w-16 text-foreground mb-4" />
                   <h3 className="text-xl font-semibold mb-2">No Products Found</h3>
-                  <p className="text-muted-foreground text-center mb-4">
+                  <p className="text-foreground text-center mb-4">
                     {searchTerm || selectedCategory !== 'all' || selectedBrand !== 'all'
                       ? 'No products match your current filters. Try adjusting your search criteria.'
                       : 'Get started by uploading your first batch of products using the bulk upload feature.'}

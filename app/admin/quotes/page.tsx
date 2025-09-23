@@ -162,7 +162,7 @@ export default function AdminQuotesPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold">Quote Requests</h2>
-          <p className="text-muted-foreground">Manage customer quote requests and pricing inquiries</p>
+          <p className="text-foreground">Manage customer quote requests and pricing inquiries</p>
         </div>
         <Button onClick={exportQuotes}>
           <Download className="h-4 w-4 mr-2" />
@@ -178,7 +178,7 @@ export default function AdminQuotesPage() {
         <CardContent>
           <div className="flex flex-col md:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground h-4 w-4" />
               <Input
                 placeholder="Search quotes..."
                 value={searchTerm}
@@ -217,7 +217,7 @@ export default function AdminQuotesPage() {
                     <h3 className="font-semibold">{quote.customerName}</h3>
                     <Badge className={getStatusColor(quote.status)}>{quote.status}</Badge>
                   </div>
-                  <div className="flex gap-4 text-sm text-muted-foreground mb-2">
+                  <div className="flex gap-4 text-sm text-foreground mb-2">
                     <span className="flex items-center gap-1">
                       <Mail className="h-3 w-3" />
                       {quote.customerEmail}
@@ -239,7 +239,7 @@ export default function AdminQuotesPage() {
                     </span>
                   </div>
                   {quote.message && <p className="text-sm line-clamp-2">{quote.message}</p>}
-                  <p className="text-xs text-muted-foreground mt-1">
+                  <p className="text-xs text-foreground mt-1">
                     Requested: {new Date(quote.createdAt).toLocaleDateString()}
                   </p>
                 </div>

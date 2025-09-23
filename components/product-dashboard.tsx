@@ -169,7 +169,7 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
           </div>
 
           <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-lg">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground h-4 w-4" />
             <Input
               placeholder="Search products, SKU..."
               value={searchTerm}
@@ -200,7 +200,7 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
         <main className="flex-1 p-4 sm:p-6">
           <Card className="mb-6">
             <CardContent className="p-4">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-foreground">
                 Page {currentPage} of {totalPages}
               </p>
             </CardContent>
@@ -222,7 +222,7 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
           ) : (
             <Card className="text-center py-16">
               <CardContent>
-                <p className="text-lg text-muted-foreground mb-4">No products found</p>
+                <p className="text-lg text-foreground mb-4">No products found</p>
                 <Button
                   variant="outline"
                   onClick={() => {

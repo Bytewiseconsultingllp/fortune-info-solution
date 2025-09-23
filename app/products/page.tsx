@@ -84,7 +84,7 @@
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //           <div className="flex flex-col md:flex-row gap-4 items-center">
 //             <div className="flex-1 relative">
-//               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+//               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground h-4 w-4" />
 //               <Input
 //                 placeholder="Search products..."
 //                 value={searchTerm}
@@ -128,7 +128,7 @@
 //       <section className="py-16">
 //         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 //           <div className="mb-8">
-//             <p className="text-muted-foreground">
+//             <p className="text-foreground">
 //               {loading
 //                 ? "Loading products..."
 //                 : `Showing ${filteredProducts.length} of ${products.length} products`}
@@ -153,7 +153,7 @@
 //             </div>
 //           ) : filteredProducts.length === 0 ? (
 //             <div className="text-center py-12">
-//               <p className="text-lg text-muted-foreground">
+//               <p className="text-lg text-foreground">
 //                 No products found matching your criteria.
 //               </p>
 //               <Button

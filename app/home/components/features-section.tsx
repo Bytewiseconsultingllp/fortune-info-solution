@@ -68,7 +68,7 @@ export function FeaturesSection() {
               <h3 className="text-xl font-bold text-primary mb-4">
                 IT Expertise
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">
+              <p className="text-foreground leading-relaxed text-sm">
                 End-to-end solutions in hardware and software, from laptops to
                 enterprise servers.
               </p>
@@ -85,7 +85,7 @@ export function FeaturesSection() {
               <h3 className="text-xl font-bold text-primary mb-4">
                 24/7 IT Support
               </h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">
+              <p className="text-foreground leading-relaxed text-sm">
                 Dependable after-sales support you can trust.
 Serving customers across the nation, anytime you need us.
               </p>
@@ -119,7 +119,7 @@ Serving customers across the nation, anytime you need us.
               <h3 className="text-xl font-bold text-primary mb-4">
                 One-Stop IT Store
               </h3>
-              <p className="text-muted-foreground mb-6 leading-relaxed text-sm">
+              <p className="text-foreground mb-6 leading-relaxed text-sm">
                 Complete range of hardware, software, consumables, and
                 accessories.
               </p>

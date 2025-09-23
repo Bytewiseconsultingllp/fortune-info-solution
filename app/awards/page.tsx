@@ -151,7 +151,7 @@ export default function AwardsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Industry Awards</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Our achievements reflect our dedication to providing exceptional service and maintaining the highest
               industry standards.
             </p>
@@ -173,7 +173,7 @@ export default function AwardsPage() {
                     <CardDescription className="font-medium text-primary text-justify">{award.organization}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground text-justify">{award.description}</p>
+                    <p className="text-foreground text-justify">{award.description}</p>
                   </CardContent>
                 </Card>
               )
@@ -187,7 +187,7 @@ export default function AwardsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Certifications</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Our certifications demonstrate our commitment to quality, safety, and environmental responsibility.
             </p>
           </div>

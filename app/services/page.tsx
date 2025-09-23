@@ -65,7 +65,7 @@ export default function ServicesPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Complete Distribution Solutions
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               From sourcing to delivery, we provide end-to-end services that
               streamline your operations and accelerate your growth.
             </p>
@@ -115,7 +115,7 @@ export default function ServicesPage() {
                       {service.description}
                     </CardDescription>
                     {service.duration && (
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-foreground">
                         Duration: {service.duration}
                       </p>
                     )}
@@ -153,7 +153,7 @@ export default function ServicesPage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Get Started?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-foreground mb-8 max-w-2xl mx-auto">
             Contact our team to discuss your specific requirements and learn how
             our services can help your business grow.
           </p>

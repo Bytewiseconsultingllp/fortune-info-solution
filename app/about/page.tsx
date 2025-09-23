@@ -103,7 +103,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div ref={profileTextRef}>
               <h2 className="text-3xl font-bold mb-6">Our Company</h2>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-foreground mb-6">
                 <b>Fortune Info Solutions</b> is a leading IT hardware &
                 software sales and service provider with a professional team
                 carrying over <b>100+ years of combined experience</b>.
@@ -111,7 +111,7 @@ export default function AboutPage() {
                 business transformation, offering complete{" "}
                 <b>end-to-end IT solution</b> for organizations across India.
               </p>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-foreground mb-6">
                 We are a trusted partner for global technology leaders such as{" "}
                 <br />
                 <b>
@@ -122,7 +122,7 @@ export default function AboutPage() {
                 clients receive only{" "}
                 <b>genuine, reliable, and scalable IT products and services</b>.
               </p>
-              <div className="text-lg text-muted-foreground mb-6">
+              <div className="text-lg text-foreground mb-6">
                 <p className="mb-2">Our expertise spans across:</p>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Personal Computing (Laptops, Desktops, Thin Clients)</li>
@@ -137,7 +137,7 @@ export default function AboutPage() {
                 </ul>
               </div>
 
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-foreground mb-6">
                 With a dedicated PAN-India sales and support team, we aim to be
                 a <span>one-stop solution</span> for all IT
                 requirements—providing not just products, but also long-term
@@ -219,7 +219,7 @@ export default function AboutPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our Core Values
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               These fundamental principles guide every decision we make and
               every relationship we build.
             </p>
@@ -234,7 +234,7 @@ export default function AboutPage() {
                 <Award className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-3">Excellence</h3>
-              <p className="text-muted-foreground ">
+              <p className="text-foreground ">
                 We pursue excellence in everything we do, from product quality
                 to customer service, ensuring the highest standards are
                 maintained.
@@ -246,7 +246,7 @@ export default function AboutPage() {
                 <Users className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-3">Integrity</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground">
                 Honesty and transparency form the foundation of our business
                 relationships, building trust with every interaction.
               </p>
@@ -257,7 +257,7 @@ export default function AboutPage() {
                 <Target className="h-8 w-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold mb-3">Innovation</h3>
-              <p className="text-muted-foreground">
+              <p className="text-foreground">
                 We embrace new technologies and methodologies to continuously
                 improve our services and stay ahead of industry trends.
               </p>

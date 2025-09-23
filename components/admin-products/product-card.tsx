@@ -107,7 +107,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onProductUpdated }) 
       </Tooltip>
     </TooltipProvider>
 
-    <p className="text-sm text-muted-foreground mt-1">{product.brand}</p>
+    <p className="text-sm text-foreground mt-1">{product.brand}</p>
   </div>
   
   <Badge
@@ -142,15 +142,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onProductUpdated }) 
     <div className="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
       {/* Category */}
       <div className="flex items-center gap-2">
-        <Package className="h-4 w-4 text-muted-foreground" />
-        <span className="text-muted-foreground">Category:</span>
+        <Package className="h-4 w-4 text-foreground" />
+        <span className="text-foreground">Category:</span>
       </div>
       <span className="font-medium">{product.category}</span>
 
       {/* SKU */}
       <div className="flex items-center gap-2">
-        <Tag className="h-4 w-4 text-muted-foreground" />
-        <span className="text-muted-foreground">SKU:</span>
+        <Tag className="h-4 w-4 text-foreground" />
+        <span className="text-foreground">SKU:</span>
       </div>
       <span className="font-mono text-xs font-medium">
         {product.sku || "N/A"}
@@ -158,8 +158,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onProductUpdated }) 
 
       {/* Price */}
       <div className="flex items-center gap-2">
-        <DollarSign className="h-4 w-4 text-muted-foreground" />
-        <span className="text-muted-foreground">Price:</span>
+        <DollarSign className="h-4 w-4 text-foreground" />
+        <span className="text-foreground">Price:</span>
       </div>
       <span className="font-semibold text-primary">
         {product.price > 0 ? formatPrice(product.price) : "N/A"}
@@ -167,8 +167,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onProductUpdated }) 
 
       {/* Created At */}
       <div className="flex items-center gap-2">
-        <Calendar className="h-4 w-4 text-muted-foreground" />
-        <span className="text-muted-foreground">Added:</span>
+        <Calendar className="h-4 w-4 text-foreground" />
+        <span className="text-foreground">Added:</span>
       </div>
       <span className="text-xs">{formatDate(product.createdAt)}</span>
 
@@ -176,8 +176,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onProductUpdated }) 
       {product.stockQuantity > 0 && (
         <>
           <div className="flex items-center gap-2">
-            <Package className="h-4 w-4 text-muted-foreground" />
-            <span className="text-muted-foreground">Stock:</span>
+            <Package className="h-4 w-4 text-foreground" />
+            <span className="text-foreground">Stock:</span>
           </div>
           <Badge variant="outline" className="text-xs">
             {product.stockQuantity} units
@@ -189,8 +189,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onProductUpdated }) 
       {product.specifications && (
         <>
           <div className="flex items-center gap-2">
-            <Tag className="h-4 w-4 text-muted-foreground" />
-            <span className="text-muted-foreground">Specs:</span>
+            <Tag className="h-4 w-4 text-foreground" />
+            <span className="text-foreground">Specs:</span>
           </div>
           <p className="text-xs font-medium line-clamp-2">
             {product.specifications}

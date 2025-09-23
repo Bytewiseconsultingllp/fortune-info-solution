@@ -237,7 +237,7 @@ export default function FooterSection() {
       </div>
 
       {/* Bottom Footer */}
-      <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
+      <div className="mt-8 pt-8 border-t text-center text-sm text-foreground">
           <p>&copy; 2024 Fortune Info. All rights reserved.</p>
           <p className="mt-2">
             Developed by{" "}

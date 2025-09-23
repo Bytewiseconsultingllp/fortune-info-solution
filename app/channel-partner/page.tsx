@@ -80,7 +80,7 @@ export default function ChannelPartnerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Partner Benefits</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Discover the advantages of partnering with Fortune Info Solutions and how we can help grow your business.
             </p>
           </div>
@@ -111,7 +111,7 @@ export default function ChannelPartnerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Partnership Types</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-foreground max-w-2xl mx-auto">
               Choose the partnership model that best fits your business goals and capabilities.
             </p>
           </div>
@@ -145,7 +145,7 @@ export default function ChannelPartnerPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Partner Requirements</h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-lg text-foreground mb-8">
                 To ensure mutual success, we look for partners who meet certain criteria and share our commitment to
                 excellence.
               </p>
@@ -160,7 +160,7 @@ export default function ChannelPartnerPage() {
             </div>
             <div className="bg-primary/5 p-8 rounded-lg">
               <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-foreground mb-6">
                 Take the first step towards a successful partnership with Fortune Info Solutions. Our team will review
                 your application and get back to you within 48 hours.
               </p>

@@ -156,7 +156,7 @@ export function AboutSection() {
                 <h3 className="text-2xl font-bold text-secondary mb-2">
                   Innovation And Adaptability
                 </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed text-justify">
+                <p className="text-foreground mb-6 leading-relaxed text-justify">
                   We drive continuous innovation by integrating world-class
                   hardware and software solutions from leading brands such as
                   HP, Dell, Lenovo, Cisco, Honeywell, and Panasonic
@@ -167,7 +167,7 @@ export function AboutSection() {
                 <h3 className="text-2xl font-bold text-secondary mb-2">
                   Customer-Centric Excellence
                 </h3>
-                <p className="text-muted-foreground mb-8 leading-relaxed text-justify">
+                <p className="text-foreground mb-8 leading-relaxed text-justify">
                   From sales to after-sales support, we ensure unparalleled
                   service, competitive pricing, and reliable delivery across PAN
                   India.

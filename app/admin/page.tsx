@@ -160,7 +160,7 @@ export default function AdminDashboard() {
       {/* Welcome Section */}
       <div>
         <h2 className="text-3xl font-bold mb-2">Welcome back, Admin</h2>
-        <p className="text-muted-foreground">Here's what's happening with your business today.</p>
+        <p className="text-foreground">Here's what's happening with your business today.</p>
       </div>
 
       {/* Stats Grid */}
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{stat.value}</div>
-                <p className="text-xs text-muted-foreground">{stat.description}</p>
+                <p className="text-xs text-foreground">{stat.description}</p>
               </CardContent>
             </Card>
           )
@@ -201,7 +201,7 @@ export default function AdminDashboard() {
                     <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
                     <div className="flex-1">
                       <p className="text-sm">{activity.message}</p>
-                      <p className="text-xs text-muted-foreground">{activity.time}</p>
+                      <p className="text-xs text-foreground">{activity.time}</p>
                     </div>
                     <Badge variant="outline" className="text-xs">
                       {activity.type}
@@ -209,7 +209,7 @@ export default function AdminDashboard() {
                   </div>
                 ))
               ) : (
-                <p className="text-sm text-muted-foreground">No recent activity</p>
+                <p className="text-sm text-foreground">No recent activity</p>
               )}
             </div>
           </CardContent>
@@ -229,23 +229,23 @@ export default function AdminDashboard() {
               <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                 <div>
                   <p className="font-medium">Add New Product</p>
-                  <p className="text-sm text-muted-foreground">Add products to catalog</p>
+                  <p className="text-sm text-foreground">Add products to catalog</p>
                 </div>
-                <Package className="h-5 w-5 text-muted-foreground" />
+                <Package className="h-5 w-5 text-foreground" />
               </div>
               <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                 <div>
                   <p className="font-medium">Review Contacts</p>
-                  <p className="text-sm text-muted-foreground">Respond to inquiries</p>
+                  <p className="text-sm text-foreground">Respond to inquiries</p>
                 </div>
-                <MessageSquare className="h-5 w-5 text-muted-foreground" />
+                <MessageSquare className="h-5 w-5 text-foreground" />
               </div>
               <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
                 <div>
                   <p className="font-medium">Process Quotes</p>
-                  <p className="text-sm text-muted-foreground">Generate price quotes</p>
+                  <p className="text-sm text-foreground">Generate price quotes</p>
                 </div>
-                <FileText className="h-5 w-5 text-muted-foreground" />
+                <FileText className="h-5 w-5 text-foreground" />
               </div>
             </div>
           </CardContent>

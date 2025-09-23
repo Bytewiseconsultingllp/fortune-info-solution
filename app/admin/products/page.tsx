@@ -292,7 +292,7 @@ import AdminProductsPage from '@/components/admin-products/admin-products';
 //       <div className="flex items-center justify-between">
 //         <div>
 //           <h2 className="text-3xl font-bold">Products Management</h2>
-//           <p className="text-muted-foreground">Manage your product catalog</p>
+//           <p className="text-foreground">Manage your product catalog</p>
 //         </div>
 //         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
 //           <DialogTrigger asChild>
@@ -525,7 +525,7 @@ import AdminProductsPage from '@/components/admin-products/admin-products';
 //         <CardContent>
 //           <div className="flex flex-col md:flex-row gap-4">
 //             <div className="flex-1 relative">
-//               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+//               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground h-4 w-4" />
 //               <Input
 //                 placeholder="Search products..."
 //                 value={searchTerm}
@@ -583,10 +583,10 @@ import AdminProductsPage from '@/components/admin-products/admin-products';
 //                       <Badge variant="outline">${product.price}</Badge>
 //                     )}
 //                   </div>
-//                   <p className="text-sm text-muted-foreground mb-1">
+//                   <p className="text-sm text-foreground mb-1">
 //                     {product.description}
 //                   </p>
-//                   <div className="flex gap-4 text-xs text-muted-foreground">
+//                   <div className="flex gap-4 text-xs text-foreground">
 //                     <span>Brand: {product.brand}</span>
 //                     <span>Category: {product.category}</span>
 //                   </div>

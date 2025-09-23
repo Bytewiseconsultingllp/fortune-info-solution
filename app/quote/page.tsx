@@ -206,7 +206,7 @@ function QuoteForm() {
                     {formData.productName && (
                       <div className="bg-muted/50 p-4 rounded-lg">
                         <h3 className="font-semibold mb-2">Product Information</h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-foreground">
                           <strong>Product:</strong> {formData.productName}
                         </p>
                       </div>
@@ -317,19 +317,19 @@ function QuoteForm() {
                 <CardContent className="space-y-4">
                   <div>
                     <h4 className="font-semibold">Competitive Pricing</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-foreground">
                       We offer competitive rates with transparent pricing and no hidden fees.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold">Fast Response</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-foreground">
                       Get your quote within 24 hours with detailed specifications.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-semibold">Quality Assurance</h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-foreground">
                       All products come with quality guarantees and warranty support.
                     </p>
                   </div>
@@ -341,16 +341,16 @@ function QuoteForm() {
                   <CardTitle>Need Help?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4 text-justify">
+                  <p className="text-sm text-foreground mb-4 text-justify">
                     Our sales team is here to help you find the right solution for your needs.
                   </p>
                   <div className="grid grid-cols-2 gap-x-2 gap-y-1 text-sm">
-                    <div className="font-semibold text-muted-foreground">Phone:</div>
-                    <div className="text-muted-foreground">9845447654, 9686194471</div>
-                    <div className="font-semibold text-muted-foreground">Email:</div>
-                    <div className="text-muted-foreground">info@fortuneinfo.in</div>
-                    <div className="font-semibold text-muted-foreground">Hours:</div>
-                    <div className="text-muted-foreground">
+                    <div className="font-semibold text-foreground">Phone:</div>
+                    <div className="text-foreground">9845447654, 9686194471</div>
+                    <div className="font-semibold text-foreground">Email:</div>
+                    <div className="text-foreground">info@fortuneinfo.in</div>
+                    <div className="font-semibold text-foreground">Hours:</div>
+                    <div className="text-foreground">
                       Mon-Fri <br />
                       9:00 AM-7:00 PM IST
                     </div>
