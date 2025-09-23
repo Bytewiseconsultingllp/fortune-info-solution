@@ -151,7 +151,7 @@ export default function AboutPage() {
                   "Direct Partnerships with Global IT Brands",
                   "PAN-India Sales & Service Network",
                   "Trusted by 5000+ Businesss Nationwide",
-                  "1Dedicated After-Sales & 24/7 IT Support",
+                  "Dedicated After-Sales & 24/7 IT Support",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>

@@ -39,7 +39,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-[40vh] py-2 flex items-center"
+      className="relative min-h-[40vh] py-10  flex items-center"
       style={{ backgroundColor: "#FDFAF6" }}
     >
       {/* Background Image - overlay remains */}
@@ -57,12 +57,12 @@ export function HeroSection() {
       {/* Content */}
       <div
         ref={heroRef}
-        className="relative z-10 w-full px-4 md:px-6 lg:px-16 vertical-center"
+        className="relative z-10 w-full px-3 md:px-6 lg:px-16 vertical-center"
       >
         <div className="max-w-8xl mx-auto">
           <div className="max-w-5xl">
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight"
               style={{ color: "white" }}
             >
               Future-Proof Your Business with

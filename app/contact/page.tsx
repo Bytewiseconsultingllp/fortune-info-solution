@@ -179,29 +179,19 @@ export default function ContactPage() {
       name: "Rajakumar A",
       position: "Director",
       image: "/rajakuamr.jpg",
-            email: "rajakumar@fortuneinfo.in", 
-
+      email: "rajakumar@fortuneinfo.in",
     },
-
-//     murali@techvistaritsol.com
-// pradeepnp@fortuneinfo.in      
-// Hari.Karthick@fortuneinfo.in
-// dhananjaya@fortuneinfo.in 
-// chandru@fortuneinfo.in
-// systems@fortuneinfo.in 
     {
       name: "Murali K",
       position: "Director",
       image: "/maruli.jpg",
-      email: "murali@techvistaritsol.com", 
-
+      email: "murali@techvistaritsol.com",
     },
     {
       name: "Pradeep NP",
       position: "SVP Business",
-      image:"/pradeep.jpg",
-      email: "pradeepnp@fortuneinfo.in", 
-
+      image: "/pradeep.jpg",
+      email: "pradeepnp@fortuneinfo.in",
     },
     {
       name: "HariKarthick",
@@ -209,64 +199,53 @@ export default function ContactPage() {
       initials: "",
       image:
         "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
-      email: "Hari.Karthick@fortuneinfo.in", 
-
-      },
+      email: "Hari.Karthick@fortuneinfo.in",
+    },
     {
-      name: "Dhananjaya M N", 
+      name: "Dhananjaya M N",
       position: "Product Manager",
       initials: "Honeywell",
-      image:
-        "dhanjay.jpg",
-      email: "dhananjaya@fortuneinfo.in ", 
+      image: "dhanjay.jpg",
+      email: "dhananjaya@fortuneinfo.in",
     },
     {
       name: "Chandrashekar Udupa",
-      position: "Product    Manager",
+      position: "Product Manager",
       initials: "Dell",
-      image:
-        "/chandrashaker.jpg",
-      email: "chandru@fortuneinfo.in", 
-
+      image: "/chandrashaker.jpg",
+      email: "chandru@fortuneinfo.in",
     },
     {
       name: "Sunil Kumar",
-      position: "Product Manager ",
+      position: "Product Manager",
       initials: "Lenovo",
-      image:
-        "sunil.jpg",
-      email: "systems@fortuneinfo.in", 
-
+      image: "sunil.jpg",
+      email: "systems@fortuneinfo.in",
     },
     {
       name: "Rajkiran Reddy",
-      position: "Product Manager ",
-            initials: "Networking Products",
-
-      image:
-        "/Rajkiran.jpg",
-            email: "rajkiran@fortuneinfo.in ", 
-
+      position: "Product Manager",
+      initials: "Networking Products",
+      image: "/Rajkiran.jpg",
+      email: "rajkiran@fortuneinfo.in",
     },
-        {
-      name: "Adithya K",
-      position: "Product Manager ",
+    {
+      name: "Adithya Nair",
+      position: "Product Manager",
       initials: "Lenovo",
-      image:
-        "sunil.jpg",
-      email: "systems@fortuneinfo.in", 
-
+      image: "sunil.jpg",
+      email: "systems@fortuneinfo.in",
     },
-        {
-      name: "Arjun K",
-      position: "Product Manager ",
+    {
+      name: "Arjun Nair",
+      position: "Product Manager",
       initials: "Lenovo",
-      image:
-        "sunil.jpg",
-      email: "arjun@fortuneinfo.in", 
-
+      image: "sunil.jpg",
+      email: "arjun@fortuneinfo.in",
     },
   ]
+
+  const remainder = teamMembers.length % 4
 
   return (
     <div className="min-h-screen bg-background">
@@ -296,70 +275,136 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
-            {teamMembers.map((member, index) => (
-              <Card
-                key={index}
-                className="group relative overflow-hidden border-0 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {remainder === 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {teamMembers.map((member, index) => (
+                <Card
+                  key={index}
+                  className="group relative overflow-hidden border-0 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <CardContent className="relative py-8 px-4 md:px-6 text-center">
-                  <div className="relative mb-6">
-                    <div className="relative">
-                      <div className="w-24 h-27 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
-                        <img
-                          src={member.image || "/placeholder.svg"}
-                          alt={`${member.name} - ${member.position}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      {member.email && (
-                        <div className="absolute -top-1 -right-1 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
-                          <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                  <CardContent className="relative py-8 px-4 md:px-6 text-center">
+                    <div className="relative mb-6">
+                      <div className="relative">
+                        <div className="w-24 h-27 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
+                          <img
+                            src={member.image || "/placeholder.svg"}
+                            alt={`${member.name} - ${member.position}`}
+                            className="w-full h-full object-cover"
+                          />
                         </div>
-                      )}
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
-                  </div>
-
-                  <div className="space-y-1">
-                    <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
-                      {member.name}
-                    </h3>
-                    <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3  rounded-full text-sm font-medium">
-                      {member.position} 
-                      <br />
-                      {member.initials}
-                    </div>
-
-                    {member.email ? (
-                      <div className="flex items-center justify-center gap-2 text-sm text-foreground/90">
-                        <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
-                        <span className="font-medium">{member.email.trim()}</span>
+                        {member.email && (
+                          <div className="absolute -top-1 -right-1 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
+                            <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                          </div>
+                        )}
                       </div>
-                    ) : null}
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
+                    </div>
 
-                    <div className="pt-4 border-t border-border/50">
+                    <div className="space-y-1">
+                      <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
+                        {member.name}
+                      </h3>
+                      <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3 rounded-full text-sm font-medium">
+                        {member.position}
+                        <br />
+                        {member.initials}
+                      </div>
+
                       {member.email ? (
-                        <div className="mt-4 flex items-center justify-center">
-                          <a
-                            href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(`Hello ${member.name}`)}`}
-                            aria-label={`Email ${member.name}`}
-                            className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                          >
-                            <Mail className="h-5 w-5" />
-                          </a>
+                        <div className="flex items-center justify-center gap-2 text-sm text-foreground/90">
+                          <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
+                          <span className="font-medium">{member.email.trim()}</span>
                         </div>
                       ) : null}
-                    </div>
-                  </div>
-                </CardContent>
 
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </Card>
-            ))}
-          </div>
+                      <div className="pt-4 border-t border-border/50">
+                        {member.email ? (
+                          <div className="mt-4 flex items-center justify-center">
+                            <a
+                              href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(`Hello ${member.name}`)}`}
+                              aria-label={`Email ${member.name}`}
+                              className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                            >
+                              <Mail className="h-5 w-5" />
+                            </a>
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+                  </CardContent>
+
+                  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-wrap justify-center gap-y-8 lg:-mx-4">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="w-full md:w-1/2 lg:w-1/4 lg:px-4">
+                  <Card className="group relative overflow-hidden border-0 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <CardContent className="relative py-8 px-4 md:px-6 text-center">
+                      <div className="relative mb-6">
+                        <div className="relative">
+                          <div className="w-24 h-27 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
+                            <img
+                              src={member.image || "/placeholder.svg"}
+                              alt={`${member.name} - ${member.position}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          {member.email && (
+                            <div className="absolute -top-1 -right-1 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
+                              <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
+                      </div>
+
+                      <div className="space-y-1">
+                        <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
+                          {member.name}
+                        </h3>
+                        <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3 rounded-full text-sm font-medium">
+                          {member.position}
+                          <br />
+                          {member.initials}
+                        </div>
+
+                        {member.email ? (
+                          <div className="flex items-center justify-center gap-2 text-sm text-foreground/90">
+                            <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
+                            <span className="font-medium">{member.email.trim()}</span>
+                          </div>
+                        ) : null}
+
+                        <div className="pt-4 border-t border-border/50">
+                          {member.email ? (
+                            <div className="mt-4 flex items-center justify-center">
+                              <a
+                                href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(`Hello ${member.name}`)}`}
+                                aria-label={`Email ${member.name}`}
+                                className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                              >
+                                <Mail className="h-5 w-5" />
+                              </a>
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+                    </CardContent>
+
+                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </Card>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
