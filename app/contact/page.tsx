@@ -4,7 +4,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { gsap } from "gsap"
 import Header from "@/app/home/components/navigation/Header"
-import Footer from "@/components/contact-footer";
+import Footer from "@/components/contact-footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -178,55 +178,75 @@ export default function ContactPage() {
     {
       name: "Rajakumar A",
       position: "Director",
-      initials: "RK",
-      image: "/placeholder-zbbr6.png",
+      image: "/rajakuamr.jpg",
+            email: "rajakumar@fortuneinfo.in", 
+
     },
+
+//     murali@techvistaritsol.com
+// pradeepnp@fortuneinfo.in      
+// Hari.Karthick@fortuneinfo.in
+// dhananjaya@fortuneinfo.in 
+// chandru@fortuneinfo.in
+// systems@fortuneinfo.in 
     {
-      name: "Murli K",
+      name: "Murali K",
       position: "Director",
-      initials: "ML",
-      image: "/placeholder-zbbr6.png",
+      image: "/maruli.jpg",
+      email: "murali@techvistaritsol.com", 
+
     },
     {
       name: "Pradeep NP",
-      position: "SVP Business Management",
-      initials: "PD",
-      image: "/placeholder-zbbr6.png",
+      position: "SVP Business",
+      image:"/pradeep.jpg",
+      email: "pradeepnp@fortuneinfo.in", 
+
     },
     {
       name: "HariKarthick",
       position: "Director",
-      initials: "NP",
+      initials: "",
       image:
         "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
-    },
-      {
-      name: "Dhananjay",
-      position: "Product Manager - HoneyWell",
-      initials: "NP",
+      email: "Hari.Karthick@fortuneinfo.in", 
+
+      },
+    {
+      name: "Dhananjaya M N", 
+      position: "Product Manager",
+      initials: "Honeywell",
       image:
-        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+        "dhanjay.jpg",
+      email: "dhananjaya@fortuneinfo.in ", 
     },
-      {
-      name: "Chandra Shekar Udupa",
-      position: "Product Manager - Dell",
-      initials: "NP",
+    {
+      name: "Chandrashekar Udupa",
+      position: "Product    Manager",
+      initials: "Dell",
       image:
-        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+        "/chandrashaker.jpg",
+      email: "chandru@fortuneinfo.in", 
+
     },
-     {
+    {
       name: "Sunil Kumar",
-      position: "Product Manager - Lenovo",
-      initials: "NP",
+      position: "Product Manager ",
+      initials: "Lenovo",
       image:
-        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+        "sunil.jpg",
+      email: "systems@fortuneinfo.in", 
+
     },
-     {
-      name: "Raj Kiran",
-      position: "Product Manager - Networking Products",
-      initials: "NP",
+    {
+      name: "Rajkiran Reddy",
+      position: "Product Manager ",
+            initials: "Networking Products",
+
       image:
-        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+        "/Rajkiran.jpg",
+            email: "rajkiran@fortuneinfo.in ", 
+
     },
   ]
 
@@ -242,7 +262,7 @@ export default function ContactPage() {
             grow.
           </p>
         </div>
-      </section>      
+      </section>
 
       <section ref={teamRef} className="py-20 bg-gradient-to-br from-background via-muted/20 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -266,37 +286,54 @@ export default function ContactPage() {
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                <CardContent className="relative p-8 text-center">
+                <CardContent className="relative py-8 px-4 md:px-6 text-center">
                   <div className="relative mb-6">
                     <div className="relative">
-                      <div className="w-24 h-24 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <div className="w-24 h-27 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
                         <img
                           src={member.image || "/placeholder.svg"}
                           alt={`${member.name} - ${member.position}`}
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <div className="absolute -top-1 -right-1 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
-                        <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
-                      </div>
+                      {member.email && (
+                        <div className="absolute -top-1 -right-1 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
+                          <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                        </div>
+                      )}
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-1">
                     <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
                       {member.name}
                     </h3>
-                    <div className="inline-flex items-center gap-2 bg-muted text-foreground px-3 py-1 rounded-full text-sm font-medium">
-                      <div className="w-2 h-2 bg-primary rounded-full" />
-                      {member.position}
+                    <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3  rounded-full text-sm font-medium">
+                      {member.position} 
+                      <br />
+                      {member.initials}
                     </div>
 
-                    <div className="pt-4 border-t border-border/50">
-                      <div className="flex items-center justify-center gap-2 text-sm text-foreground">
-                        <div className="w-1.5 h-1.5 bg-accent rounded-full" />
-                        <span className="font-medium">Executive Leadership</span>
+                    {member.email ? (
+                      <div className="flex items-center justify-center gap-2 text-sm text-foreground/90">
+                        <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
+                        <span className="font-medium">{member.email.trim()}</span>
                       </div>
+                    ) : null}
+
+                    <div className="pt-4 border-t border-border/50">
+                      {member.email ? (
+                        <div className="mt-4 flex items-center justify-center">
+                          <a
+                            href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(`Hello ${member.name}`)}`}
+                            aria-label={`Email ${member.name}`}
+                            className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:text-primary hover:bg-muted transition-colors"
+                          >
+                            <Mail className="h-5 w-5" />
+                          </a>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </CardContent>
@@ -437,8 +474,8 @@ export default function ContactPage() {
                     <div className="text-justify">
                       <h4 className="font-semibold">Address</h4>
                       <p className="text-sm text-foreground">
-                        No.17/1, Old No.272, Sri Nandi, 
-                         <br />
+                        No.17/1, Old No.272, Sri Nandi,
+                        <br />
                         12th Cross, 8th Main Road, Wilson Garden,
                         <br />
                         Hombegowda Nagar, Bangalore - 560027
