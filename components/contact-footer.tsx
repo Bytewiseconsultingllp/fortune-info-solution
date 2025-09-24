@@ -249,7 +249,7 @@ export default function ContactFooterSection() {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <p>Mon - Sat: 10:00 am - 07:00 pm</p>
+                <p>Mon - Sat: 10:00 AM - 07:00 PM</p>
               </div>
             </div>
           </div>
