@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
-
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Fortune Info Solutions - Distribution Hub Company",
@@ -34,6 +34,7 @@ html {
         
         {children}
         </body>
+        <Toaster richColors position="top-right" />
     </html>
   )
 }
