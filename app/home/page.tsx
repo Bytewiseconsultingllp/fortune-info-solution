@@ -30,7 +30,7 @@ export default function Home() {
       {/* <TestimonialsSection /> */}
       {/* <VideoParallaxSection /> */}
       {/* <CaseStudiesSection /> */}
-      {/* <CertificationsSection /> */}
+      <CertificationsSection />
       <ContactSection />
       <FooterSection />
       

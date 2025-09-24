@@ -10,6 +10,7 @@ interface Certification {
   name: string
   description: string
   logo: string
+  pdf: string          // <— new
 }
 
 const certifications: Certification[] = [
@@ -17,27 +18,32 @@ const certifications: Certification[] = [
     id: 1,
     name: "GeM",
     description: "",
-    logo: "ISO",
+    logo: "GeM",
+    pdf: "/certificate/gem.pdf",
   },
   {
     id: 2,
     name: "Honeywell Partner",
     description: "",
-    logo: "ISO",
+    logo: "HW",
+    pdf: "/certificate/honeywell-partner.pdf",
   },
   {
     id: 3,
     name: "MSME Certified",
     description: "",
-    logo: "MS",
+    logo: "MSME",
+    pdf: "/certificate/udyam.pdf",
   },
   {
     id: 4,
-    name: "AWS Certified Partner",
+    name: "FSAI Certificate",
     description: "",
-    logo: "AWS",
+    logo: "FSAI",
+    pdf: "/certificate/fsai.pdf",
   },
 ]
+
 
 export function CertificationsSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null)
@@ -100,8 +106,11 @@ export function CertificationsSection() {
 
         <div className="grid md:grid-cols-4 gap-8">
           {certifications.map((cert, index) => (
-            <div
+            <a
               key={cert.id}
+              href={cert.pdf}
+              target="_blank"
+              rel="noopener noreferrer"
               ref={(el) => {
                 if (el) cardsRef.current[index] = el
               }}
@@ -115,9 +124,10 @@ export function CertificationsSection() {
                 <h4 className="text-lg font-bold mb-1 text-brand-red">{cert.name}</h4>
                 <p className="text-secondary text-sm leading-relaxed">{cert.description}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
+
       </div>
     </section>
   )
