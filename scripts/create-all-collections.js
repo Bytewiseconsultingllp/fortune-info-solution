@@ -33,7 +33,7 @@ async function createAllCollections() {
               },
               brand: { bsonType: "string", minLength: 1, maxLength: 100 },
               images: { bsonType: "array", items: { bsonType: "string" }, minItems: 1 },
-              datasheet: { bsonType: "string", minLength: 1},
+              datasheet: { bsonType: "string"},
               specifications: { bsonType: "string" },
               price: { bsonType: "number", minimum: 0 }, 
               inStock: { bsonType: "bool" },
