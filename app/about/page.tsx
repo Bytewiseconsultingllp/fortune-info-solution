@@ -106,43 +106,26 @@ export default function AboutPage() {
               <p className="text-lg text-foreground mb-6">
                 <b>Fortune Info Solutions</b> is a leading IT hardware &
                 software sales and service provider with a professional team
-                carrying over <b>100+ years of combined experience</b>.
+                carrying over 100+ years of combined experience.
                 Headquartered in Bangalore, we have been at the forefront of
                 business transformation, offering complete{" "}
-                <b>end-to-end IT solution</b> for organizations across India.
+                end-to-end IT solution for organizations across India.
               </p>
               <p className="text-lg text-foreground mb-6">
                 We are a trusted partner for global technology leaders such as{" "}
                 <br />
                 <b>
-                  HP, Dell, Lenovo, Cisco, Honeywell, Panasonic, Acer, Samsung,
-                  VMware, and Microsoft
+Dell, Lenovo, HP, Apple, Honeywell, Dicota, Samsung, LG, Cisco, HPE, Netgear,
+Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
+Vention, Belkin, Jabra, Seagate and Western Digital
                 </b>
                 . As a direct partner for several top brands, we ensure our
                 clients receive only{" "}
-                <b>genuine, reliable, and scalable IT products and services</b>.
+                genuine, reliable, and scalable IT products and services.
               </p>
-              <div className="text-lg text-foreground mb-6">
-                <p className="mb-2">Our expertise spans across:</p>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>Personal Computing (Laptops, Desktops, Thin Clients)</li>
-                  <li>
-                    Enterprise IT (Services, Workstations, Storage Solutions)
-                  </li>
-                  <li>Networking & Telecom Infrastructure</li>
-                  <li>CCTV & Surveillance System</li>
-                  <li>Power Backup & AV Solutions</li>
-                  <li>Microsoft Licensing & Antivirus</li>
-                  <li>IT Products on Rental</li>
-                </ul>
-              </div>
 
-              <p className="text-lg text-foreground mb-6">
-                With a dedicated PAN-India sales and support team, we aim to be
-                a <span>one-stop solution</span> for all IT
-                requirements—providing not just products, but also long-term
-                reliability, affordability, scalability, and serviceability.
-              </p>
+
+
             </div>
             <div ref={profileCardRef} className="bg-muted/50 p-8 rounded-lg">
               <h3 className="text-2xl font-bold mb-4">Company Highlights</h3>
@@ -152,6 +135,8 @@ export default function AboutPage() {
                   "PAN-India Sales & Service Network",
                   "Trusted by 5000+ Businesss Nationwide",
                   "Dedicated After-Sales & 24/7 IT Support",
+                  "Expertise in enterprise and SMB solutions",
+                  "Proven track record of 20 + years",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>
@@ -178,6 +163,8 @@ export default function AboutPage() {
                 </div>
                 <CardTitle className="text-2xl">Our Mission</CardTitle>
               </CardHeader>
+
+              
 
               <CardContent>
                 <CardDescription className="text-base text-justify">

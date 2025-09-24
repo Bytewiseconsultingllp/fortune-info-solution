@@ -32,7 +32,7 @@ const menuItems: MenuItem[] = [
   { label: "About Us", href: "/about" },
   { label: "Products", href: "/products" },
   { label: "Services", href: "/services" },
-  { label: "Awards & Certificates", href: "/awards" },
+  // { label: "Awards & Certificates", href: "/awards" },
   { label: "Partners", href: "/channel-partner" },
   // { label: "Contact Us", href: "/contact" },
 ];

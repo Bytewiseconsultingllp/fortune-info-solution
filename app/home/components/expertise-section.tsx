@@ -70,11 +70,11 @@ export function ExpertiseSection() {
 
       {/* ✅ Use same max width as AboutSection */}
       <div className="relative max-w-7xl mx-auto">
-  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
     {/* Left Image */}
     <div className="pt-8 flex justify-center lg:justify-start">
       <Image
-        src="/expertises1.jpg"
+        src="/servicesss.jpg"
         alt="Our Expertise"
         width={800}
         height={300}
@@ -84,7 +84,7 @@ export function ExpertiseSection() {
 
     {/* Right Content */}
     <div ref={textRef} className="text-justify">
-      <h2 className="pt-8 text-5xl font-bold text-primary mb-4 leading-tight text-left text-animate">
+      <h2 className="pt-8 text-5xl font-bold text-primary mb-2 leading-tight text-left text-animate">
         Innovating Across Every Sector
       </h2>
 
