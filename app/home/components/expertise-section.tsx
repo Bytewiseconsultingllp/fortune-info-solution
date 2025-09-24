@@ -70,89 +70,70 @@ export function ExpertiseSection() {
 
       {/* ✅ Use same max width as AboutSection */}
       <div className="relative max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Image */}
-          <div ref={imageRef} className="flex justify-center">
-            <Image
-              src="/diverse-products-still-life.png"
-              alt="Our Expertise"
-              width={600}
-              height={500}
-              className="rounded-2xl shadow-xl object-cover"
-            />
-          </div>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    {/* Left Image */}
+    <div className="pt-8 flex justify-center lg:justify-start">
+      <Image
+        src="/expertises1.jpg"
+        alt="Our Expertise"
+        width={800}
+        height={300}
+        className="rounded-2xl shadow-xl object-cover w-full max-w-[450px] h-auto"
+      />
+    </div>
 
-          {/* Right Content */}
-          <div ref={textRef} className="text-justify">
-            {/* <div className="flex items-center gap-2 mb-8">
-              <div className="w-1 h-6 bg-primary"></div>
-              <span className="text-primary text-2xl font-medium text-animate">
-                
-              </span>
-              <div className="w-1 h-6 bg-primary"></div>
-            </div> */}
+    {/* Right Content */}
+    <div ref={textRef} className="text-justify">
+      <h2 className="pt-8 text-5xl font-bold text-primary mb-4 leading-tight text-left text-animate">
+        Innovating Across Every Sector
+      </h2>
 
-            <h2 className="pt-8 text-5xl font-bold text-primary mb-4 leading-tight text-left text-animate">
-              Innovating Across Every Sector
-            </h2>
+      <p className="text-black text-lg mb-4 leading-relaxed text-animate">
+        With decades of combined experience, Fortune Info Solutions delivers customized
+        IT hardware and software solutions across industries including healthcare,
+        finance, retail, manufacturing, education, and more.
+      </p>
 
-            <p className="text-black text-lg mb-4 leading-relaxed text-animate">
-              With decades of combined experience, Fortune Info Solutions
-              delivers customized IT hardware and software solutions across
-              industries including healthcare, finance, retail, manufacturing,
-              education, and more.
-            </p>
+      <h2 className="text-5xl font-bold text-primary mb-4 leading-tight text-animate">
+        Specializations
+      </h2>
 
-            <h2 className="text-5xl font-bold text-primary mb-4 leading-tight text-animate">
-              Specializations:
-            </h2>
-
-            <div className="space-y-2">
-              <div className="text-animate">
-                <h3 className="text-2xl font-bold text-primary mb-1">
-                  Enterprise IT Solutions
-                </h3>
-                <p className="text-black leading-relaxed">
-                  We provide servers, storage, and workstations from global
-                  brands like HP, Dell, and Lenovo, ensuring high performance
-                  and scalability.
-                </p>
-              </div>
-
-              <div className="text-animate">
-                <h3 className="text-2xl font-bold text-primary mb-1">
-                  Networking & Security
-                </h3>
-                <p className="text-black leading-relaxed">
-                  From Cisco firewalls to Honeywell surveillance, we secure IT
-                  ecosystems with advanced networking, CCTV, and access control
-                  solutions.
-                </p>
-              </div>
-
-              <div className="text-animate">
-                <h3 className="text-2xl font-bold text-primary mb-1">
-                  Power & AV Solutions
-                </h3>
-                <p className="text-black mb-8 leading-relaxed">
-                  Our partnerships with EATON, Panasonic, and Samsung allow us
-                  to deliver reliable UPS, power backup, and large-format
-                  display solutions.
-                </p>
-              </div>
-
-              {/* <button className="bg-primary hover:bg-red-700 text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300">
-                Read More
-              </button> */}
-              <Link href="/services" passHref>
-                <button className="bg-primary hover:bg-red-700 hover:cursor-pointer   text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300 inline-block text-center">
-                  Read More
-                </button>
-              </Link>
-            </div>
-          </div>
+      <div className="space-y-2">
+        <div className="text-animate">
+          <h3 className="text-2xl font-bold text-primary mb-1">Enterprise IT Solutions</h3>
+          <p className="text-black leading-relaxed">
+            We provide servers, storage, and workstations from global brands like HP,
+            Dell, and Lenovo, ensuring high performance and scalability.
+          </p>
         </div>
+
+        <div className="text-animate">
+          <h3 className="text-2xl font-bold text-primary mb-1">Networking & Security</h3>
+          <p className="text-black leading-relaxed">
+            From Cisco firewalls to Honeywell surveillance, we secure IT ecosystems
+            with advanced networking, CCTV, and access control solutions.
+          </p>
+        </div>
+
+        <div className="text-animate">
+          <h3 className="text-2xl font-bold text-primary mb-1">Power & AV Solutions</h3>
+          <p className="text-black mb-8 leading-relaxed">
+            Our partnerships with EATON, Panasonic, and Samsung allow us to deliver
+            reliable UPS, power backup, and large-format display solutions.
+          </p>
+        </div>
+
+        <Link href="/services" passHref>
+          <button className="bg-primary hover:bg-red-700 text-white px-8 py-3 rounded-full shadow-lg transition-all duration-300 inline-block text-center">
+            Read More
+          </button>
+        </Link>
       </div>
+    </div>
+  </div>
+</div>
+
     </section>
+    
   );
 }

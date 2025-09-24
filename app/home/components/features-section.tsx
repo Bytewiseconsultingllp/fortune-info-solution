@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Play, X, Globe, Headphones } from "lucide-react";
+import { Play, X, Globe, Headphones, Computer } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -56,11 +56,12 @@ export function FeaturesSection() {
     <>
       <section className="py-12 px-4 md:px-8 lg:px-16 bg-background">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-4 gap-8 items-center">
+          <div className="grid lg:grid-cols-4 gap-8 items-stretch">
+            
             {/* IT Expertise */}
             <div
               ref={col1Ref}
-              className="text-center lg:text-left border-r border-border pr-6"
+              className="text-center lg:text-left border-r border-border px-6"
             >
               <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto lg:mx-0 mb-6">
                 <Globe className="w-8 h-8 text-primary" />
@@ -77,7 +78,7 @@ export function FeaturesSection() {
             {/* 24/7 IT Support */}
             <div
               ref={col2Ref}
-              className="text-center lg:text-left border-r border-border pr-6"
+              className="text-center lg:text-left border-r border-border px-6"
             >
               <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto lg:mx-0 mb-6">
                 <Headphones className="w-8 h-8 text-primary" />
@@ -86,44 +87,30 @@ export function FeaturesSection() {
                 24/7 IT Support
               </h3>
               <p className="text-foreground leading-relaxed text-sm">
-                Dependable after-sales support you can trust.
-Serving customers across the nation, anytime you need us.
+                Dependable after-sales support you can trust. Serving customers
+                across the nation, anytime you need us.
               </p>
             </div>
 
-            {/* Video Preview Column */}
-            <div className="pr-6">
-              <div
-                className="relative h-40 rounded-2xl overflow-hidden cursor-pointer"
-                onClick={openVideo}
-              >
-                <Image
-                  src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
-                  alt="Video Thumbnail"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-secondary/40 flex items-center justify-center">
-                  <div className="relative">
-                    <span className="absolute w-16 h-16 rounded-full bg-primary/60 opacity-75 animate-ping"></span>
-                    <button className="relative z-10 w-16 h-16 bg-background/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-background transition-colors">
-                      <Play className="w-8 h-8 text-primary ml-1" />
-                    </button>
-                  </div>
-                </div>
+            {/* One-Stop IT Store */}
+            <div
+              ref={col2Ref}
+              className="text-center lg:text-left border-r border-border px-6"
+            >
+              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                <Computer className="w-8 h-8 text-primary" />
               </div>
-            </div>
-
-            {/* Custom Solution */}
-            <div ref={col4Ref} className="pl-6">
               <h3 className="text-xl font-bold text-primary mb-4">
                 One-Stop IT Store
               </h3>
-              <p className="text-foreground mb-6 leading-relaxed text-sm">
-                Complete range of hardware, software, consumables, and
-                accessories.
+              <p className="text-foreground leading-relaxed text-sm">
+                Complete range of hardware, software, consumables, and accessories.
               </p>
-              <Link href="/products" className="inline-block">
+            </div>
+
+            {/* Explore Products */}
+            <div ref={col4Ref} className="flex flex-col justify-center items-center lg:items-start px-6">
+              <Link href="/products">
                 <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full font-medium">
                   Explore Products
                 </button>
@@ -132,6 +119,7 @@ Serving customers across the nation, anytime you need us.
           </div>
         </div>
       </section>
+
 
       {/* Video Modal */}
       {isVideoOpen && (

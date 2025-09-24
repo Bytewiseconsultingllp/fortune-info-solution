@@ -61,55 +61,35 @@ export function ServicesSection() {
               <div className="w-1 h-6 bg-primary"></div>
         </div>
 
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
-          <div className="flex-1 section-heading">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+  {/* Left Side */}
+  <div className="flex-1 section-heading">
+    <h1 className="text-5xl md:text-5xl font-bold text-secondary leading-tight">
+      Future-Ready IT Solutions
+    </h1>
+  </div>
+
+  {/* Right Side */}
+  <div className="flex-1 max-w-md section-heading">
+    <p className="text-foreground text-lg leading-relaxed text-justify mb-6">
+      Fortune Info Solutions delivers end-to-end IT
+      infrastructure—hardware, software, networking, and security—to
+      future-proof your business.
+    </p>
+  </div>
+</div>
+<Link href="/services" className="block">
+  <button className="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-full flex justify-center mx-auto mb-6">
+    More Services
+  </button>
+</Link>
 
 
-            <h1 className="text-5xl md:text-6xl font-bold text-secondary mb-8 leading-tight">
-              Future-Ready
-              <br />
-              IT Solutions.
-            </h1>
-          </div>
-
-          <div className="flex-1 max-w-md section-heading mt-0 md:mt-12">
-            <p className="text-foreground text-lg mb-8 leading-relaxed text-justify">
-              Fortune Info Solutions delivers end-to-end IT
-              infrastructure—hardware, software, networking, and security—to
-              future-proof your business.
-            </p>
-            <Link href="/services">
-              <button className="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-full">
-          More Services
-              </button>
-            </Link>
-          </div>
-        </div>
-
-        <h1 className="text-2xl font-bold text-primary mb-8">Service Offerings</h1>
+        <h1 className="text-4xl font-bold text-primary mb-8">Service Offerings</h1>
         <div className="grid md:grid-cols-3 gap-8">
           
-          {/* Custom Development */}
-          <div
-            ref={(el) => {
-              cardsRef.current[0] = el;
-            }}
-            className="bg-card p-8 rounded-2xl shadow-lg "
-          >
-          <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
-            <Cctv className="w-8 h-8 text-white" />
-          </div>
-            <h3 className="text-2xl font-bold text-secondary mb-4">
-              CCTV Installation
-            </h3>
-            <p className="text-foreground mb-6 leading-relaxed text-justify ">
-Professional setup of single or multiple CCTV cameras with DVR/NVR configuration, remote mobile access, and on-site testing to ensure 24×7 surveillance.
-            </p>
-            {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
-              Learn More <ArrowRight className="w-4 h-4" />
-            </button> */}
-          </div>
+
 
           {/* Cloud Solutions */}
           <div
@@ -163,6 +143,29 @@ Early fire detection and alarm systems to protect your property and people.
               Learn More <ArrowRight className="w-4 h-4" />
             </button> */}
           </div>
+
+                    {/* Custom Development */}
+          <div
+            ref={(el) => {
+              cardsRef.current[0] = el;
+            }}
+            className="bg-card p-8 rounded-2xl shadow-lg "
+          >
+          <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+            <Cctv className="w-8 h-8 text-white" />
+          </div>
+            <h3 className="text-2xl font-bold text-secondary mb-4">
+              CCTV Installation
+            </h3>
+            <p className="text-foreground mb-6 leading-relaxed text-justify ">
+Professional setup of single or multiple CCTV cameras with DVR/NVR configuration, remote mobile access, and on-site testing to ensure 24×7 surveillance.
+            </p>
+            {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
+              Learn More <ArrowRight className="w-4 h-4" />
+            </button> */}
+          </div>
+
+          
         </div>
       </div>
     </section>

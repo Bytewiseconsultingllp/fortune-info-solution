@@ -61,7 +61,6 @@ export function VideoParallaxSection() {
   return (
     <>
       <section ref={sectionRef} className="relative h-full overflow-hidden py-16">
-        {/* Fixed Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{

@@ -15,19 +15,19 @@ interface Certification {
 const certifications: Certification[] = [
   {
     id: 1,
-    name: "ISO 27001 (ISMS)",
+    name: "GeM",
     description: "",
     logo: "ISO",
   },
   {
     id: 2,
-    name: "ISO 9001 (QMS)",
+    name: "Honeywell Partner",
     description: "",
     logo: "ISO",
   },
   {
     id: 3,
-    name: "Microsoft Certified Partner",
+    name: "MSME Certified",
     description: "",
     logo: "MS",
   },

@@ -45,7 +45,8 @@ export function HeroSection() {
       {/* Background Image - overlay remains */}
 <div className="absolute inset-0 -top-32">
   <Image
-    src="https://i.ibb.co/QFTKRMbc/Untitled-design-1.jpg" // use the direct image link
+      src="/hero-2.webp" // use the direct image link
+    // src="/banner1.jpg" // use the direct image link
     alt="Professional in server room"
     fill
     className="object-cover opacity-90"

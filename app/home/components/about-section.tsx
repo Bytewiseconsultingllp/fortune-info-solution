@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
-import expertImg1 from "@/app/assets/experts_one.jpg";
+import expertImg1 from "/about1.jpg";
 import expertImg2 from "@/app/assets/experts_two.jpeg";
 import expertImg3 from "@/app/assets/experts_three.jpeg";
 
@@ -80,50 +80,55 @@ export function AboutSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-4 md:px-8 lg:px-16 bg-background text-foreground"
+      className="py-8 px-4 md:px-4 lg:px-16 bg-background text-foreground "
     >
-            <div className="flex items-center gap-2 mb-8 text-xl justify-center flex">
+            <div className="flex items-center gap-2 mb-8 text-xl justify-center ">
               <div className="w-1 h-6 bg-primary"></div>
               <span className="text-primary font-medium text-4xl">About Us</span>
               <div className="w-1 h-6 bg-primary"></div>
             </div>
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Column (Images + Years of Experience) */}
           <div ref={leftColRef} className="space-y-8">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative h-64 rounded-2xl overflow-hidden">
-                <Image
-                  // src="/placeholder.svg?height=300&width=300"
-                  src={expertImg1}
-                  alt="Professionals working"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-64 rounded-2xl overflow-hidden">
-                <Image
-                  // src="/placeholder.svg?height=300&width=300"
-                  src={expertImg2}
-                  alt="Business people in server room"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-            <div className="relative h-48 rounded-2xl overflow-hidden">
+ 
+            <div className="relative h-65 rounded-2xl overflow-hidden">
               <Image
                 // src="/placeholder.svg?height=200&width=600"
-                src={expertImg3}
+                src="/about2.jpg"
                 alt="Professionals with laptop"
                 fill
                 className="object-cover"
               />
             </div>
-            <div className="text-center">
+
+                       <div className="grid grid-cols-2 gap-4">
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                <Image
+                  // src="/placeholder.svg?height=300&width=300"
+                  src="/about1.jpg"
+                  alt="Professionals working"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              <div className="relative h-64 rounded-2xl overflow-hidden">
+                <Image
+                  // src="/placeholder.svg?height=300&width=300"
+                  src="/customer.jpg"
+                  alt="Business people in server room"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+            </div>
+
+            <div className="text-center mb-6">
               <div
                 ref={experienceRef}
-                className="text-6xl font-bold text-primary mb-2"
+                className="text-6xl font-bold text-primary mb-2 "
               >
                 0+
               </div>
@@ -136,38 +141,40 @@ export function AboutSection() {
           {/* Right Column (Content + Progress bars) */}
           <div ref={rightColRef}>
 
-            <h2 className="text-4xl font-bold text-primary mb-4 leading-tight">
-              Experts In Tech Evolution.
+            {/* <h2 className="text-5xl font-bold text-primary mb-4 leading-tight ">
+            </h2> */}
+            <h2 className=" text-5xl font-bold text-primary mb-4 leading-tight text-left text-animate">
+              Experts In Tech Evolution
             </h2>
 
-            <p className="text-foreground text-lg mb-8 leading-relaxed text-justify">
+            <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
               <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware & software sales
               and service provider. Headquartered in Bangalore, we have grown
               into a trusted partner for businesses across India by offering
               cutting-edge products and tailored IT solutions.
             </p>
 
-            <h2 className="text-3xl font-bold text-primary mb-4 leading-tight">
-              Core Values:
-            </h2>
+            {/* <h2 className="text-5xl font-bold text-secondary mb-4 leading-tight">
+              Core Values
+            </h2> */}
 
             <div className="space-y-4">
               <div>
-                <h3 className="text-2xl font-bold text-secondary mb-2">
+                <h3 className="text-2xl font-bold text-primary  mb-1">
                   Innovation And Adaptability
                 </h3>
-                <p className="text-foreground mb-6 leading-relaxed text-justify">
+                <p className="text-foreground mb-4 leading-relaxed text-justify">
                   We drive continuous innovation by integrating world-class
                   hardware and software solutions from leading brands such as
-                  HP, Dell, Lenovo, Cisco, Honeywell, and Panasonic
+                  HP, Dell, Lenovo, Cisco, Honeywell, and Panasonic.
                 </p>
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-secondary mb-2">
+                <h3 className="text-2xl font-bold text-primary mb-1">
                   Customer-Centric Excellence
                 </h3>
-                <p className="text-foreground mb-8 leading-relaxed text-justify">
+                <p className="text-foreground mb-4 leading-relaxed text-justify">
                   From sales to after-sales support, we ensure unparalleled
                   service, competitive pricing, and reliable delivery across PAN
                   India.
@@ -176,7 +183,7 @@ export function AboutSection() {
 
               {/* Progress Bars */}
               <div className="space-y-6">
-                <div className="flex justify-between items-center mb-2">
+                <div className="flex justify-between items-center mb-1">
                   <span className="text-primary font-bold text-xl">
                     Expertise Highlights
                   </span>
@@ -185,16 +192,16 @@ export function AboutSection() {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-secondary font-medium">
-                      IT Support
+                      IT Support & Services
                     </span>
-                    <span className="text-primary font-bold">86% Satisfaction Rate</span>
+                    <span className="text-secoundary s">99%</span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
                     <div
                       ref={(el) => {
                         progressRefs.current[0] = el;
                       }}
-                      data-progress="86%"
+                      data-progress="99%"
                       className="bg-primary h-2 rounded-full"
                     ></div>
                   </div>
@@ -203,38 +210,40 @@ export function AboutSection() {
                 <div>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-secondary font-medium">
-                      IT Security
+                      Fire & Access Control
                     </span>
-                    <span className="text-primary font-bold">94% Threat Prevention Success</span>
-                  </div>
-                  <div className="w-full bg-muted rounded-full h-2">
-                    <div
-                      ref={(el) => {
-                        progressRefs.current[1] = el;
-                      }}
-                      data-progress="94%"
-                      className="bg-primary h-2 rounded-full"
-                    ></div>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-secondary font-medium">
-                      Cloud Support
-                    </span>
-                    <span className="text-primary font-bold">90% Migration Efficiency</span>
+                    <span className="text-secoundary ">98%</span>
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
                     <div
                       ref={(el) => {
                         progressRefs.current[2] = el;
                       }}
-                      data-progress="90%"
+                      data-progress="98%"
                       className="bg-primary h-2 rounded-full"
                     ></div>
                   </div>
                 </div>
+
+                <div>
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-secondary font-medium">
+                      Products Quality
+                    </span>
+                    <span className="text-secoundary ">96%</span>
+                  </div>
+                  <div className="w-full bg-muted rounded-full h-2">
+                    <div
+                      ref={(el) => {
+                        progressRefs.current[1] = el;
+                      }}
+                      data-progress="96%"
+                      className="bg-primary h-2 rounded-full"
+                    ></div>
+                  </div>
+                </div>
+
+
               </div>
             </div>
           </div>

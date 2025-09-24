@@ -28,7 +28,7 @@ export default function Home() {
       <BrandMarquee/>
       <ExpertiseSection />
       {/* <TestimonialsSection /> */}
-      <VideoParallaxSection />
+      {/* <VideoParallaxSection /> */}
       {/* <CaseStudiesSection /> */}
       <CertificationsSection />
       <ContactSection />
