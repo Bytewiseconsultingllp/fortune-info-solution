@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { Monitor, Cloud, Shield, ArrowRight } from "lucide-react";
+import { Monitor, Cloud, Shield, ArrowRight, FireExtinguisher, Laptop, Cctv, CctvIcon, LucideCctv, Sparkles, Flame } from "lucide-react";
 import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -55,16 +55,16 @@ export function ServicesSection() {
       ref={sectionRef}
       className="py-16 px-4 md:px-8 lg:px-16 bg-background text-foreground"
     >
+        <div className="flex items-center gap-2 mb-8 justify-center">
+              <div className="w-1 h-6 bg-primary"></div>
+              <span className="text-primary text-4xl font-medium">Our Services</span>
+              <div className="w-1 h-6 bg-primary"></div>
+        </div>
+
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-8">
           <div className="flex-1 section-heading">
-            <div className="flex items-center gap-2 mb-8">
-              <div className="w-1 h-6 bg-primary"></div>
-              <span className="text-primary text-2xl font-medium">
-          Our Services
-              </span>
-              <div className="w-1 h-6 bg-primary"></div>
-            </div>
+
 
             <h1 className="text-5xl md:text-6xl font-bold text-secondary mb-8 leading-tight">
               Future-Ready
@@ -95,16 +95,16 @@ export function ServicesSection() {
             ref={(el) => {
               cardsRef.current[0] = el;
             }}
-            className="bg-card p-8 rounded-2xl shadow-lg text-justify"
+            className="bg-card p-8 rounded-2xl shadow-lg "
           >
-            <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
-              <Monitor className="w-8 h-8 text-white" />
-            </div>
+          <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+            <Cctv className="w-8 h-8 text-white" />
+          </div>
             <h3 className="text-2xl font-bold text-secondary mb-4">
-              Custom Development
+              CCTV Installation
             </h3>
-            <p className="text-foreground mb-6 leading-relaxed">
-              We deliver tailored IT solutions, combining the right hardware and software to optimize performance and drive business growth.
+            <p className="text-foreground mb-6 leading-relaxed text-justify ">
+Professional setup of single or multiple CCTV cameras with DVR/NVR configuration, remote mobile access, and on-site testing to ensure 24×7 surveillance.
             </p>
             {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
               Learn More <ArrowRight className="w-4 h-4" />
@@ -116,7 +116,7 @@ export function ServicesSection() {
             ref={(el) => {
               cardsRef.current[1] = el;
             }}
-            className="bg-card p-8 rounded-2xl relative overflow-hidden shadow-lg text-justify"
+            className="bg-card p-8 rounded-2xl relative overflow-hidden shadow-lg"
           >
             <div className="absolute inset-0">
               <Image
@@ -129,13 +129,13 @@ export function ServicesSection() {
             </div>
             <div className="relative z-10">
               <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
-                <Cloud className="w-8 h-8 text-white" />
+                <Laptop className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-secondary mb-4">
-                Cloud Solutions
+                Laptop Services & Rentals
               </h3>
-              <p className="text-foreground mb-6 leading-relaxed">
-                Accelerate digital transformation with cloud-ready infrastructure, servers, storage, and licensed software integrated with AWS, Azure.
+              <p className="text-foreground mb-6 leading-relaxed text-justify">
+End-to-end laptop repair, upgrades, short and long term rental solutions with doorstep delivery and flexible plans for businesses or individuals.
               </p>
               {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
                 Learn More <ArrowRight className="w-4 h-4" />
@@ -148,16 +148,16 @@ export function ServicesSection() {
             ref={(el) => {
               cardsRef.current[2] = el;
             }}
-            className="bg-card p-8 rounded-2xl shadow-lg text-justify"
+            className="bg-card p-8 rounded-2xl shadow-lg "
           >
             <div className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-primary">
-              <Shield className="w-8 h-8 text-white " />
+              <Flame className="w-8 h-8 text-white " />
             </div>
             <h3 className="text-2xl font-bold text-secondary mb-4">
-              Cybersecurity Protection
+              Fire Detection and Alarm System
             </h3>
-            <p className="text-foreground mb-6 leading-relaxed">
-              Protect your business with advanced surveillance, firewalls, antivirus, and access control—ensuring security and compliance.
+            <p className="text-foreground mb-6 leading-relaxed text-justify">
+Early fire detection and alarm systems to protect your property and people.
             </p>
             {/* <button className="text-primary font-medium flex items-center gap-2 hover:text-primary/80">
               Learn More <ArrowRight className="w-4 h-4" />

@@ -82,6 +82,11 @@ export function AboutSection() {
       ref={sectionRef}
       className="py-16 px-4 md:px-8 lg:px-16 bg-background text-foreground"
     >
+            <div className="flex items-center gap-2 mb-8 text-xl justify-center flex">
+              <div className="w-1 h-6 bg-primary"></div>
+              <span className="text-primary font-medium text-4xl">About Us</span>
+              <div className="w-1 h-6 bg-primary"></div>
+            </div>
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column (Images + Years of Experience) */}
@@ -130,11 +135,6 @@ export function AboutSection() {
 
           {/* Right Column (Content + Progress bars) */}
           <div ref={rightColRef}>
-            <div className="flex items-center gap-2 mb-8 text-xl">
-              <div className="w-1 h-6 bg-primary"></div>
-              <span className="text-primary font-medium text-2xl">About Us</span>
-              <div className="w-1 h-6 bg-primary"></div>
-            </div>
 
             <h2 className="text-4xl font-bold text-primary mb-4 leading-tight">
               Experts In Tech Evolution.

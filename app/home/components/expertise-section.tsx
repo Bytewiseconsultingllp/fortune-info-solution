@@ -57,8 +57,14 @@ export function ExpertiseSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-4 md:px-8 lg:px-16 relative bg-white"
+      className="py-16 px-4 md:px-8 lg:px-16 relative bg-white "
     >
+            <div className="flex items-center gap-2 justify-center flex">
+            <div className="w-1 h-6 bg-primary"></div>
+            <span className="text-primary text-4xl font-medium">Our Expertise</span>
+            <div className="w-1 h-6 bg-primary"></div>
+          </div>
+
       {/* Background overlay */}
       <div className="absolute inset-0 bg-[url('/bg-pattern.png')] bg-cover bg-center opacity-10"></div>
 
@@ -78,32 +84,32 @@ export function ExpertiseSection() {
 
           {/* Right Content */}
           <div ref={textRef} className="text-justify">
-            <div className="flex items-center gap-2 mb-8">
+            {/* <div className="flex items-center gap-2 mb-8">
               <div className="w-1 h-6 bg-primary"></div>
               <span className="text-primary text-2xl font-medium text-animate">
-                Our Expertise
+                
               </span>
               <div className="w-1 h-6 bg-primary"></div>
-            </div>
+            </div> */}
 
-            <h2 className="text-5xl font-bold text-primary mb-8 leading-tight text-animate">
-              Innovating Across Every Sector.
+            <h2 className="pt-8 text-5xl font-bold text-primary mb-4 leading-tight text-left text-animate">
+              Innovating Across Every Sector
             </h2>
 
-            <p className="text-black text-lg mb-12 leading-relaxed text-animate">
+            <p className="text-black text-lg mb-4 leading-relaxed text-animate">
               With decades of combined experience, Fortune Info Solutions
               delivers customized IT hardware and software solutions across
               industries including healthcare, finance, retail, manufacturing,
               education, and more.
             </p>
 
-            <h2 className="text-3xl font-bold text-primary mb-8 leading-tight text-animate">
+            <h2 className="text-5xl font-bold text-primary mb-4 leading-tight text-animate">
               Specializations:
             </h2>
 
-            <div className="space-y-8">
+            <div className="space-y-2">
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-primary mb-4">
+                <h3 className="text-2xl font-bold text-primary mb-1">
                   Enterprise IT Solutions
                 </h3>
                 <p className="text-black leading-relaxed">
@@ -114,7 +120,7 @@ export function ExpertiseSection() {
               </div>
 
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-primary mb-4">
+                <h3 className="text-2xl font-bold text-primary mb-1">
                   Networking & Security
                 </h3>
                 <p className="text-black leading-relaxed">
@@ -125,7 +131,7 @@ export function ExpertiseSection() {
               </div>
 
               <div className="text-animate">
-                <h3 className="text-2xl font-bold text-primary mb-4">
+                <h3 className="text-2xl font-bold text-primary mb-1">
                   Power & AV Solutions
                 </h3>
                 <p className="text-black mb-8 leading-relaxed">

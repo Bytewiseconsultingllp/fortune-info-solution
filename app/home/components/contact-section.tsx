@@ -108,6 +108,12 @@ export function ContactSection() {
       className="py-16 px-4 md:px-8 lg:px-16"
       style={{ backgroundColor: "#FDFAF6" }}
     >
+      <div className="flex items-center gap-2 justify-center flex">
+            <div className="w-1 h-6 bg-primary"></div>
+            <span className="text-primary text-4xl font-medium">Contact Us</span>
+            <div className="w-1 h-6 bg-primary"></div>
+          </div>
+      
       {/* --- Full red bordered container --- */}
       <div className="max-w-7xl mx-auto rounded-lg p-10 grid lg:grid-cols-2 gap-16">
         {/* Left Side - Contact Form */}
@@ -158,11 +164,7 @@ export function ContactSection() {
 
         {/* Right Side - Contact Info */}
         <div ref={rightRef} className="space-y-12">
-          <div className="flex items-center gap-2">
-            <div className="w-1 h-6 bg-primary"></div>
-            <span className="text-primary text-2xl font-medium">Contact Us</span>
-            <div className="w-1 h-6 bg-primary"></div>
-          </div>
+
 
           <h2 className="text-5xl font-bold leading-tight text-secondary">
             Your IT Solution Starts Here.
@@ -201,7 +203,7 @@ export function ContactSection() {
                 # 17/1, Old # 272, Sri Nandi,
                 12th Cross, 8th Main Road,<br />
                 Wilson Garden, Hombegowda Nagar, 
-                Bangalore, India - 560027
+                Bangalore - 560027
               </p>
             </div>
             {/* Email */}

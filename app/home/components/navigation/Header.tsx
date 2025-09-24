@@ -29,11 +29,11 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
   { label: "About Us", href: "/about" },
+  { label: "Products", href: "/products" },
+  { label: "Services", href: "/services" },
   { label: "Awards & Certificates", href: "/awards" },
   { label: "Partners", href: "/channel-partner" },
-  { label: "Products", href: "/products" },
   // { label: "Contact Us", href: "/contact" },
 ];
 
@@ -100,7 +100,7 @@ export default function Header() {
      
 
       {/* Main Navigation */}
-      <nav className="bg-[#FDFAF6] py-4 px-4 md:px-6 lg:px-8 w-full flex justify-between items-center">
+      <nav className="bg-[#FDFAF6] py-4 px-4 md:px-6 lg:px-8 w-full flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-30 h-20 bg-[#B8001F] rounded-lg flex items-center justify-center">
@@ -112,57 +112,60 @@ export default function Header() {
               className="object-contain"
             />
           </div>
-          <span className="text-2xl md:text-3xl font-bold text-black">
+          {/* <span className="text-2xl md:text-3xl font-bold text-black">
             Fortune Info Solutions
-          </span>
+          </span> */}
         </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden lg:flex items-center gap-6 text-black">
-          {menuItems.map((item) => (
-            <div
-              key={item.label}
-              className="relative"
-              onMouseEnter={() =>
-                item.dropdown && setActiveDropdown(item.label)
-              }
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              <Link
-                href={item.href}
-                className="flex items-center gap-1 hover:text-[#B8001F] transition-colors font-medium"
+        {/* Right Side (Menu + Contact) */}
+        <div className="flex items-center gap-8">
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex gap-6 text-black">
+            {menuItems.map((item) => (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() =>
+                  item.dropdown && setActiveDropdown(item.label)
+                }
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {item.label}
-                {item.dropdown && <ChevronDown className="w-4 h-4" />}
-              </Link>
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-1 hover:text-[#B8001F] transition-colors font-bold"
+                >
+                  {item.label}
+                  {item.dropdown && <ChevronDown className="w-4 h-4" />}
+                </Link>
 
-              {/* Dropdown Menu */}
-              {item.dropdown && activeDropdown === item.label && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-[#000000] rounded-lg shadow-xl border border-[#B8001F] py-2 z-50">
-                  {item.dropdown.map((dropdownItem) => (
-                    <Link
-                      key={dropdownItem.label}
-                      href={dropdownItem.href}
-                      className="block px-4 py-2 text-white hover:bg-[#B8001F] hover:text-white transition-colors"
-                    >
-                      {dropdownItem.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+                {/* Dropdown Menu */}
+                {item.dropdown && activeDropdown === item.label && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-[#000000] rounded-lg shadow-xl border border-[#B8001F] py-2 z-50 text-left">
+                    {item.dropdown.map((dropdownItem) => (
+                      <Link
+                        key={dropdownItem.label}
+                        href={dropdownItem.href}
+                        className="block px-4 py-2 text-white hover:bg-[#B8001F] hover:text-white transition-colors"
+                      >
+                        {dropdownItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
 
-        {/* Contact Button */}
-        <div className="hidden lg:block">
-          <Link
-            href="/contact"
-            className="px-6 py-2 rounded-full font-medium transition-colors"
-            style={{ backgroundColor: "#B8001F", color: "#FDFAF6" }}
-          >
-            Contact Us
-          </Link>
+          {/* Contact Button */}
+          <div className="hidden lg:block">
+            <Link
+              href="/contact"
+              className="px-6 py-2 rounded-full font-medium transition-colors"
+              style={{ backgroundColor: "#B8001F", color: "#FDFAF6" }}
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
 
         {/* Mobile Hamburger */}
@@ -177,6 +180,7 @@ export default function Header() {
           )}
         </button>
       </nav>
+
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
