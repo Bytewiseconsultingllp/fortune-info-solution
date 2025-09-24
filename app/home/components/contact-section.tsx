@@ -109,9 +109,9 @@ export function ContactSection() {
       style={{ backgroundColor: "#FDFAF6" }}
     >
       {/* --- Full red bordered container --- */}
-      <div className="max-w-7xl mx-auto border border-red-600 rounded-lg p-10 grid lg:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto rounded-lg p-10 grid lg:grid-cols-2 gap-16">
         {/* Left Side - Contact Form */}
-        <div ref={leftRef}>
+        <div ref={leftRef} className="border-red-600 rounded-lg p-6 lg:p-12 border">
           <h2 className="text-4xl font-bold mb-12 text-secondary">
             Send Us A Message
           </h2>
@@ -198,8 +198,10 @@ export function ContactSection() {
                 </svg>
               </span>
               <p className="text-primary font-medium">
-                No.17/1, Old No.272, Sri Nandi, 12th Cross, 8th Main Road,
-                Wilson Garden, Hombegowda Nagar, Bangalore, India - 560027
+                # 17/1, Old # 272, Sri Nandi,
+                12th Cross, 8th Main Road,<br />
+                Wilson Garden, Hombegowda Nagar, 
+                Bangalore, India - 560027
               </p>
             </div>
             {/* Email */}
@@ -232,7 +234,7 @@ export function ContactSection() {
                 </svg>
               </span>
               <p className="font-medium text-primary">
-                9845447654 <br /> 9686194471
+                9686194471 ,9845447654 
               </p>
             </div>
           </div>

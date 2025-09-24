@@ -46,6 +46,59 @@ export default function Header() {
 
   return (
     <header className="w-full z-50">
+
+      {/* Top Contact Bar */}
+      <div className="bg-[#FDFAF6] py-3 px-4 md:px-6 lg:px-8 w-full flex justify-between items-center text-sm flex-wrap gap-2">
+        <div className="flex items-center gap-6 text-black flex-wrap">
+          <div className="flex items-center gap-2">
+             <MapPin className="w-4 h-4 text-[#B8001F] " />
+            <span className="font-bold text-[15px]">
+              # 17/1, Old # 272, Sri Nandi, 12th Cross, 8th Main Road, Wilson
+              Garden, Hombegowda Nagar, Bangalore - 560027
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Mail className="w-4 h-4 text-[#B8001F]" />
+            <span className="font-bold">info@fortuneinfo.in</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Phone className="w-4 h-4 text-[#B8001F]" />
+            <span className="font-bold">9686194471, 9845447654</span>
+          </div>
+        </div>
+
+         {/* <div className="flex items-center gap-3">
+      <Link
+        href={facebookUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors"
+      >
+        <Facebook className="w-4 h-4 text-white" />
+      </Link>
+
+      <Link
+        href={instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors"
+      >
+        <Instagram className="w-4 h-4 text-white" />
+      </Link>
+
+      <Link
+        href={linkedinUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-8 h-8 bg-[#B8001F] rounded flex items-center justify-center hover:bg-gray-800 transition-colors"
+      >
+        <Linkedin className="w-4 h-4 text-white" />
+      </Link>
+    </div> */}
+      </div>
+
+     
+
       {/* Main Navigation */}
       <nav className="bg-[#FDFAF6] py-4 px-4 md:px-6 lg:px-8 w-full flex justify-between items-center">
         {/* Logo */}

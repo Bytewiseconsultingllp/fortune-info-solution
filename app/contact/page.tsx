@@ -537,7 +537,7 @@ export default function ContactPage() {
                     <div className="text-justify">
                       <h4 className="font-semibold">Address</h4>
                       <p className="text-sm text-foreground">
-                        No.17/1, Old No.272, Sri Nandi,
+                        # 17/1, Old # 272, Sri Nandi,
                         <br />
                         12th Cross, 8th Main Road, Wilson Garden,
                         <br />
@@ -552,8 +552,8 @@ export default function ContactPage() {
                     <div>
                       <h4 className="font-semibold">Phone</h4>
                       <p className="text-sm text-foreground">
-                        9845447654 <br />
-                        9686194471
+                        9686194471, 9845447654
+                        
                       </p>
                     </div>
                   </div>
@@ -570,7 +570,7 @@ export default function ContactPage() {
                     <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-semibold">Business Hours</h4>
-                      <p className="text-sm text-foreground">10:00 AM – 7:00 pm</p>
+                      <p className="text-sm text-foreground">10:00 AM – 07:00 PM</p>
                     </div>
                   </div>
                 </CardContent>

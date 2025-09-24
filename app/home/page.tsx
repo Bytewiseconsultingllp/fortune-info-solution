@@ -29,7 +29,7 @@ export default function Home() {
       <ExpertiseSection />
       {/* <TestimonialsSection /> */}
       <VideoParallaxSection />
-      <CaseStudiesSection />
+      {/* <CaseStudiesSection /> */}
       <CertificationsSection />
       <ContactSection />
       <FooterSection />

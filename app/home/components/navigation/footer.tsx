@@ -213,7 +213,7 @@ export default function FooterSection() {
                 <div className="w-4 h-2 bg-primary rounded-full mt-2"></div>
                 <div>
                   <p>
-                    No.17/1, Old No.272, <br />
+                    No.17/1, Old # 272, <br />
                     Sri Nandi, 12th Cross, 8th Main Road, <br />
                     Wilson Garden, Hombegowda Nagar, Bangalore, India - 560027
                   </p>
@@ -225,7 +225,7 @@ export default function FooterSection() {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
-                <p>9845447654, 9686194471</p>
+                <p>9686194471, 9845447654</p>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary rounded-full"></div>
