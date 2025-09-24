@@ -239,7 +239,7 @@ export default function ContactPage() {
     {
       name: "Arjun Nair",
       position: "Product Manager",
-      initials: "Lenovo",
+      initials: "Hp",
       image: "sunil.jpg",
       email: "arjun@fortuneinfo.in",
     },
@@ -409,7 +409,7 @@ export default function ContactPage() {
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
               <div className="text-3xl font-bold text-primary mb-2">25+</div>
-              <div className="text-foreground">Years Combined Experience</div>
+              <div className="text-foreground">Combined Industry Experience</div>
             </div>
             <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
               <div className="text-3xl font-bold text-accent mb-2">100+</div>
