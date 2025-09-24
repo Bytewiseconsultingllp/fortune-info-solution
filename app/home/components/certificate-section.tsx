@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -10,40 +11,39 @@ interface Certification {
   name: string
   description: string
   logo: string
-  pdf: string          // <— new
+  image: string // ✅ replaced pdf with image
 }
 
 const certifications: Certification[] = [
   {
     id: 1,
-    name: "GeM",
-    description: "",
-    logo: "GeM",
-    pdf: "/certificate/gem.pdf",
-  },
-  {
-    id: 2,
-    name: "Honeywell Partner",
-    description: "",
-    logo: "HW",
-    pdf: "/certificate/honeywell-partner.pdf",
-  },
-  {
-    id: 3,
-    name: "MSME Certified",
-    description: "",
-    logo: "MSME",
-    pdf: "/certificate/udyam.pdf",
-  },
-  {
-    id: 4,
     name: "FSAI Certificate",
     description: "",
     logo: "FSAI",
-    pdf: "/certificate/fsai.pdf",
+    image: "/certificate/fsai.jpg",
+  },
+  {
+    id: 2,
+    name: "MSME Certified",
+    description: "",
+    logo: "MSME",
+    image: "/certificate/udyam.jpg",
+  },
+  {
+    id: 3,
+    name: "Honeywell Security Partner",
+    description: "",
+    logo: "HW",
+    image: "/certificate/fir1.jpg",
+  },
+  {
+    id: 4,
+    name: "Honeywell Fire Partner",
+    description: "",
+    logo: "GeM",
+    image: "/certificate/fire2.jpg",
   },
 ]
-
 
 export function CertificationsSection() {
   const sectionRef = useRef<HTMLDivElement | null>(null)
@@ -51,7 +51,6 @@ export function CertificationsSection() {
 
   useEffect(() => {
     if (sectionRef.current && cardsRef.current.length) {
-      // Animate Section Heading
       gsap.fromTo(
         sectionRef.current.querySelectorAll(".heading"),
         { opacity: 0, y: 50 },
@@ -60,14 +59,9 @@ export function CertificationsSection() {
           y: 0,
           duration: 1,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-          },
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
         }
       )
-
-      // Animate Cards
       gsap.fromTo(
         cardsRef.current,
         { opacity: 0, y: 40, scale: 0.95 },
@@ -78,10 +72,7 @@ export function CertificationsSection() {
           duration: 0.6,
           stagger: 0.2,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 75%",
-          },
+          scrollTrigger: { trigger: sectionRef.current, start: "top 75%" },
         }
       )
     }
@@ -94,7 +85,6 @@ export function CertificationsSection() {
       style={{ borderColor: "rgba(184,0,31,0.3)", backgroundColor: "#FDFAF6" }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Optional Section Heading */}
         <div className="text-center mb-12 heading">
           <h2 className="text-3xl font-bold mb-2 text-secondary">
             Our Certifications
@@ -104,30 +94,40 @@ export function CertificationsSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-8">
-          {certifications.map((cert, index) => (
-            <a
-              key={cert.id}
-              href={cert.pdf}
-              target="_blank"
-              rel="noopener noreferrer"
-              ref={(el) => {
-                if (el) cardsRef.current[index] = el
-              }}
-              className="flex items-center gap-4 p-4 rounded-lg border shadow-sm transition-shadow duration-300 hover:shadow-brand-red/30"
-              style={{ borderColor: "rgba(184,0,31,0.3)", backgroundColor: "#FFFFFF" }}
-            >
-              <div className="w-16 h-16 rounded-lg flex items-center justify-center flex-shrink-0 border-2 border-brand-red bg-brand-cream">
-                <span className="text-brand-red font-bold text-sm">{cert.logo}</span>
-              </div>
-              <div>
-                <h4 className="text-lg font-bold mb-1 text-brand-red">{cert.name}</h4>
-                <p className="text-secondary text-sm leading-relaxed">{cert.description}</p>
-              </div>
-            </a>
-          ))}
-        </div>
+        {/* ✅ 2 columns grid */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {certifications.map((cert, index) => {
+            const isLandscape = index >= 2 // items 3 & 4
+            return (
+              <div
+                key={cert.id}
+                ref={(el) => el && (cardsRef.current[index] = el)}
+                className="flex flex-col gap-4 p-4 rounded-lg border shadow-sm hover:shadow-brand-red/30 transition-shadow duration-300"
+                style={{ borderColor: "rgba(184,0,31,0.3)", backgroundColor: "#FFFFFF" }}
+              >
+                <div>
+                  <h4 className="text-lg font-bold mb-1 text-brand-red">{cert.name}</h4>
+                  <p className="text-secondary text-sm leading-relaxed">{cert.description}</p>
+                </div>
 
+                {/* ✅ Image Preview instead of PDF */}
+                <div
+                  className={`border rounded-md overflow-hidden w-full flex items-center justify-center bg-gray-50 ${
+                    isLandscape ? "h-80" : "h-140"
+                  }`}
+                >
+                  <Image
+                    src={cert.image}
+                    alt={cert.name}
+                    width={500}
+                    height={400}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
