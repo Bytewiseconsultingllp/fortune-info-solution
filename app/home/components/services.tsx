@@ -285,7 +285,7 @@ export function ServicesSection() {
 
         <div ref={textRef}>
           <p className="text-foreground text-lg leading-relaxed text-justify">
-            At Fortune Info Solutions, we empower businesses with future-ready IT infrastructure that drives resilience, security, and growth. From hardware and software to cloud, networking, and security, our comprehensive solutions ensure your enterprise is equipped to handle today’s challenges while staying prepared for tomorrow’s innovations.
+            At Fortune Info Solutions, we empower businesses with future-ready IT infrastructure, fire and security solutions that drives resilience, security, and growth. From hardware and software to cloud, networking, fire and security, our comprehensive solutions ensure your enterprise is equipped to handle today’s challenges while staying prepared for tomorrow’s innovations.
           </p>
           <br />
           {/* Two-column text */}
@@ -386,10 +386,10 @@ Deploying CCTV, biometric systems, and smart access solutions
                 <Laptop className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-secondary mb-4">
-                Laptop Services & Rentals
+                Laptop <br/> Sales, Services, Rentals
               </h3>
-              <p className="text-foreground mb-6 leading-relaxed text-justify">
-                End-to-end laptop repair, upgrades, short and long term rental
+              <p className="text-foreground mb-6 leading-relaxed ">
+                End-to-end laptop sales, repair, upgrades, short and long term rental
                 solutions with doorstep delivery and flexible plans.
               </p>
             </div>
@@ -404,10 +404,11 @@ Deploying CCTV, biometric systems, and smart access solutions
               <Flame className="w-8 h-8 text-white " />
             </div>
             <h3 className="text-2xl font-bold text-secondary mb-4">
-              Fire & Security Management
+              Fire & Security<br/> Solutions Management
             </h3>
-            <p className="text-foreground mb-6 leading-relaxed text-justify">
-              Ensuring complete solutions for Fire detection, Suppression & Security system
+            <p className="text-foreground mb-6 leading-relaxed">
+            Ensuring complete solutions for fire detection, suppression, and security systems.  
+            Safeguarding businesses with reliable and trusted expertise.
             </p>
           </div>
 
@@ -420,11 +421,10 @@ Deploying CCTV, biometric systems, and smart access solutions
               <Cctv className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-2xl font-bold text-secondary mb-4">
-              CCTV Installation
+              Survillance <br/> Access Control System
             </h3>
-            <p className="text-foreground mb-6 leading-relaxed text-justify">
-              Professional setup of single or multiple CCTV cameras with DVR/NVR
-              configuration and remote mobile access.
+            <p className="text-foreground mb-6 leading-relaxed">
+              Professional setup of CCTV surveillance with DVR/NVR integration for continuous monitoring, along with advanced access control systems
             </p>
           </div>
         </div>

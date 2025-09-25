@@ -128,12 +128,12 @@ export default function FooterSection() {
               </div>
               <span className="text-2xl font-bold text-secondary">iTech</span>
             </div>
-            <p className="text-secondary/70 mb-6 leading-relaxed">
+            <p className="text-secondary/70 mb-6 leading-relaxed justify-center flex">
               Fortune Info Solutions is your trusted partner for IT hardware,
-              software, and integrated solutions. With years of collective
+              software, fire and security solutions. With years of collective
               industry experience, we empower businesses with reliable products,
-              professional services, and scalable solutions across networking,
-               fire and security Solutions, security, surveillance, cloud, and enterprise IT.
+              professional services, and scalable solutions across enterprise IT, networking,
+              cloud, surveillance, fire and security solutions.
             </p>
              <div className="flex gap-4">
       {socials.map(({ Icon, url }, i) => (
@@ -236,10 +236,12 @@ export default function FooterSection() {
         </div>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="mt-8 pt-8 border-t text-center text-sm text-foreground">
-          <p>&copy; 2024 Fortune Info. All rights reserved.</p>
-          <p className="mt-2">
+     {/* Bottom Footer */}
+        <div className="mt-8 pt-8 border-t text-center text-sm text-foreground flex justify-center items-center gap-2">
+          <p>
+            &copy; 2024 Fortune Info. All rights reserved.
+          </p>
+          <p>
             Developed by{" "}
             <Link
               href="https://www.bytewiseconsulting.in/"

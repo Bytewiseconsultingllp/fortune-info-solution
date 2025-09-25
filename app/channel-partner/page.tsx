@@ -97,7 +97,7 @@ export default function ChannelPartnerPage() {
                     <CardTitle>{benefit.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-justify">{benefit.description}</CardDescription>
+                    <CardDescription >{benefit.description}</CardDescription>
                   </CardContent>
                 </Card>
               )

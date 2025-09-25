@@ -75,11 +75,11 @@ export function HeroSection() {
               className="text-base sm:text-lg md:text-xl mb-12 leading-relaxed"
               style={{ color: "white" }}
             >
-              Fortune Info Solutions is your trusted partner for IT hardware,
-              software, and integrated solutions. With years of collective
+                Fortune Info Solutions is your trusted partner for IT hardware,
+              software, fire and security solutions. With years of collective
               industry experience, we empower businesses with reliable products,
-              professional services, and scalable solutions across networking,
-               fire and security solutions, security, surveillance, cloud, and enterprise IT.
+              professional services, and scalable solutions across enterprise IT, networking,
+              cloud, surveillance, fire and security solutions.
             </p>
 
             <div className="flex items-center gap-8">

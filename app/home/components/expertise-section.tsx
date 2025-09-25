@@ -90,7 +90,7 @@ export function ExpertiseSection() {
 
       <p className="text-black text-lg mb-4 leading-relaxed text-animate">
         With decades of combined experience, Fortune Info Solutions delivers customized
-        IT hardware and software solutions across industries including healthcare,
+        IT hardware, software and fire and security solutions across industries including healthcare,
         finance, retail, manufacturing, education, and more.
       </p>
 
@@ -102,23 +102,23 @@ export function ExpertiseSection() {
         <div className="text-animate">
           <h3 className="text-2xl font-bold text-primary mb-1">Enterprise IT Solutions</h3>
           <p className="text-black leading-relaxed">
-            We provide servers, storage, and workstations from global brands like HP,
-            Dell, and Lenovo, ensuring high performance and scalability.
+            We provide laptop, desktop, servers, storage, and workstations from global brands like 
+            Dell, Lenovo, HP and others ensuring high performance and scalability.
           </p>
         </div>
 
         <div className="text-animate">
           <h3 className="text-2xl font-bold text-primary mb-1">Networking & Security</h3>
           <p className="text-black leading-relaxed">
-            From Cisco firewalls to Honeywell surveillance, we secure IT ecosystems
-            with advanced networking, CCTV, and access control solutions.
+            From Cisco firewalls to Honeywell Fire and Security solutions, we secure IT ecosystems
+            with advanced networking, servillance and access control solutions.
           </p>
         </div>
 
         <div className="text-animate">
           <h3 className="text-2xl font-bold text-primary mb-1">Power & AV Solutions</h3>
           <p className="text-black mb-8 leading-relaxed">
-            Our partnerships with EATON, Panasonic, and Samsung allow us to deliver
+            Our partnerships with APC, EATON, Panasonic, LG, Samsung and Philips allow us to deliver
             reliable UPS, power backup, and large-format display solutions.
           </p>
         </div>

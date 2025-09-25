@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { AlertCircle } from "lucide-react"
+import { AlertCircle, Clock, Mail, MapPin, Phone } from "lucide-react"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
@@ -185,19 +185,75 @@ export function ComplaintSection() {
 
           {/* Right Side Info */}
           <div className="space-y-6 text-foreground">
-            <h3 className="text-2xl font-semibold">How We Handle Complaints</h3>
-            <ul className="list-disc list-inside space-y-2 text-sm">
-              <li>Acknowledge receipt within 2 hours of submission.</li>
-              <li>Assign a dedicated support executive for your case.</li>
-              <li>Provide a resolution or status update within 48 hours.</li>
-              <li>Escalate to management if not resolved in the first attempt.</li>
-            </ul>
-            <p className="text-sm mt-4">
-              For urgent concerns, call our support line at{" "}
-              <span className="font-semibold">9686194471</span> or{" "}
-              <span className="font-semibold">9845447654</span>.
-            </p>
+           <Card className="p-6 rounded-lg shadow-sm bg-accent-foreground space-y-4">
+              <h3 className="text-2xl font-bold text-secondary">How We Handle Complaints</h3>
+
+              <ul className="list-disc list-inside space-y-2 text-sm text-gray-700">
+                <li><span className="font-medium">Acknowledgement:</span> We acknowledge receipt within <strong>2 hours</strong> of submission.</li>
+                <li><span className="font-medium">Dedicated Support:</span> A support executive is assigned to your case.</li>
+                <li><span className="font-medium">Timely Updates:</span> We provide a resolution or status update within <strong>48 hours</strong>.</li>
+                <li><span className="font-medium">Escalation:</span> If unresolved, the issue is escalated to management automatically.</li>
+              </ul>
+
+              <p className="text-sm text-gray-800">
+                <span className="font-medium">Urgent concern?</span> Call us directly at{" "}
+                <span className="font-semibold text-primary">9686194471</span> or{" "}
+                <span className="font-semibold text-primary">9845447654</span>.
+              </p>
+            </Card>
+                        <Card>
+                          <CardHeader>
+                            <CardTitle>Get in Touch</CardTitle>
+                            <CardDescription>Reach out to us through any of these channels</CardDescription>
+                          </CardHeader>
+                          <CardContent className="space-y-4">
+                            <div className="flex items-start gap-3">
+                              <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div className="text-justify">
+                                <h4 className="font-semibold">Address</h4>
+                                <p className="text-sm text-foreground">
+                                  # 17/1, Old # 272, Sri Nandi,
+                                  <br />
+                                  12th Cross, 8th Main Road, Wilson Garden,
+                                  <br />
+                                  Hombegowda Nagar, Bangalore - 560027
+                                  <br />
+                                </p>
+                              </div>
+                            </div>
+          
+                            <div className="flex items-start gap-3">
+                              <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div>
+                                <h4 className="font-semibold">Phone</h4>
+                                <p className="text-sm text-foreground">
+                                  9686194471, 9845447654
+                                  
+                                </p>
+                              </div>
+                            </div>
+          
+                            <div className="flex items-start gap-3">
+                              <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div>
+                                <h4 className="font-semibold">Email</h4>
+                                <p className="text-sm text-foreground">info@fortuneinfo.in</p>
+                              </div>
+                            </div>
+          
+                            <div className="flex items-start gap-3">
+                              <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+
+                              <div>
+                                <h4 className="font-semibold">Business Hours</h4>
+                                <p className="text-sm text-foreground">10:00 AM – 07:00 PM</p>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
           </div>
+
+
         </div>
       </div>
     </section>
