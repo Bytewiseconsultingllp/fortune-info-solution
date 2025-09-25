@@ -70,7 +70,7 @@ export default function AwardsHero() {
           ref={headingRef}
           className="text-4xl md:text-5xl font-extrabold tracking-wide text-white"
         >
-          Our Awards & Certificates
+          Our Certifications 
         </h1>
 
         {/* Subtext */}

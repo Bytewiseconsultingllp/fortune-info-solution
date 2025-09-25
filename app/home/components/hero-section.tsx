@@ -31,7 +31,7 @@ export function HeroSection() {
         ease: "power1.out",
         onUpdate: () => {
           if (countRef.current)
-            countRef.current.textContent = `${Math.floor(obj.value)}k+`;
+            countRef.current.textContent = `${Math.floor(obj.value)}K+`;
         },
       });
     }
@@ -101,13 +101,13 @@ export function HeroSection() {
                   className="text-4xl font-bold mb-1"
                   style={{ color: "white" }}
                 >
-                  0k+
+                  0K+
                 </div>
                 <div
                   className="text-md font-medium"
                   style={{ color: "#ffffff" }}
                 >
-                  Clients Served
+                  Clients served
                 </div>
               </div>
             </div>

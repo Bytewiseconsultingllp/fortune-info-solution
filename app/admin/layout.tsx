@@ -20,6 +20,7 @@ const navigation = [
   { name: "Contact Submissions", href: "/admin/contacts", icon: MessageSquare },
   { name: "Partner Enquiries", href: "/admin/partners", icon: Users },
   { name: "Quote Requests", href: "/admin/quotes", icon: FileText },
+  { name: "Complaint", href: "/admin/complaint", icon: FileText },
 ]
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

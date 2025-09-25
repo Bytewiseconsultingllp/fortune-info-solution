@@ -17,7 +17,7 @@ interface Certification {
 const certifications: Certification[] = [
   {
     id: 1,
-    name: "FSAI Certificate",
+    name: "Fire & Security Association of India (FSAI) Member",
     description: "",
     logo: "FSAI",
     image: "/certificate/fsai.jpg",
@@ -34,14 +34,14 @@ const certifications: Certification[] = [
     name: "Honeywell Security Partner",
     description: "",
     logo: "HW",
-    image: "/certificate/fir1.jpg",
+    image: "/certificate/fire2.jpg",
   },
   {
     id: 4,
     name: "Honeywell Fire Partner",
     description: "",
     logo: "GeM",
-    image: "/certificate/fire2.jpg",
+    image: "/certificate/fir1.jpg",
   },
 ]
 
@@ -86,11 +86,11 @@ export function CertificationsSection() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 heading">
-          <h2 className="text-3xl font-bold mb-2 text-secondary">
+          {/* <h2 className="text-3xl font-bold mb-2 text-secondary">
             Our Certifications
-          </h2>
-          <p className="text-lg text-secondary max-w-2xl mx-auto">
-            We partner with world-class organizations to ensure the highest standards.
+          </h2> */}
+          <p className="text-lg text-secondary max-w-2xl mx-auto font-semibold">
+            We partner with world-class organizations to ensure the highest standards
           </p>
         </div>
 
@@ -106,14 +106,14 @@ export function CertificationsSection() {
                 style={{ borderColor: "rgba(184,0,31,0.3)", backgroundColor: "#FFFFFF" }}
               >
                 <div>
-                  <h4 className="text-lg font-bold mb-1 text-brand-red">{cert.name}</h4>
+                  <h4 className="text-lg font-bold mb-1 text-brand-red justify-center flex">{cert.name}</h4>
                   <p className="text-secondary text-sm leading-relaxed">{cert.description}</p>
                 </div>
 
                 {/* ✅ Image Preview instead of PDF */}
                 <div
                   className={`border rounded-md overflow-hidden w-full flex items-center justify-center bg-gray-50 ${
-                    isLandscape ? "h-80" : "h-140"
+                    isLandscape ? "h-90" : "h-160"
                   }`}
                 >
                   <Image
