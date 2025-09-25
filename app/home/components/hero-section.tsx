@@ -79,7 +79,7 @@ export function HeroSection() {
               software, and integrated solutions. With years of collective
               industry experience, we empower businesses with reliable products,
               professional services, and scalable solutions across networking,
-               fire and security Solutions, security, surveillance, cloud, and enterprise IT.
+               fire and security solutions, security, surveillance, cloud, and enterprise IT.
             </p>
 
             <div className="flex items-center gap-8">

@@ -280,7 +280,7 @@ export function ServicesSection() {
           ref={headingRef}
           className="section-heading text-5xl md:text-5xl font-bold text-secondary leading-tight text-center mb-10"
         >
-          FUTURE - READY IT, Fire & Security Solutions
+          Future - Ready IT, Fire & Security Solutions
         </h1>
 
         <div ref={textRef}>
@@ -293,9 +293,9 @@ export function ServicesSection() {
             <div>
               <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
                 <li>
-                  <span className="font-semibold">Fire & Security Management </span>{" "}<br />
-                  Ensuring complete solutions for Fire detection, Suppression & Security system
-
+                  <span className="font-semibold">Hardware Management</span>{" "}<br />
+                  Managing physical assets like servers, laptops, and mobile
+                  devices
                 </li>
                 <li>
                   <span className="font-semibold">
@@ -314,15 +314,16 @@ export function ServicesSection() {
                   </span>{" "}
                   Administering cloud platforms and physical data centers
                 </li>
-              </ul>
-            </div>
-
-            <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
-              <li>
+                              <li>
                 <span className="font-semibold">Security Management<br /></span>{" "}
                 Implementing measures, monitoring threats, and managing data
                 integrity
               </li>
+              </ul>
+            </div>
+
+            <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
+
               <li>
                 <span className="font-semibold">Performance & Monitoring<br /></span>{" "}
                 24/7 observation of system health and performance
@@ -335,6 +336,15 @@ export function ServicesSection() {
                 <span className="font-semibold">Strategic Focus<br /></span>{" "}
                 Allows businesses to focus on core competencies & IT operations
               </li>
+              <li>
+                  <span className="font-semibold">Fire & Security Management </span>{" "}<br />
+                  Ensuring solutions for Fire detection, Suppression & Security system
+
+                </li>
+              <li>
+                  <span className="font-semibold">Surveillance & Access Control </span>{" "}<br />
+Deploying CCTV, biometric systems, and smart access solutions
+                </li>
             </ul>
           </div>
         </div>

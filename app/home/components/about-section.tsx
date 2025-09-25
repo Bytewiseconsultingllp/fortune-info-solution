@@ -163,8 +163,8 @@ export function AboutSection() {
                 </h3>
                 <p className="text-foreground mb-4 leading-relaxed text-justify">
                   We drive continuous innovation by integrating world-class
-                  hardware and software solutions from leading brands such as <b> Dell, Lenovo, HP, Apple, HONEYWELL - MORLEY IAS SYSTEM, SYSTEM SENSOR, SILIENT KNIGHT
-, Dicota, Samsung, LG, Cisco, HPE, Netgear,Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
+                  hardware and software solutions from leading brands <b> Dell, Lenovo, HP, Apple,  Dicota, Honeywell- Morley IAS System, System Sensor, Silient Knight 
+, Samsung, LG, Cisco, HPE, Netgear, Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
 Vention, Belkin, Jabra, Seagate, Western Digital and more.
                 </b>
                 
