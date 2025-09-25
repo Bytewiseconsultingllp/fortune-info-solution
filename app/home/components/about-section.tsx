@@ -34,11 +34,11 @@ export function AboutSection() {
         delay: 0.3,
       });
 
-      // Experience counter (22+ years)
+      // Experience counter (25+ years)
       if (experienceRef.current) {
         const years = { val: 0 };
         gsap.to(years, {
-          val: 22,
+          val: 25,
           duration: 2,
           ease: "power3.out",
           onUpdate: () => {
@@ -133,7 +133,7 @@ export function AboutSection() {
                 0+
               </div>
               <div className="text-secondary text-xl font-medium">
-                Year Of Experience
+                Years of Experience
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ export function AboutSection() {
               <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware & software sales
               and service provider. Headquartered in Bangalore, we have grown
               into a trusted partner for businesses across India by offering
-              cutting-edge products and tailored IT solutions.
+              cutting-edge products and tailored IT & Surveillance solutions.
             </p>
 
             {/* <h2 className="text-5xl font-bold text-secondary mb-4 leading-tight">
@@ -165,8 +165,11 @@ export function AboutSection() {
                 </h3>
                 <p className="text-foreground mb-4 leading-relaxed text-justify">
                   We drive continuous innovation by integrating world-class
-                  hardware and software solutions from leading brands such as
-                  HP, Dell, Lenovo, Cisco, Honeywell, and Panasonic.
+                  hardware and software solutions from leading brands such as <b> Dell, Lenovo, HP, Apple, Honeywell, Dicota, Samsung, LG, Cisco, HPE, Netgear,
+Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
+Vention, Belkin, Jabra, Seagate, Western Digital and more.
+                </b>
+                
                 </p>
               </div>
 

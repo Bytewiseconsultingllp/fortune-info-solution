@@ -293,43 +293,47 @@ export function ServicesSection() {
             <div>
               <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
                 <li>
-                  <span className="font-semibold">Hardware Management:</span>{" "}
+                  <span className="font-semibold">Hardware Management</span>{" "}<br />
                   Managing physical assets like servers, laptops, and mobile
-                  devices.
+                  devices
                 </li>
                 <li>
                   <span className="font-semibold">
-                    Software & Operating Systems:
+                    Software & Operating Systems<br />
                   </span>{" "}
                   Ensuring enterprise software, SaaS applications, and OS
-                  updates.
+                  updates
                 </li>
                 <li>
-                  <span className="font-semibold">Network Management:</span>{" "}
-                  Overseeing network devices, firewalls, and infrastructure.
+                  <span className="font-semibold">Network Management<br /></span>{" "}
+                  Overseeing network devices, firewalls, and infrastructure
                 </li>
                 <li>
                   <span className="font-semibold">
-                    Cloud & Data Center Management:
+                    Cloud & Data Center Management<br />
                   </span>{" "}
-                  Administering cloud platforms and physical data centers.
+                  Administering cloud platforms and physical data centers
                 </li>
               </ul>
             </div>
 
             <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
               <li>
-                <span className="font-semibold">Security Management:</span>{" "}
+                <span className="font-semibold">Security Management<br /></span>{" "}
                 Implementing measures, monitoring threats, and managing data
-                integrity.
+                integrity
               </li>
               <li>
-                <span className="font-semibold">Performance & Monitoring:</span>{" "}
-                24/7 observation of system health and performance.
+                <span className="font-semibold">Performance & Monitoring<br /></span>{" "}
+                24/7 observation of system health and performance
               </li>
               <li>
-                <span className="font-semibold">Backup & Disaster Recovery:</span>{" "}
-                Strategies to protect data and ensure business continuity.
+                <span className="font-semibold">Backup & Disaster Recovery<br /></span>{" "}
+                Strategies to protect data and ensure business continuity
+              </li>
+               <li>
+                <span className="font-semibold">Strategic Focus<br /></span>{" "}
+                Allows businesses to focus on core competencies & IT operations
               </li>
             </ul>
           </div>
