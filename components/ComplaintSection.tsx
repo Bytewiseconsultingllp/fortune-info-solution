@@ -31,7 +31,7 @@ export function ComplaintSection() {
     if (!complaint.email.trim()) newErrors.email = "Email is required"
     if (!complaint.phone.trim()) newErrors.phone = "Phone is required"
     if (!complaint.message.trim()) newErrors.message = "Complaint details are required"
-    if (!complaint.orderId.trim()) newErrors.message = "Order Number are required"
+    if (!complaint.orderId.trim()) newErrors.orderId = "Order Number are required"
 
 
     setErrors(newErrors)
@@ -39,7 +39,7 @@ export function ComplaintSection() {
 
     try {
       setLoading(true)
-      const resp = await fetch("/api/complaint", {
+      const resp = await fetch("/api/complaints", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(complaint),
@@ -159,6 +159,8 @@ export function ComplaintSection() {
                     value={complaint.orderId}
                     onChange={(e) => setComplaint((prev) => ({ ...prev, orderId: e.target.value }))}
                   />
+                  {errors.orderId && <p className="text-red-500 text-sm mt-1">{errors.orderId}</p>}
+
                 </div>
 
                 {/* Message */}

@@ -148,10 +148,10 @@ export function AboutSection() {
             </h2>
 
             <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
-              <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware & software sales
-              and service provider. Headquartered in Bangalore, we have grown
-              into a trusted partner for businesses across India by offering
-              cutting-edge products and tailored IT & Surveillance solutions.
+              <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware, software,
+              and IT Fire & Surveillance solutions provider. Headquartered in Bangalore with
+              regional presence in Hyderabad and Chennai, we deliver cutting-edge products
+              and tailored services to businesses across India.
             </p>
 
             {/* <h2 className="text-5xl font-bold text-secondary mb-4 leading-tight">
