@@ -148,10 +148,8 @@ export function AboutSection() {
             </h2>
 
             <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
-              <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware, software,
-              and IT Fire & Surveillance solutions provider. Headquartered in Bangalore with
-              regional presence in Hyderabad and Chennai, we deliver cutting-edge products
-              and tailored services to businesses across India.
+              <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware, software, Fire Detection, Suppression, CCTV & Access Control System
+                sales and service provider. Head quartered in Bangalore, having regional office in Chennai & Hyderabad, we have grown inta trusted partner for businss across India by offering cutting-edge products & tailored IT, Fire Detection, Suppression, Survillance solutions
             </p>
 
             {/* <h2 className="text-5xl font-bold text-secondary mb-4 leading-tight">
@@ -165,8 +163,8 @@ export function AboutSection() {
                 </h3>
                 <p className="text-foreground mb-4 leading-relaxed text-justify">
                   We drive continuous innovation by integrating world-class
-                  hardware and software solutions from leading brands such as <b> Dell, Lenovo, HP, Apple, Honeywell, Dicota, Samsung, LG, Cisco, HPE, Netgear,
-Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
+                  hardware and software solutions from leading brands such as <b> Dell, Lenovo, HP, Apple, HONEYWELL - MORLEY IAS SYSTEM, SYSTEM SENSOR, SILIENT KNIGHT
+, Dicota, Samsung, LG, Cisco, HPE, Netgear,Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
 Vention, Belkin, Jabra, Seagate, Western Digital and more.
                 </b>
                 

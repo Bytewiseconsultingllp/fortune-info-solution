@@ -280,7 +280,7 @@ export function ServicesSection() {
           ref={headingRef}
           className="section-heading text-5xl md:text-5xl font-bold text-secondary leading-tight text-center mb-10"
         >
-          Future-Ready IT Solutions
+          FUTURE - READY IT, Fire & Security Solutions
         </h1>
 
         <div ref={textRef}>
@@ -293,9 +293,9 @@ export function ServicesSection() {
             <div>
               <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
                 <li>
-                  <span className="font-semibold">Hardware Management</span>{" "}<br />
-                  Managing physical assets like servers, laptops, and mobile
-                  devices
+                  <span className="font-semibold">Fire & Security Management </span>{" "}<br />
+                  Ensuring complete solutions for Fire detection, Suppression & Security system
+
                 </li>
                 <li>
                   <span className="font-semibold">
@@ -394,11 +394,10 @@ export function ServicesSection() {
               <Flame className="w-8 h-8 text-white " />
             </div>
             <h3 className="text-2xl font-bold text-secondary mb-4">
-              Fire Detection and Alarm System
+              Fire & Security Management
             </h3>
             <p className="text-foreground mb-6 leading-relaxed text-justify">
-              Early fire detection and alarm systems to protect your property
-              and people.
+              Ensuring complete solutions for Fire detection, Suppression & Security system
             </p>
           </div>
 
