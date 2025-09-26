@@ -13,6 +13,10 @@ const logos: string[] = [
   "https://static-ecapac.acer.com/media/logo/default/acer.png",                             // Acer
   "https://logos-world.net/wp-content/uploads/2020/07/Asus-Logo-1995-present.png",          // Asus
   "https://www.honeywell.com/content/dam/honeywellbt/en/images/logos/honeywell-logo.svg",   // Honeywell
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlpVzBda8n5C4JrtzqAIebL_JGjD_gwjbwWQ&s" , // Morley IAS System
+  "https://systemsensoreurope.com/wp-content/uploads/2020/02/index_06.jpg", // System Sensor
+  "https://buildings.honeywell.com/content/dam/hbtbt/en/images/logos/honeywell-silent-knight-logo.jpg", // Silient Knight
+  "https://xtralis.com/images/marketing/xtralis-logo-anthracite.svg", // xtralis
   "https://www.dicota.com/cdn/shop/files/dicota-logo.png?v=1750775911&width=1000",          // Dicota
   "https://storage-asset.msi.com/frontend/imgs/logo.png",                                   // MSI
   "https://logos-world.net/wp-content/uploads/2021/09/Intel-Logo-2006-2020-700x394.png",     // Intel

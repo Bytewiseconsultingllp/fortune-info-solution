@@ -144,15 +144,14 @@ export function AboutSection() {
             {/* <h2 className="text-5xl font-bold text-primary mb-4 leading-tight ">
             </h2> */}
             <h2 className=" text-5xl font-bold text-primary mb-4 leading-tight text-left text-animate">
-              Experts In Tech Evolution
+              Experts In Tech and Security Solutions
             </h2>
 
-            <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
-              <strong>FORTUNE INFO SOLUTIONS</strong> is a leading IT hardware & software sales
-              and service provider. Headquartered in Bangalore, we have grown
-              into a trusted partner for businesses across India by offering
-              cutting-edge products and tailored IT & Surveillance solutions.
-            </p>
+         <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
+            <strong>FORTUNE INFO SOLUTIONS</strong> is a leading provider of IT hardware, software, fire detection and suppression, CCTV, and access control systems. 
+            Based in Bangalore with regional offices in Chennai and Hyderabad, we have grown into a trusted partner for businesses across India by delivering 
+            cutting-edge products and tailored IT, fire safety, and surveillance solutions.
+          </p>
 
             {/* <h2 className="text-5xl font-bold text-secondary mb-4 leading-tight">
               Core Values
@@ -165,9 +164,8 @@ export function AboutSection() {
                 </h3>
                 <p className="text-foreground mb-4 leading-relaxed text-justify">
                   We drive continuous innovation by integrating world-class
-                  hardware and software solutions from leading brands such as <b> Dell, Lenovo, HP, Apple, Honeywell, Dicota, Samsung, LG, Cisco, HPE, Netgear,
-Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
-Vention, Belkin, Jabra, Seagate, Western Digital and more.
+                  hardware and software solutions from leading brands <b> Dell, Lenovo, HP, Apple,  Dicota, Honeywell - Morley IAS System, System Sensor, Silient Knight, Xtralis, Samsung, LG, Cisco, HPE, Netgear, Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
+Vention, Belkin, Jabra, Seagate, Western Digital and more...
                 </b>
                 
                 </p>

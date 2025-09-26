@@ -34,7 +34,7 @@ const menuItems: MenuItem[] = [
   { label: "Services", href: "/services" },
   { label: "Certifications", href: "/awards" },
   { label: "Partners", href: "/channel-partner" },
-  // { label: "Contact Us", href: "/contact" },
+  { label: "Gallery", href: "/gallery" },
 ];
 
 export default function Header() {

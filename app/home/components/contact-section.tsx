@@ -105,7 +105,7 @@ export function ContactSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-16 px-4 md:px-8 lg:px-16"
+      className="py-6 px-4 md:px-8 lg:px-16"
       style={{ backgroundColor: "#FDFAF6" }}
     >
       <div className="flex items-center gap-2 justify-center flex">
@@ -115,13 +115,13 @@ export function ContactSection() {
           </div>
       
       {/* --- Full red bordered container --- */}
-      <div className="max-w-7xl mx-auto rounded-lg p-10 grid lg:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto rounded-lg p-8 grid lg:grid-cols-2 gap-16">
         {/* Left Side - Contact Form */}
         <div ref={leftRef} className="border-red-600 rounded-lg p-6 lg:p-12 border">
-          <h2 className="text-4xl font-bold mb-12 text-secondary">
+          <h2 className="text-4xl font-bold mb-6 text-secondary">
             Send Us A Message
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-1">
             {["name", "email", "phone", "company"].map((field) => (
               <div key={field}>
                 <input
@@ -163,26 +163,35 @@ export function ContactSection() {
         </div>
 
         {/* Right Side - Contact Info */}
-        <div ref={rightRef} className="space-y-12">
+        <div ref={rightRef} className="space-y-6">
 
 
-          <h2 className="text-5xl font-bold leading-tight text-secondary">
-            Your IT Solution Starts Here.
+          <h2 className="text-4xl font-bold leading-tight text-secondary">
+            Your IT, Fire, Security Solution starts here.
           </h2>
 
           <p className="text-secondary text-lg leading-relaxed">
-            We typically respond to all inquiries within 24 hours during business
+            We respond to all inquiries within 24 hours during business
             days. <br /> For urgent matters, please call us directly.
           </p>
 
-          <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-secondary text-lg">
-            <div className="font-semibold">General Inquiries:</div>
-            <div>24 hours</div>
-            <div className="font-semibold">Sales Inquiries:</div>
-            <div>4–6 hours</div>
-            <div className="font-semibold">Technical Support:</div>
-            <div>2–4 hours</div>
-          </div>
+<div className="grid grid-cols-[max-content_auto] text-secondary text-lg">
+  <div className="font-semibold flex items-center">
+    General Inquiries<span className="px-8">:</span>
+  </div>
+  <div className="flex items-center">24 hours</div>
+
+  <div className="font-semibold flex items-cener">
+    Sales Inquiries<span className="px-13">:</span>
+  </div>
+  <div className="flex items-center">4–6 hours</div>
+
+  <div className="font-semibold flex items-center">
+    Technical Support<span className="px-5">:</span>
+  </div>
+  <div className="flex items-center">2–4 hours</div>
+</div>
+
 
           <div className="space-y-4">
             {/* Address */}
@@ -203,7 +212,7 @@ export function ContactSection() {
                 # 17/1, Old # 272, Sri Nandi,
                 12th Cross, 8th Main Road,<br />
                 Wilson Garden, Hombegowda Nagar, 
-                Bangalore - 560027
+                Bangalore- 560027
               </p>
             </div>
             {/* Email */}
@@ -236,7 +245,7 @@ export function ContactSection() {
                 </svg>
               </span>
               <p className="font-medium text-primary">
-                9686194471 ,9845447654 
+                9686194471, 9845447654 
               </p>
             </div>
           </div>

@@ -67,28 +67,10 @@ export function FeaturesSection() {
                 <Globe className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-primary mb-4">
-                IT Expertise
+                IT & Fire Security Solutions
               </h3>
               <p className="text-foreground leading-relaxed text-sm">
-                End-to-end solutions in hardware and software, from laptops to
-                enterprise servers.
-              </p>
-            </div>
-
-            {/* 24/7 IT Support */}
-            <div
-              ref={col2Ref}
-              className="text-center lg:text-left border-r border-border px-6"
-            >
-              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto lg:mx-0 mb-6">
-                <Headphones className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-4">
-                24/7 IT Support
-              </h3>
-              <p className="text-foreground leading-relaxed text-sm">
-                After-sales support you can trust. Serving customers
-                across the nation, anytime you need us.
+                We deliver end-to-end solutions across hardware and software from laptops and enterprise servers to advanced fire and security systems
               </p>
             </div>
 
@@ -101,12 +83,30 @@ export function FeaturesSection() {
                 <Computer className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-primary mb-4">
-                One-Stop IT Store
+                One-Stop IT & Fire Security Store
               </h3>
               <p className="text-foreground leading-relaxed text-sm">
-                Complete range of hardware, software, consumables, and accessories.
+                Offering a complete range of hardware, software, consumabless and accessories to meet every business and technology requirement
               </p>
             </div>
+
+            {/* 24/7 IT Support */}
+            <div
+              ref={col2Ref}
+              className="text-center lg:text-left border-r border-border px-6"
+            >
+              <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto lg:mx-0 mb-6">
+                <Headphones className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-4">
+                24/7 IT & Fire Security Support
+              </h3>
+              <p className="text-foreground leading-relaxed text-sm">
+        Reliable after-sales support you can trust, serving customers nationwide with prompt assistance whenever and wherever needed
+              </p>
+            </div>
+
+
 
             {/* Explore Products */}
             <div ref={col4Ref} className="flex flex-col justify-center items-center lg:items-start px-6">

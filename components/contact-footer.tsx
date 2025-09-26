@@ -160,12 +160,12 @@ export default function ContactFooterSection() {
               </div>
               <span className="text-2xl font-bold">Fortune Info Solutions</span>
             </div>
-            <p className="mb-6 leading-relaxed">
+            <p className="mb-6 leading-relaxed justify-center flex">
               Fortune Info Solutions is your trusted partner for IT hardware,
-              software, and integrated solutions. With years of collective
+              software, fire and security solutions. With years of collective
               industry experience, we empower businesses with reliable products,
-              professional services, and scalable solutions across networking,
-              security, surveillance, cloud, and enterprise IT.
+              professional services, and scalable solutions across enterprise IT, networking,
+              cloud, surveillance, fire and security solutions.
             </p>
 
             <div className="flex gap-4">

@@ -104,10 +104,9 @@ export default function AboutPage() {
             <div ref={profileTextRef}>
               <h2 className="text-3xl font-bold mb-6">Our Company</h2>
               <p className="text-lg text-foreground mb-6">
-                <b>Fortune Info Solutions</b> is a leading IT hardware &
-                software sales and service provider with a professional team
+                <b>Fortune Info Solutions</b> is a leading IT hardware, software, fire and security sales & service provider with a professional team
                 carrying over 100+ years of combined experience.
-                Headquartered in Bangalore, we have been at the forefront of
+                Based in Bangalore, with regional offices in Chennai and Hyderabad we have been at the forefront of
                 business transformation, offering complete{" "}
                 end-to-end IT solution for organizations across India.
               </p>
@@ -131,12 +130,12 @@ Vention, Belkin, Jabra, Seagate and Western Digital
               <h3 className="text-2xl font-bold mb-4">Company Highlights</h3>
               <div className="space-y-4">
                 {[
-                  "Direct Partnerships with Global IT Brands",
+                  "Direct Partnerships with Global Brands",
                   "PAN-India Sales & Service Network",
                   "Trusted by 5000+ Businesss Nationwide",
-                  "Dedicated After-Sales & 24/7 IT Support",
+                  "Dedicated After-Sales & 24/7 Support",
                   "Expertise in enterprise and SMB solutions",
-                  "Proven track record of 20 + years",
+                  "Proven track record of 25 + years",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-primary rounded-full"></div>

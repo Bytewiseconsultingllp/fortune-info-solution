@@ -143,9 +143,9 @@ export default function FooterSection() {
 
       <div
         ref={mainFooterRef}
-        className="py-16 px-4 md:px-8 lg:px-16 bg-red-800 border-t border-secondary/50"
+        className="py-14 px-4 md:px-4 lg:px-16 bg-red-800 border-t border-secondary/50"
       >
-        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 text-white">
+<div className="max-w-[1600px] mx-auto grid md:grid-cols-[2fr_1fr_2fr_2fr] gap-12 text-white">
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-4 mb-6">
@@ -160,12 +160,12 @@ export default function FooterSection() {
               </div>
               <span className="text-2xl font-bold">Fortune Info Solutions</span>
             </div>
-            <p className="mb-6 leading-relaxed">
+            <p className="mb-6 leading-relaxed justify-center flex">
               Fortune Info Solutions is your trusted partner for IT hardware,
-              software, and integrated solutions. With years of collective
+              software, fire and security solutions. With years of collective
               industry experience, we empower businesses with reliable products,
-              professional services, and scalable solutions across networking,
-              security, surveillance, cloud, and enterprise IT.
+              professional services, and scalable solutions across enterprise IT, networking,
+              cloud, surveillance, fire and security solutions.
             </p>
 
             <div className="flex gap-4">
@@ -232,8 +232,8 @@ export default function FooterSection() {
             <h4 className="text-xl font-bold mb-6">Get In Touch</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-2">
-                <div className="w-2 h-2 bg-white rounded-full mt-2"></div>
-                <p>
+                <div className="mt-2 w-2 h-2 bg-white rounded-full flex-shrink-0 "></div>
+                <p className="leading-relaxed">
                   No.17/1, Old # 272, <br />
                   Sri Nandi, 12th Cross, 8th Main Road, <br />
                   Wilson Garden, Hombegowda Nagar, Bangalore, India - 560027
@@ -249,7 +249,7 @@ export default function FooterSection() {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
-                <p>Mon - Sat: 10:00 AM - 07:00 PM</p>
+                <p>Monday - Saturday<br/> 10:00 AM - 07:00 PM</p>
               </div>
             </div>
           </div>

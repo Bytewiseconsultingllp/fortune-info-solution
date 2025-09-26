@@ -23,12 +23,12 @@ async function connectDB() {
   return cachedDb
 }
 
-// ------------------ POST (Save Complaint) ------------------
 export async function POST(req: Request) {
   try {
     const body = await req.json()
     const { name, email, phone, type, orderId, message } = body
 
+    // Validation
     if (!name || !email || !phone || !message) {
       return NextResponse.json(
         { success: false, error: "Name, Email, Phone, and Message are required" },
@@ -38,6 +38,7 @@ export async function POST(req: Request) {
 
     const collection = await connectDB()
 
+    // Generate a simple complaint number (like CMP-1234)
     const complaintNumber = `CMP-${Math.floor(1000 + Math.random() * 9000)}`
 
     const complaintDoc = {
@@ -49,7 +50,7 @@ export async function POST(req: Request) {
       message,
       complaintNumber,
       createdAt: new Date(),
-      status: "new",
+      status: "new", // optional backend status
     }
 
     const result = await collection.insertOne(complaintDoc)
@@ -67,6 +68,7 @@ export async function POST(req: Request) {
     )
   }
 }
+
 
 // ------------------ GET (Fetch Complaints with Pagination) ------------------
 export async function GET(req: Request) {

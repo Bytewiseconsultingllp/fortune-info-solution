@@ -14,6 +14,7 @@ import { useToast } from "@/hooks/use-toast"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { MapPin, Phone, Mail, Clock, User, CheckCircle, AlertCircle } from "lucide-react"
 import { ComplaintSection } from "@/components/ComplaintSection"
+import Image from "next/image"
 
 export default function ContactPage() {
   const { toast } = useToast()
@@ -417,7 +418,7 @@ export default function ContactPage() {
             </div>
           )}
 
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
               <div className="text-3xl font-bold text-primary mb-2">100+</div>
               <div className="text-foreground">Combined Industry Experience</div>
@@ -430,7 +431,7 @@ export default function ContactPage() {
               <div className="text-3xl font-bold text-primary mb-2">10</div>
               <div className="text-foreground">Industry Leaders</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -707,7 +708,7 @@ export default function ContactPage() {
             </div>
 
             <div ref={infoRef} className="space-y-6">
-              <Card>
+              {/* <Card>
                 <CardHeader>
                   <CardTitle>Get in Touch</CardTitle>
                   <CardDescription>Reach out to us through any of these channels</CardDescription>
@@ -755,29 +756,43 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </CardContent>
-              </Card>
+              </Card> */}
 
               <Card>
                 <CardHeader>
                   <CardTitle>Quick Response</CardTitle>
                 </CardHeader>
+
                 <CardContent>
                   <p className="text-sm text-foreground mb-4 text-justify">
                     We typically respond to all inquiries within 24 hours during business days. For urgent matters,
                     please call us directly.
                   </p>
-                  <div className="space-y-2 text-sm">
+
+                  <div className="space-y-2 text-sm mb-6">
                     <div className="grid grid-cols-2 gap-x-4">
                       <div className="font-semibold text-foreground">General Inquiries:</div>
                       <div>24 hours</div>
                       <div className="font-semibold text-foreground">Sales Inquiries:</div>
-                      <div>4-6 hours</div>
+                      <div>4–6 hours</div>
                       <div className="font-semibold text-foreground">Technical Support:</div>
-                      <div>2-4 hours</div>
+                      <div>2–4 hours</div>
                     </div>
+                  </div>
+
+                  {/* Image Below */}
+                  <div className="w-full">
+                    <Image
+                      src="/quick.png"
+                      alt="Quick Response Illustration"
+                      width={800}
+                      height={400}
+                      className="w-full h-auto rounded-md object-cover"
+                    />
                   </div>
                 </CardContent>
               </Card>
+
             </div>
           </div>
         </div>

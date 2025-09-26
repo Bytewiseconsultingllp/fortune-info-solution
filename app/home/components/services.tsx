@@ -280,12 +280,12 @@ export function ServicesSection() {
           ref={headingRef}
           className="section-heading text-5xl md:text-5xl font-bold text-secondary leading-tight text-center mb-10"
         >
-          Future-Ready IT Solutions
+          Future - Ready IT, Fire & Security Solutions
         </h1>
 
         <div ref={textRef}>
           <p className="text-foreground text-lg leading-relaxed text-justify">
-            At Fortune Info Solutions, we empower businesses with future-ready IT infrastructure that drives resilience, security, and growth. From hardware and software to cloud, networking, and security, our comprehensive solutions ensure your enterprise is equipped to handle today’s challenges while staying prepared for tomorrow’s innovations.
+            At Fortune Info Solutions, we empower businesses with future-ready IT infrastructure, fire and security solutions that drives resilience, security, and growth. From hardware and software to cloud, networking, fire and security, our comprehensive solutions ensure your enterprise is equipped to handle today’s challenges while staying prepared for tomorrow’s innovations.
           </p>
           <br />
           {/* Two-column text */}
@@ -314,15 +314,16 @@ export function ServicesSection() {
                   </span>{" "}
                   Administering cloud platforms and physical data centers
                 </li>
-              </ul>
-            </div>
-
-            <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
-              <li>
+                              <li>
                 <span className="font-semibold">Security Management<br /></span>{" "}
                 Implementing measures, monitoring threats, and managing data
                 integrity
               </li>
+              </ul>
+            </div>
+
+            <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
+
               <li>
                 <span className="font-semibold">Performance & Monitoring<br /></span>{" "}
                 24/7 observation of system health and performance
@@ -335,6 +336,15 @@ export function ServicesSection() {
                 <span className="font-semibold">Strategic Focus<br /></span>{" "}
                 Allows businesses to focus on core competencies & IT operations
               </li>
+              <li>
+                  <span className="font-semibold">Fire & Security Management </span>{" "}<br />
+                  Ensuring solutions for Fire detection, Suppression & Security system
+
+                </li>
+              <li>
+                  <span className="font-semibold">Surveillance & Access Control </span>{" "}<br />
+Deploying CCTV, biometric systems, and smart access solutions
+                </li>
             </ul>
           </div>
         </div>
@@ -376,10 +386,10 @@ export function ServicesSection() {
                 <Laptop className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-secondary mb-4">
-                Laptop Services & Rentals
+                Laptop <br/> Sales, Services, Rentals
               </h3>
-              <p className="text-foreground mb-6 leading-relaxed text-justify">
-                End-to-end laptop repair, upgrades, short and long term rental
+              <p className="text-foreground mb-6 leading-relaxed ">
+                End-to-end laptop sales, repair, upgrades, short and long term rental
                 solutions with doorstep delivery and flexible plans.
               </p>
             </div>
@@ -394,11 +404,11 @@ export function ServicesSection() {
               <Flame className="w-8 h-8 text-white " />
             </div>
             <h3 className="text-2xl font-bold text-secondary mb-4">
-              Fire Detection and Alarm System
+              Fire & Security<br/> Solutions Management
             </h3>
-            <p className="text-foreground mb-6 leading-relaxed text-justify">
-              Early fire detection and alarm systems to protect your property
-              and people.
+            <p className="text-foreground mb-6 leading-relaxed">
+            Ensuring complete solutions for fire detection, suppression, and security systems.  
+            Safeguarding businesses with reliable and trusted expertise.
             </p>
           </div>
 
@@ -411,11 +421,10 @@ export function ServicesSection() {
               <Cctv className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-2xl font-bold text-secondary mb-4">
-              CCTV Installation
+              Survillance <br/> Access Control System
             </h3>
-            <p className="text-foreground mb-6 leading-relaxed text-justify">
-              Professional setup of single or multiple CCTV cameras with DVR/NVR
-              configuration and remote mobile access.
+            <p className="text-foreground mb-6 leading-relaxed">
+              Professional setup of CCTV surveillance with DVR/NVR integration for continuous monitoring, along with advanced access control systems
             </p>
           </div>
         </div>
