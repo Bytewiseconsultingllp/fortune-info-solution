@@ -769,15 +769,21 @@ export default function ContactPage() {
                     please call us directly.
                   </p>
 
-                  <div className="space-y-2 text-sm mb-6">
-                    <div className="grid grid-cols-2 gap-x-4">
-                      <div className="font-semibold text-foreground">General Inquiries:</div>
-                      <div>24 hours</div>
-                      <div className="font-semibold text-foreground">Sales Inquiries:</div>
-                      <div>4–6 hours</div>
-                      <div className="font-semibold text-foreground">Technical Support:</div>
-                      <div>2–4 hours</div>
+                  <div className="grid grid-cols-[max-content_auto] text-secondary text-lg">
+                    <div className="font-semibold flex items-center">
+                      General Inquiries<span className="px-8">:</span>
                     </div>
+                    <div className="flex items-center">24 hours</div>
+
+                    <div className="font-semibold flex items-cener">
+                      Sales Inquiries<span className="px-13">:</span>
+                    </div>
+                    <div className="flex items-center">4–6 hours</div>
+
+                    <div className="font-semibold flex items-center">
+                      Technical Support<span className="px-5">:</span>
+                    </div>
+                    <div className="flex items-center">2–4 hours</div>
                   </div>
 
                   {/* Image Below */}

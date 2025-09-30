@@ -91,10 +91,8 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Column (Images + Years of Experience) */}
           <div ref={leftColRef} className="space-y-8">
- 
-            <div className="relative h-65 rounded-2xl overflow-hidden">
+            <div className="relative h-50 rounded-2xl overflow-hidden">
               <Image
-                // src="/placeholder.svg?height=200&width=600"
                 src="/about2.jpg"
                 alt="Professionals with laptop"
                 fill
@@ -102,10 +100,9 @@ export function AboutSection() {
               />
             </div>
 
-                       <div className="grid grid-cols-2 gap-4">
-              <div className="relative h-64 rounded-2xl overflow-hidden">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative h-50 rounded-2xl overflow-hidden">
                 <Image
-                  // src="/placeholder.svg?height=300&width=300"
                   src="/about1.jpg"
                   alt="Professionals working"
                   fill
@@ -113,22 +110,20 @@ export function AboutSection() {
                 />
               </div>
 
-              <div className="relative h-64 rounded-2xl overflow-hidden">
+              <div className="relative h-50 rounded-2xl overflow-hidden">
                 <Image
-                  // src="/placeholder.svg?height=300&width=300"
                   src="/customer.jpg"
                   alt="Business people in server room"
                   fill
                   className="object-cover"
                 />
               </div>
-
             </div>
 
             <div className="text-center mb-6">
               <div
                 ref={experienceRef}
-                className="text-6xl font-bold text-primary mb-2 "
+                className="text-6xl font-bold text-primary mb-2"
               >
                 0+
               </div>
@@ -137,6 +132,7 @@ export function AboutSection() {
               </div>
             </div>
           </div>
+
 
           {/* Right Column (Content + Progress bars) */}
           <div ref={rightColRef}>
@@ -148,7 +144,7 @@ export function AboutSection() {
             </h2>
 
          <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
-            <strong>FORTUNE INFO SOLUTIONS</strong> is a leading provider of IT hardware, software, fire detection and suppression, CCTV, and access control systems. 
+            <strong>FORTUNE INFO SOLUTIONS</strong> is a leading provider of IT Hardware, Software, Fire detection and Suppression, CCTV, and Access Control Systems. 
             Based in Bangalore with regional offices in Chennai and Hyderabad, we have grown into a trusted partner for businesses across India by delivering 
             cutting-edge products and tailored IT, fire safety, and surveillance solutions.
           </p>
@@ -183,7 +179,7 @@ Vention, Belkin, Jabra, Seagate, Western Digital and more...
               </div>
 
               {/* Progress Bars */}
-              <div className="space-y-6">
+              {/* <div className="space-y-6">
                 <div className="flex justify-between items-center mb-1">
                   <span className="text-primary font-bold text-xl">
                     Expertise Highlights
@@ -245,7 +241,7 @@ Vention, Belkin, Jabra, Seagate, Western Digital and more...
                 </div>
 
 
-              </div>
+              </div> */}
             </div>
           </div>
           {/* End Right Column */}

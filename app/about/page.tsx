@@ -104,7 +104,7 @@ export default function AboutPage() {
             <div ref={profileTextRef}>
               <h2 className="text-3xl font-bold mb-6">Our Company</h2>
               <p className="text-lg text-foreground mb-6">
-                <b>Fortune Info Solutions</b> is a leading IT hardware, software, fire and security sales & service provider with a professional team
+                <b>Fortune Info Solutions</b> is a leading IT Hardware, Software, Fire and Security sales & service provider with a professional team
                 carrying over 100+ years of combined experience.
                 Based in Bangalore, with regional offices in Chennai and Hyderabad we have been at the forefront of
                 business transformation, offering complete{" "}

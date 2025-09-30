@@ -67,7 +67,7 @@ export function FeaturesSection() {
                 <Globe className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-primary mb-4">
-                IT & Fire Security Solutions
+                IT, Fire & Security Solutions
               </h3>
               <p className="text-foreground leading-relaxed text-sm">
                 We deliver end-to-end solutions across hardware and software from laptops and enterprise servers to advanced fire and security systems
@@ -83,7 +83,7 @@ export function FeaturesSection() {
                 <Computer className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-primary mb-4">
-                One-Stop IT & Fire Security Store
+                One-Stop IT, Fire & Security Store
               </h3>
               <p className="text-foreground leading-relaxed text-sm">
                 Offering a complete range of hardware, software, consumabless and accessories to meet every business and technology requirement
@@ -99,7 +99,7 @@ export function FeaturesSection() {
                 <Headphones className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-primary mb-4">
-                24/7 IT & Fire Security Support
+                24/7 IT, Fire & Security Support
               </h3>
               <p className="text-foreground leading-relaxed text-sm">
         Reliable after-sales support you can trust, serving customers nationwide with prompt assistance whenever and wherever needed

@@ -56,7 +56,7 @@ const logos: string[] = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/LogoAPC.svg/1200px-LogoAPC.svg.png", // APC
   "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Eaton_Corporation_logo.svg/1024px-Eaton_Corporation_logo.svg.png", // Eaton
   "https://upload.wikimedia.org/wikipedia/commons/0/09/Tally_-_Logo.png", // Tally ERP
-  "https://logos-world.net/wp-content/uploads/2023/01/Hikvision-Logo.png", // HikVision
+  // "https://logos-world.net/wp-content/uploads/2023/01/Hikvision-Logo.png", // HikVision
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp5mzYzXHjXsu67KRU0somtWd_D5t-oY1NsA&s", // CP Plus
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqRMTeLvryfntf0ffNf1z81rAtpk6mwyTIZA&s", // PosiFlex
   "https://download.logo.wine/logo/IBall_(company)/IBall_(company)-Logo.wine.png", // Iball

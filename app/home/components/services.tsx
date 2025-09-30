@@ -285,7 +285,7 @@ export function ServicesSection() {
 
         <div ref={textRef}>
           <p className="text-foreground text-lg leading-relaxed text-justify">
-            At Fortune Info Solutions, we empower businesses with future-ready IT infrastructure, fire and security solutions that drives resilience, security, and growth. From hardware and software to cloud, networking, fire and security, our comprehensive solutions ensure your enterprise is equipped to handle today’s challenges while staying prepared for tomorrow’s innovations.
+            At Fortune Info Solutions, we empower businesses with future-ready IT Infrastructure, Fire and Security solutions that drives resilience, security, and growth. From hardware and software to cloud, networking, fire and security, our comprehensive solutions ensure your enterprise is equipped to handle today’s challenges while staying prepared for tomorrow’s innovations.
           </p>
           <br />
           {/* Two-column text */}

@@ -90,8 +90,8 @@ export function ExpertiseSection() {
 
       <p className="text-black text-lg mb-4 leading-relaxed text-animate">
         With decades of combined experience, Fortune Info Solutions delivers customized
-        IT hardware, software and fire and security solutions across industries including healthcare,
-        finance, retail, manufacturing, education, and more.
+        IT Hardware, Software and Fire and Security solutions across industries including healthcare,
+        finance, retail, manufacturing, education, residential and more...
       </p>
 
       <h2 className="text-5xl font-bold text-primary mb-4 leading-tight text-animate">
@@ -111,7 +111,7 @@ export function ExpertiseSection() {
           <h3 className="text-2xl font-bold text-primary mb-1">Networking & Security</h3>
           <p className="text-black leading-relaxed">
             From Cisco firewalls to Honeywell Fire and Security solutions, we secure IT ecosystems
-            with advanced networking, servillance and access control solutions.
+            with advanced networking, fire detection system, surveillance and access control solutions.
           </p>
         </div>
 
