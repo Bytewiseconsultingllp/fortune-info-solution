@@ -122,13 +122,13 @@ export const ProductCard = ({
         <div className="space-y-2 flex-1">
           <div>
             <h3 className="font-semibold text-foreground line-clamp-2 leading-snug text-base sm:text-lg">
-              {product.name}
+              {product.sku}
             </h3>
-            {/* <p className="text-xs text-foreground">EAN: {product.sku}</p> */}
+            {/* <p className="text-xs text-foreground">EAN: {product.name}</p> */}
           </div>
 
           <p className="text-sm text-foreground line-clamp-3">
-            {product.description}
+            {product.name}
           </p>
 
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-auto">
