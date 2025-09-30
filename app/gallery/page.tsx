@@ -9,14 +9,10 @@ import Footer from "@/components/footerSection";
 gsap.registerPlugin(ScrollTrigger);
 
 const galleryImages = [
-  "https://picsum.photos/id/1018/1200/800",
-  "https://picsum.photos/id/1015/1200/800",
-  "https://picsum.photos/id/1025/1200/800",
-  "https://picsum.photos/id/1035/1200/800",
-  "https://picsum.photos/id/1043/1200/800",
-  "https://picsum.photos/id/1067/1200/800",
-  "https://picsum.photos/id/1080/1200/800",
-  "https://picsum.photos/id/1084/1200/800",
+  "/img1.jpg",
+    "/img2.jpg",
+  "/img3.jpg",
+  "/img4.jpg",
 ];
 
 export default function EventsGallery() {

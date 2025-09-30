@@ -245,14 +245,14 @@ export default function ContactPage() {
       name: "Adithya Nair",
       position: "Product Manager",
       initials: "Lenovo",
-      image: "sunil.jpg",
+      image: "/Adithya.jpg",
       email: "systems@fortuneinfo.in",
     },
     {
       name: "Arjun Nair",
       position: "Product Manager",
       initials: "Hp",
-      image: "sunil.jpg",
+      image: "/arjun.jpg",
       email: "arjun@fortuneinfo.in",
     },
   ]
