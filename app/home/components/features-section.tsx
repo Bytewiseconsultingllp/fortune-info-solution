@@ -86,7 +86,7 @@ export function FeaturesSection() {
                 One-Stop IT, Fire & Security Store
               </h3>
               <p className="text-foreground leading-relaxed text-sm">
-                Offering a complete range of hardware, software, consumabless and accessories to meet every business and technology requirement
+                Offering a complete range of hardware, software, consumables  and accessories to meet every business and technology requirement
               </p>
             </div>
 

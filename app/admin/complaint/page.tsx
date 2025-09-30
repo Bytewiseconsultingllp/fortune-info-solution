@@ -32,7 +32,7 @@ export default function AdminComplaintsPage() {
   const [page, setPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
 
-  // Fetch complaints from API
+  // Fetch complaints (paginated)
   const fetchComplaints = async (pageNum: number) => {
     setLoading(true)
     try {
@@ -53,6 +53,57 @@ export default function AdminComplaintsPage() {
     fetchComplaints(page)
   }, [page])
 
+  // 🔹 Export function
+  const exportComplaints = async () => {
+    try {
+      // Fetch all complaints (no pagination)
+      const res = await fetch(`/api/complaints?all=true`)
+      const data = await res.json()
+      if (!data.success) return
+
+      const allComplaints: Complaint[] = data.complaints
+
+      // Convert to CSV
+      const headers = [
+        "Complaint Number",
+        "Name",
+        "Email",
+        "Phone",
+        "Type",
+        "OrderId",
+        "Message",
+        "Status",
+        "Created At",
+      ]
+      const rows = allComplaints.map((c) => [
+        c.complaintNumber,
+        c.name,
+        c.email,
+        c.phone,
+        c.type || "N/A",
+        c.orderId || "N/A",
+        `"${c.message.replace(/"/g, '""')}"`, // escape quotes
+        c.status,
+        new Date(c.createdAt).toLocaleString(),
+      ])
+
+      const csvContent =
+        [headers, ...rows].map((r) => r.join(",")).join("\n")
+
+      // Trigger download
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement("a")
+      link.href = url
+      link.setAttribute("download", "complaints.csv")
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (err) {
+      console.error("Error exporting complaints:", err)
+    }
+  }
+
   const filtered = complaints.filter(
     (c) =>
       c.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -70,6 +121,8 @@ export default function AdminComplaintsPage() {
             All customer complaints submitted through the portal
           </p>
         </div>
+        {/* 🔹 Export Button */}
+        <Button onClick={exportComplaints}>Export</Button>
       </div>
 
       <div className="mb-6">
