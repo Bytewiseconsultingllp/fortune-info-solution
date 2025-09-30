@@ -231,7 +231,7 @@ export default function ContactPage() {
       name: "Sunil Kumar",
       position: "Product Manager",
       initials: "Lenovo",
-      image: "sunil.jpg",
+      image: "/Sunil.jpg",
       email: "systems@fortuneinfo.in",
     },
     {
