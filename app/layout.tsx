@@ -33,8 +33,8 @@ html {
       <body>
         
         {children}
-        </body>
         <Toaster richColors position="top-right" />
+        </body>
     </html>
   )
 }
