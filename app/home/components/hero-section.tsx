@@ -101,7 +101,7 @@ export function HeroSection() {
                   className="text-4xl font-bold mb-1"
                   style={{ color: "white" }}
                 >
-                  0K+
+                  0+
                 </div>
                 <div
                   className="text-md font-medium"
