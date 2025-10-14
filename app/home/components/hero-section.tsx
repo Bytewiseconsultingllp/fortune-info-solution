@@ -31,7 +31,7 @@ export function HeroSection() {
         ease: "power1.out",
         onUpdate: () => {
           if (countRef.current)
-            countRef.current.textContent = `${Math.floor(obj.value)}K+`;
+            countRef.current.textContent = `${Math.floor(obj.value)}+`;
         },
       });
     }
