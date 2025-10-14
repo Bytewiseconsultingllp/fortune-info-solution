@@ -152,6 +152,22 @@ const AdminDashboard: React.FC = () => {
           </div>
         </div>
 
+        <div
+          onclick="window.open('https://drive.google.com/drive/folders/1NMaBGZAEXH5TvxoBdyQFuVOxWZOtluS_?usp=sharing', '_blank')"
+          style="
+            display: inline-block;
+            background-color: #1a73e8;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+          "
+        >
+          Open Drive Folder
+        </div>
+
         {/* Upload Section */}
         {showUpload && (
           <div className="mb-8">
