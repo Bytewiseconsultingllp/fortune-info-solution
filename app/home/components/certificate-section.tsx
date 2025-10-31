@@ -20,7 +20,7 @@ const certifications: Certification[] = [
     name: "Fire & Security Association of India (FSAI) Member",
     description: "",
     logo: "FSAI",
-    image: "/certificate/fsai.jpg",
+    image: "/certificate/FSAI1.jpg",
   },
   {
     id: 2,
