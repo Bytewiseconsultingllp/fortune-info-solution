@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { toast } from "@/hooks/use-toast"
+import { toast } from "sonner"
 import { Eye, EyeOff, Shield } from "lucide-react"
 
 export default function AdminLogin() {
@@ -19,35 +19,50 @@ export default function AdminLogin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Basic validation
+    if (!credentials.username.trim() || !credentials.password) {
+      toast.error("Please enter both username and password", {
+        duration: 3000,
+        className: "z-[100]"
+      })
+      return
+    }
+    
     setIsLoading(true)
-
+    
     try {
       const response = await fetch("/api/admin/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(credentials),
       })
-
+      
       const data = await response.json()
-
-      if (response.ok) {
-        toast({
-          title: "Login Successful",
-          description: "Welcome to the admin dashboard",
-        })
-        router.push("/admin")
-      } else {
-        toast({
-          title: "Login Failed",
-          description: data.message || "Invalid credentials",
-          variant: "destructive",
-        })
+      
+      if (!response.ok) {
+        throw new Error(data.message || "Invalid username or password")
       }
+      
+      // Login successful
+      toast.success("You have been logged in successfully!", {
+        duration: 2000,
+        className: "z-[100]"
+      })
+      
+      // Redirect to admin dashboard after a short delay
+      setTimeout(() => {
+        router.push("/admin")
+        router.refresh()
+      }, 1000)
+      
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "An error occurred during login",
-        variant: "destructive",
+      console.error("Login error:", error)
+      toast.error(error instanceof Error ? error.message : "An error occurred during login", {
+        duration: 3000,
+        className: "z-[100]"
       })
     } finally {
       setIsLoading(false)
