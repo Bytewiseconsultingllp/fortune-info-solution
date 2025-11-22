@@ -107,9 +107,9 @@ export const ProductCard = ({
         )}
       </div>
 
-      <CardContent className="p-4 sm:p-5 flex flex-col flex-1">
+  <CardContent className="flex flex-col flex-1">
         {/* Status and Brand Badges */}
-        <div className="flex items-center justify-between mb-2">
+  <div className="flex items-center justify-between">
           <Badge variant="outline" className="text-xs capitalize w-fit">
               {product.category}
             </Badge>
@@ -177,7 +177,7 @@ export const ProductCard = ({
           </Link>
         </div>
       </CardFooter> */}
-      <CardFooter className="p-4 sm:p-5 pt-0">
+  <CardFooter className="p-2 sm:p-3 pt-0">
         <div className="flex flex-row gap-3 w-full">
           {/* Always show Get Quote button */}
           <Link
