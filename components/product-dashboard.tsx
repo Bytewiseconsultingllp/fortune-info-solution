@@ -145,7 +145,7 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-surface-elevated border-b border-border px-4 sm:px-6 py-4 sticky top-0 z-40">
+      <header className="bg-surface-elevated border-b border-border px-4 sm:px-6 py-4  top-0 z-40">
         <div className="flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <Sheet>
