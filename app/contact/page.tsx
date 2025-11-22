@@ -210,7 +210,7 @@ export default function ContactPage() {
       position: "Director",
       initials: "",
       image:
-        "https://media.licdn.com/dms/image/v2/D5603AQGumjVHvpDacA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1722888955972?e=2147483647&v=beta&t=TyKDk9y8jTqc63034NwRG0MTsRm-8_Tyj94rxSRMf5E",
+        "HariKarthick.jpeg",
       email: "Hari.Karthick@fortuneinfo.in",
     },
     {
