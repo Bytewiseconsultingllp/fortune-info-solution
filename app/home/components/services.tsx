@@ -424,7 +424,7 @@ Deploying CCTV, biometric systems, and smart access solutions
               Survillance <br/> Access Control System
             </h3>
             <p className="text-foreground mb-6 leading-relaxed">
-              Professional setup of CCTV surveillance with DVR/NVR integration for continuous monitoring, along with advanced access control systems
+              Professional setup of CCTV surveillance with DVR/NVR integration for continuous monitoring, along with advanced access control systems.
             </p>
           </div>
         </div>

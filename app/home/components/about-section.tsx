@@ -158,7 +158,7 @@ export function AboutSection() {
                 <h3 className="text-2xl font-bold text-primary  mb-1">
                   Innovation And Adaptability
                 </h3>
-                <p className="text-foreground mb-4 leading-relaxed text-justify">
+                <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
                   We drive continuous innovation by integrating world-class
                   hardware and software solutions from leading brands <b> Dell, Lenovo, HP, Apple,  Dicota, Honeywell - Morley IAS System, System Sensor, Silient Knight, Xtralis, Samsung, LG, Cisco, HPE, Netgear, Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
 Vention, Belkin, Jabra, Seagate, Western Digital and more...
@@ -171,7 +171,7 @@ Vention, Belkin, Jabra, Seagate, Western Digital and more...
                 <h3 className="text-2xl font-bold text-primary mb-1">
                   Customer-Centric Excellence
                 </h3>
-                <p className="text-foreground mb-4 leading-relaxed text-justify">
+                <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
                   From sales to after-sales support, we ensure unparalleled
                   service, competitive pricing, and reliable delivery across PAN
                   India.
