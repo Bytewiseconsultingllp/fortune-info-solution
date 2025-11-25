@@ -144,9 +144,9 @@ export function AboutSection() {
             </h2>
 
          <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
-            <strong>FORTUNE INFO SOLUTIONS</strong> is a leading provider of IT Hardware, Software, Fire detection and Suppression, CCTV, and Access Control Systems. 
+            <strong>FORTUNE INFO SOLUTIONS</strong> is a leading provider of IT Hardware, Software, Fire detection and Suppression, CCTV and Access Control Systems. 
             Based in Bangalore with regional offices in Chennai and Hyderabad, we have grown into a trusted partner for businesses across India by delivering 
-            cutting-edge products and tailored IT, fire safety, and surveillance solutions.
+            cutting-edge products and tailored IT, fire safety and surveillance solutions.
           </p>
 
             {/* <h2 className="text-5xl font-bold text-secondary mb-4 leading-tight">
@@ -173,7 +173,7 @@ Vention, Belkin, Jabra, Seagate, Western Digital and more...
                 </h3>
                 <p className="text-foreground text-lg mb-4 leading-relaxed text-justify">
                   From sales to after-sales support, we ensure unparalleled
-                  service, competitive pricing, and reliable delivery across PAN
+                  service, competitive pricing and reliable delivery across PAN
                   India.
                 </p>
               </div>

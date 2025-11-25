@@ -51,7 +51,7 @@ const testimonials: Testimonial[] = [
     company: "VP of SecureBank Corp",
     rating: 97,
     testimonial:
-      "Their cybersecurity implementation protected us from multiple threats. Professional, reliable, and incredibly knowledgeable team.",
+      "Their cybersecurity implementation protected us from multiple threats. Professional, reliable and incredibly knowledgeable team.",
     image: "/placeholder.svg?height=80&width=80",
   },
 ]

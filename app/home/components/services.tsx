@@ -66,7 +66,7 @@
 //         </h1>
 //           <p className="text-foreground text-lg leading-relaxed text-justify">
 //             Fortune Info Solutions delivers end to end IT infrastructure 
-//             hardware, software, networking, and security to future-proof
+//             hardware, software, networking and security to future-proof
 //             your business.
 //           </p>
 //           <br />
@@ -75,13 +75,13 @@
 //           <div>
 //            <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
 //             <li>
-//               <span className="font-semibold">Hardware Management:</span> Managing physical assets like servers, laptops, and mobile devices.
+//               <span className="font-semibold">Hardware Management:</span> Managing physical assets like servers, laptops and mobile devices.
 //             </li>
 //             <li>
-//               <span className="font-semibold">Software & Operating Systems:</span> Ensuring enterprise software, SaaS applications, and OS updates.
+//               <span className="font-semibold">Software & Operating Systems:</span> Ensuring enterprise software, SaaS applications and OS updates.
 //             </li>
 //             <li>
-//               <span className="font-semibold">Network Management:</span> Overseeing network devices, firewalls, and infrastructure.
+//               <span className="font-semibold">Network Management:</span> Overseeing network devices, firewalls and infrastructure.
 //             </li>
 //             <li>
 //               <span className="font-semibold">Cloud & Data Center Management:</span> Administering cloud platforms and physical data centers.
@@ -92,7 +92,7 @@
 //           <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
 
 //             <li>
-//               <span className="font-semibold">Security Management:</span> Implementing measures, monitoring threats, and managing data integrity.
+//               <span className="font-semibold">Security Management:</span> Implementing measures, monitoring threats and managing data integrity.
 //             </li>
 //             <li>
 //               <span className="font-semibold">Performance & Monitoring:</span> 24/7 observation of system health and performance.
@@ -285,7 +285,7 @@ export function ServicesSection() {
 
         <div ref={textRef}>
           <p className="text-foreground text-lg leading-relaxed text-justify">
-            At Fortune Info Solutions, we empower businesses with future-ready IT Infrastructure, Fire and Security solutions that drives resilience, security, and growth. From hardware and software to cloud, networking, fire and security, our comprehensive solutions ensure your enterprise is equipped to handle today’s challenges while staying prepared for tomorrow’s innovations.
+            At Fortune Info Solutions, we empower businesses with future-ready IT Infrastructure, Fire and Security solutions that drives resilience, security and growth. From hardware and software to cloud, networking, fire and security, our comprehensive solutions ensure your enterprise is equipped to handle today’s challenges while staying prepared for tomorrow’s innovations.
           </p>
           <br />
           {/* Two-column text */}
@@ -294,19 +294,19 @@ export function ServicesSection() {
               <ul className="list-disc pl-6 space-y-3 text-foreground text-base leading-relaxed">
                 <li>
                   <span className="font-semibold">Hardware Management</span>{" "}<br />
-                  Managing physical assets like servers, laptops, and mobile
+                  Managing physical assets like servers, laptops and mobile
                   devices
                 </li>
                 <li>
                   <span className="font-semibold">
                     Software & Operating Systems<br />
                   </span>{" "}
-                  Ensuring enterprise software, SaaS applications, and OS
+                  Ensuring enterprise software, SaaS applications and OS
                   updates
                 </li>
                 <li>
                   <span className="font-semibold">Network Management<br /></span>{" "}
-                  Overseeing network devices, firewalls, and infrastructure
+                  Overseeing network devices, firewalls and infrastructure
                 </li>
                 <li>
                   <span className="font-semibold">
@@ -316,7 +316,7 @@ export function ServicesSection() {
                 </li>
                               <li>
                 <span className="font-semibold">Security Management<br /></span>{" "}
-                Implementing measures, monitoring threats, and managing data
+                Implementing measures, monitoring threats and managing data
                 integrity
               </li>
               </ul>
@@ -343,7 +343,7 @@ export function ServicesSection() {
                 </li>
               <li>
                   <span className="font-semibold">Surveillance & Access Control </span>{" "}<br />
-Deploying CCTV, biometric systems, and smart access solutions
+Deploying CCTV, biometric systems and smart access solutions
                 </li>
             </ul>
           </div>
@@ -407,7 +407,7 @@ Deploying CCTV, biometric systems, and smart access solutions
               Fire & Security<br/> Solutions Management
             </h3>
             <p className="text-foreground mb-6 leading-relaxed">
-            Ensuring complete solutions for fire detection, suppression, and security systems.  
+            Ensuring complete solutions for fire detection, suppression and security systems.  
             Safeguarding businesses with reliable and trusted expertise.
             </p>
           </div>

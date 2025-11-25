@@ -15,7 +15,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-2xl font-bold mb-4">1. Introduction</h2>
             <p className="mb-4">
               Fortune Info Solutions ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy
-              explains how we collect, use, disclose, and safeguard your information when you visit our website or use
+              explains how we collect, use, disclose and safeguard your information when you visit our website or use
               our services.
             </p>
           </section>

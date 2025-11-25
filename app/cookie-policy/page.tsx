@@ -62,7 +62,7 @@ export default function CookiePolicyPage() {
           <section className="mb-8">
             <h2 className="text-2xl font-bold mb-4">4. Third-Party Cookies</h2>
             <p className="mb-4">
-              We may also use third-party cookies from trusted partners for analytics, advertising, and social media
+              We may also use third-party cookies from trusted partners for analytics, advertising and social media
               features. These cookies are subject to the respective privacy policies of these external services.
             </p>
           </section>
@@ -76,7 +76,7 @@ export default function CookiePolicyPage() {
 
             <h3 className="text-xl font-semibold mb-3">5.1 Browser Settings</h3>
             <p className="mb-4">
-              Most browsers allow you to view, manage, delete, and block cookies. You can do this through your browser
+              Most browsers allow you to view, manage, delete and block cookies. You can do this through your browser
               settings. Here are links to cookie settings for major browsers:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-1">

@@ -18,7 +18,7 @@ export function VideoParallaxSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate heading, text, and button
+      // Animate heading, text and button
       gsap.from(".video-heading", {
         opacity: 0,
         y: 40,

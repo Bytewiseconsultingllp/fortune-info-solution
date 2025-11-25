@@ -201,13 +201,13 @@ export default function ContactPage() {
     },
     {
       name: "Pradeep NP",
-      position: "SVP Business",
+      position: "SVP Business Management",
       image: "/pradeep.jpg",
       email: "pradeepnp@fortuneinfo.in",
     },
     {
       name: "HariKarthick",
-      position: "Director",
+      position: "Director - Fire & Security",
       initials: "",
       image:
         "HariKarthick.jpeg",
@@ -243,14 +243,14 @@ export default function ContactPage() {
     },
     {
       name: "Adithya Nair",
-      position: "Product Manager",
+      position: "Support Manager",
       initials: "Lenovo",
-      image: "/Adithya.jpg",
+      image: "/nair.jpg",
       email: "systems@fortuneinfo.in",
     },
     {
       name: "Arjun Nair",
-      position: "Product Manager",
+      position: "Operations Manager",
       initials: "Hp",
       image: "/arjun.jpg",
       email: "arjun@fortuneinfo.in",

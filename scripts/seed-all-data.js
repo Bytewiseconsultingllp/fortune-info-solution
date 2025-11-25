@@ -48,7 +48,7 @@ async function seedAllData() {
       {
         name: "Fortinet FortiGate 100F Firewall",
         description:
-          "Next-generation firewall with advanced threat protection, VPN capabilities, and centralized management for small to medium businesses.",
+          "Next-generation firewall with advanced threat protection, VPN capabilities and centralized management for small to medium businesses.",
         category: "security",
         brand: "Fortinet",
         image: "/security-firewall.png",
@@ -99,7 +99,7 @@ async function seedAllData() {
       {
         name: "Synology DiskStation DS920+ NAS",
         description:
-          "4-bay network attached storage solution with powerful Intel processor, perfect for data backup, file sharing, and multimedia streaming.",
+          "4-bay network attached storage solution with powerful Intel processor, perfect for data backup, file sharing and multimedia streaming.",
         category: "storage",
         brand: "Synology",
         image: "/nas-storage.png",
@@ -123,7 +123,7 @@ async function seedAllData() {
       {
         name: "Network Infrastructure Consulting",
         description:
-          "Comprehensive network assessment and design services to optimize your IT infrastructure for performance, security, and scalability.",
+          "Comprehensive network assessment and design services to optimize your IT infrastructure for performance, security and scalability.",
         features: [
           "Network topology analysis",
           "Performance optimization",
@@ -144,7 +144,7 @@ async function seedAllData() {
       {
         name: "Cybersecurity Implementation",
         description:
-          "End-to-end cybersecurity solution implementation including firewalls, intrusion detection, and security monitoring systems.",
+          "End-to-end cybersecurity solution implementation including firewalls, intrusion detection and security monitoring systems.",
         features: [
           "Firewall configuration",
           "IDS/IPS setup",
@@ -186,7 +186,7 @@ async function seedAllData() {
       {
         name: "IT Staff Training Programs",
         description:
-          "Comprehensive training programs for your IT staff on latest technologies, security practices, and best practices.",
+          "Comprehensive training programs for your IT staff on latest technologies, security practices and best practices.",
         features: [
           "Customized curriculum",
           "Hands-on workshops",

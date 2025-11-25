@@ -313,7 +313,7 @@ export default function PartnerEnquiryPage() {
                       <Label htmlFor="message">Tell us about your business *</Label>
                       <Textarea
                         id="message"
-                        placeholder="Please describe your business, target markets, current product lines, distribution capabilities, and why you're interested in partnering with Fortune Info Solutions... (minimum 50 characters)"
+                        placeholder="Please describe your business, target markets, current product lines, distribution capabilities and why you're interested in partnering with Fortune Info Solutions... (minimum 50 characters)"
                         value={formData.message}
                         onChange={(e) => handleInputChange("message", e.target.value)}
                         className={errors.some((error) => error.includes("description")) ? "border-red-500" : ""}

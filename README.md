@@ -1,6 +1,6 @@
 # Fortune Info Solutions - Corporate Website...
 
-A comprehensive corporate website built with Next.js, MongoDB, and TypeScript featuring a full admin dashboard, product management, contact forms, and email notifications.
+A comprehensive corporate website built with Next.js, MongoDB and TypeScript featuring a full admin dashboard, product management, contact forms and email notifications.
 
 ## 🚀 Features
 

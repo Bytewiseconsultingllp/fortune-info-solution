@@ -28,7 +28,7 @@ const caseStudies: CaseStudy[] = [
     company: "Multispeciality Hospital",
     metric: "Improved Data Security",
     problem:
-      "Legacy systems created compliance risks. We deployed Dell servers, Lenovo workstations, and Honeywell surveillance systems to ensure secure and efficient patient data management.",
+      "Legacy systems created compliance risks. We deployed Dell servers, Lenovo workstations and Honeywell surveillance systems to ensure secure and efficient patient data management.",
     image: healthcareImg,
   },
   {
@@ -37,7 +37,7 @@ const caseStudies: CaseStudy[] = [
     company: "Digital Payments Company",
     metric: "Reduced Operational Costs",
     problem:
-      "Outdated infrastructure slowed transaction processing. We provided HP enterprise servers, Cisco firewalls, and VMware virtualization, cutting costs by 40% and tripling processing speed.",
+      "Outdated infrastructure slowed transaction processing. We provided HP enterprise servers, Cisco firewalls and VMware virtualization, cutting costs by 40% and tripling processing speed.",
     image: expertiseImg,
   },
   {
@@ -46,7 +46,7 @@ const caseStudies: CaseStudy[] = [
     company: "National Retail Chain",
     metric: "RIncreased Sales Growth",
     problem:
-      "Inefficient POS and e-commerce systems limited sales. We implemented modern POS hardware, Samsung LFDs, and retail software, boosting the sales by 70% in one year.",
+      "Inefficient POS and e-commerce systems limited sales. We implemented modern POS hardware, Samsung LFDs and retail software, boosting the sales by 70% in one year.",
     image: retailImg,
   },
 ];
@@ -114,7 +114,7 @@ export function CaseStudiesSection() {
           <p className="text-lg max-w-4xl mx-auto leading-relaxed text-secondary">
             Discover how Fortune Info Solutions
             helps businesses modernize with the right mix of IT hardware,
-            licensed software, and integrated solutions.
+            licensed software and integrated solutions.
           </p>
         </div>
 

@@ -72,8 +72,8 @@ export default function ABoutHeroSection() {
           ref={subTextRef}
           className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto"
         >
-          We are driven by passion, innovation, and a commitment to excellence.  
-          Learn more about our story, mission, and the values that guide us.
+          We are driven by passion, innovation and a commitment to excellence.  
+          Learn more about our story, mission and the values that guide us.
         </p>
       </div>
     </section>

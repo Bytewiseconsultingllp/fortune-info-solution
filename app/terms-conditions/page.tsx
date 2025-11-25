@@ -26,7 +26,7 @@ export default function TermsConditionsPage() {
             <p className="mb-4">
               Permission is granted to temporarily download one copy of the materials on Fortune Info Solutions' website
               for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of
-              title, and under this license you may not:
+              title and under this license you may not:
             </p>
             <ul className="list-disc pl-6 mb-4 space-y-1">
               <li>Modify or copy the materials</li>
@@ -40,7 +40,7 @@ export default function TermsConditionsPage() {
             <h2 className="text-2xl font-bold mb-4">3. Disclaimer</h2>
             <p className="mb-4">
               The materials on Fortune Info Solutions' website are provided on an 'as is' basis. Fortune Info Solutions
-              makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties
+              makes no warranties, expressed or implied and hereby disclaims and negates all other warranties
               including, without limitation, implied warranties or conditions of merchantability, fitness for a
               particular purpose, or non-infringement of intellectual property or other violation of rights.
             </p>

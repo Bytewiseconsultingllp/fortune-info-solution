@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Fortune Info Solutions - Distribution Hub Company",
-  description: "Leading distribution hub company providing comprehensive solutions for brands, products, and services.",
+  description: "Leading distribution hub company providing comprehensive solutions for brands, products and services.",
   generator: "Fortune Info Solutions",
   icons:{
     icon: "/favicon.ico",

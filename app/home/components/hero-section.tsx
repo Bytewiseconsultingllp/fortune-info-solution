@@ -12,7 +12,7 @@ export function HeroSection() {
 
   useEffect(() => {
     if (heroRef.current) {
-      // Staggered fade-in animation for headings, paragraph, and button
+      // Staggered fade-in animation for headings, paragraph and button
       gsap.from(heroRef.current.children, {
         opacity: 0,
         y: 50,
@@ -78,7 +78,7 @@ export function HeroSection() {
                 Fortune Info Solutions is your trusted partner for IT hardware,
               software, fire and security solutions. With years of collective
               industry experience, we empower businesses with reliable products,
-              professional services, and scalable solutions across enterprise IT, networking,
+              professional services and scalable solutions across enterprise IT, networking,
               cloud, surveillance, fire and security solutions.
             </p>
 

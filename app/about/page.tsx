@@ -116,11 +116,11 @@ export default function AboutPage() {
                 <b>
 Dell, Lenovo, HP, Apple, Honeywell, Dicota, Samsung, LG, Cisco, HPE, Netgear,
 Ruckus, Canon, Epson, Brother, Microsoft, Fortinet, SentinelOne, Logitech,
-Vention, Belkin, Jabra, Seagate and Western Digital
+Vention, Belkin, Jabra, Seagate, Western Digital and more...
                 </b>
                 . As a direct partner for several top brands, we ensure our
                 clients receive only{" "}
-                genuine, reliable, and scalable IT products and services.
+                genuine, reliable and scalable IT products and services.
               </p>
 
 
@@ -169,9 +169,9 @@ Vention, Belkin, Jabra, Seagate and Western Digital
                 <CardDescription className="text-base text-justify">
                   To provide exceptional distribution services that connect
                   quality brands with global markets, delivering value through
-                  innovation, reliability, and customer-centric solutions. We
+                  innovation, reliability and customer-centric solutions. We
                   strive to be the bridge that enables businesses to reach their
-                  full potential
+                  full potential.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -187,7 +187,7 @@ Vention, Belkin, Jabra, Seagate and Western Digital
               <CardContent>
                 <CardDescription className="text-base text-justify">
                   To become the world’s most trusted distribution hub,
-                  recognized for our commitment to excellence, innovation, and
+                  recognized for our commitment to excellence, innovation and
                   sustainable growth. We envision a future where every business
                   has access to global markets through our comprehensive
                   distribution network.
@@ -206,8 +206,7 @@ Vention, Belkin, Jabra, Seagate and Western Digital
               Our Core Values
             </h2>
             <p className="text-lg text-foreground max-w-2xl mx-auto">
-              These fundamental principles guide every decision we make and
-              every relationship we build.
+              These fundamental principles guide every decision we make and every relationship we build.
             </p>
           </div>
 

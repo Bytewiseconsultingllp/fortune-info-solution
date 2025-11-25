@@ -198,7 +198,7 @@ export function ComplaintSection() {
               <p className="text-sm text-gray-800">
                 <span className="font-medium">Urgent concern?</span> Call us directly at{" "}
                 <span className="font-semibold text-primary">9686194471</span> or{" "}
-                <span className="font-semibold text-primary">9845447654</span>.
+                <span className="font-semibold text-primary">9845447654</span>
               </p>
             </Card>
                         <Card>

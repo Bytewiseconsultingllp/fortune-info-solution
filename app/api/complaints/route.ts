@@ -164,7 +164,7 @@ export async function POST(req: Request) {
     // Validation
     if (!name || !email || !phone || !message) {
       return NextResponse.json(
-        { success: false, error: "Name, Email, Phone, and Message are required" },
+        { success: false, error: "Name, Email, Phone and Message are required" },
         { status: 400 }
       )
     }
