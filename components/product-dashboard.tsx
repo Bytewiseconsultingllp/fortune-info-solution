@@ -51,8 +51,20 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
     const res = await fetch(`/api/products?${params.toString()}`);
     const data = await res.json();
 
-    setProducts(data.products);
-    setTotalPages(data.totalPages); // ✅ use backend-provided totalPages
+    console.log("API Response:", data);
+    console.log("Products data:", data.products);
+    console.log("Type of products:", typeof data.products);
+    console.log("Is products an array?", Array.isArray(data.products));
+
+    // Ensure products is always an array
+    if (Array.isArray(data.products)) {
+      setProducts(data.products);
+    } else {
+      console.error("Products is not an array:", data.products);
+      setProducts([]);
+    }
+    
+    setTotalPages(data.totalPages || 1);
     setLoading(false);
   };
 
@@ -208,16 +220,24 @@ export const ProductDashboard = ({ categories, brands }: ProductDashboardProps) 
 
           {loading ? (
             <p className="text-center">Loading products...</p>
-          ) : products.length > 0 ? (
+          ) : Array.isArray(products) && products.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-              {products.map((product) => (
-                <ProductCard
-                  key={product._id}
-                  product={product}
-                  onQuote={() => console.log("Get quote for:", product.name)}
-                  onDatasheet={() => console.log("Download datasheet for:", product.name)}
-                />
-              ))}
+              {products.map((product, index) => {
+                // Ensure product is a valid object
+                if (!product || typeof product !== 'object') {
+                  console.error("Invalid product data:", product);
+                  return null;
+                }
+                
+                return (
+                  <ProductCard
+                    key={product._id || `product-${index}`}
+                    product={product}
+                    onQuote={() => console.log("Get quote for:", product.name)}
+                    onDatasheet={() => console.log("Download datasheet for:", product.name)}
+                  />
+                );
+              })}
             </div>
           ) : (
             <Card className="text-center py-16">
