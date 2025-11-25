@@ -111,7 +111,7 @@ export default function ChannelPartnerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Partnership Types</h2>
-            <p className="text-xl text-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-foreground mx-auto">
               Choose the partnership model that best fits your business goals and capabilities.
             </p>
           </div>
@@ -145,13 +145,13 @@ export default function ChannelPartnerPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Partner Requirements</h2>
-              <p className="text-primary text-foreground mb-8">
+              <p className="text-md mb-8">
                 To ensure mutual success, we look for partners who meet certain criteria and share our commitment to
                 excellence.
               </p>
               <ul className="space-y-3">
                 {requirements.map((requirement, index) => (
-                  <li key={index} className="flex items-start gap-3">
+                  <li key={index} className="flex items-start gap-3 text-md">
                     <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                     <span>{requirement}</span>
                   </li>

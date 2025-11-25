@@ -114,11 +114,11 @@ export default function ServicesPage() {
                     <CardDescription className="text-base">
                       {service.description}
                     </CardDescription>
-                    {service.duration && (
+                    {/* {service.duration && (
                       <p className="text-sm text-foreground">
                         Duration: {service.duration}
                       </p>
-                    )}
+                    )} */}
                   </CardHeader>
                   <CardContent className="pt-0">
                     <div className="mb-6">

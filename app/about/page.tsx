@@ -205,7 +205,7 @@ Vention, Belkin, Jabra, Seagate, Western Digital and more...
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Our Core Values
             </h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-foreground  mx-auto">
               These fundamental principles guide every decision we make and every relationship we build.
             </p>
           </div>
