@@ -298,22 +298,24 @@ export default function ContactPage() {
 
                   <CardContent className="relative py-8 px-4 md:px-6 text-center">
                     <div className="relative mb-6">
-                      <div className="relative">
-                        <div className="w-24 h-27 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
-                          <img
-                            src={member.image || "/placeholder.svg"}
-                            alt={`${member.name} - ${member.position}`}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        {member.email && (
-                          <div className="absolute -top-1 -right-1 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
-                            <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
-                          </div>
-                        )}
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
-                    </div>
+  <div className="relative">
+    <div className="w-24 h-27 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
+      <img
+        src={member.image || "/placeholder.svg"}
+        alt={`${member.name} - ${member.position}`}
+        className="w-full h-full object-cover"
+      />
+    </div>
+
+    {member.email && (
+      <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
+        <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+      </div>
+    )}
+  </div>
+
+  <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
+</div>
 
                     <div className="space-y-1">
                       <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
