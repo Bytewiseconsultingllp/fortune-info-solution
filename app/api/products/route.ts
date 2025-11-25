@@ -88,7 +88,7 @@ export async function GET(request: NextRequest) {
     const [products, totalCount, allCategories, allBrands] = await Promise.all([
       db.collection("products")
         .find(filter)
-        .sort({ createdAt: 1 })
+        .sort(brands.length > 0 ? { category: 1, name: 1 } : { createdAt: 1 })
         .skip(skip)
         .limit(limit)
         .toArray(),
@@ -101,8 +101,16 @@ export async function GET(request: NextRequest) {
     console.log("Normal mode - Categories:", allCategories);
     console.log("Normal mode - Brands:", allBrands);
 
+    // Convert ObjectId to string for JSON serialization
+    const serializedProducts = products.map(product => ({
+      ...product,
+      _id: product._id.toString(),
+      createdAt: product.createdAt?.toISOString?.() || new Date().toISOString(),
+      updatedAt: product.updatedAt?.toISOString?.() || new Date().toISOString(),
+    }));
+
     return NextResponse.json({
-      products,
+      products: serializedProducts,
       totalCount,
       totalPages: Math.ceil(totalCount / limit),
       categories: allCategories,

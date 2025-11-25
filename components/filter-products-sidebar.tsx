@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Filter, ChevronDown, ChevronUp } from 'lucide-react';
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
@@ -31,9 +31,27 @@ export const FilterSidebar = ({
 }: FilterSidebarProps) => {
   const [brandExpanded, setBrandExpanded] = useState(true);
   const [categoryExpanded, setCategoryExpanded] = useState(true);
+  const [expandedBrands, setExpandedBrands] = useState<Set<string>>(new Set());
 
   console.log("FilterSidebar Props - Categories:", categories);
   console.log("FilterSidebar Props - Brands:", brands);
+
+  const toggleBrandExpansion = (brand: string) => {
+    setExpandedBrands(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(brand)) {
+        newSet.delete(brand);
+      } else {
+        newSet.add(brand);
+      }
+      return newSet;
+    });
+  };
+
+  // Auto-expand categories when brands are selected
+  useEffect(() => {
+    setExpandedBrands(new Set(selectedBrands));
+  }, [selectedBrands]);
 
   const clearAllFilters = () => {
     selectedBrands.forEach(brand => onBrandChange(brand, false));
@@ -46,8 +64,8 @@ export const FilterSidebar = ({
     <aside className="w-80 bg-surface border-r border-border h-[calc(100vh-73px)] overflow-y-auto">
       <div className="p-4 sm:p-6">
         {/* Header */}
-        <Card className="mb-6">
-          <CardHeader className="pb-3">
+        <Card className="mb-4">
+          <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base">
               <Filter className="h-4 w-4 text-primary" />
               Filters
@@ -69,8 +87,8 @@ export const FilterSidebar = ({
 
         {/* Active Filters Summary */}
         {hasActiveFilters && (
-          <Card className="mb-6">
-            <CardHeader className="pb-3">
+          <Card className="mb-4">
+            <CardHeader>
               <CardTitle className="text-sm text-primary">Active Filters</CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
@@ -101,7 +119,7 @@ export const FilterSidebar = ({
         )}
 
         {/* Brands Filter */}
-        <Card className="mb-6">
+        <Card className="mb-4">
           <Collapsible open={brandExpanded} onOpenChange={setBrandExpanded}>
             <CollapsibleTrigger asChild>
               <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
@@ -115,18 +133,57 @@ export const FilterSidebar = ({
             <CollapsibleContent>
               <CardContent className="pt-0 space-y-3">
                 {brands.map((brand) => (
-                  <div key={brand} className="flex items-center space-x-2">
-                    <Checkbox
-                      id={`brand-${brand}`}
-                      checked={selectedBrands.includes(brand)}
-                      onCheckedChange={(checked) => onBrandChange(brand, checked as boolean)}
-                    />
-                    <Label
-                      htmlFor={`brand-${brand}`}
-                      className="text-sm font-normal cursor-pointer flex-1"
-                    >
-                      {brand}
-                    </Label>
+                  <div key={brand}>
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`brand-${brand}`}
+                        checked={selectedBrands.includes(brand)}
+                        onCheckedChange={(checked) => onBrandChange(brand, checked as boolean)}
+                      />
+                      <Label
+                        htmlFor={`brand-${brand}`}
+                        className="text-sm font-normal cursor-pointer flex-1"
+                      >
+                        {brand}
+                      </Label>
+                      {selectedBrands.includes(brand) && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => toggleBrandExpansion(brand)}
+                          className="h-6 w-6 p-0"
+                        >
+                          {expandedBrands.has(brand) ? (
+                            <ChevronUp className="h-3 w-3" />
+                          ) : (
+                            <ChevronDown className="h-3 w-3" />
+                          )}
+                        </Button>
+                      )}
+                    </div>
+                    {/* Subcategories for selected brand */}
+                    {selectedBrands.includes(brand) && expandedBrands.has(brand) && (
+                      <div className="ml-6 mt-2 space-y-2 border-l-2 border-muted pl-4">
+                        <div className="text-xs font-medium text-muted-foreground mb-2">
+                          Categories for {brand}:
+                        </div>
+                        {categories.map((category) => (
+                          <div key={`${brand}-${category}`} className="flex items-center space-x-2">
+                            <Checkbox
+                              id={`category-${brand}-${category}`}
+                              checked={selectedCategories.includes(category)}
+                              onCheckedChange={(checked) => onCategoryChange(category, checked as boolean)}
+                            />
+                            <Label
+                              htmlFor={`category-${brand}-${category}`}
+                              className="text-xs font-normal cursor-pointer flex-1 capitalize"
+                            >
+                              {category}
+                            </Label>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </CardContent>
