@@ -59,7 +59,7 @@ export function ExpertiseSection() {
       ref={sectionRef}
       className="py-16 px-4 md:px-8 lg:px-16 relative bg-white "
     >
-            <div className="flex items-center gap-2 justify-center flex">
+            <div className="flex items-center gap-2 justify-center">
             <div className="w-1 h-6 bg-primary"></div>
             <span className="text-primary text-4xl font-medium">Our Expertise</span>
             <div className="w-1 h-6 bg-primary"></div>
@@ -88,7 +88,7 @@ export function ExpertiseSection() {
         Innovating Across Every Sector
       </h2>
 
-      <p className="text-black text-2xl mb-4 leading-relaxed text-animate">
+      <p className="text-black text-lg mb-4 leading-relaxed text-animate">
         With decades of combined experience, Fortune Info Solutions delivers customized
         IT Hardware, Software and Fire and Security solutions across industries including healthcare,
         finance, retail, manufacturing, education, residential and more...
@@ -101,7 +101,7 @@ export function ExpertiseSection() {
       <div className="space-y-2">
         <div className="text-animate">
           <h3 className="text-2xl font-bold text-primary mb-1">Enterprise IT Solutions</h3>
-          <p className="text-black leading-relaxed">
+          <p className="text-black text-lg leading-relaxed">
             We provide laptop, desktop, servers, storage and workstations from global brands like 
             Dell, Lenovo, HP and others ensuring high performance and scalability.
           </p>
@@ -109,7 +109,7 @@ export function ExpertiseSection() {
 
         <div className="text-animate">
           <h3 className="text-2xl font-bold text-primary mb-1">Networking & Security</h3>
-          <p className="text-black leading-relaxed">
+          <p className="text-black text-lg leading-relaxed">
             From Cisco firewalls to Honeywell Fire and Security solutions, we secure IT ecosystems
             with advanced networking, fire detection system, surveillance and access control solutions.
           </p>
@@ -117,7 +117,7 @@ export function ExpertiseSection() {
 
         <div className="text-animate">
           <h3 className="text-2xl font-bold text-primary mb-1">Power & AV Solutions</h3>
-          <p className="text-black mb-8 leading-relaxed">
+          <p className="text-black text-lg mb-8 leading-relaxed">
             Our partnerships with APC, EATON, Panasonic, LG, Samsung and Philips allow us to deliver
             reliable UPS, power backup and large-format display solutions.
           </p>
