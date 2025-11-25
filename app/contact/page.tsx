@@ -1,26 +1,41 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useRef, useEffect } from "react"
-import { gsap } from "gsap"
-import Header from "@/app/home/components/navigation/Header"
+import type React from "react";
+import { useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
+import Header from "@/app/home/components/navigation/Header";
 import Footer from "@/components/footerSection";
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { useToast } from "@/hooks/use-toast"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { MapPin, Phone, Mail, Clock, User, CheckCircle, AlertCircle } from "lucide-react"
-import { ComplaintSection } from "@/components/ComplaintSection"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  User,
+  CheckCircle,
+  AlertCircle,
+} from "lucide-react";
+import { ComplaintSection } from "@/components/ComplaintSection";
+import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function ContactPage() {
-  const { toast } = useToast()
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [isSuccess, setIsSuccess] = useState(false)
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSuccess, setIsSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,8 +48,7 @@ export default function ContactPage() {
     status: "new", // backend required
     assignedTo: "",
     notes: [],
-  })
-
+  });
 
   // const [complaint, setComplaint] = useState({
   //   name: "",
@@ -45,10 +59,10 @@ export default function ContactPage() {
   //   message: "",
   // })
 
-  const heroRef = useRef<HTMLDivElement | null>(null)
-  const formRef = useRef<HTMLDivElement | null>(null)
-  const infoRef = useRef<HTMLDivElement | null>(null)
-  const teamRef = useRef<HTMLDivElement | null>(null)
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const infoRef = useRef<HTMLDivElement | null>(null);
+  const teamRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -57,7 +71,7 @@ export default function ContactPage() {
         opacity: 0,
         duration: 2,
         ease: "power3.out",
-      })
+      });
 
       gsap.from(formRef.current, {
         x: -50,
@@ -65,7 +79,7 @@ export default function ContactPage() {
         duration: 2,
         delay: 0.3,
         ease: "power3.out",
-      })
+      });
 
       gsap.from(infoRef.current, {
         x: 50,
@@ -73,7 +87,7 @@ export default function ContactPage() {
         duration: 2,
         delay: 0.5,
         ease: "power3.out",
-      })
+      });
 
       gsap.from(teamRef.current, {
         y: 50,
@@ -81,66 +95,66 @@ export default function ContactPage() {
         duration: 2,
         delay: 0.7,
         ease: "power3.out",
-      })
-    })
+      });
+    });
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   const validateForm = () => {
-    const newErrors: Record<string, string> = {}
+    const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Full name is required"
+      newErrors.name = "Full name is required";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email address is required"
+      newErrors.email = "Email address is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address"
+      newErrors.email = "Please enter a valid email address";
     }
 
     if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required"
-    } else if (!/^[\d\s\-+$$$$]+$/.test(formData.phone)) {
-      newErrors.phone = "Please enter a valid phone number"
+      newErrors.phone = "Phone number is required";
+    } else if (!/^[\d\s\-+()]+$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid phone number";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required"
+      newErrors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters long"
+      newErrors.message = "Message must be at least 10 characters long";
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleInputChange = (field: string, value: string | string[]) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
-    }))
+    }));
     if (errors[field]) {
       setErrors((prev) => ({
         ...prev,
         [field]: "",
-      }))
+      }));
     }
     if (isSuccess) {
-      setIsSuccess(false)
+      setIsSuccess(false);
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!validateForm()) {
-      return
+      return;
     }
 
-    setIsSubmitting(true)
-    setErrors({})
+    setIsSubmitting(true);
+    setErrors({});
 
     try {
       const response = await fetch("/api/contact", {
@@ -149,14 +163,15 @@ export default function ContactPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-      })
+      });
 
       if (response.ok) {
-        setIsSuccess(true)
+        setIsSuccess(true);
         toast({
           title: "Message Sent Successfully",
-          description: "Thank you for contacting us. We'll get back to you within 24 hours.",
-        })
+          description:
+            "Thank you for contacting us. We'll get back to you within 24 hours.",
+        });
 
         setFormData({
           name: "",
@@ -165,26 +180,30 @@ export default function ContactPage() {
           company: "",
           message: "",
           subject: "",
-          priority: "",
-          source: "",
-          status: "",
+          priority: "medium",
+          source: "website",
+          status: "new",
           assignedTo: "",
           notes: [],
-        })
+        });
       } else {
-        throw new Error("Failed to send message")
+        throw new Error("Failed to send message");
       }
     } catch (error) {
-      setErrors({ submit: "Failed to send message. Please try again or contact us directly." })
+      setErrors({
+        submit:
+          "Failed to send message. Please try again or contact us directly.",
+      });
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again or contact us directly.",
+        description:
+          "Failed to send message. Please try again or contact us directly.",
         variant: "destructive",
-      })
+      });
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const teamMembers = [
     {
@@ -192,33 +211,37 @@ export default function ContactPage() {
       position: "Director",
       image: "/rajakuamr.jpg",
       email: "rajakumar@fortuneinfo.in",
+      phone: 9686194476,
     },
     {
       name: "Murali K",
       position: "Director",
       image: "/maruli.jpg",
       email: "murali@fortuneinfo.in",
+      phone: 9686194471,
     },
     {
       name: "Pradeep NP",
       position: "SVP Business Management",
       image: "/pradeep.jpg",
       email: "pradeepnp@fortuneinfo.in",
+      phone: 9845447654,
     },
     {
       name: "HariKarthick",
       position: "Director - Fire & Security",
       initials: "",
-      image:
-        "HariKarthick.jpeg",
+      image: "/HariKarthick.jpeg",
       email: "Hari.Karthick@fortuneinfo.in",
+      phone: 9042909567,
     },
     {
       name: "Dhananjaya M N",
       position: "Product Manager",
       initials: "Honeywell",
-      image: "dhanjay.jpg",
+      image: "/dhanjay.jpg",
       email: "dhananjaya@fortuneinfo.in",
+      phone: 8792090254,
     },
     {
       name: "Chandrashekar Udupa",
@@ -226,6 +249,7 @@ export default function ContactPage() {
       initials: "Dell",
       image: "/chandrashaker.jpg",
       email: "chandru@fortuneinfo.in",
+      phone: 9886075110,
     },
     {
       name: "Sunil Kumar",
@@ -233,6 +257,7 @@ export default function ContactPage() {
       initials: "Lenovo",
       image: "/Sunil.jpg",
       email: "systems@fortuneinfo.in",
+      phone: 9686194469,
     },
     {
       name: "Rajkiran Reddy",
@@ -240,6 +265,7 @@ export default function ContactPage() {
       initials: "Networking Products",
       image: "/Rajkiran.jpg",
       email: "rajkiran@fortuneinfo.in",
+      phone: 8904502942,
     },
     {
       name: "Adithya Nair",
@@ -247,6 +273,7 @@ export default function ContactPage() {
       initials: "Lenovo",
       image: "/nair.jpg",
       email: "systems@fortuneinfo.in",
+      phone: 8147900780,
     },
     {
       name: "Arjun Nair",
@@ -254,36 +281,46 @@ export default function ContactPage() {
       initials: "Hp",
       image: "/arjun.jpg",
       email: "arjun@fortuneinfo.in",
+      phone: 8073786464,
     },
-  ]
+  ];
 
-  const remainder = teamMembers.length % 4
+  const remainder = teamMembers.length % 4;
 
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
-      <section ref={heroRef} className="bg-primary text-primary-foreground py-16">
+      <section
+        ref={heroRef}
+        className="bg-primary text-primary-foreground py-16"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center text-center h-56">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Get in touch with our team to discuss your distribution needs and discover how we can help your business
-            grow.
+            Get in touch with our team to discuss your distribution needs and
+            discover how we can help your business grow.
           </p>
         </div>
       </section>
 
-      <section ref={teamRef} className="py-20 bg-gradient-to-br from-background via-muted/20 to-background">
+      <section
+        ref={teamRef}
+        className="py-20 bg-gradient-to-br from-background via-muted/20 to-background"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 bg-muted text-foreground px-4 py-2 rounded-full text-sm font-medium mb-4">
               <User className="h-4 w-4" />
               Leadership Excellence
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">Meet Our Leadership Team</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
+              Meet Our Leadership Team
+            </h2>
             <p className="text-xl text-foreground max-w-3xl mx-auto leading-relaxed">
-              Our experienced directors bring decades of expertise and visionary leadership to drive innovation and
-              excellence across all business operations.
+              Our experienced directors bring decades of expertise and visionary
+              leadership to drive innovation and excellence across all business
+              operations.
             </p>
           </div>
 
@@ -298,24 +335,24 @@ export default function ContactPage() {
 
                   <CardContent className="relative py-8 px-4 md:px-6 text-center">
                     <div className="relative mb-6">
-  <div className="relative">
-    <div className="w-24 h-27 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
-      <img
-        src={member.image || "/placeholder.svg"}
-        alt={`${member.name} - ${member.position}`}
-        className="w-full h-full object-cover"
-      />
-    </div>
+                      <div className="relative">
+                        <div className="w-24 h-32 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
+                          <img
+                            src={member.image || "/placeholder.svg"}
+                            alt={`${member.name} - ${member.position}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
 
-    {member.email && (
-      <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
-        <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
-      </div>
-    )}
-  </div>
+                        {member.email && (
+                          <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
+                            <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                          </div>
+                        )}
+                      </div>
 
-  <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
-</div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
+                    </div>
 
                     <div className="space-y-1">
                       <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
@@ -323,29 +360,35 @@ export default function ContactPage() {
                       </h3>
                       <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3 rounded-full text-sm font-medium">
                         {member.position}
-                        <br />
-                        {member.initials}
+                        {member.initials && ` - ${member.initials}`}
                       </div>
 
                       {member.email ? (
                         <div className="flex items-center justify-center gap-2 text-sm text-foreground/90">
-                          <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
-                          <span className="font-medium">{member.email.trim()}</span>
+                          <Mail
+                            className="h-4 w-4 text-primary"
+                            aria-hidden="true"
+                          />
+                          <span className="font-medium">
+                            {member.email.trim()}
+                          </span>
                         </div>
                       ) : null}
 
                       <div className="pt-4 border-t border-border/50">
-                        {member.email ? (
-                          <div className="mt-4 flex items-center justify-center">
+                        <div className="mt-4 flex items-center justify-center gap-4">
+                          {member.email && (
                             <a
-                              href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(`Hello ${member.name}`)}`}
+                              href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(
+                                `Hello ${member.name}`
+                              )}`}
                               aria-label={`Email ${member.name}`}
                               className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:text-primary hover:bg-muted transition-colors"
                             >
                               <Mail className="h-5 w-5" />
                             </a>
-                          </div>
-                        ) : null}
+                          )}
+                        </div>
                       </div>
                     </div>
                   </CardContent>
@@ -364,7 +407,7 @@ export default function ContactPage() {
                     <CardContent className="relative py-8 px-4 md:px-6 text-center">
                       <div className="relative mb-6">
                         <div className="relative">
-                          <div className="w-24 h-27 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
+                          <div className="w-24 h-32 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
                             <img
                               src={member.image || "/placeholder.svg"}
                               alt={`${member.name} - ${member.position}`}
@@ -386,29 +429,51 @@ export default function ContactPage() {
                         </h3>
                         <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3 rounded-full text-sm font-medium">
                           {member.position}
-                          <br />
-                          {member.initials}
+                          {member.initials && ` - ${member.initials}`}
                         </div>
 
                         {member.email ? (
                           <div className="flex items-center justify-center gap-2 text-sm text-foreground/90">
-                            <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
-                            <span className="font-medium">{member.email.trim()}</span>
+                            <Mail
+                              className="h-4 w-4 text-primary"
+                              aria-hidden="true"
+                            />
+                            <span className="font-medium">
+                              {member.email.trim()}
+                            </span>
                           </div>
                         ) : null}
 
                         <div className="pt-4 border-t border-border/50">
-                          {member.email ? (
+                          {member.email && (
                             <div className="mt-4 flex items-center justify-center">
+                              {/* Email */}
                               <a
-                                href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(`Hello ${member.name}`)}`}
+                                href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(
+                                  `Hello ${member.name}`
+                                )}`}
                                 aria-label={`Email ${member.name}`}
                                 className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:text-primary hover:bg-muted transition-colors"
                               >
                                 <Mail className="h-5 w-5" />
                               </a>
+
+                              {/* WhatsApp */}
+                              <a
+                                href={`https://wa.me/91${
+                                  member.phone
+                                }?text=${encodeURIComponent(
+                                  `Hello ${member.name}, I am interested in connecting with you.`
+                                )}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`WhatsApp ${member.name}`}
+                                className="inline-flex items-center justify-center rounded-full p-2 text-green-600 hover:bg-muted transition-colors"
+                              >
+                                <FaWhatsapp className="h-5 w-5" />
+                              </a>
                             </div>
-                          ) : null}
+                          )}
                         </div>
                       </div>
                     </CardContent>
@@ -419,194 +484,10 @@ export default function ContactPage() {
               ))}
             </div>
           )}
-
-          {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
-              <div className="text-3xl font-bold text-primary mb-2">100+</div>
-              <div className="text-foreground">Combined Industry Experience</div>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
-              <div className="text-3xl font-bold text-accent mb-2">100+</div>
-              <div className="text-foreground">Successful Projects</div>
-            </div>
-            <div className="text-center p-6 rounded-2xl bg-card/50 backdrop-blur-sm border border-border/50">
-              <div className="text-3xl font-bold text-primary mb-2">10</div>
-              <div className="text-foreground">Industry Leaders</div>
-            </div>
-          </div> */}
         </div>
       </section>
 
-
       <ComplaintSection />
-
-{/* ===================== Complaint Section ===================== */}
-      {/* <section className="py-20 bg-muted/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-muted text-foreground px-4 py-2 rounded-full text-sm font-medium mb-4">
-              <AlertCircle className="h-4 w-4" />
-              Customer Complaints
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Report an Issue</h2>
-            <p className="text-lg text-foreground max-w-2xl mx-auto">
-              If you’ve experienced any issues with our distribution or services, let us know.  
-              We aim to resolve every complaint within <strong>48 hours</strong>.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <Card className="lg:col-span-1">
-              <CardHeader>
-                <CardTitle>File a Complaint</CardTitle>
-                <CardDescription>
-                  Provide details of the problem so our support team can assist you quickly.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form
-                  onSubmit={async (e) => {
-                    e.preventDefault()
-
-                    // Validate required fields
-                    const newErrors: any = {}
-                    if (!complaint.name.trim()) newErrors.name = "Name is required"
-                    if (!complaint.email.trim()) newErrors.email = "Email is required"
-                    if (!complaint.phone.trim()) newErrors.phone = "Phone is required"
-                    if (!complaint.message.trim()) newErrors.message = "Complaint details are required"
-                    if (!complaint.orderId.trim()) newErrors.orderId = "Order ID is required"
-
-
-                    setErrors(newErrors)
-                    if (Object.keys(newErrors).length > 0) return
-
-                    try {
-                      const resp = await fetch("/api/complaint", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(complaint),
-                      })
-                      if (resp.ok) {
-                        toast({
-                          title: "Complaint Submitted",
-                          description: "Thank you. Our support team will contact you within 48 hours.",
-                        })
-                        setComplaint({
-                          name: "",
-                          email: "",
-                          phone: "",
-                          type: "",
-                          orderId: "",
-                          message: "",
-                        })
-                        setErrors({})
-                      } else throw new Error()
-                    } catch {
-                      toast({
-                        title: "Submission Failed",
-                        description: "We couldn’t submit your complaint. Please try again later.",
-                        variant: "destructive",
-                      })
-                    }
-                  }}
-                  className="space-y-6"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="complaintName">Full Name *</Label>
-                      <Input
-                        id="complaintName"
-                        placeholder="Enter your full name"
-                        value={complaint.name}
-                        onChange={(e) => setComplaint((prev) => ({ ...prev, name: e.target.value }))}
-                      />
-                      {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-                    </div>
-                    <div>
-                      <Label htmlFor="complaintEmail">Email *</Label>
-                      <Input
-                        id="complaintEmail"
-                        type="email"
-                        placeholder="Enter your email"
-                        value={complaint.email}
-                        onChange={(e) => setComplaint((prev) => ({ ...prev, email: e.target.value }))}
-                      />
-                      {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="complaintPhone">Phone *</Label>
-                      <Input
-                        id="complaintPhone"
-                        type="tel"
-                        placeholder="Enter your phone number"
-                        value={complaint.phone}
-                        onChange={(e) => setComplaint((prev) => ({ ...prev, phone: e.target.value }))}
-                      />
-                      {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
-                    </div>
-                    <div>
-                      <Label htmlFor="complaintType">Complaint Type</Label>
-                      <Input
-                        id="complaintType"
-                        placeholder="Delivery Delay, Damaged Item, etc."
-                        value={complaint.type}
-                        onChange={(e) => setComplaint((prev) => ({ ...prev, type: e.target.value }))}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="orderId">Order/Invoice ID *</Label>
-                    <Input
-                      id="orderId"
-                      placeholder="Enter reference number"
-                      value={complaint.orderId}
-                      onChange={(e) => setComplaint((prev) => ({ ...prev, orderId: e.target.value }))}
-                    />
-                    {errors.orderId && <p className="text-red-500 text-sm mt-1">{errors.orderId}</p>}
-                  </div>
-
-                  <div>
-                    <Label htmlFor="complaintMsg">Complaint Details *</Label>
-                    <Textarea
-                      id="complaintMsg"
-                      rows={5}
-                      placeholder="Describe the issue you faced…"
-                      value={complaint.message}
-                      onChange={(e) => setComplaint((prev) => ({ ...prev, message: e.target.value }))}
-                    />
-                    {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
-                  </div>
-
-                  <Button type="submit" className="w-full">
-                    Submit Complaint
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
-            <div className="space-y-6 text-foreground">
-              <h3 className="text-2xl font-semibold">How We Handle Complaints</h3>
-              <ul className="list-disc list-inside space-y-2 text-sm">
-                <li>Acknowledge receipt within 2 hours of submission.</li>
-                <li>Assign a dedicated support executive for your case.</li>
-                <li>Provide a resolution or status update within 48 hours.</li>
-                <li>Escalate to management if not resolved in the first attempt.</li>
-              </ul>
-              <p className="text-sm mt-4">
-                For urgent concerns, call our support line at{" "}
-                <span className="font-semibold">9686194471</span> or{" "}
-                <span className="font-semibold">9845447654</span>.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
-{/* =================== End Complaint Section =================== */}
-
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -615,7 +496,8 @@ export default function ContactPage() {
                 <CardHeader>
                   <CardTitle>Send us a Message</CardTitle>
                   <CardDescription>
-                    Fill out the form below and our team will get back to you within 24 hours.
+                    Fill out the form below and our team will get back to you
+                    within 24 hours.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -623,8 +505,9 @@ export default function ContactPage() {
                     <Alert className="mb-6 border-green-200 bg-green-50">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       <AlertDescription className="text-green-800">
-                        <strong>Message sent successfully!</strong> Please check your email for confirmation. We'll get
-                        back to you within 24 hours.
+                        <strong>Message sent successfully!</strong> Please check
+                        your email for confirmation. We'll get back to you
+                        within 24 hours.
                       </AlertDescription>
                     </Alert>
                   )}
@@ -652,7 +535,9 @@ export default function ContactPage() {
                         <Input
                           id="name"
                           value={formData.name}
-                          onChange={(e) => handleInputChange("name", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("name", e.target.value)
+                          }
                           className={errors.name ? "border-red-500" : ""}
                         />
                       </div>
@@ -662,7 +547,9 @@ export default function ContactPage() {
                           id="email"
                           type="email"
                           value={formData.email}
-                          onChange={(e) => handleInputChange("email", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("email", e.target.value)
+                          }
                           className={errors.email ? "border-red-500" : ""}
                         />
                       </div>
@@ -675,7 +562,9 @@ export default function ContactPage() {
                           id="phone"
                           type="tel"
                           value={formData.phone}
-                          onChange={(e) => handleInputChange("phone", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("phone", e.target.value)
+                          }
                           className={errors.phone ? "border-red-500" : ""}
                         />
                       </div>
@@ -684,7 +573,9 @@ export default function ContactPage() {
                         <Input
                           id="company"
                           value={formData.company}
-                          onChange={(e) => handleInputChange("company", e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("company", e.target.value)
+                          }
                         />
                       </div>
                     </div>
@@ -695,13 +586,19 @@ export default function ContactPage() {
                         id="message"
                         placeholder="Please describe your inquiry..."
                         value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("message", e.target.value)
+                        }
                         rows={5}
                         className={errors.message ? "border-red-500" : ""}
                       />
                     </div>
 
-                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
                       {isSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
@@ -710,56 +607,6 @@ export default function ContactPage() {
             </div>
 
             <div ref={infoRef} className="space-y-6">
-              {/* <Card>
-                <CardHeader>
-                  <CardTitle>Get in Touch</CardTitle>
-                  <CardDescription>Reach out to us through any of these channels</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div className="text-justify">
-                      <h4 className="font-semibold">Address</h4>
-                      <p className="text-sm text-foreground">
-                        # 17/1, Old # 272, Sri Nandi,
-                        <br />
-                        12th Cross, 8th Main Road, Wilson Garden,
-                        <br />
-                        Hombegowda Nagar, Bangalore - 560027
-                        <br />
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold">Phone</h4>
-                      <p className="text-sm text-foreground">
-                        9686194471, 9845447654
-                        
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold">Email</h4>
-                      <p className="text-sm text-foreground">info@fortuneinfo.in</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h4 className="font-semibold">Business Hours</h4>
-                      <p className="text-sm text-foreground">10:00 AM – 07:00 PM</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card> */}
-
               <Card>
                 <CardHeader>
                   <CardTitle>Quick Response</CardTitle>
@@ -767,8 +614,8 @@ export default function ContactPage() {
 
                 <CardContent>
                   <p className="text-sm text-foreground mb-4 text-justify">
-                    We typically respond to all inquiries within 24 hours during business days. For urgent matters,
-                    please call us directly.
+                    We typically respond to all inquiries within 24 hours during
+                    business days. For urgent matters, please call us directly.
                   </p>
 
                   <div className="grid grid-cols-[max-content_auto] text-secondary text-lg">
@@ -777,7 +624,7 @@ export default function ContactPage() {
                     </div>
                     <div className="flex items-center">24 hours</div>
 
-                    <div className="font-semibold flex items-cener">
+                    <div className="font-semibold flex items-center">
                       Sales Inquiries<span className="px-13">:</span>
                     </div>
                     <div className="flex items-center">4–6 hours</div>
@@ -800,7 +647,6 @@ export default function ContactPage() {
                   </div>
                 </CardContent>
               </Card>
-
             </div>
           </div>
         </div>
@@ -808,5 +654,5 @@ export default function ContactPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
