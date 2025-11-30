@@ -1,6 +1,54 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 
+// Smart SKU sorting function that handles numeric, alphabetic, and alphanumeric SKUs
+function sortProductsBySKU(products: any[]): any[] {
+  return products.sort((a, b) => {
+    const skuA = a.sku || "";
+    const skuB = b.sku || "";
+    
+    // Function to extract numeric and alphabetic parts
+    const parseSKU = (sku: string) => {
+      const parts = sku.match(/(\d+)|(\D+)/g) || [];
+      return parts.map(part => ({
+        isNumeric: /^\d+$/.test(part),
+        value: part
+      }));
+    };
+    
+    const partsA = parseSKU(skuA);
+    const partsB = parseSKU(skuB);
+    
+    const maxLength = Math.max(partsA.length, partsB.length);
+    
+    for (let i = 0; i < maxLength; i++) {
+      const partA = partsA[i];
+      const partB = partsB[i];
+      
+      // If one SKU has fewer parts, the shorter one comes first
+      if (!partA) return -1;
+      if (!partB) return 1;
+      
+      if (partA.isNumeric && partB.isNumeric) {
+        // Compare numeric parts as numbers
+        const numA = parseInt(partA.value, 10);
+        const numB = parseInt(partB.value, 10);
+        if (numA !== numB) return numA - numB;
+      } else if (!partA.isNumeric && !partB.isNumeric) {
+        // Compare alphabetic parts lexicographically (case-insensitive)
+        const compare = partA.value.localeCompare(partB.value, undefined, { sensitivity: 'base' });
+        if (compare !== 0) return compare;
+      } else {
+        // Numeric parts come before alphabetic parts
+        return partA.isNumeric ? -1 : 1;
+      }
+    }
+    
+    // If all parts are equal, compare the full SKU lexicographically
+    return skuA.localeCompare(skuB, undefined, { sensitivity: 'base' });
+  });
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { db } = await connectDB();
@@ -13,6 +61,7 @@ export async function GET(request: NextRequest) {
     const getBrandCategories = searchParams.get("getBrandCategories") === "true";
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = parseInt(searchParams.get("limit") || "12", 10);
+    const sortBy = searchParams.get("sortBy") || "category"; // "category", "sku", "name", "createdAt"
 
     const filter: any = { };
 
@@ -84,25 +133,49 @@ export async function GET(request: NextRequest) {
     // Normal mode with pagination
     const skip = (page - 1) * limit;
 
-    // Get filtered products and count
-    const [products, totalCount, allCategories, allBrands] = await Promise.all([
+    // Get all products first for custom sorting
+    const [allProducts, totalCount, allCategories, allBrands] = await Promise.all([
       db.collection("products")
         .find(filter)
-        .sort(brands.length > 0 ? { category: 1, name: 1 } : { createdAt: 1 })
-        .skip(skip)
-        .limit(limit)
+        .sort({ category: 1 }) // Sort by category first
         .toArray(),
       db.collection("products").countDocuments(filter),
       allCategoriesPromise,
       allBrandsPromise,
     ]);
 
+    // Apply custom sorting: category first, then SKU within each category
+    let sortedProducts = allProducts;
+    
+    // Group products by category
+    const productsByCategory: { [key: string]: any[] } = {};
+    sortedProducts.forEach(product => {
+      const category = product.category || 'Uncategorized';
+      if (!productsByCategory[category]) {
+        productsByCategory[category] = [];
+      }
+      productsByCategory[category].push(product);
+    });
+
+    // Sort each category's products by SKU
+    Object.keys(productsByCategory).forEach(category => {
+      productsByCategory[category] = sortProductsBySKU(productsByCategory[category]);
+    });
+
+    // Flatten the sorted products back into a single array
+    sortedProducts = Object.keys(productsByCategory)
+      .sort() // Sort categories alphabetically
+      .flatMap(category => productsByCategory[category]);
+
+    // Apply pagination after sorting
+    const paginatedProducts = sortedProducts.slice(skip, skip + limit);
+
     console.log("Normal mode - Total products:", totalCount);
     console.log("Normal mode - Categories:", allCategories);
     console.log("Normal mode - Brands:", allBrands);
 
     // Convert ObjectId to string for JSON serialization
-    const serializedProducts = products.map(product => ({
+    const serializedProducts = paginatedProducts.map(product => ({
       ...product,
       _id: product._id.toString(),
       createdAt: product.createdAt?.toISOString?.() || new Date().toISOString(),

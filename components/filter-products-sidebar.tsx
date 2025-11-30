@@ -192,7 +192,7 @@ export const FilterSidebar = ({
         </Card>
 
         {/* Categories Filter */}
-        <Card>
+        {/* <Card>
           <Collapsible open={categoryExpanded} onOpenChange={setCategoryExpanded}>
             <CollapsibleTrigger asChild>
               <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
@@ -223,7 +223,7 @@ export const FilterSidebar = ({
               </CardContent>
             </CollapsibleContent>
           </Collapsible>
-        </Card>
+        </Card> */}
       </div>
     </aside>
   );
