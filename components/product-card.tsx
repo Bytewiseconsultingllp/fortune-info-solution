@@ -199,7 +199,7 @@ export const ProductCard = ({
           {/* Only render if datasheet exists */}
           {product.datasheet?.trim() && (
             <Link
-              href={product.datasheet}
+              href={product.datasheet.startsWith('http') ? product.datasheet : `https://${product.datasheet}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1"
