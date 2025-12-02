@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/mongodb"
 import { ObjectId } from "mongodb"
 import { verifyToken } from "@/lib/auth"
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const token = request.cookies.get("admin-token")?.value
     if (!token || !verifyToken(token)) {
@@ -18,9 +18,10 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     }
 
     const { db } = await connectDB()
+    const { id } = await params
     const result = await db
-      .collection("partnerEnquiries")
-      .updateOne({ _id: new ObjectId(params.id) }, { $set: { status } })
+      .collection("partner_enquiries")
+      .updateOne({ _id: new ObjectId(id) }, { $set: { status } })
 
     if (result.matchedCount === 0) {
       return NextResponse.json({ error: "Partner enquiry not found" }, { status: 404 })

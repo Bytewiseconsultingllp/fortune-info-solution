@@ -70,9 +70,16 @@ export async function POST(request: NextRequest) {
     const result = await db.collection("services").insertOne(serviceData)
     console.log("Insert result:", result)
 
+    // Fetch and return the created service
+    const createdService = await db.collection("services").findOne({ _id: result.insertedId });
+    
+    if (!createdService) {
+      throw new Error("Failed to retrieve created service");
+    }
+
     return NextResponse.json({
       message: "Service created successfully",
-      serviceId: result.insertedId,
+      service: { ...createdService, _id: createdService._id.toString() },
     })
   } catch (error:any) {
     console.error("Error creating service:", error)
