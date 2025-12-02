@@ -46,7 +46,7 @@ export const ProductCard = ({
         {product.images.length > 0 ? (
           <>
               <Image
-                src={product.images[currentImageIndex]}
+                src={product.images[currentImageIndex].startsWith('http') ? product.images[currentImageIndex] : `https://${product.images[currentImageIndex]}`}
                 alt={product.name}
                 fill
                 className={`object-cover rounded-xl transition-opacity duration-300 ${
