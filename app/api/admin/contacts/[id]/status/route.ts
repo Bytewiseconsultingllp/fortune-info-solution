@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/mongodb"
 import { ObjectId } from "mongodb"
 import { verifyToken } from "@/lib/auth"
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
     const token = request.cookies.get("admin-token")?.value
     if (!token || !verifyToken(token)) {
@@ -18,7 +18,8 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     }
 
     const { db } = await connectDB()
-    const result = await db.collection("contacts").updateOne({ _id: new ObjectId(params.id) }, { $set: { status } })
+    const { id } = await params
+    const result = await db.collection("contacts").updateOne({ _id: new ObjectId(id) }, { $set: { status } })
 
     if (result.matchedCount === 0) {
       return NextResponse.json({ error: "Contact not found" }, { status: 404 })
