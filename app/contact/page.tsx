@@ -29,13 +29,20 @@ import {
 } from "lucide-react";
 import { ComplaintSection } from "@/components/ComplaintSection";
 import Image from "next/image";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaGoogle, FaMicrosoft } from "react-icons/fa";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function ContactPage() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSuccess, setIsSuccess] = useState(false);
+  const [emailDropdownOpen, setEmailDropdownOpen] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -324,166 +331,120 @@ export default function ContactPage() {
             </p>
           </div>
 
-          {remainder === 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {teamMembers.map((member, index) => (
-                <Card
-                  key={index}
-                  className="group relative overflow-hidden border-0 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="h-full">
+                <Card className="group relative h-full flex flex-col border-0 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <CardContent className="relative py-8 px-4 md:px-6 text-center">
-                    <div className="relative mb-6">
-                      <div className="relative">
-                        <div className="w-24 h-32 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
+                  <CardContent className="relative py-6 px-4 text-center flex-1 flex flex-col">
+                    <div className="relative mb-4">
+                      <div className="relative mx-auto w-24 h-32">
+                        <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg group-hover:scale-105 transition-transform duration-300">
                           <img
                             src={member.image || "/placeholder.svg"}
                             alt={`${member.name} - ${member.position}`}
                             className="w-full h-full object-cover"
+                            loading="lazy"
                           />
                         </div>
-
-                        {member.email && (
-                          <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
-                            <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
-                          </div>
-                        )}
+                        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 -z-10" />
                       </div>
-
-                      <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
+                      
+                      {member.email && (
+                        <div className="absolute top-0 right-0 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg -mr-2 -mt-2">
+                          <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
+                        </div>
+                      )}
                     </div>
 
-                    <div className="space-y-1">
-                      <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
+                    <div className="flex-1 flex flex-col">
+                      <h3 className="font-extrabold text-xl mb-1 text-foreground group-hover:text-primary transition-colors duration-300 line-clamp-2 h-12 flex items-center justify-center">
                         {member.name}
                       </h3>
-                      <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3 rounded-full text-sm font-medium">
-                        {member.position}
-                        {member.initials && ` - ${member.initials}`}
-                      </div>
-
-                      {member.email ? (
-                        <div className="flex items-center justify-center gap-2 text-sm text-foreground/90">
-                          <Mail
-                            className="h-4 w-4 text-primary"
-                            aria-hidden="true"
-                          />
-                          <span className="font-medium">
-                            {member.email.trim()}
-                          </span>
-                        </div>
-                      ) : null}
-
-                      <div className="pt-4 border-t border-border/50">
-                        <div className="mt-4 flex items-center justify-center gap-4">
-                          {member.email && (
-                            <a
-                              href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(
-                                `Hello ${member.name}`
-                              )}`}
-                              aria-label={`Email ${member.name}`}
-                              className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                            >
-                              <Mail className="h-5 w-5" />
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-
-                  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-wrap justify-center gap-y-8 lg:-mx-4">
-              {teamMembers.map((member, index) => (
-                <div key={index} className="w-full md:w-1/2 lg:w-1/4 lg:px-4">
-                  <Card className="group relative overflow-hidden border-0 bg-card/80 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                    <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <CardContent className="relative py-8 px-4 md:px-6 text-center">
-                      <div className="relative mb-6">
-                        <div className="relative">
-                          <div className="w-24 h-32 mx-auto rounded-2xl overflow-hidden shadow-lg group-hover:scale-110 transition-all duration-500">
-                            <img
-                              src={member.image || "/placeholder.svg"}
-                              alt={`${member.name} - ${member.position}`}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                          {member.email && (
-                            <div className="absolute -top-1 -right-1 w-8 h-8 bg-gradient-to-br from-accent to-accent/80 rounded-xl flex items-center justify-center shadow-lg">
-                              <div className="w-3 h-3 bg-white rounded-full animate-pulse" />
-                            </div>
-                          )}
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 -z-10" />
-                      </div>
-
-                      <div className="space-y-1">
-                        <h3 className="font-bold text-xl mb-2 text-balance text-foreground group-hover:text-primary transition-colors duration-300">
-                          {member.name}
-                        </h3>
-                        <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3 rounded-full text-sm font-medium">
+                      
+                      <div className="min-h-[32px] flex items-center justify-center">
+                        <div className="inline-flex items-center gap-1 bg-muted text-foreground px-3 py-1 rounded-full text-xs font-medium text-center line-clamp-2">
                           {member.position}
                           {member.initials && ` - ${member.initials}`}
                         </div>
+                      </div>
 
-                        {member.email ? (
-                          <div className="flex items-center justify-center gap-2 text-sm text-foreground/90">
-                            <Mail
-                              className="h-4 w-4 text-primary"
-                              aria-hidden="true"
-                            />
-                            <span className="font-medium">
+                      {member.email && (
+                        <div className="mt-auto">
+                          <div className="flex items-center justify-center gap-2 text-sm text-foreground/80 mb-2 min-h-[24px]">
+                            <Mail className="h-4 w-4 text-primary flex-shrink-0" />
+                            <span className="line-clamp-1">
                               {member.email.trim()}
                             </span>
                           </div>
-                        ) : null}
 
-                        <div className="pt-4 border-t border-border/50">
-                          {member.email && (
-                            <div className="mt-4 flex items-center justify-center">
-                              {/* Email */}
-                              <a
-                                href={`mailto:${member.email.trim()}?subject=${encodeURIComponent(
-                                  `Hello ${member.name}`
-                                )}`}
-                                aria-label={`Email ${member.name}`}
-                                className="inline-flex items-center justify-center rounded-full p-2 text-foreground hover:text-primary hover:bg-muted transition-colors"
-                              >
-                                <Mail className="h-5 w-5" />
-                              </a>
-
-                              {/* WhatsApp */}
-                              <a
-                                href={`https://wa.me/91${
-                                  member.phone
-                                }?text=${encodeURIComponent(
-                                  `Hello ${member.name}, I am interested in connecting with you.`
-                                )}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`WhatsApp ${member.name}`}
-                                className="inline-flex items-center justify-center rounded-full p-2 text-green-600 hover:bg-muted transition-colors"
-                              >
-                                <FaWhatsapp className="h-5 w-5" />
-                              </a>
+                          <div className="pt-3 border-t border-border/30">
+                            <div className="flex items-center justify-center gap-3">
+                              <DropdownMenu onOpenChange={(open) => setEmailDropdownOpen(open ? index : null)}>
+                                <DropdownMenuTrigger asChild>
+                                  <button
+                                    aria-label={`Email ${member.name}`}
+                                    className="inline-flex items-center justify-center rounded-full p-2 text-foreground/70 hover:text-primary hover:bg-muted transition-colors"
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      setEmailDropdownOpen(emailDropdownOpen === index ? null : index);
+                                    }}
+                                  >
+                                    <Mail className="h-5 w-5" />
+                                  </button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="center" className="w-48">
+                                  <a 
+                                    href={`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(member.email)}&su=${encodeURIComponent(`Hello ${member.name}`)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block w-full"
+                                    onClick={() => setEmailDropdownOpen(null)}
+                                  >
+                                    <DropdownMenuItem className="cursor-pointer flex items-center gap-2">
+                                      <FaGoogle className="h-4 w-4 text-red-500" />
+                                      <span>Gmail</span>
+                                    </DropdownMenuItem>
+                                  </a>
+                                  <a 
+                                    href={`https://outlook.live.com/mail/deeplink/compose?to=${encodeURIComponent(member.email)}&subject=${encodeURIComponent('Hello ' + member.name)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block w-full"
+                                    onClick={() => setEmailDropdownOpen(null)}
+                                  >
+                                    <DropdownMenuItem className="cursor-pointer flex items-center gap-2">
+                                      <FaMicrosoft className="h-4 w-4 text-blue-500" />
+                                      <span>Outlook</span>
+                                    </DropdownMenuItem>
+                                  </a>
+                                </DropdownMenuContent>
+                              </DropdownMenu>
+                              
+                              {member.phone && (
+                                <a
+                                  href={`https://wa.me/91${member.phone.toString().replace(/\D/g, '')}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center justify-center rounded-full p-2 text-foreground/70 hover:text-green-500 hover:bg-muted transition-colors"
+                                  aria-label={`WhatsApp ${member.name}`}
+                                >
+                                  <FaWhatsapp className="h-5 w-5" />
+                                </a>
+                              )}
                             </div>
-                          )}
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
+                      )}
+                    </div>
+                  </CardContent>
 
-                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </Card>
-                </div>
-              ))}
-            </div>
-          )}
+                  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Card>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
